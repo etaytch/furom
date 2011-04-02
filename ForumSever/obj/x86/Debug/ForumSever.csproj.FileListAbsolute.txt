@@ -37,3 +37,5 @@ C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\MessagePack.pdb
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Server.pdb
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.exe
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.pdb
