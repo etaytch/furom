@@ -5,10 +5,15 @@ using System.Text;
 
 namespace MessagePack
 {
-    public class GetThreadMessage : GetPostMessage {
+    public class GetThreadMessage : Message {
+
+        int _tId;
+        int _fId
 
         public GetThreadMessage(int fId, int tId,string uName)
-            : base(fId, tId, 0, uName) {       
+            : base(uName) {       
+            _fId = fId;
+            _tId = tId;
         }
 
         public override string ToString()
