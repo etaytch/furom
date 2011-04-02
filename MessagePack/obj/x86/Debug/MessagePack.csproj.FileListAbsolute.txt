@@ -28,3 +28,8 @@ C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debu
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.dll
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.pdb
