@@ -169,6 +169,14 @@ namespace Protocol {
                     return message;
 
                 /**
+                * GETSYSTEM\n
+                * <username>\n
+                **/
+                case "GETSYSTEM":
+                    message = new GetSystemMessage(tok.getNextToken());
+                    return message;
+
+                /**
                 * GETFORUM\n
                 * <fourumID>\n
                 * <username>\n
