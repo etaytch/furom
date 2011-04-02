@@ -36,13 +36,3 @@ C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\Mes
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\Server.dll
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\Server.pdb
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\Server.dll.config
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\Server.dll
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\Server.pdb
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\common.dll
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\MessagePack.dll
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\common.pdb
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\bin\Debug\MessagePack.pdb
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\Server.dll
-C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Server\obj\x86\Debug\Server.pdb
