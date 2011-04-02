@@ -208,7 +208,7 @@ namespace Protocol {
                     string t_uName = tok.getNextToken();
                     List<string> t_topics = new List<string>();
                     String t_tStr;
-                    while (!(t_tStr = tok.getNextToken()).Equals("")) {
+                    while (!(t_tStr = tok.getNextToken()).Equals("\0")) {
                         t_topics.Add(t_tStr);
                     }
                     message = new ForumContentMessage(t_forumID, t_uName, t_topics);
