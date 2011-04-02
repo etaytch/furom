@@ -9,9 +9,13 @@ namespace MessagePack
 
            
         public List<string> _forums;
-        public SystemContentMessage(string uName, List<string> forums)
-            : base(uName) {            
-            _forums = forums;        
+        public List<int> _forums_ids;
+
+        public SystemContentMessage(string uName, List<string> forums, List<int> forums_ids)
+            : base(uName) 
+        {            
+            _forums = forums;
+            _forums_ids = forums_ids;
         }
         public override string ToString()
         {

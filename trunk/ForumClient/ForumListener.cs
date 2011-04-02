@@ -31,11 +31,16 @@ namespace ForumClient
                     Console.WriteLine("Error: " + err.getMsg());
                     break;
                 case "SYSTEMCONTENT":
-                    Console.WriteLine("system content");
+                    SystemContentMessage systemContent = (SystemContentMessage)msg;
+                    Console.WriteLine("Forums: ");
+                    foreach (int forum in systemContent._forums_ids)
+                        Console.WriteLine(forum + ". " + systemContent._forums_ids[forum]);
                     break;
                 case "FORUMCONTENT":
                     ForumContentMessage forumContent = (ForumContentMessage)msg;
                     Console.WriteLine("Forum: " + forumContent._fId);
+                    foreach (string topic in forumContent._topics)
+                        Console.WriteLine(topic);
                     break;
                 case "THREADCONTENT":
                     ThreadContentMessage thread = (ThreadContentMessage)msg;

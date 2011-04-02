@@ -229,10 +229,12 @@ namespace ForumSever
                     t_userID = _lm.FindMemberByUser(((GetSystemMessage)t_msg)._uName).getID();
                     List<Forum> t_forum = _lm._db._forums;
                     List<string> t_forum_topics = new List<string>();
+                    List<int> t_forum_ids = new List<int>();
                     foreach (Forum tt_forum in t_forum){
                         t_forum_topics.Add(tt_forum.getTopic());
+                        t_forum_ids.Add(tt_forum.getId());
                     }
-                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName,t_forum_topics));
+                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName, t_forum_topics, t_forum_ids));
                     break;
 
                 case "GETFORUM":
