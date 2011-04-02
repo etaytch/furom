@@ -17,9 +17,9 @@ namespace ForumSever
             mh.startForum();
             Thread keyboard_listener = new Thread(new ThreadStart(listen));
             keyboard_listener.Start();
+            Console.WriteLine("Welcome to the Forum Server!");
             while (connected)
             {
-                Console.WriteLine("Welcome to the Forum Server!");
                 mh.readMassage();
             }
             mh.stopForum();
@@ -27,15 +27,19 @@ namespace ForumSever
 
         static void listen()
         {
-
-            switch (Console.ReadLine())
+            while (connected)
             {
-                case "quit":
-                    Console.WriteLine("Stopping server");
-                    connected = false;
-                    break;
-                default:
-                    break;
+                switch (Console.ReadLine())
+                {
+                    case "quit":
+                        Console.WriteLine("Stopping server");
+                        connected = false;
+                        //ForumTcpClient c = new ();
+
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

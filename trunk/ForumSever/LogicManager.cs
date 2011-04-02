@@ -1,24 +1,36 @@
-﻿/*
-  using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ForumSever;
-using MessagePack;
 
-namespace ForumServer
+namespace ForumSever
 {
-    class LogicManager
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    public class LogicManager
     {
-        Database _db;
+        public Database _db; //should be private
 
         public LogicManager()
         {
             _db = new Database();
+            _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
+        }
+
+        public LogicManager(Database p_db)
+        {
+            this._db = p_db;
         }
 
 
-        public int addMember(MemberInfo memb)
+        /*Member functions*/
+
+        public int register(MemberInfo memb)
         {
             // cant add Member without all fields
             if (memb.getLName() == "" | memb.getFName() == "" | memb.getUName() == "" | memb.getPass() == "" | memb.getEmail() == "")
@@ -43,35 +55,24 @@ namespace ForumServer
             _db.addMember(memb);
             return 0;
         }
-        
-        public MemberInfo FindMemberByUser(string username)
-        {
-           return _db.FindMemberByUser(username);
-        }
-        
 
         public int login(string p_user, string p_pass)
         {
+            Console.WriteLine("in login!");
             MemberInfo t_user = _db.FindMemberByUser(p_user);
             if ((t_user != null) && (t_user.getPass() == p_pass))
             {
-                t_user.login();         
-                   return 0;
+                t_user.login();
+                return 0;
             }
 
-            return -1;
-        }
-
-        public bool isLogged(string user)
-        {
-            MemberInfo memb= _db.FindMemberByUser(user);
-            return ((memb!=null)&& (memb.isLogged()));
+            return -3;
         }
 
         public int logout(string user)
         {
             MemberInfo memb = _db.FindMemberByUser(user);
-            if ((memb != null)&&(memb.isLogged()))
+            if ((memb != null) && (memb.isLogged()))
             {
                 memb.logout();
                 return 0;
@@ -80,10 +81,21 @@ namespace ForumServer
             return -1;
         }
 
-        public int addMeAsFriend(string p_toBeAdded, string p_AddedTo)
+        public bool isLogged(string user)
         {
-            MemberInfo t_AddedTo = _db.FindMemberByUser(p_AddedTo);
-            MemberInfo t_toBeAdded = _db.FindMemberByUser(p_toBeAdded);
+            MemberInfo memb = _db.FindMemberByUser(user);
+            return ((memb != null) && (memb.isLogged()));
+        }
+
+        public MemberInfo FindMemberByUser(string username)
+        {
+            return _db.FindMemberByUser(username);
+        }
+
+        public int addMeAsFriend(int p_toBeAddedID, int p_AddedToID)
+        {
+            MemberInfo t_AddedTo = _db.FindMemberByID(p_AddedToID);
+            MemberInfo t_toBeAdded = _db.FindMemberByID(p_toBeAddedID);
             if (t_toBeAdded == null)
             {
                 //return "incurrect user name";
@@ -95,8 +107,8 @@ namespace ForumServer
                 //return "the user you are trying to befriend dosn't exist";
                 return -2;
             }
- 
-            if (t_AddedTo.hasFriend(p_toBeAdded))
+
+            if (t_AddedTo.hasFriend(p_toBeAddedID))
             {
                 //return "user is already a friend with this user";
                 return -1;
@@ -106,104 +118,214 @@ namespace ForumServer
             return t_toBeAdded.getID();
         }
 
-        public object removeMeAsFriend(string p_toBeRemoved, string p_removedFrom)
+        public int removeMeAsFriend(int p_toBeRemoved, int p_removedFrom)
         {
-            MemberInfo t_removedFrom = _db.FindMemberByUser(p_removedFrom);
-            MemberInfo t_toBeRemoved = _db.FindMemberByUser(p_toBeRemoved);
+            MemberInfo t_removedFrom = _db.FindMemberByID(p_removedFrom);
+            MemberInfo t_toBeRemoved = _db.FindMemberByID(p_toBeRemoved);
             if (t_toBeRemoved == null)
             {
-                return "incurrect user name";
+                return -3;
+                //return "incurrect user name";
             }
 
             if (t_removedFrom == null)
             {
-                return "the user you are trying to befriend dosn't exist";
+                return -2;
+                //return "the user you are trying to befriend dosn't exist";
             }
 
 
 
             if (!t_removedFrom.hasFriend(p_toBeRemoved))
             {
-                return "the user you are trying to unfriend is not a friend of yours";
+                return -4;
+                //return "the user you are trying to unfriend is not a friend of yours";
             }
             t_removedFrom.removeFriend(t_toBeRemoved);
-            return "you have removed yourself as friend";
+            //return "you have removed yourself as friend";
+            return 0;
         }
 
-        //Threads founctions  
+
+        /*Threads founctions  */
 
 
-        public string addTread(string p_user, string p_topic, string p_content)
+        //addForum
+        public int addForum(int p_userID, string p_topic)
         {
-            MemberInfo t_user = _db.FindMemberByUser(p_user);
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
             if (t_user == null)
             {
-                return "incurrect user name";
-                
+                return -3;
+                //return "incurrect user name";
             }
-            if (_db.findTopicInThreads(p_topic))
+            if (_db.findTopicInForums(p_topic))
             {
-                return "topic already exists, choose new topic";
+                //return "topic already exists, choose new topic";
+                return -5;
             }
+            Forum t_forum = new Forum(p_topic);
+            int t_ID = _db.addForum(t_forum);
 
-            ForumThread t_thr = new ForumThread(p_topic, p_content, t_user);
-            //TODO!!
-            _db.addTread(p_topic, p_content, p_user);
-            return "your thread was added to the forum";
-        }
-        
-        private bool findTopicInThreads(string p_topic)
-        {
-            bool b=false;
-            int i = 0;
-            while (!b& i<_db._Treads.Count())
-            {
-                b=(p_topic==_Treads.ElementAt(i).getTopic());
-                i++;
-            }
-            return b;
-        }
-        
+            t_forum.setId(t_ID);
 
+            //return "your forum was added to the system";
+            return t_ID;
 
-        public ForumThread getTread(string p_topic)
-        {
-            for (int i = 0; i < _db.MemberCount(); i++)
-            {
-                if (_db.getTreadFrom(i).getTopic() == p_topic)
-                {
-                    return _db.getTreadFrom(i);
-                }
-               
-            }
-            return null;
         }
 
-        public string removeTread(string p_user, string p_topic)
+        public int addTread(int p_fid, int p_userID, string p_topic, string p_content)
         {
-            MemberInfo t_user = _db.FindMemberByUser(p_user);
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
             if (t_user == null)
             {
-                return "incurrect user name";
+                return -3;
+                //return "incurrect user name";
+
             }
+            if (_db.findTopicInThreads(p_fid, p_topic))
+            {
+                //return "topic already exists, choose new topic";
+                return -5;
+            }
+
+            ForumThread t_thr = new ForumThread(p_fid, p_topic, p_content, t_user);
+            int t_ID = _db.addTread(t_thr);
+
+            t_thr.setID(t_ID); // threadID wasn't initialized until now!! (Etay)
+
+            //return "your thread was added to the forum";
+            return t_ID;
+        }
+
+        public ForumThread getTread(int p_fid, int p_tid)
+        {
+            /*             
+              OLD NIV' CODE:                                        
+             
+              for (int i = 0; i < _db.MemberCount(); i++){
+                  if (_db.getTreadFrom(i).getID() == p_tid){
+                      return _db.getTreadFrom(i);
+                  }
+
+              }
+              return null;
+           */
+
+            //Etay:
+            return _db.getTread(p_fid, p_tid);
+        }
+
+        public Forum getForum(int p_fid)
+        {
+            return _db.getForum(p_fid);
+        }
+
+        public int removeTread(int p_fid, int p_userID, int p_tID)
+        {
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
+            if (t_user == null)
+            {
+                return -3;
+                //return "incurrect user name";
+            }
+            ForumThread tThread = null;
             for (int i = 0; i < _db.MemberCount(); i++)
             {
-                if (_db.getTreadFrom(i).getTopic() == p_topic)
+                tThread = _db.getTreadFrom(p_fid, i);
+                if (tThread.getID() == p_tID)
                 {
-                    if (_db.getTreadFrom(i).getAuthor() == t_user)
+                    if (tThread.getAuthor() == t_user)
                     {
-                        _db.RemoveThreadAt(i);
-                        return "your thread was removed from the forum";
+                        _db.RemoveThreadAt(p_fid, i);
+                        return 0;
+                        //return "your thread was removed from the forum";
                     }
-                    else{
-                        return "the topic you where trying to remove was submited by a diffrent user";
+                    else
+                    {
+                        return -7;
+                        //return "the topic you where trying to remove was submited by a diffrent user";
                     }
                 }
 
             }
-            return "the topic could not been found"; ;
+            //return "the topic could not been found"; ;
+            return -6;
+        }
+
+
+        /*Posts founctions  */
+
+        public int addPost(int p_fid, int p_userID, int p_tid, string p_topic, string p_content)
+        {
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
+            if (t_user == null)
+            {
+                return -3;
+                //return "incurrect user name";
+
+            }
+            ForumThread t_thr = _db.getTread(p_fid, p_tid);
+            if (t_thr == null)
+            {
+                return -6;
+                //return "the topic could not been found";
+            }
+
+            int index = t_thr.addPost(p_fid, p_tid, p_topic, p_content, t_user);
+            return index;
+        }
+
+        public ForumPost getPost(int p_fid, int p_userID, int p_tid, int p_index)
+        {
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
+            if (t_user == null)
+            {
+                return null;
+                //return "incurrect user name";
+
+            }
+            ForumThread t_thr = _db.getTread(p_fid, p_tid);
+            if (t_thr == null)
+            {
+                return null;
+                //return "the topic could not been found";
+            }
+            return t_thr.getPostAt(p_index);
+
+        }
+
+        public int removePost(int p_fId, int p_userID, int p_tId, int p_index)
+        {
+            MemberInfo t_user = _db.FindMemberByID(p_userID);
+            if (t_user == null)
+            {
+                return -3;
+                //return "incurrect user name";
+            }
+            ForumThread t_thr = _db.getTread(p_fId, p_tId);
+            if (t_thr == null)
+            {
+                return -6;
+                //return "the topic could not been found";
+            }
+            if ((p_index < 0) | (p_index > t_thr.getPostCount()))
+            {
+                return -8;
+                //return "the post topic is out of bounds";
+            }
+            ForumPost t_post = t_thr.getPostAt(p_index);
+            if (t_post.getAuthor() == t_user)
+            {
+                t_thr.RemovePostAt(p_index);
+                return 0;
+                //return "your thread was removed from the forum";
+            }
+            else
+            {
+                return -7;
+                //return "the topic you where trying to remove was submited by a diffrent user";
+            }
         }
     }
 }
-
-*/
