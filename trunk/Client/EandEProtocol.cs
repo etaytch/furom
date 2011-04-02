@@ -243,6 +243,20 @@ namespace Protocol {
                     return message;
 
                 /**
+                * SYSTEMCONTENT\n
+                * <username>\n
+                * <forums>\n
+                **/
+                case "SYSTEMCONTENT":
+                    string t_uName2 = tok.getNextToken();
+                    string t_temp;
+                    List<string> t_forums = new List<string>();
+                    while((t_temp = tok.getNextToken()) != "\0")
+                        t_forums.Add(t_temp);
+                    message = new SystemContentMessage(t_uName2, t_forums);
+                    return message;
+
+                /**
                 * ERROR\n
                 * <errormsg>\n
                 **/

@@ -16,7 +16,7 @@ namespace Protocol {
         public string getNextToken() {            
             int ind = _str.IndexOf(_delimiter);
             if (ind < 0) {
-                return "";
+                return "\0";
             }
             else {
                 string ans = _str.Substring(0, ind);                
