@@ -2,21 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace ForumSever
 {
-    class ForumServer
+    public class ForumServer
     {
+        static bool connected = true;
+
         static void Main(string[] args)
         {
+
             MassageHandler mh = new MassageHandler();
             mh.startForum();
-            while (true)
+            Thread keyboard_listener = new Thread(new ThreadStart(listen));
+            keyboard_listener.Start();
+            while (connected)
             {
                 Console.WriteLine("Welcome to the Forum Server!");
                 mh.readMassage();
             }
- 
+            mh.stopForum();
         }
+
+        static void listen()
+        {
+
+            switch (Console.ReadLine())
+            {
+                case "quit":
+                    Console.WriteLine("Stopping server");
+                    connected = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }
