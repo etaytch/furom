@@ -25,3 +25,5 @@ C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\Mes
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\Client.dll
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\Client.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\Client.dll
