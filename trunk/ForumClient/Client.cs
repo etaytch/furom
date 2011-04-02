@@ -17,6 +17,7 @@ namespace ForumClient
         {
             protocol = p;
             userName = uName;
+            forum = f;
         }
 
         public void logout()
