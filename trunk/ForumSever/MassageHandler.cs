@@ -211,6 +211,7 @@ namespace ForumSever
                 case "GETTHREAD":
                     t_tid = ((GetThreadMessage)t_msg)._tId;
                     t_fid = ((GetThreadMessage)t_msg)._fId;
+
                     ForumThread returnThread = _lm.getTread(t_fid, t_tid);
                     if (returnThread == null)
                     {

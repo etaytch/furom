@@ -57,7 +57,7 @@ namespace ForumSever
             t_post.setPostID(_post_counter);
             _posts.Add(t_post);
             _post_counter++;
-            return _post_counter - 1;
+            return _post_counter-1;
         }
 
         public List<ForumPost> getPosts() {
