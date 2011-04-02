@@ -32,9 +32,13 @@ namespace ForumClient
                     break;
                 case "SYSTEMCONTENT":
                     SystemContentMessage systemContent = (SystemContentMessage)msg;
+                    int fNum = 0;
                     Console.WriteLine("Forums: ");
                     foreach (string forum in systemContent._forums)
-                        Console.WriteLine(forum);
+                    {
+                        Console.WriteLine(fNum + ". " + forum);
+                        fNum++;
+                    }
                     break;
                 case "FORUMCONTENT":
                     ForumContentMessage forumContent = (ForumContentMessage)msg;
