@@ -41,7 +41,8 @@ namespace ForumSever
 
 
         public int addTread(ForumThread p_tread) {
-            _threads.Add(p_tread);
+            _thread_counter++;
+            _threads.Add(p_tread);            
             return _threads.IndexOf(p_tread);
         }
 

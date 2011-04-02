@@ -8,14 +8,12 @@ namespace ForumSever
     public class Database
     {
         private List<MemberInfo> _Members;
-        private List<ForumThread> _Treads;
         public  List<Forum> _forums;         //private
         private int _counter;
 
         public Database()
         {
             _Members = new List<MemberInfo>();
-            _Treads = new List<ForumThread>();
             _forums = new List<Forum>();
             _counter = 0;
         }
@@ -167,10 +165,11 @@ namespace ForumSever
 
         //getForum(p_fid)
 
-        internal ForumThread getTread(int fid, int p_tId) {
+        public ForumThread getTread(int fid, int p_tId) {
             Forum tForum = findForum(fid);
             if (tForum != null) {
-                for (int i = 0; i < _Treads.Count(); i++) {
+                for (int i = 0; i < tForum.getThreads().Count; i++) {
+                    Console.WriteLine(tForum.getThreads().ElementAt(i).getID());
                     if (tForum.getThreads().ElementAt(i).getID() == p_tId) {
                         return tForum.getThreads().ElementAt(i);
                     }
