@@ -226,18 +226,13 @@ namespace ForumSever
 
                     // Display All forums in the system
                 case "GETSYSTEM":
-/*
-                    t_tid = ((GetThreadMessage)t_msg)._tId;
-                    ForumThread returnThread = _lm.getTread(t_tid);
-                    if (returnThread == null) {
-                        sendError(-6, ((GetThreadMessage)t_msg)._uName);
+                    t_userID = _lm.FindMemberByUser(((GetSystemMessage)t_msg)._uName).getID();
+                    List<Forum> t_forum = _lm._db._forums;
+                    List<string> t_forum_topics = new List<string>();
+                    foreach (Forum tt_forum in t_forum){
+                        t_forum_topics.Add(tt_forum.getTopic());
                     }
-                    else {
-                        _ee.sendMessage(new ThreadContentMessage(returnThread.getID(), t_tid, ((GetThreadMessage)t_msg)._uName, returnThread.getTheardsTopics()));
-                    }
-*/
-                    //this should change to real return message
-                    //_outputMassage.Enqueue(new Message(""));
+                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName,t_forum_topics));
                     break;
 
                 case "GETFORUM":
@@ -254,6 +249,7 @@ namespace ForumSever
                     //this should change to real return message
                     //_outputMassage.Enqueue(new Message(""));
                     break;
+
 
 
 

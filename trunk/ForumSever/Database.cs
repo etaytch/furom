@@ -9,7 +9,7 @@ namespace ForumSever
     {
         private List<MemberInfo> _Members;
         private List<ForumThread> _Treads;
-        private List<Forum> _forums;
+        public  List<Forum> _forums;         //private
         private int _counter;
 
         public Database()
@@ -218,11 +218,12 @@ namespace ForumSever
      */
     public class LogicManager
     {
-        Database _db;
+        public Database _db; //should be private
 
         public LogicManager()
         {
             _db = new Database();
+            _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
         }
 
         public LogicManager(Database p_db)

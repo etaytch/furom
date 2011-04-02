@@ -65,9 +65,11 @@ namespace Server
         ************************/
         public void stopServer()
         {
-            mainListeningThread = new Thread(new ThreadStart(startListening));
+           // mainListeningThread = new Thread(new ThreadStart(startListening));
+            Console.WriteLine("ending connection...");
+            listener.Stop();
             is_running = false;
-            mainListeningThread.Join();
+            //mainListeningThread.Join();
         }
 
 
@@ -138,7 +140,7 @@ namespace Server
                 //vadi
 
                 listener.Start();
-                int Cycle = MAX_NUM_OF_CLIENTS;    //after 10000 the server will shotdown  
+                int Cycle = MAX_NUM_OF_CLIENTS;    //after MAX_NUM_OF_CLIENTS the server will shotdown  
                 int ClientNbr = 0;
 
                 // Start listening for connections.

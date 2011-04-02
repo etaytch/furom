@@ -51,6 +51,7 @@
     <Compile Include="AddThreadMessage.cs" />
     <Compile Include="Acknowledgment.cs" />
     <Compile Include="AddForumMessage.cs" />
+    <Compile Include="SystemContentMessage.cs" />
     <Compile Include="ForumContentMessage.cs" />
     <Compile Include="GetSystemMessage.cs" />
     <Compile Include="ThreadContentMessage.cs" />
