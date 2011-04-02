@@ -7,8 +7,8 @@ namespace MessagePack
 {
     public class GetThreadMessage : Message {
 
-        int _tId;
-        int _fId
+        public int _tId;
+        public int _fId;
 
         public GetThreadMessage(int fId, int tId,string uName)
             : base(uName) {       
@@ -18,7 +18,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "GETTHREAD\n" + _fId + "\n" + _tId + "\n" + _pIndex + "\n" + _uName + "\n";
+            return "GETTHREAD\n" + _fId + "\n" + _tId + "\n" + _uName + "\n";
         }
 
         public override string getMessageType() {
