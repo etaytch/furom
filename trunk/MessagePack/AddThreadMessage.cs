@@ -5,14 +5,21 @@ using System.Text;
 
 namespace MessagePack
 {
-    public class AddThreadMessage : AddPostMessage {
+    public class AddThreadMessage : Message {
 
-        public AddThreadMessage(int fId, string uName, string subject, string post) : base(fId,0,0,uName,subject,post){            
+        public int _fId;
+        public string _subject;
+        public string _post;
+
+        public AddThreadMessage(int fId, string uName, string subject, string post) : base(uName){
+            _fId = fId;
+            _subject = subject;
+            _post = post;
         }
 
         public override string ToString()
         {
-            return "ADDTHREAD\n" + _fId + "\n" + _pIndex + "\n" + _uName + "\n" + _subject + "\n" + _post + "\n";
+            return "ADDTHREAD\n" + _fId + "\n" + _uName + "\n" + _subject + "\n" + _post + "\n";
         }
 
         public override string getMessageType() {
