@@ -318,6 +318,9 @@ namespace ForumSever
             if (t_post.getAuthor() == t_user)
             {
                 t_thr.RemovePostAt(p_index);
+                for (int j = p_index; j < t_thr.getPosts().Count(); j++) {
+                    t_thr.getPosts().ElementAt(j).setPostID(j);
+                }
                 return 0;
                 //return "your thread was removed from the forum";
             }

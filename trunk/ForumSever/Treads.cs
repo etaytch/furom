@@ -60,6 +60,10 @@ namespace ForumSever
             return _post_counter - 1;
         }
 
+        public List<ForumPost> getPosts() {
+            return this._posts;
+        }
+
         public List<String> getTheardsTopics() {
             List<String> ans = new List<String>();
             for (int i = 0; i < this._posts.Count;i++ ) {

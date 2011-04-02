@@ -185,6 +185,9 @@ namespace ForumSever
             if (tForum != null) {
                 if ((i < tForum.getThreads().Count()) & (i >= 0)) {
                     tForum.getThreads().RemoveAt(i);
+                    for (int j = i; j < tForum.getThreads().Count();j++ ) {
+                        tForum.getThreads().ElementAt(j).setID(j);
+                    }
                 }
             }
             
