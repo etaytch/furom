@@ -42,14 +42,24 @@ namespace ForumClient
                     break;
                 case "FORUMCONTENT":
                     ForumContentMessage forumContent = (ForumContentMessage)msg;
+                    int tNum = 0;
                     Console.WriteLine("Forum: " + forumContent._fId);
-                    foreach (string topic in forumContent._topics)
-                        Console.WriteLine(topic);
+                    foreach (string thread in forumContent._topics)
+                    {
+                        Console.WriteLine(tNum + ". " + thread);
+                        tNum++;
+                    }
                     break;
                 case "THREADCONTENT":
-                    ThreadContentMessage thread = (ThreadContentMessage)msg;
-                    Console.WriteLine("Forum: " +  thread._fId);
-                    Console.WriteLine("Thread: " + thread._tId);
+                    ThreadContentMessage threadContent = (ThreadContentMessage)msg;
+                    int rNum = 0;
+                    Console.WriteLine("Forum: " +  threadContent._fId);
+                    Console.WriteLine("Thread: " + threadContent._tId);
+                    foreach (string reply in threadContent._topics)
+                    {
+                        Console.WriteLine(rNum + ". " + reply);
+                        rNum++;
+                    }
                     break;
                 case "POSTCONTENT":
                     PostContentMessage message = (PostContentMessage)msg;
