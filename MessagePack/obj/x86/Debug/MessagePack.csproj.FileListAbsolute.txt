@@ -1,0 +1,25 @@
+H:\Dropbox\University\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\My Dropbox\Stuff\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\My Dropbox\Stuff\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\My Dropbox\Stuff\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\My Dropbox\Stuff\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\My Dropbox\Stuff\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\MessagePack.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\bin\Debug\MessagePack.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\bin\Debug\MessagePack.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\MessagePack.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\פרוטוקול\Protocol\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\Protocol\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\Protocol\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\Protocol\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\Protocol\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\Protocol\MessagePack\obj\x86\Debug\MessagePack.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\MessagePack\bin\Debug\MessagePack.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\MessagePack\bin\Debug\MessagePack.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\MessagePack\obj\x86\Debug\MessagePack.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\MessagePack\obj\x86\Debug\MessagePack.pdb
