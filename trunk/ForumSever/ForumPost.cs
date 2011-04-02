@@ -36,7 +36,7 @@ namespace ForumSever
             return _topic;
         }
 
-        public int getForumID() {
+        public virtual int getForumID() {
             return _fid;
         }
 

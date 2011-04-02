@@ -47,7 +47,7 @@ namespace ForumSever
         }
          */
 
-        public int getForumID() {
+        public override int  getForumID() {
             return _fid;
         }
 
