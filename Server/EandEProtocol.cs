@@ -164,7 +164,7 @@ namespace Protocol {
                 * <username>\n
                 **/
                 case "GETTHREAD":
-                    message = new DeleteThreadMessage(Convert.ToInt32(tok.getNextToken()),
+                    message = new GetThreadMessage(Convert.ToInt32(tok.getNextToken()),
                                     Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken());
                     return message;
 
