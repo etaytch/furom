@@ -13,21 +13,18 @@ namespace ForumClient
         public static void Main(string[] args)
         {
             
-            Boolean loggedIn = false;
-            Boolean exit = false;
-            ClientManager manager = new ClientManager(exit, loggedIn);
- 
+            ClientManager manager = new ClientManager();
             manager.connect();
             Console.WriteLine("Welcome!");
-            while (!exit)
+            while (!manager.exit)
             {
-                while (!loggedIn && !exit) // While user isn't logged in yet he can only register, login or exit
+                while (!manager.loggedIn && !manager.exit) // While user isn't logged in yet he can only register, login or exit
                     manager.regLogin();
 
-                if (loggedIn) // once he's logged a new Client is created for him
+                if (manager.loggedIn) // once he's logged a new Client is created for him
                     manager.newClient();
   
-                while (loggedIn && !exit) // While user is logged in he can communicate with the forum
+                while (manager.loggedIn && !manager.exit) // While user is logged in he can communicate with the forum
                     manager.forumCom();
             }
             manager.disconnect();
