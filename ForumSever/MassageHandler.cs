@@ -241,23 +241,12 @@ namespace ForumSever
                     Forum returnForum = _lm.getForum(t_fid);
                     if (returnForum == null)
                     {
-                        sendError(-6, ((GetThreadMessage)t_msg)._uName);
+                        sendError(-9, ((GetForumMessage)t_msg)._uName);
                     }
                     else {
-                        //_ee.sendMessage(new ThreadContentMessage(returnThread.getID(), t_tid, ((GetThreadMessage)t_msg)._uName, returnThread.getTheardsTopics()));
+                        _ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, returnForum.getTheardsTopics()));
                     }
-
-                    //this should change to real return message
-                    //_outputMassage.Enqueue(new Message(""));
                     break;
-
-
-
-
-                // |======================|
-                // | WHERE IS GETFORUM??? |
-                // |======================|
-
                 default:
                     break;
             }
