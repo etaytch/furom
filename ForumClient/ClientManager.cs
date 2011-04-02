@@ -13,15 +13,15 @@ namespace ForumClient
         ForumListener forum;
         Client client;
         string username;
-        Boolean loggedIn;
-        Boolean exit;
+        public Boolean loggedIn;
+        public Boolean exit;
 
-        public ClientManager(Boolean e, Boolean l)
+        public ClientManager()
         {
-            exit = e;
-            loggedIn = l;
             protocol = new EandEProtocol();
             forum = new ForumListener(protocol);
+            loggedIn = false;
+            exit = false;
         }
 
         public void connect() 
@@ -93,6 +93,7 @@ namespace ForumClient
                         protocol.sendMessage(msg);
                         forum.Incoming();
                         loggedIn = true;
+                        Console.WriteLine("logged in: " + loggedIn.ToString());
                     }
                     else
                         goto default;
@@ -112,7 +113,7 @@ namespace ForumClient
             {
                 case "exit":
                     exit = true;
-                    break;
+                    goto case "logout";
                 case "help":
                     Console.WriteLine("'logout' - logout the forum");
                     Console.WriteLine("'forums' - get the forums list");
