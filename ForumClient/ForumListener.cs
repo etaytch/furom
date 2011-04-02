@@ -19,8 +19,7 @@ namespace ForumClient
 
         public void Incoming()
         {
-            msg = protocol.getMessage();
-            
+            msg = protocol.getMessage();   
             switch (msg.getMessageType()) 
             {
                 case "Acknowledgement":
@@ -35,7 +34,8 @@ namespace ForumClient
                     Console.WriteLine("system content");
                     break;
                 case "FORUMCONTENT":
-                    Console.WriteLine("forum content");
+                    ForumContentMessage forumContent = (ForumContentMessage)msg;
+                    Console.WriteLine("Forum: " + forumContent._fId);
                     break;
                 case "THREADCONTENT":
                     ThreadContentMessage thread = (ThreadContentMessage)msg;
