@@ -8,7 +8,11 @@ using MessagePack;
 namespace ForumClient
 {
    public class ClientManager
-    {
+   {
+
+        string ip = "10.100.101.196";
+        int port = 10116;
+
         EandEProtocol protocol;
         ForumListener forum;
         Client client;
@@ -18,7 +22,7 @@ namespace ForumClient
 
         public ClientManager()
         {
-            protocol = new EandEProtocol();
+            protocol = new EandEProtocol(port, ip);
             forum = new ForumListener(protocol);
             loggedIn = false;
             exit = false;
