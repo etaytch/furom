@@ -26,7 +26,7 @@ namespace MessagePack
         }
 
         public override string getMessageType() {
-            return "THREADCONTENT";
+            return "FORUMCONTENT";
         }
     }
 }
