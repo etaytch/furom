@@ -1,0 +1,28 @@
+d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\bin\Debug\ForumSever.exe
+d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\bin\Debug\ForumSever.pdb
+d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\obj\x86\Debug\ForumSever.exe
+d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\obj\x86\Debug\ForumSever.pdb
+C:\Users\Vadi\Desktop\ForumServer\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\obj\x86\Debug\ForumSever.exe
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\obj\x86\Debug\ForumSever.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\ForumSever.exe
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\ForumSever.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\common.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\MessagePack.dll
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\Server.exe
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\common.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\MessagePack.pdb
+H:\Dropbox\University\Semester6\סדנה\האלופים\Forum\ForumSever\bin\Debug\Server.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\ForumSever.exe
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\ForumSever.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\common.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\Server.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\common.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\bin\Debug\Server.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\obj\x86\Debug\ForumSever.exe
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\Forum\ForumSever\obj\x86\Debug\ForumSever.pdb

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="2d8b80bc-dae1-4978-ae7c-e191828eac48" name="Niv@NIV-PC 2011-03-29 00:06:59" runUser="NIV-PC\Niv" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="63723a02-38f4-439e-ac38-8218947bc97b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Niv_NIV-PC 2011-03-29 00_06_59">
+      <DeploymentItem filename="d:\my documents\visual studio 2010\Projects\ForumSever\ForumSever\bin\Debug\ForumSever.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-03-29T00:06:59.4375000+02:00" queuing="2011-03-29T00:06:59.4843750+02:00" start="2011-03-29T00:06:59.5000000+02:00" finish="2011-03-29T00:06:59.9062500+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DataBaseTests" storage="d:\my documents\visual studio 2010\projects\forumsever\forumservertest\bin\debug\forumservertest.dll" id="05cc5ac8-6aea-a638-bc18-4a0c624e10b1">
+      <Execution id="4ed2e2cd-524f-4ba3-b375-c4ebcdec88a9" />
+      <TestMethod codeBase="d:/my documents/visual studio 2010/Projects/ForumSever/ForumServerTest/bin/Debug/ForumServerTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ForumServerTest.ForumServerTest, ForumServerTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DataBaseTests" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="05cc5ac8-6aea-a638-bc18-4a0c624e10b1" executionId="4ed2e2cd-524f-4ba3-b375-c4ebcdec88a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4ed2e2cd-524f-4ba3-b375-c4ebcdec88a9" testId="05cc5ac8-6aea-a638-bc18-4a0c624e10b1" testName="DataBaseTests" computerName="NIV-PC" duration="00:00:00.0383045" startTime="2011-03-29T00:06:59.5000000+02:00" endTime="2011-03-29T00:06:59.8906250+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ed2e2cd-524f-4ba3-b375-c4ebcdec88a9">
+    </UnitTestResult>
+  </Results>
+</TestRun>

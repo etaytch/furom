@@ -1,0 +1,2 @@
+C:\Users\Vadi\Documents\visual studio 2010\Projects\Forum\Forum\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\visual studio 2010\Projects\Forum\Forum\bin\Debug\Forum.exe.config
