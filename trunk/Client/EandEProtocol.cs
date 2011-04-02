@@ -193,6 +193,26 @@ namespace Protocol {
                     }
                     message = new ThreadContentMessage(forumID, threadID, uName, topics);
                     return message;
+
+                /**
+            * FORUMCONTENT\n
+            * <forumID>\n                
+            * <username>\n
+            * <Topic #1>\n                 
+            * ...........
+            * <Topic #n>\n                 
+
+            **/
+                case "FORUMCONTENT":
+                    int t_forumID = Convert.ToInt32(tok.getNextToken());
+                    string t_uName = tok.getNextToken();
+                    List<string> t_topics = new List<string>();
+                    String t_tStr;
+                    while (!(t_tStr = tok.getNextToken()).Equals("")) {
+                        t_topics.Add(t_tStr);
+                    }
+                    message = new ForumContentMessage(t_forumID, t_uName, t_topics);
+                    return message;
                                                 
                 /**
                 * GETTHREAD\n
