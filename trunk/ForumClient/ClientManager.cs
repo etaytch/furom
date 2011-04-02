@@ -46,7 +46,7 @@ namespace ForumClient
 
         public void regLogin()  // command prompt for the client to register or login
         {
-            Console.WriteLine("Enter command:");
+            Console.Write(">");
             string command = Console.ReadLine();
             string[] commandSplit = command.Split(' ');
             switch (commandSplit[0])
@@ -110,7 +110,7 @@ namespace ForumClient
 
         public void forumCom()  // command prompt for the user to communicate with the forum
         {
-            Console.WriteLine("Enter command:");
+            Console.Write(">");
             string command = Console.ReadLine();
             string[] commandSplit = command.Split(' ');
             switch (commandSplit[0])
