@@ -8,8 +8,8 @@ namespace MessagePack
     public class ThreadContentMessage : Message {
 
         public int _fId;
-        public int _tId;          
-        List<string> _topics;
+        public int _tId;
+        public List<string> _topics;
         public ThreadContentMessage(int fId, int tId, string uName, List<string> topics)
             : base(uName) {
             _fId = fId;
