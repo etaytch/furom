@@ -154,7 +154,7 @@ namespace Client
         public void disconnect()
         {
             connected = false;
-            listner_thread.Join();
+            listner_thread.Abort();
             networkStream.Close();
             tcpClient.Close();
         }
