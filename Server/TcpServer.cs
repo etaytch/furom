@@ -299,7 +299,7 @@ namespace Server
         {
             if (networkStream.CanWrite)
             {
-                Console.WriteLine("Sending: \n---------------------{0}\n---------------------\n", massege);
+                Console.WriteLine("Sending: \n---------------------\n{0}\n---------------------\n", massege);
                 Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
                 networkStream.Write(sendBytes, 0, sendBytes.Length);
             }

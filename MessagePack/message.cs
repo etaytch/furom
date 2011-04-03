@@ -10,12 +10,12 @@ namespace MessagePack
         public string _uName;
         
         //public string _uName;
-        public Message(string uName) {            
-            Console.WriteLine("uName: {0}",uName);
+        public Message(string uName) 
+        {            
             this._uName = uName;
-            Console.WriteLine("Massage Created!");
         }
-        public virtual string getMessageType(){
+        public virtual string getMessageType()
+        {
             return "Message";
         }
 
