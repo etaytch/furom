@@ -89,7 +89,6 @@ namespace Client
 
             if (networkStream.CanWrite)
             {
-                Console.WriteLine("Sending text: {0}",massege);
                 Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
                 networkStream.Write(sendBytes, 0, sendBytes.Length);
             }

@@ -164,7 +164,6 @@ namespace Server
                     else
                         break;
                 }
-                Console.WriteLine("after_While");
                 listener.Stop();
                 continueReclaim = false;
                 threadReclaim.Join();
@@ -300,7 +299,7 @@ namespace Server
         {
             if (networkStream.CanWrite)
             {
-                Console.WriteLine("Sending: {0}", massege);
+                Console.WriteLine("Sending: \n---------------------{0}\n---------------------\n", massege);
                 Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
                 networkStream.Write(sendBytes, 0, sendBytes.Length);
             }
