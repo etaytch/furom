@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
+
 namespace ForumSever
 {
     public class ForumServer
@@ -34,8 +35,6 @@ namespace ForumSever
                     case "quit":
                         Console.WriteLine("Stopping server");
                         connected = false;
-                        //ForumTcpClient c = new ();
-
                         break;
                     default:
                         break;

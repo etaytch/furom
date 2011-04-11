@@ -1,0 +1,9 @@
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\GuiForumClient.exe
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\GuiForumClient.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.Form1.resources
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.Properties.Resources.resources
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb
