@@ -11,14 +11,16 @@ namespace ForumSever
         internal int _fid;
         internal int _tid;
         internal int _pindex;
+        public int _parent;
         internal int _ID;
         internal string _topic;
         internal string _content;
         internal MemberInfo _autor;
-        public ForumPost(int fid, int tid, string p_topic, string p_content, MemberInfo p_memb)
+        public ForumPost(int fid, int tid,int parent, string p_topic, string p_content, MemberInfo p_memb)
         {
             _fid = fid;
             _tid = tid;
+            _parent = parent;
             _ID = POST_ID_COUNTER;
             _topic = p_topic;
             _content = p_content;
