@@ -205,8 +205,8 @@ namespace ForumSever
                     {
                         sendError(-8, ((GetPostMessage)t_msg)._uName);
                     }
-                    else {                        
-                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, ((GetPostMessage)t_msg)._uName,(returnPost._autor).getUName(),returnPost._topic,returnPost._content));
+                    else {
+                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parent, ((GetPostMessage)t_msg)._uName, (returnPost._autor).getUName(), returnPost._topic, returnPost._content));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
