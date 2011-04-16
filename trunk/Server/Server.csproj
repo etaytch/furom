@@ -39,7 +39,7 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="EandEProtocol.cs" />
+    <Compile Include="EandEServerProtocol.cs" />
     <Compile Include="EandETokenizer.cs" />
     <Compile Include="ForumTcpServerInterface.cs" />
     <Compile Include="ProtocolInterface.cs" />

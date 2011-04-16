@@ -75,7 +75,7 @@ namespace Protocol {
                 **/
                 case "ADDPOST":
                     message = new AddPostMessage(Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()),
-                                    Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
+                                    Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
                     return message;
                 /**
                 * ADDTHREAD\n
