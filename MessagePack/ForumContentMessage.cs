@@ -8,8 +8,8 @@ namespace MessagePack
     public class ForumContentMessage : Message {
 
         public int _fId;
-        public List<string> _topics;
-        public ForumContentMessage(int fId, string uName, List<string> topics)
+        public List<Quartet> _topics;
+        public ForumContentMessage(int fId, string uName, List<Quartet> topics)
             : base(uName) {
             _fId = fId;        
             _topics = topics;        
