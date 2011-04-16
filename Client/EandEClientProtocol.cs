@@ -69,10 +69,18 @@ namespace Protocol {
                     int forumID = Convert.ToInt32(tok.getNextToken());
                     int threadID = Convert.ToInt32(tok.getNextToken());
                     string uName = tok.getNextToken();
-                    List<string> topics = new List<string>();
+                    List<Quartet> topics = new List<Quartet>();
                     String tStr;
+                    Quartet quad;
+                    int pind, par;
+                    string sub, auth;
                     while(!(tStr = tok.getNextToken()).Equals("\0")){
-                        topics.Add(tStr);
+                        pind = Convert.ToInt32(tStr);
+                        par = Convert.ToInt32(tok.getNextToken());
+                        sub = tok.getNextToken();
+                        auth = tok.getNextToken();
+                        quad = new Quartet(pind, par, sub, auth);
+                        topics.Add(quad);
                     }
                     message = new ThreadContentMessage(forumID, threadID, uName, topics);
                     return message;
