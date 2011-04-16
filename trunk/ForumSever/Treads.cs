@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MessagePack;
 
 namespace ForumSever
 {
@@ -17,7 +18,7 @@ namespace ForumSever
         private List<ForumPost> _posts;        
         int _post_counter;
         public ForumThread(int fid,string p_topic, string p_content, MemberInfo p_memb)
-            : base(fid,0,p_topic, p_content, p_memb)
+            : base(fid,0,0,p_topic, p_content, p_memb)
         {            
             _ID = THREAD_ID_COUNTER;
             /*
@@ -51,9 +52,9 @@ namespace ForumSever
             return _fid;
         }
 
-        internal int addPost(int p_fid,int p_tid,string p_topic, string p_content,MemberInfo p_user)
+        internal int addPost(int p_fid,int p_tid,int parent, string p_topic, string p_content,MemberInfo p_user)
         {
-            ForumPost t_post= new ForumPost(p_fid,p_tid,p_topic,p_content,p_user);
+            ForumPost t_post = new ForumPost(p_fid, p_tid, parent, p_topic, p_content, p_user);
             t_post.setPostID(_post_counter);
             _posts.Add(t_post);
             _post_counter++;
@@ -64,10 +65,12 @@ namespace ForumSever
             return this._posts;
         }
 
-        public List<String> getTheardsTopics() {
-            List<String> ans = new List<String>();
+        public List<Quartet> getTheardsTopics() {
+            List<Quartet> ans = new List<Quartet>();
             for (int i = 0; i < this._posts.Count;i++ ) {
-                ans.Add(this._posts.ElementAt(i)._topic);
+                Quartet quad = new Quartet(_posts.ElementAt(i)._pindex, _posts.ElementAt(i)._parent,
+                    _posts.ElementAt(i)._topic, _posts.ElementAt(i)._autor.getUName());
+                ans.Add(quad);
             }
             return ans;
         }
