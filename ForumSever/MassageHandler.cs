@@ -127,6 +127,7 @@ namespace ForumSever
                 case "ADDFRIEND":
                     t_userID = _lm.FindMemberByUser(((AddFriendMessage)t_msg)._uName).getID();
                     t_friendID = _lm.FindMemberByUser(((AddFriendMessage)t_msg)._friend).getID();
+
                     returnValue = _lm.addMeAsFriend(t_userID, t_friendID);
                     if (returnValue < 0)
                     {
@@ -138,7 +139,9 @@ namespace ForumSever
                     //_outputMassage.Enqueue(new Message(""));
                     break;
                 case "REGISTER":
-                    MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._email);
+                    //((RegisterMessage)t_msg).
+                    MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._sex, ((RegisterMessage)t_msg)._country, ((RegisterMessage)t_msg)._city, ((RegisterMessage)t_msg)._email, ((RegisterMessage)t_msg)._birthday);
+                    //MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._email);
                     returnValue = _lm.register(memb);
                     if (returnValue < 0)
                     {

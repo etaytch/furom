@@ -58,7 +58,7 @@ namespace ForumSever
 
         public int login(string p_user, string p_pass)
         {
-            Console.WriteLine("in login!");
+            //Console.WriteLine("in login!");
             MemberInfo t_user = _db.FindMemberByUser(p_user);
             if ((t_user != null) && (t_user.getPass() == p_pass))
             {
@@ -95,7 +95,7 @@ namespace ForumSever
         public int addMeAsFriend(int p_toBeAddedID, int p_AddedToID)
         {
             MemberInfo t_AddedTo = _db.FindMemberByID(p_AddedToID);
-            MemberInfo t_toBeAdded = _db.FindMemberByID(p_toBeAddedID);
+            MemberInfo t_toBeAdded = _db.FindMemberByID(p_toBeAddedID);            
             if (t_toBeAdded == null)
             {
                 //return "incurrect user name";

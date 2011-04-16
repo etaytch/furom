@@ -1,7 +1,8 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 
 namespace ForumSever
 {
@@ -10,12 +11,32 @@ namespace ForumSever
         private List<MemberInfo> _Members;
         public  List<Forum> _forums;         //private
         private int _counter;
+        private SqlConnection _conn;
 
         public Database()
         {
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;
+            _conn = new SqlConnection(/*user id=username;" +
+                                       "password=pass;*/"server=ETAY-PC\\SQLEXPRESS;" +
+                                       "Trusted_Connection=yes;" +
+                                       "database=Furom; " +
+                                       "connection timeout=30");            
+            try {
+                _conn.Open();
+                //SqlDataReader ans = null;
+                //ans = runSelect("INSERT INTO Users Values ('etaytch1','etay','tchechanovski','1234','m','Israel','Beer Sheva','etaytch@gmail.com','06.04.1985')");
+                /*
+                while (myReader.Read()) {
+                    Console.WriteLine(myReader["fid"].ToString());
+                    Console.WriteLine(myReader["fname"].ToString());
+                }
+                */
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.ToString());
+            }                                                
         }
 
         /*Members founctions  */
@@ -30,11 +51,48 @@ namespace ForumSever
             memb.setID( _counter);
             _counter++;
             _Members.Add(memb);
+            string str = "('" + memb.getUName() + "'";
+            str += ",'" + memb.getFName() + "'";
+            str += ",'" + memb.getLName() + "'";
+            str += ",'" + memb.getPass() + "'";
+            str += ",'" + memb.getSex() + "'";
+            str += ",'" + memb.getCountry() + "'";
+            str += ",'" + memb.getCity() + "'";
+            str += ",'" + memb.getEmail() + "'";
+            str += ",'" + memb.getBirthday() + "')";
+            try {             
+                runSelect("INSERT INTO Users Values "+str);
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName()+"' already exsist?");
+            }     
             return true;
         }
 
-        public object FindMemberByEmail(string mail)
-        {
+        private SqlDataReader runSelect(String command){
+            SqlDataReader ans = null;
+            SqlCommand myCommand = new SqlCommand(command, _conn);            
+            return myCommand.ExecuteReader();
+        }
+
+        public object FindMemberByEmail(string mail){
+            SqlDataReader reader = runSelect("SELECT * FROM Users WHERE email = '"+mail+"'");
+            if (reader != null) {
+                while (reader.Read()) {
+                    Console.WriteLine(reader["username"].ToString());
+                    Console.WriteLine(reader["fname"].ToString());
+                    Console.WriteLine(reader["lname"].ToString());
+                    Console.WriteLine(reader["password"].ToString());
+                    Console.WriteLine(reader["sex"].ToString());
+                    Console.WriteLine(reader["country"].ToString());
+                    Console.WriteLine(reader["city"].ToString());
+                    Console.WriteLine(reader["email"].ToString());
+                    Console.WriteLine(reader["birthday"].ToString());
+                    break;
+                }
+            
+            }
+
             foreach (MemberInfo memb in _Members)
             {
 
@@ -49,6 +107,23 @@ namespace ForumSever
 
         public MemberInfo FindMemberByUser(string username)
         {
+            SqlDataReader reader = runSelect("SELECT * FROM Users WHERE username = '" + username + "'");
+            if (!reader.HasRows) {
+                return null;
+            }
+            if (reader.Read()) {
+                Console.WriteLine("***: " + reader["username"].ToString());
+                Console.WriteLine("***: " + reader["fname"].ToString());
+                Console.WriteLine("***: " + reader["lname"].ToString());
+                Console.WriteLine("***: " + reader["password"].ToString());
+                Console.WriteLine("***: " + reader["sex"].ToString());
+                Console.WriteLine("***: " + reader["country"].ToString());
+                Console.WriteLine("***: " + reader["city"].ToString());
+                Console.WriteLine("***: " + reader["email"].ToString());
+                Console.WriteLine("***: " + reader["birthday"].ToString());                
+            }
+                
+   
             foreach (MemberInfo memb in _Members)
             {
 
