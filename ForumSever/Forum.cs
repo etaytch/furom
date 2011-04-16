@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MessagePack;
 
 namespace ForumSever
 {
@@ -50,10 +51,11 @@ namespace ForumSever
             return this._threads;
         }
 
-        public List<String> getTheardsTopics() {
-            List<String> ans = new List<String>();
+        public List<Quartet> getTheardsTopics() {
+            List<Quartet> ans = new List<Quartet>();
             for (int i = 0; i < this._threads.Count;i++ ) {
-                ans.Add(this._threads.ElementAt(i)._topic);
+                Quartet quad = new Quartet(_threads.ElementAt(i)._ID, 0, _threads.ElementAt(i)._topic, _threads.ElementAt(i)._autor.getUName());
+                ans.Add(quad);
             }
             return ans;
         }
