@@ -19,7 +19,7 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             _conn = new SqlConnection(/*user id=username;" +
-                                       "password=pass;*/"server=ETAY-PC\\SQLEXPRESS;" +
+                                       "password=pass;*/"server=ELIAV-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");            
