@@ -30,10 +30,12 @@ namespace GuiForumClient
         private RichTextBox richTextBox1;
         private TabPage tabPage3;
         private ToolStrip toolStrip3;
-        private TreeView treeView1;
         private ToolStripLabel toolStripLabel2;
         private ListView listView1;
         private ListView listView2;
+        private TreeView treeView1;
+        private BindingSource bindingSource1;
+        private IContainer components;
         private Panel panel1;
     
         public Form1()
@@ -43,26 +45,34 @@ namespace GuiForumClient
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Thread 1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Forum 1", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Forum 2");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("vadi");
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("eliav");
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("niv");
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("etay");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node6");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node4", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node1");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node2");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node3");
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -74,8 +84,8 @@ namespace GuiForumClient
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -95,6 +105,7 @@ namespace GuiForumClient
             this.toolStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -137,7 +148,7 @@ namespace GuiForumClient
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(700, 413);
-            this.splitContainer1.SplitterDistance = 158;
+            this.splitContainer1.SplitterDistance = 203;
             this.splitContainer1.TabIndex = 1;
             // 
             // tabControl1
@@ -149,7 +160,7 @@ namespace GuiForumClient
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(158, 413);
+            this.tabControl1.Size = new System.Drawing.Size(203, 413);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -158,29 +169,11 @@ namespace GuiForumClient
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(150, 387);
+            this.tabPage1.Size = new System.Drawing.Size(195, 387);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Forums";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_2);
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node2";
-            treeNode1.Text = "Thread 1";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Forum 1";
-            treeNode3.Name = "Node1";
-            treeNode3.Text = "Forum 2";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(144, 381);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_2);
             // 
             // tabPage2
             // 
@@ -189,10 +182,23 @@ namespace GuiForumClient
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(150, 387);
+            this.tabPage2.Size = new System.Drawing.Size(195, 387);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "friends";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.listView1.Location = new System.Drawing.Point(3, 28);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(189, 356);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // toolStrip2
             // 
@@ -200,7 +206,7 @@ namespace GuiForumClient
             this.toolStripLabel1});
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(144, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(189, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -218,10 +224,23 @@ namespace GuiForumClient
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(150, 387);
+            this.tabPage3.Size = new System.Drawing.Size(195, 387);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "users";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // listView2
+            // 
+            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3,
+            listViewItem4});
+            this.listView2.Location = new System.Drawing.Point(3, 28);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(189, 356);
+            this.listView2.TabIndex = 1;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
             // 
             // toolStrip3
             // 
@@ -229,7 +248,7 @@ namespace GuiForumClient
             this.toolStripLabel2});
             this.toolStrip3.Location = new System.Drawing.Point(3, 3);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(144, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(189, 25);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             this.toolStrip3.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip3_ItemClicked);
@@ -258,8 +277,8 @@ namespace GuiForumClient
             this.splitContainer2.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer2.Panel2.Controls.Add(this.toolStrip1);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(538, 413);
-            this.splitContainer2.SplitterDistance = 268;
+            this.splitContainer2.Size = new System.Drawing.Size(493, 413);
+            this.splitContainer2.SplitterDistance = 196;
             this.splitContainer2.TabIndex = 0;
             // 
             // treeView2
@@ -267,7 +286,7 @@ namespace GuiForumClient
             this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView2.Location = new System.Drawing.Point(0, 0);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(538, 268);
+            this.treeView2.Size = new System.Drawing.Size(493, 196);
             this.treeView2.TabIndex = 0;
             // 
             // richTextBox1
@@ -275,7 +294,7 @@ namespace GuiForumClient
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 25);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(538, 116);
+            this.richTextBox1.Size = new System.Drawing.Size(493, 188);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "this is where the user will enter his response...";
             // 
@@ -286,7 +305,7 @@ namespace GuiForumClient
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(538, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(493, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -342,31 +361,32 @@ namespace GuiForumClient
             this.toolStripContainer2.TabIndex = 0;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
-            // listView1
+            // treeView1
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.listView1.Location = new System.Drawing.Point(3, 28);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(144, 356);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            // 
-            // listView2
-            // 
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
-            this.listView2.Location = new System.Drawing.Point(3, 28);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(144, 356);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Node5";
+            treeNode1.Text = "Node5";
+            treeNode2.Name = "Node6";
+            treeNode2.Text = "Node6";
+            treeNode3.Name = "Node4";
+            treeNode3.Text = "Node4";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "Node0";
+            treeNode5.Name = "Node1";
+            treeNode5.Text = "Node1";
+            treeNode6.Name = "Node2";
+            treeNode6.Text = "Node2";
+            treeNode7.Name = "Node3";
+            treeNode7.Text = "Node3";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7});
+            this.treeView1.Size = new System.Drawing.Size(189, 381);
+            this.treeView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -407,6 +427,7 @@ namespace GuiForumClient
             this.toolStripContainer1.PerformLayout();
             this.toolStripContainer2.ResumeLayout(false);
             this.toolStripContainer2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
