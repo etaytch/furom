@@ -59,3 +59,14 @@ C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\S
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.exe
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.pdb
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\ForumSever.exe
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\ForumSever.pdb
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\common.dll
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\Server.dll
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\common.pdb
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\nn\ForumSever\bin\Debug\Server.pdb
+C:\Users\Vadi\Desktop\nn\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\nn\ForumSever\obj\x86\Debug\ForumSever.exe
+C:\Users\Vadi\Desktop\nn\ForumSever\obj\x86\Debug\ForumSever.pdb
