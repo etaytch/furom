@@ -86,7 +86,6 @@ namespace Client
         ************************/
         public void send(string massege)
         {
-
             if (networkStream.CanWrite)
             {
                 Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);

@@ -42,3 +42,14 @@ C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\ForumClient\bin\Debug\
 C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\ForumClient\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\ForumClient\obj\x86\Debug\ForumClient.exe
 C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\ForumClient\obj\x86\Debug\ForumClient.pdb
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\obj\x86\Debug\ForumClient.exe
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\ForumClient.exe
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\ForumClient.pdb
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\Client.dll
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\common.dll
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\MessagePack.dll
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\Client.pdb
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\MessagePack.pdb
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\bin\Debug\common.pdb
+D:\My Documents\Visual Studio 2010\Projects\forum\ForumClient\obj\x86\Debug\ForumClient.pdb

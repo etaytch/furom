@@ -60,16 +60,16 @@ namespace GuiForumClient
 
         private void handle_PostContentMessage(PostContentMessage postContentMessage)
         {
-            db.setCurrent(postContentMessage._subject, postContentMessage._author, postContentMessage._body);
+            db.setCurrent(postContentMessage._subject, postContentMessage._author, postContentMessage._body,postContentMessage._pIndex);
         }
 
         private void handle_ThreadContentMessage(ThreadContentMessage threadContentMessage)
         {
             int t_tId = threadContentMessage._tId;
-            List<string> t_topics = threadContentMessage._topics;
+            List<string> t_topics = getTopics( threadContentMessage._posts);
             foreach (string topic in t_topics)
             {
-                db.cleanPost();
+                db.cleanPosts();
                 db.addPost(topic);
             }
         }
@@ -77,13 +77,23 @@ namespace GuiForumClient
         private void handle_ForumContentMessage(ForumContentMessage forumContentMessage)
         {
             int t_fId = forumContentMessage._fId;
-            List<string> t_topics = forumContentMessage._topics;
-            foreach (string topic in t_topics)
-            {
-                db.cleanThreads();
-                db.addThread(topic);
+            //List<string> t_topics = getTopics(forumContentMessage._topics);
+            db.cleanThreads();
+            foreach (Quartet thread in forumContentMessage._topics)
+            {     
+                db.addThread(thread._subject, thread._pIndex);
             }
 
+        }
+
+        private List<string> getTopics(List<Quartet> list)
+        {
+            List<string> topics= new List<string>();
+            foreach (Quartet post in list)
+            {
+                topics.Add(post._subject);
+            }
+            return topics;
         }
 
         private void handle_SystemContentMessage(SystemContentMessage systemContentMessage)
@@ -91,7 +101,7 @@ namespace GuiForumClient
             List<string> t_topics = systemContentMessage._forums;
             foreach (string topic in t_topics)
             {
-                db.cleanForum();
+                db.cleanForums();
                 db.addForum(topic);
             }
         }

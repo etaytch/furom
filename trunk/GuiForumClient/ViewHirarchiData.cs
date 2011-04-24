@@ -9,12 +9,14 @@ namespace DataManagment
     {
         private List<ViewHirarchiData> children;
 
-        public ViewHirarchiData(string p_name, int p_id) : base()
+        public ViewHirarchiData() : base()
         {
+            children = new List<ViewHirarchiData>();
         }
 
         public ViewHirarchiData(string p_name, int p_id) : base(p_name,p_id)
         {
+            children = new List<ViewHirarchiData>();
         }
 
         public List<ViewHirarchiData> Children

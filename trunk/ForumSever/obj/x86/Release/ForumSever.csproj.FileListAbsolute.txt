@@ -1,0 +1,11 @@
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\ForumSever.exe
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\ForumSever.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\common.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\MessagePack.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\Server.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\common.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\MessagePack.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Release\Server.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Release\ForumSever.exe
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Release\ForumSever.pdb
