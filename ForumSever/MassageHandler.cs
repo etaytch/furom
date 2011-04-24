@@ -7,7 +7,6 @@ using MessagePack;
 using Server;
 using System.Threading;
 using Protocol;
-
 namespace ForumSever
 {
     public class MassageHandler
@@ -50,14 +49,16 @@ namespace ForumSever
             int t_userID;
             int t_friendID;
             int t_tid;
-            int t_fid;
+            int t_fid;            
             int t_postIndex;
             string t_topic;
             string t_content;
+            string t_uname;
+            MemberInfo tMem;
             
             switch (t_msg.getMessageType())
             {
-                case "LOGIN":
+                case "LOGIN":   // Done with DB
                     returnValue = _lm.login(((LoginMessage)t_msg)._uName, ((LoginMessage)t_msg)._password);
                     if (returnValue < 0) {
                         sendError(returnValue, ((LoginMessage)t_msg)._uName);
@@ -67,7 +68,7 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Acknowledgment(((LoginMessage)t_msg)._uName,"Login Succssfuly"));
                     break;
-                case "LOGOUT":
+                case "LOGOUT":  // Done with DB
                     returnValue = _lm.logout(((LogoutMessage)t_msg)._uName);
                     if (returnValue < 0)
                     {
@@ -79,15 +80,17 @@ namespace ForumSever
 
                     //_outputMassage.Enqueue(new Acknowledgment(((LogoutMessage)t_msg)._uName, "Logout Succssfuly"));
                     break;
-                case "ADDPOST":
-                    t_userID = _lm.FindMemberByUser(((AddPostMessage)t_msg)._uName).getID();
+                case "ADDPOST":     // Done with DB
+                    //t_userID = _lm.FindMemberByUser(((AddPostMessage)t_msg)._uName).getID();
+                    t_uname = ((AddPostMessage)t_msg)._uName;
                     t_tid = ((AddPostMessage)t_msg)._tId;
                     t_fid = ((AddPostMessage)t_msg)._fId;
+                    // t_postIndex = parentId???
+                    t_postIndex = ((AddPostMessage)t_msg)._pIndex;
                     t_topic = ((AddPostMessage)t_msg)._subject;
                     t_content = ((AddPostMessage)t_msg)._post;
-                    returnValue = _lm.addPost(t_fid, t_userID, t_tid, t_topic, t_content);
-                    if (returnValue < 0)
-                    {
+                    returnValue = _lm.addPost(t_tid, t_fid, t_postIndex, t_topic, t_content, t_uname);
+                    if (returnValue < 0){
                         sendError(returnValue, ((AddPostMessage)t_msg)._uName);
                     }
                     else {
@@ -95,12 +98,12 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Acknowledgment(((LoginMessage)t_msg)._uName,"Login Succssfuly"));
                     break;
-                case "ADDTHREAD":
-                    t_userID = _lm.FindMemberByUser(((AddThreadMessage)t_msg)._uName).getID();
+                case "ADDTHREAD":       // Done with DB
+                    t_uname = ((AddThreadMessage)t_msg)._uName;
                     t_fid = ((AddThreadMessage)t_msg)._fId;                    
                     t_topic = ((AddThreadMessage)t_msg)._subject;
                     t_content = ((AddThreadMessage)t_msg)._post;
-                    returnValue = _lm.addTread(t_fid,t_userID, t_topic, t_content);
+                    returnValue = _lm.addTread(t_uname, t_fid, t_topic, t_content);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, ((AddThreadMessage)t_msg)._uName);
@@ -111,8 +114,11 @@ namespace ForumSever
                     //_outputMassage.Enqueue(new Message(""));
                     break;
 
+                // NOT YET IMPLEMENTED AT CLIENT SIDE!!!!!!!!!!!!!!!!! (Etay)
                 case "ADDFORUM":
+                    tMem = _lm.FindMemberByUser(((AddForumMessage)t_msg)._uName);
                     t_userID = _lm.FindMemberByUser(((AddForumMessage)t_msg)._uName).getID();
+                    
                     t_topic = ((AddForumMessage)t_msg)._topic;
                     returnValue = _lm.addForum(t_userID, t_topic);
                     if (returnValue < 0) {
@@ -139,9 +145,9 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
-                case "REGISTER":
+                case "REGISTER":        // Done with DB
                     //((RegisterMessage)t_msg).
-                    MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._sex, ((RegisterMessage)t_msg)._country, ((RegisterMessage)t_msg)._city, ((RegisterMessage)t_msg)._email, ((RegisterMessage)t_msg)._birthday);
+                    MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._sex, ((RegisterMessage)t_msg)._country, ((RegisterMessage)t_msg)._city, ((RegisterMessage)t_msg)._email, ((RegisterMessage)t_msg)._birthday,"0");
                     //MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._email);
                     returnValue = _lm.register(memb);
                     if (returnValue < 0)
@@ -166,12 +172,13 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
-                case "DELETEPOST":
-                    t_userID = _lm.FindMemberByUser(((DeletePostMessage)t_msg)._uName).getID();
+                case "DELETEPOST":      // DB is ready for tests.. Client does not support it!!                    
+                    
+                    t_uname = ((DeletePostMessage)t_msg)._uName;
                     t_tid = ((DeletePostMessage)t_msg)._tId;
                     t_fid = ((DeletePostMessage)t_msg)._fId;
                     t_postIndex = ((DeletePostMessage)t_msg)._pIndex;
-                    returnValue = _lm.removePost(t_fid,t_userID, t_tid, t_postIndex);
+                    returnValue = _lm.removePost(t_fid, t_tid, t_postIndex,t_uname);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, ((DeletePostMessage)t_msg)._uName);
@@ -181,6 +188,7 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
+                    
                 case "DELETETHREAD":
                     t_userID = _lm.FindMemberByUser(((DeleteThreadMessage)t_msg)._uName).getID();
                     t_tid = ((DeleteThreadMessage)t_msg)._tId;
@@ -195,19 +203,21 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
-                case "GETPOST":
-                    t_userID = _lm.FindMemberByUser(((GetPostMessage)t_msg)._uName).getID();
+
+                case "GETPOST": // DB is ready for tests.. Client does not support it!!                    
+                    //t_userID = _lm.FindMemberByUser(((GetPostMessage)t_msg)._uName).getID();
+                    t_uname = ((GetPostMessage)t_msg)._uName;
                     t_tid = ((GetPostMessage)t_msg)._tId;
                     t_fid = ((GetPostMessage)t_msg)._fId;
                     t_postIndex = ((GetPostMessage)t_msg)._pIndex;
                     
-                    ForumPost returnPost = _lm.getPost(t_fid,t_userID, t_tid, t_postIndex);                    
+                    ForumPost returnPost = _lm.getPost(t_fid, t_tid, t_postIndex,t_uname);
                     if (returnPost == null)
                     {
                         sendError(-8, ((GetPostMessage)t_msg)._uName);
                     }
                     else {
-                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parent, ((GetPostMessage)t_msg)._uName, (returnPost._autor).getUName(), returnPost._topic, returnPost._content));
+                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parentId,((GetPostMessage)t_msg)._uName, returnPost._autor, returnPost._topic, returnPost._content));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
@@ -216,17 +226,15 @@ namespace ForumSever
                     t_tid = ((GetThreadMessage)t_msg)._tId;
                     t_fid = ((GetThreadMessage)t_msg)._fId;
 
-                    ForumThread returnThread = _lm.getTread(t_fid, t_tid);
+                    ForumThread returnThread = _lm.getThread(t_fid, t_tid);
                     if (returnThread == null)
                     {
                         sendError(-6, ((GetThreadMessage)t_msg)._uName);
                     }
                     else {
-                        _ee.sendMessage(new ThreadContentMessage(returnThread.getID(), t_tid, ((GetThreadMessage)t_msg)._uName, returnThread.getTheardsTopics()));
-                    }
-
-                    //this should change to real return message
-                    //_outputMassage.Enqueue(new Message(""));
+                        List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);
+                        _ee.sendMessage(new ThreadContentMessage(returnThread.getID(), t_tid, ((GetThreadMessage)t_msg)._uName, posts));
+                    }                    
                     break;
 
                     // Display All forums in the system
@@ -249,7 +257,7 @@ namespace ForumSever
                         sendError(-9, ((GetForumMessage)t_msg)._uName);
                     }
                     else {
-                        _ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, returnForum.getTheardsTopics()));
+                        //_ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, returnForum.getTheardsTopics()));
                     }
                     break;
                 default:
@@ -286,6 +294,16 @@ namespace ForumSever
                     break;
                 case -8:
                     err = new Error(uname, "the post topic is out of bounds");
+                    break;
+                case -15:
+                    err = new Error(uname, "the username is already exist");
+                    break;
+                case -16:
+                    err = new Error(uname, "the email is already exist");
+                    break;
+                case -17:
+                    
+                    err = new Error(uname, "some field are empty!");
                     break;
                 default :
                     err = new Error(uname, "an unexpected error append. please try again");

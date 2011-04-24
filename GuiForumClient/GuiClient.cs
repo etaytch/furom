@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Protocol;
 using MessagePack;
 using DataManagment;
@@ -68,45 +65,46 @@ namespace GuiForumClient
          //   forum.Incoming();
         }
 
-        public void getThreads(string fId)
+        public void getThreads()
         {
-            int fIdInt = Int32.Parse(fId);
+
+            int fIdInt = this.db.CurrentForumId;
             GetForumMessage msg = new GetForumMessage(fIdInt, userName);
             protocol.sendMessage(msg);
            // forum.Incoming();
         }
 
-        public void getReplies(string fId, string tId)
+        public void getReplies()
         {
-            int fIdInt = Int32.Parse(fId);
-            int tIdInt = Int32.Parse(tId);
+            int fIdInt = this.db.CurrentForumId;
+            int tIdInt = this.db.CurrentThreadId;
             GetThreadMessage msg = new GetThreadMessage(fIdInt, tIdInt, userName);
             protocol.sendMessage(msg);
             //forum.Incoming();
         }
 
-        public void reply(string fId, string tId)
+        public void reply(string subject,string content)
         {
+            /*
             int fIdInt = Int32.Parse(fId);
             int tIdInt = Int32.Parse(tId);
-            Console.Write("Enter subject: ");
-            string subject = Console.ReadLine();
-            Console.Write("Enter content: ");
-            string content = Console.ReadLine();
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, userName, subject, content);
+            int pIdInt= Int32.Parse(parentId);
+             */
+            int fIdInt = this.db.CurrentForumId;
+            int tIdInt = this.db.CurrentThreadId;
+            int pIdInt = this.db.CurrentPost.Id;
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, pIdInt, userName, subject, content);
             protocol.sendMessage(msg);
            // forum.Incoming();
         }
 
-        public void post(string fId)
+        public void post(string subject,string content)
         {
-            int fIdInt = Int32.Parse(fId);
-            Console.Write("Enter subject: ");
-            string subject = Console.ReadLine();
-            Console.Write("Enter content: ");
-            string content = Console.ReadLine();
+            int fIdInt = this.db.CurrentForumId;
             AddThreadMessage msg = new AddThreadMessage(fIdInt, userName, subject, content);
-            protocol.sendMessage(msg);
+            //TODO change back to protocol when protocol will run
+            Console.Out.Write(msg);
+           // protocol.sendMessage(msg);
          //   forum.Incoming();
         }
 
@@ -127,6 +125,13 @@ namespace GuiForumClient
         public void exit()
         {
             GuiForumListener.exit_flag = false;
+            protocol.disconnect();
+           
+        }
+
+        public bool isLogged()
+        {
+            return this.loggedIn;
         }
     }
 }

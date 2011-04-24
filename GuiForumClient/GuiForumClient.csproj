@@ -36,26 +36,50 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addPostWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addPostWindow.Designer.cs">
+      <DependentUpon>addPostWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addThreadWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addThreadWindow.Designer.cs">
+      <DependentUpon>addThreadWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addWindow.designer.cs">
+      <DependentUpon>addWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuiClient.cs" />
+    <Compile Include="GuiForumListener.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PostObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewData.cs" />
     <Compile Include="ViewHirarchiData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addWindow.resx">
+      <DependentUpon>addWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +89,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\DataManagment.Database.datasource" />
+    <None Include="Properties\DataSources\DataManagment.ViewData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +103,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\Client.csproj">
+      <Project>{17C10E46-F41E-4B9F-85B1-500B9DB49839}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\common.csproj">
+      <Project>{606A07C3-DD37-43AB-8B26-B87A358F1D36}</Project>
+      <Name>common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagePack\MessagePack.csproj">
+      <Project>{8C5660F1-0EFB-4EFF-ABE8-B9E4F7C7D6BF}</Project>
+      <Name>MessagePack</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

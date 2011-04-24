@@ -20,7 +20,7 @@ namespace ForumSever
         bool _logged;
         IList<MemberInfo> _friends;
 
-        public MemberInfo(/*int p_id, */string p_uName, string p_fName, string p_lName, string p_pass, string p_sex, string p_country, string p_city, string p_eMail, string p_birthday) {
+        public MemberInfo(/*int p_id, */string p_uName, string p_fName, string p_lName, string p_pass, string p_sex, string p_country, string p_city, string p_eMail, string p_birthday,string logged) {
             //this._ID = p_id;
             this._ID =0;
             this._fName = p_fName;
@@ -32,7 +32,13 @@ namespace ForumSever
             this._city = p_city;
             this._eMail = p_eMail;
             this._birthday = p_birthday;
-            this._logged = false;
+            if(logged.Equals("0")){
+                this._logged = false;
+            }
+            else {
+                this._logged = true;
+            }
+            
             this._friends = new List<MemberInfo>();
         }
           
@@ -166,6 +172,21 @@ namespace ForumSever
         internal void removeFriend(MemberInfo t_toBeRemoved)
         {
             _friends.Remove(t_toBeRemoved);
+        }
+
+        public override string ToString() {
+            return "----------------------\n"
+                +"Username: "+_uName+ "\n"
+                +"First Name: "+_fName+ "\n"
+                +"Last Name: "+_lName+ "\n"
+                +"Pass: "+_pass+ "\n"
+                +"Sex: "+_sex+ "\n"
+                +"Country: "+_country+ "\n"
+                +"City: "+_city+ "\n"
+                +"Email: "+_eMail+ "\n"
+                +"Birthday: "+_birthday+ "\n"
+                + "Logged: " + _logged + "\n"
+                + "----------------------";        
         }
     }
 }

@@ -11,20 +11,20 @@ namespace ForumSever
         internal int _fid;
         internal int _tid;
         internal int _pindex;
-        public int _parent;
+        internal int _parentId;
         internal int _ID;
         internal string _topic;
         internal string _content;
-        internal MemberInfo _autor;
-        public ForumPost(int fid, int tid,int parent, string p_topic, string p_content, MemberInfo p_memb)
+        internal string _autor;
+        public ForumPost(int fid, int tid, int parentId, string p_topic, string p_content, string p_author)
         {
             _fid = fid;
             _tid = tid;
-            _parent = parent;
             _ID = POST_ID_COUNTER;
             _topic = p_topic;
             _content = p_content;
-            _autor = p_memb;
+            _autor = p_author;
+            _parentId = parentId;
             POST_ID_COUNTER++;
         }
 
@@ -51,7 +51,7 @@ namespace ForumSever
             return _ID;
         }
 
-        internal MemberInfo getAuthor()
+        internal string getAuthor()
         {
             return _autor;
         }

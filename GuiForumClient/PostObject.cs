@@ -10,20 +10,22 @@ namespace DataManagment
         string topic;
         string author;
         string content;
-
+        int id;
         
         public PostObject()
         {
             this.topic = "undefined" ;
             this.author = "undefined" ;
             this.content = "undefined" ;
+            this.id = -1;
         }
 
-        public PostObject(string p_topic,string p_author,string p_content)
+        public PostObject(string p_topic,string p_author,string p_content,int p_id)
         {
             this.topic = p_topic;
             this.author = p_author;
             this.content = p_content;
+            this.id = p_id;
         }
 
 
@@ -50,6 +52,11 @@ namespace DataManagment
             set { content = value; }
         }
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
     }
 }

@@ -44,9 +44,9 @@ namespace ForumClient
                     ForumContentMessage forumContent = (ForumContentMessage)msg;
                     int tNum = 0;
                     Console.WriteLine("Forum: " + forumContent._fId);
-                    foreach (string thread in forumContent._topics)
+                    foreach (Quartet thread in forumContent._topics)
                     {
-                        Console.WriteLine(tNum + ". " + thread);
+                        Console.WriteLine(tNum + ". " + thread._subject);
                         tNum++;
                     }
                     break;
@@ -55,9 +55,9 @@ namespace ForumClient
                     int rNum = 0;
                     Console.WriteLine("Forum: " +  threadContent._fId);
                     Console.WriteLine("Thread: " + threadContent._tId);
-                    foreach (string reply in threadContent._topics)
+                    foreach (Quartet reply in threadContent._posts)
                     {
-                        Console.WriteLine(rNum + ". " + reply);
+                        Console.WriteLine(rNum + ". " + reply._subject);
                         rNum++;
                     }
                     break;

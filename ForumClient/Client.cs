@@ -59,7 +59,7 @@ namespace ForumClient
             string subject = Console.ReadLine();
             Console.Write("Enter content: ");
             string content = Console.ReadLine();
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, userName, subject, content);
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt,0, 0, userName, subject, content);
             protocol.sendMessage(msg);
             forum.Incoming();
         }
