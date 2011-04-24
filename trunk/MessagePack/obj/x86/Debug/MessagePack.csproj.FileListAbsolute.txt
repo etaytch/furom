@@ -43,3 +43,8 @@ C:\Users\Vadi\Documents\My Dropbox\stuff\Semester6\סדנה\האלופים\nivad
 C:\Users\Vadi\Documents\My Dropbox\stuff\Semester6\סדנה\האלופים\nivadi\forum\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Documents\My Dropbox\stuff\Semester6\סדנה\האלופים\nivadi\forum\MessagePack\obj\x86\Debug\MessagePack.dll
 C:\Users\Vadi\Documents\My Dropbox\stuff\Semester6\סדנה\האלופים\nivadi\forum\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\nn\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\nn\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\MessagePack.pdb
