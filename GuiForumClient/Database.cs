@@ -6,6 +6,7 @@ using System.Collections;
 using GuiForumClient;
 using System.ComponentModel;
 using MessagePack;
+
 namespace DataManagment
 {
     public class Database
@@ -14,20 +15,20 @@ namespace DataManagment
 
         private List<ViewData> forums;
         private List<ViewData> threads;
-        private List<ViewHirarchiData> posts;
+        private List<Quartet> posts;
         private PostObject currentPost;
-        private int currentForumId;
-        private int currentThreadId;
+        private ViewData currentForumId;
+        private ViewData currentThreadId;
 
 
         public Database()
         {
             forums = new List<ViewData>();
             threads = new List<ViewData>();
-            posts = new List<ViewHirarchiData>();
+            posts = new List<Quartet>();
             currentPost = new PostObject("Welcom to the \"ALUFIM \" furom!","HaAlufim","Have Fun!",-1);	   
-		    currentForumId = -1;
-            currentThreadId = -1;
+		    currentForumId = new ViewData("Sheker",-1);
+            currentThreadId = new ViewData("Sheker", -1);
             initData();
         }
 
@@ -55,7 +56,7 @@ namespace DataManagment
             set { threads = value; ThreadsChanged(); }
         }
 
-        public List<ViewHirarchiData> Posts
+        public List<Quartet> Posts
         {
             get { return posts; }
             set { posts = value; PostsChanged(); }
@@ -76,7 +77,7 @@ namespace DataManagment
         {
             threads.Clear();
 			this.Threads = threads;
-            CurrentThreadId = -1;
+            CurrentThreadId = new ViewData("Sheker", -1);
         }
 		
 		
@@ -91,13 +92,13 @@ namespace DataManagment
             this.Forums = forums;
         }
 				
-        public int CurrentForumId
+        public ViewData CurrentForumId
         {
             get { return currentForumId; }
             set { currentForumId = value; }
         }
 
-        public int CurrentThreadId
+        public ViewData CurrentThreadId
         {
             get { return currentThreadId; }
             set { currentThreadId = value; }
@@ -114,16 +115,16 @@ namespace DataManagment
             this.Threads = threads;
         }
 
-        internal void addPost(string topic)
+        internal void addPost(Quartet p_post)
         {
-            ViewHirarchiData t_vd = new ViewHirarchiData(topic, 0);
-            this.posts.Add(t_vd);
+            //ViewHirarchiData t_vd = new ViewHirarchiData(topic, 0);
+            this.posts.Add(p_post);
             this.Posts = posts;
         }
 
-        internal void addForum(Quartet topic)
+        internal void addForum(Quartet forum)
         {
-            ViewData t_vd = new ViewData(topic._subject, topic._pIndex);
+            ViewData t_vd = new ViewData(forum._subject, forum._pIndex);
             this.forums.Add(t_vd);
             this.Forums = forums;
         }
@@ -143,21 +144,46 @@ namespace DataManagment
 
         protected void ForumsChanged()
         {
-            ForumsChangedEvent(this, new ForumsChangedEventArgs(forums));
+            ForumsChangedEvent(this, new ForumsChangedEventArgs(forums,CurrentForumId));
         }
         protected void ThreadsChanged()
         {
-            ThreadsChangedEvent(this, new ThreadsChangedEventArgs(threads));
+            ThreadsChangedEvent(this, new ThreadsChangedEventArgs(threads, CurrentThreadId,currentForumId));
         }
         protected void PostsChanged()
         {
-            PostsChangedEvent(this, new PostsChangedEventArgs(posts));
+            PostsChangedEvent(this, new PostsChangedEventArgs(posts,CurrentThreadId, CurrentForumId,CurrentPost));
+        }
+        
+        /************************MVC END*********************/
+
+
+        internal int findForumIndex(string p_forumName)
+        {
+            
+            foreach (ViewData forum in this.Forums)
+            {
+                if (forum.Name == p_forumName)
+                {
+                    return forum.Id;
+
+                }
+            }
+            return -1;
         }
 
+        internal int findthreadIndex(string p_threadName)
+        {
+            foreach (ViewData thread in this.Threads)
+            {
+                if (thread.Name == p_threadName)
+                {
+                    return thread.Id;
 
-
-        /************************MVC*********************/
-
+                }
+            }
+            return -1;
+        }
     }
 
 
@@ -166,57 +192,76 @@ namespace DataManagment
      public class ForumsChangedEventArgs  : EventArgs
     {
         private object _forums;
-
-
-        public ForumsChangedEventArgs(object p_forums)
+        private ViewData _currentForumID; 
+        public ForumsChangedEventArgs(object p_forums,ViewData p_curr_int)
         {
             _forums  = p_forums;
+            _currentForumID = p_curr_int;
+
         }
         
          public object Forums
-        {
-            get
-            {
-                return _forums;
-            }
-        }
+        {get {return _forums; } }
+
+         public ViewData CurrentForumID
+         { get { return _currentForumID; } }
     }
 
 
      public class ThreadsChangedEventArgs : EventArgs
      {
          private object _threads;
+         private ViewData _currentThreadID;
+         private ViewData _currentForumID; 
 
-         public ThreadsChangedEventArgs(object p_threads)
+         public ThreadsChangedEventArgs(object p_threads,ViewData p_currentThreadID,ViewData p_currentForumID)
          {
              _threads = p_threads;
+             _currentThreadID = p_currentThreadID;
+             _currentForumID = p_currentForumID;
          }
 
          public object Threads
-         {
-             get
-             {
-                 return _threads;
-             }
-         }
+         {get{return _threads;}}
+
+
+         public ViewData CurrentThreadID
+         { get { return _currentThreadID; } }
+
+         public ViewData CurrentForumID
+         { get { return _currentForumID; } }
      }
 
      public class PostsChangedEventArgs : EventArgs
      {
-         private object _posts;
-
-         public PostsChangedEventArgs(object p_posts)
+         private List<Quartet> _posts;
+         private ViewData _currentThreadID;
+         private ViewData _currentForumID;
+         PostObject _currentPost;
+         public PostsChangedEventArgs(List<Quartet> p_posts, ViewData p_currentThreadID, ViewData p_currentForumID, PostObject p_currentPost)
          {
              _posts = p_posts;
+             _currentPost= p_currentPost;
+             _currentThreadID = p_currentThreadID;
+             _currentForumID = p_currentForumID;
          }
 
-         public object Posts
+         public List<Quartet> Posts
          {
              get
              {
                  return _posts;
              }
          }
+
+         public ViewData CurrentThreadID
+         { get { return _currentThreadID; } }
+
+         public ViewData CurrentForumID
+         { get { return _currentForumID; } }
+
+         public PostObject CurrentPost
+         { get { return _currentPost; } }
      }
 
 }

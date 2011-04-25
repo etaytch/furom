@@ -79,3 +79,12 @@ C:\Users\Vadi\Desktop\furom\Client\bin\Debug\MessagePack.pdb
 C:\Users\Vadi\Desktop\furom\Client\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Desktop\furom\Client\obj\x86\Debug\Client.dll
 C:\Users\Vadi\Desktop\furom\Client\obj\x86\Debug\Client.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\Client.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\Client.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\common.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\MessagePack.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\common.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\bin\Debug\MessagePack.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\Client.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\Client\obj\x86\Debug\Client.pdb

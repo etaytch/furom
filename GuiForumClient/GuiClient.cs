@@ -8,7 +8,7 @@ namespace GuiForumClient
 {
     public class GuiClient 
     {
-        string ip = "10.100.101.196";
+        string ip = "192.168.1.105";
         int port = 10116;
         Database db;
         string userName;
@@ -31,6 +31,7 @@ namespace GuiForumClient
             this.db = p_db;
             this.loggedIn = false;
             protocol = new EandEProtocol(port, ip);
+            protocol.connect();
             forum = new GuiForumListener(protocol, db);
             Thread t1 = new Thread(new ThreadStart(forum.run));
             t1.Start();
@@ -67,17 +68,15 @@ namespace GuiForumClient
 
         public void getThreads()
         {
-
-            int fIdInt = this.db.CurrentForumId;
+            int fIdInt = this.db.CurrentForumId.Id;
             GetForumMessage msg = new GetForumMessage(fIdInt, userName);
             protocol.sendMessage(msg);
-           // forum.Incoming();
         }
 
         public void getReplies()
         {
-            int fIdInt = this.db.CurrentForumId;
-            int tIdInt = this.db.CurrentThreadId;
+            int fIdInt = this.db.CurrentForumId.Id;
+            int tIdInt = this.db.CurrentThreadId.Id;
             GetThreadMessage msg = new GetThreadMessage(fIdInt, tIdInt, userName);
             protocol.sendMessage(msg);
             //forum.Incoming();
@@ -90,8 +89,8 @@ namespace GuiForumClient
             int tIdInt = Int32.Parse(tId);
             int pIdInt= Int32.Parse(parentId);
              */
-            int fIdInt = this.db.CurrentForumId;
-            int tIdInt = this.db.CurrentThreadId;
+            int fIdInt = this.db.CurrentForumId.Id;
+            int tIdInt = this.db.CurrentThreadId.Id;
             int pIdInt = this.db.CurrentPost.Id;
             AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, pIdInt, userName, subject, content);
             protocol.sendMessage(msg);
@@ -100,11 +99,9 @@ namespace GuiForumClient
 
         public void post(string subject,string content)
         {
-            int fIdInt = this.db.CurrentForumId;
+            int fIdInt = this.db.CurrentForumId.Id;
             AddThreadMessage msg = new AddThreadMessage(fIdInt, userName, subject, content);
-            //TODO change back to protocol when protocol will run
-            Console.Out.Write(msg);
-           // protocol.sendMessage(msg);
+            protocol.sendMessage(msg);
          //   forum.Incoming();
         }
 
@@ -132,6 +129,18 @@ namespace GuiForumClient
         public bool isLogged()
         {
             return this.loggedIn;
+        }
+
+        public void removeThread(int p_fid,int p_tid)
+        {
+            DeleteThreadMessage msg = new DeleteThreadMessage(p_fid, p_tid,this.userName);
+            protocol.sendMessage(msg);
+        }
+
+        internal void removePost(int p_fid, int p_tid, int p_index)
+        {
+            DeletePostMessage msg = new DeletePostMessage(p_fid, p_tid,p_index, this.userName);
+            protocol.sendMessage(msg);
         }
     }
 }

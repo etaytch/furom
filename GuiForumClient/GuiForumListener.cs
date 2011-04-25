@@ -66,11 +66,12 @@ namespace GuiForumClient
         private void handle_ThreadContentMessage(ThreadContentMessage threadContentMessage)
         {
             int t_tId = threadContentMessage._tId;
-            List<string> t_topics = getTopics( threadContentMessage._posts);
-            foreach (string topic in t_topics)
+           //List<string> t_topics = getTopics( threadContentMessage._posts);
+            db.cleanPosts();
+            foreach (Quartet post in threadContentMessage._posts)
             {
-                db.cleanPosts();
-                db.addPost(topic);
+                
+                db.addPost(post);
             }
         }
 
@@ -96,21 +97,23 @@ namespace GuiForumClient
             return topics;
         }
 
-        private void handle_SystemContentMessage(SystemContentMessage systemContentMessage)
+        private void handle_SystemContentMessage(SystemContentMessage p_sysContentMessage)
         {
-            List<Quartet> t_topics = systemContentMessage._forums;
+            List<Quartet> t_topics = p_sysContentMessage._forums;
             db.cleanForums();
-            foreach (Quartet topic in t_topics)
+            if (t_topics != null)
             {
-                db.addForum(topic);
+                foreach (Quartet forum in t_topics)
+                {
+                    db.addForum(forum);
+                }
             }
-            db.CurrentForumId = 0 ;
         }
 
         private void handle_Error(Error msg)
         {
-            Console.WriteLine(msg);
-            //throw new NotImplementedException();
+            string[] lines = {msg.getMsg(),"\n" };
+            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\log.txt", lines);
         }
 
         private void handle_Acknowledgment(Acknowledgment msg)
