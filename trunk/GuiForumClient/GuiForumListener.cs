@@ -68,8 +68,8 @@ namespace GuiForumClient
             int t_tId = threadContentMessage._tId;
            //List<string> t_topics = getTopics( threadContentMessage._posts);
             db.cleanPosts();
-            // db.cleanCurrentPost();
-            //db.CurrentPost= new PostObject(threadContentMessage.
+            db.cleanCurrentPost();
+            db.CurrentPost = new PostObject(threadContentMessage._subject, threadContentMessage._author, threadContentMessage._body, threadContentMessage._fId);
             foreach (Quartet post in threadContentMessage._posts)
             {
                 
@@ -115,7 +115,7 @@ namespace GuiForumClient
         private void handle_Error(Error msg)
         {
             string[] lines = {msg.getMsg(),"\n" };
-            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\log.txt", lines);
+            System.IO.File.WriteAllLines("..\\..\\..\\Etay's_Syster_log.txt", lines);
         }
 
         private void handle_Acknowledgment(Acknowledgment msg)

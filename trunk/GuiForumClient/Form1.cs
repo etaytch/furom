@@ -50,6 +50,8 @@ namespace GuiForumClient
 
         private Database.ForumsChangedHandler forums_delegate;
         private Database.ThreadsChangedHandler threads_delegate;
+        private Database.PostsChangedHandler posts_delegate;
+        private Database.CurrentPostChangedHandler CurrentPost_delegate;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
@@ -63,7 +65,7 @@ namespace GuiForumClient
         private ToolStripMenuItem postToolStripMenuItem1;
         private ToolStripMenuItem thredToolStripMenuItem;
         private RichTextBox postPreview;
-        private Database.PostsChangedHandler posts_delegate;
+        
 
         public Form1()
         {
@@ -72,10 +74,12 @@ namespace GuiForumClient
             forums_delegate = new Database.ForumsChangedHandler(this.ForumsChanged);
             threads_delegate = new Database.ThreadsChangedHandler(this.ThreadsChanged);
             posts_delegate = new Database.PostsChangedHandler(this.PostsChanged);
+            CurrentPost_delegate = new Database.CurrentPostChangedHandler(this.currentPostChanged);
             db = new Database();
             db.ForumsChangedEvent += forums_delegate;
             db.ThreadsChangedEvent += threads_delegate;
             db.PostsChangedEvent += posts_delegate;
+            db.CurrentPostChangedEvent += CurrentPost_delegate;
             this.client = new GuiClient("tmp_user", db);
 
         }
@@ -610,9 +614,20 @@ namespace GuiForumClient
 
         }
 
+        public void currentPostChanged(object sender, CurrentPostChangedEventArgs e)
+        {
+            object[] args = { sender, e };
+            this.Invoke(new CurrentPostChangedInvoker(CurrentPostChangedDelegate), args);
 
+        }
 
-
+        public void CurrentPostChangedDelegate(object sender, CurrentPostChangedEventArgs e)
+        {
+            this.postPreview.Text = "Author: ";
+            this.postPreview.Text += e.CurrentPost.Author;
+            this.postPreview.Text += "\n\n\n";
+            this.postPreview.Text += e.CurrentPost.Content;
+        }
         public void ForumsChangedDelegate(object sender, ForumsChangedEventArgs e)
         {
             
@@ -751,10 +766,6 @@ namespace GuiForumClient
                         break;
                     }
                 }
-            }
-            if (!post_name_exists)
-            {
-                this.postPreview.Clear();
             }
             currentThread.Nodes.Clear();
             getChildren(currentThread, 0, posts);

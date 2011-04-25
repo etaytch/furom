@@ -24,8 +24,10 @@ namespace GuiForumClient
 
         public override void button1_Click(object sender, EventArgs e)
         {
-            this.client.post(this.textBox1.Text, this.textBox2.Text);
+            this.client.post(this.textBox2.Text, this.textBox1.Text);
+            this.client.getThreads();
 
         }
+
     }
 }
