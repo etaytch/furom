@@ -620,7 +620,7 @@ namespace GuiForumClient
             List<ViewData> forums = (List<ViewData>)e.Forums;
 
 
-            TreeNode selected = findNode(treeView1,"f",e.CurrentForumID.Name);
+            TreeNode selected = findNode(treeView1.Nodes,"f",e.CurrentForumID.Name);
             //TreeNode selected = null;
             bool forum_name_exists = false;
             string forum_name = "defult";
@@ -656,35 +656,45 @@ namespace GuiForumClient
             System.IO.File.WriteAllLines("..\\..\\..\\log.txt", lines);
         }
 
-        private TreeNode findNode(TreeView p_treeView, string p_type, string p_name)    //type   =  f , t , p
+        private TreeNode findNode(TreeNodeCollection p_treeView, string p_type, string p_name)    //type   =  f , t , p
         {
-            foreach (TreeNode t_node in p_treeView.Nodes)
+            TreeNode ans= null;
+            foreach (TreeNode t_node in p_treeView)
             {
-                if (t_node.Text.Equals(p_name))
-                {
-                    if ((p_type.Equals("f")) && (t_node.Parent == null))
-                    {
-                        return t_node;
-                    }
-                    if ((p_type.Equals("t")) && (t_node.Parent!= null) && (t_node.Parent.Parent == null))
-                    {
-                        return t_node;
-                    }
-                    if ((p_type.Equals("p")) && (t_node.Parent != null) && (t_node.Parent.Parent != null))
-                    {
-                        return t_node;
-                    }
-                }
+                ans = findNodeHelper(t_node, p_type, p_name);
+                if (ans != null) return ans;
             }
             return null;
+        }
+
+        private TreeNode findNodeHelper(TreeNode p_treeNode, string p_type, string p_name)    //type   =  f , t , p
+        {
+            TreeNode ans= null;
+            if (p_treeNode.Text.Equals(p_name))
+            {
+                if ((p_type.Equals("f")) && (p_treeNode.Parent == null))
+                {
+                    return p_treeNode;
+                }
+                if ((p_type.Equals("t")) && (p_treeNode.Parent!= null) && (p_treeNode.Parent.Parent == null))
+                {
+                    return p_treeNode;
+                }
+                if ((p_type.Equals("p")) && (p_treeNode.Parent != null) && (p_treeNode.Parent.Parent != null))
+                {
+                    return p_treeNode;
+                }
+            }
+            ans = findNode(p_treeNode.Nodes, p_type, p_name);
+            return ans;
         }
 
         public void ThreadsChangedDelegate(object sender, ThreadsChangedEventArgs e)
         {
             // update GUI
             List<ViewData> threads = (List<ViewData>)e.Threads;
-            TreeNode selected = findNode(treeView1, "t", e.CurrentThreadID.Name);
-            TreeNode currentForum = findNode(treeView1, "f", e.CurrentForumID.Name);
+            TreeNode selected = findNode(treeView1.Nodes, "t", e.CurrentThreadID.Name);
+            TreeNode currentForum = findNode(treeView1.Nodes, "f", e.CurrentForumID.Name);
             //TreeNode selected = null;
             bool thread_name_exists = false;
             string thread_name = "defult";
@@ -705,7 +715,7 @@ namespace GuiForumClient
                 }
             }
             currentForum.Nodes.Clear();
-            string[] lines = new string[db.Forums.Count];
+            string[] lines = new string[db.Threads.Count];
             int i = 0;
             foreach (ViewData thread in this.db.Threads)
             {
@@ -726,8 +736,8 @@ namespace GuiForumClient
         public void PostsChangedDelegate(object sender, PostsChangedEventArgs e)
         {
             List<Quartet> posts = e.Posts;
-            TreeNode selected = findNode(treeView1, "p", e.CurrentPost.Topic);
-            TreeNode currentThread = findNode(treeView1, "t", e.CurrentThreadID.Name);
+            TreeNode selected = findNode(treeView1.Nodes, "p", e.CurrentPost.Topic);
+            TreeNode currentThread = findNode(treeView1.Nodes, "t", e.CurrentThreadID.Name);
             bool post_name_exists = false;
             string post_name = "defult";
             if ((selected != null) && (selected.Parent != null))
