@@ -15,6 +15,8 @@ namespace GuiForumClient
         EandEProtocol protocol;
         GuiForumListener forum;
         bool loggedIn;
+        Thread t1;
+
         public void connect()
         {
             protocol.connect();
@@ -33,7 +35,7 @@ namespace GuiForumClient
             protocol = new EandEProtocol(port, ip);
             protocol.connect();
             forum = new GuiForumListener(protocol, db);
-            Thread t1 = new Thread(new ThreadStart(forum.run));
+            t1 = new Thread(new ThreadStart(forum.run));
             t1.Start();
             
         }
@@ -131,6 +133,7 @@ namespace GuiForumClient
         public void exit()
         {
             GuiForumListener.exit_flag = false;
+            t1.Abort();
             protocol.disconnect();
            
         }

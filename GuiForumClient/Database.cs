@@ -91,7 +91,11 @@ namespace DataManagment
             forums.Clear();
             this.Forums = forums;
         }
-				
+
+        internal void cleanCurrentPost()
+        {
+            this.CurrentPost = new PostObject();
+        }
         public ViewData CurrentForumId
         {
             get { return currentForumId; }
