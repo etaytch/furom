@@ -653,7 +653,7 @@ namespace GuiForumClient
                 lines[i] = forum.Name;
                 i++;
             }
-            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\log.txt", lines);
+            System.IO.File.WriteAllLines("..\\..\\..\\log.txt", lines);
         }
 
         private TreeNode findNode(TreeView p_treeView, string p_type, string p_name)    //type   =  f , t , p
@@ -720,7 +720,7 @@ namespace GuiForumClient
                 lines[i] = thread.Name;
                 i++;
             }
-            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\Threadlog.txt", lines);
+            System.IO.File.WriteAllLines("..\\..\\..\\Threadlog.txt", lines);
         }
 
         public void PostsChangedDelegate(object sender, PostsChangedEventArgs e)
@@ -820,6 +820,7 @@ namespace GuiForumClient
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            client.exit();
             Close();
         }
 
@@ -872,22 +873,5 @@ namespace GuiForumClient
             }
         }
 
-    }
-
-    class Category
-    {
-        public int ID;
-        public int ParentID;
-        public string NodeText;
-        public Category(int ID, int ParentID, string NodeText)
-        {
-            this.ID = ID;
-            this.ParentID = ParentID;
-            this.NodeText = NodeText;
-        }
-        public override string ToString()
-        {
-            return this.NodeText;
-        }
     }
 }

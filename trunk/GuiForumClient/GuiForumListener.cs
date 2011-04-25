@@ -68,6 +68,8 @@ namespace GuiForumClient
             int t_tId = threadContentMessage._tId;
            //List<string> t_topics = getTopics( threadContentMessage._posts);
             db.cleanPosts();
+            // db.cleanCurrentPost();
+            //db.CurrentPost= new PostObject(threadContentMessage.
             foreach (Quartet post in threadContentMessage._posts)
             {
                 
