@@ -135,11 +135,13 @@ namespace DataManagment
         public delegate void ForumsChangedHandler(object sender, ForumsChangedEventArgs e);
         public delegate void ThreadsChangedHandler(object sender, ThreadsChangedEventArgs e);
         public delegate void PostsChangedHandler(object sender, PostsChangedEventArgs e);
+        public delegate void CurrentPostChangedHandler(object sender, CurrentPostChangedEventArgs e);
 
         //variables
         public event ForumsChangedHandler ForumsChangedEvent;
         public event ThreadsChangedHandler ThreadsChangedEvent;
         public event PostsChangedHandler PostsChangedEvent;
+        public event CurrentPostChangedHandler CurrentPostChangedEvent;
 
 
         protected void ForumsChanged()
@@ -154,7 +156,11 @@ namespace DataManagment
         {
             PostsChangedEvent(this, new PostsChangedEventArgs(posts,CurrentThreadId, CurrentForumId,CurrentPost));
         }
-        
+
+        protected void CurrentPostChanged()
+        {
+            CurrentPostChangedEvent(this, new CurrentPostChangedEventArgs(CurrentPost));
+        }
         /************************MVC END*********************/
 
 
@@ -179,6 +185,19 @@ namespace DataManagment
                 if (thread.Name == p_threadName)
                 {
                     return thread.Id;
+
+                }
+            }
+            return -1;
+        }
+
+        internal int findPostIndex(string p_name)
+        {
+            foreach (Quartet post in this.posts)
+            {
+                if (post._subject.Equals(p_name))
+                {
+                    return post._pIndex;
 
                 }
             }
@@ -260,6 +279,18 @@ namespace DataManagment
          public ViewData CurrentForumID
          { get { return _currentForumID; } }
 
+         public PostObject CurrentPost
+         { get { return _currentPost; } }
+     }
+
+
+     public class CurrentPostChangedEventArgs : EventArgs
+     {
+         PostObject _currentPost;
+         public CurrentPostChangedEventArgs(PostObject p_currentPost)
+         {
+             _currentPost = p_currentPost;
+         }
          public PostObject CurrentPost
          { get { return _currentPost; } }
      }

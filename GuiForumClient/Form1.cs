@@ -16,6 +16,7 @@ namespace GuiForumClient
         public delegate void ForumsChangedInvoker(object sender, ForumsChangedEventArgs e);
         public delegate void ThreadsChangedInvoker(object sender, ThreadsChangedEventArgs e);
         public delegate void PostsChangedInvoker(object sender, PostsChangedEventArgs e);
+        public delegate void CurrentPostChangedInvoker(object sender, CurrentPostChangedEventArgs e);
 
         private StatusStrip statusStrip1;
         private ToolStripProgressBar toolStripProgressBar1;
@@ -26,7 +27,6 @@ namespace GuiForumClient
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private TreeView treeView2;
         private ToolStrip toolStrip1;
         private ToolStripContainer toolStripContainer2;
         private ToolStrip toolStrip2;
@@ -62,6 +62,7 @@ namespace GuiForumClient
         private ToolStripMenuItem removeToolStripMenuItem;
         private ToolStripMenuItem postToolStripMenuItem1;
         private ToolStripMenuItem thredToolStripMenuItem;
+        private RichTextBox postPreview;
         private Database.PostsChangedHandler posts_delegate;
 
         public Form1()
@@ -104,7 +105,6 @@ namespace GuiForumClient
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.addFriend = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.treeView2 = new System.Windows.Forms.TreeView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -126,6 +126,7 @@ namespace GuiForumClient
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
             this.viewDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.postPreview = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -323,7 +324,7 @@ namespace GuiForumClient
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.treeView2);
+            this.splitContainer2.Panel1.Controls.Add(this.postPreview);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer2.Panel2
@@ -334,14 +335,6 @@ namespace GuiForumClient
             this.splitContainer2.Size = new System.Drawing.Size(493, 413);
             this.splitContainer2.SplitterDistance = 196;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // treeView2
-            // 
-            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(0, 0);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(493, 196);
-            this.treeView2.TabIndex = 0;
             // 
             // richTextBox1
             // 
@@ -526,6 +519,15 @@ namespace GuiForumClient
             // 
             this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
             // 
+            // postPreview
+            // 
+            this.postPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.postPreview.Location = new System.Drawing.Point(0, 0);
+            this.postPreview.Name = "postPreview";
+            this.postPreview.Size = new System.Drawing.Size(493, 196);
+            this.postPreview.TabIndex = 0;
+            this.postPreview.Text = "";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(700, 459);
@@ -705,63 +707,62 @@ namespace GuiForumClient
             currentForum.Nodes.Clear();
             string[] lines = new string[db.Forums.Count];
             int i = 0;
-            foreach (ViewData forum in this.db.Forums)
+            foreach (ViewData thread in this.db.Threads)
             {
-                if ((thread_name_exists) && (forum.Name.Equals(thread_name)))
+                if ((thread_name_exists) && (thread.Name.Equals(thread_name)))
                 {
                     currentForum.Nodes.Add(selected);
                 }
                 else
                 {
-                    treeView1.Nodes.Add(forum.Name);
+                    currentForum.Nodes.Add(thread.Name);
                 }
-                lines[i] = forum.Name;
+                lines[i] = thread.Name;
                 i++;
             }
-            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\log.txt", lines);
+            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\Threadlog.txt", lines);
         }
 
         public void PostsChangedDelegate(object sender, PostsChangedEventArgs e)
         {
-            /*
             List<Quartet> posts = e.Posts;
             TreeNode selected = findNode(treeView1, "p", e.CurrentPost.Topic);
-            TreeNode currenThread = findNode(treeView1, "t", e.CurrentThreadID.Name);
-            //TreeNode selected = null;
+            TreeNode currentThread = findNode(treeView1, "t", e.CurrentThreadID.Name);
             bool post_name_exists = false;
             string post_name = "defult";
             if ((selected != null) && (selected.Parent != null))
             {
                 post_name = selected.Text;
-                foreach (ViewData post in )
+                foreach (Quartet post in posts)
                 {
-                    if (thread.Name == thread_name)
+                    if (post._subject == post_name)
                     {
-                        thread_name_exists = true;
+                        post_name_exists = true;
                         break;
                     }
                 }
             }
-            currentForum.Nodes.Clear();
-            string[] lines = new string[db.Forums.Count];
-            int i = 0;
-            foreach (ViewData forum in this.db.Forums)
+            if (!post_name_exists)
             {
-                if ((thread_name_exists) && (forum.Name.Equals(thread_name)))
-                {
-                    currentForum.Nodes.Add(selected);
-                }
-                else
-                {
-                    treeView1.Nodes.Add(forum.Name);
-                }
-                lines[i] = forum.Name;
-                i++;
+                this.postPreview.Clear();
             }
-            System.IO.File.WriteAllLines("D:\\My Documents\\Visual Studio 2010\\Projects\\forum\\GuiForumClient\\log.txt", lines);
-            */
+            currentThread.Nodes.Clear();
+            getChildren(currentThread, 0, posts);
         }
 
+
+        private void getChildren(TreeNode p_node,int p_nodeID, List<Quartet> p_posts)
+        {
+            TreeNode Node = null;
+            foreach (Quartet post in p_posts) // locate all children of this category
+            {
+                if (post._parent == p_nodeID) // found a child
+                {
+                    Node = p_node.Nodes.Add(post._subject); // add the child
+                    getChildren(Node,post._pIndex,p_posts); // find this child's children
+                }
+            }
+        }
         /******************** MVC END *****************/
 
 
@@ -866,8 +867,27 @@ namespace GuiForumClient
             }
             else
             {
-                
+                int postId= db.findPostIndex(node.Text);
+                client.getPost(postId);   
             }
+        }
+
+    }
+
+    class Category
+    {
+        public int ID;
+        public int ParentID;
+        public string NodeText;
+        public Category(int ID, int ParentID, string NodeText)
+        {
+            this.ID = ID;
+            this.ParentID = ParentID;
+            this.NodeText = NodeText;
+        }
+        public override string ToString()
+        {
+            return this.NodeText;
         }
     }
 }

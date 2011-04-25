@@ -82,6 +82,14 @@ namespace GuiForumClient
             //forum.Incoming();
         }
 
+        public void getPost(int p_pid)
+        {
+            int t_fId = this.db.CurrentForumId.Id;
+            int t_tId = this.db.CurrentThreadId.Id;
+             GetPostMessage msg = new GetPostMessage(t_fId,t_tId,p_pid, userName);
+            protocol.sendMessage(msg);
+            //   forum.Incoming();
+        }
         public void reply(string subject,string content)
         {
             /*
@@ -104,6 +112,7 @@ namespace GuiForumClient
             protocol.sendMessage(msg);
          //   forum.Incoming();
         }
+
 
         public void addFriend(string friend)
         {
