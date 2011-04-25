@@ -65,7 +65,7 @@ namespace DataManagment
         public PostObject CurrentPost
         {
             get { return currentPost; }
-            set { currentPost = value; }
+            set { currentPost = value; CurrentPostChanged(); }
         }
 
  		public void setCurrent(string p_topic,string p_author,string p_content,int p_id)
