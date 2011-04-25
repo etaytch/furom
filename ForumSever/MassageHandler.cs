@@ -230,7 +230,10 @@ namespace ForumSever
                     }
                     else {
                         List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);
-                        _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, ((GetThreadMessage)t_msg)._uName, returnThread._topic,returnThread._content,posts));
+                        if (posts==null) {
+                            Console.WriteLine("posts==null!!");
+                        }
+                        _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, ((GetThreadMessage)t_msg)._uName, returnThread._autor,returnThread._topic, returnThread._content, posts));
                     }                    
                     break;
 
