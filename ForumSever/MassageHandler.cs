@@ -239,14 +239,10 @@ namespace ForumSever
 
                     // Display All forums in the system
                 case "GETSYSTEM":
-                    t_userID = _lm.FindMemberByUser(((GetSystemMessage)t_msg)._uName).getID();
-                    List<Forum> t_forum = _lm._db._forums;
-                    List<string> t_forum_topics = new List<string>();
-
-                    foreach (Forum tt_forum in t_forum)
-                        t_forum_topics.Add(tt_forum.getTopic());
-
-                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName, t_forum_topics));
+                    //t_userID = _lm.FindMemberByUser(((GetSystemMessage)t_msg)._uName).getID();
+                    List<Quartet> t_forums = _lm.getForums();
+                    
+                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName, t_forums));
                     break;
 
                 case "GETFORUM":
@@ -278,13 +274,13 @@ namespace ForumSever
                     err = new Error(uname, "the user you are trying to befriend dosn't exist");
                     break;
                 case -3:
-                    err = new Error(uname, "incurrect user name");
+                    err = new Error(uname, "incorrect user name");
                     break;
                 case -4:
-                    err = new Error(uname, "nthe user you are trying to unfriend is not a friend of yours");
+                    err = new Error(uname, "nhe user you are trying to unfriend is not a friend of yours");
                     break;
                 case -5:
-                    err = new Error(uname, "ntopic already exists, choose new topic");
+                    err = new Error(uname, "topic already exists, choose new topic");
                     break;
                 case -6:
                     err = new Error(uname, "the topic could not been found");
@@ -301,9 +297,14 @@ namespace ForumSever
                 case -16:
                     err = new Error(uname, "the email is already exist");
                     break;
-                case -17:
-                    
+                case -17:                    
                     err = new Error(uname, "some field are empty!");
+                    break;
+                case -18:
+                    err = new Error(uname, uname+" is already logged in.");
+                    break;
+                case -19:
+                    err = new Error(uname, uname + " is not logged in.");
                     break;
                 default :
                     err = new Error(uname, "an unexpected error append. please try again");

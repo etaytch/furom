@@ -60,7 +60,7 @@ namespace GuiForumClient
 
         private void handle_PostContentMessage(PostContentMessage postContentMessage)
         {
-            db.setCurrent(postContentMessage._subject, postContentMessage._author, postContentMessage._body,postContentMessage._pIndex);
+            db.setCurrent(postContentMessage._subject, postContentMessage._author, postContentMessage._body, postContentMessage._pIndex);
         }
 
         private void handle_ThreadContentMessage(ThreadContentMessage threadContentMessage)
@@ -98,17 +98,19 @@ namespace GuiForumClient
 
         private void handle_SystemContentMessage(SystemContentMessage systemContentMessage)
         {
-            List<string> t_topics = systemContentMessage._forums;
-            foreach (string topic in t_topics)
+            List<Quartet> t_topics = systemContentMessage._forums;
+            db.cleanForums();
+            foreach (Quartet topic in t_topics)
             {
-                db.cleanForums();
                 db.addForum(topic);
             }
+            db.CurrentForumId = 0 ;
         }
 
         private void handle_Error(Error msg)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(msg);
+            //throw new NotImplementedException();
         }
 
         private void handle_Acknowledgment(Acknowledgment msg)

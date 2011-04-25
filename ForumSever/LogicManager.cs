@@ -60,40 +60,31 @@ namespace ForumSever
 
         public int login(string p_user, string p_pass)
         {
-/*
-            //Console.WriteLine("in login!");
-            MemberInfo t_user = _db.FindMemberByUser(p_user);
-            if ((t_user != null) && (t_user.getPass() == p_pass))
-            {
-                t_user.login();
-                return 0;
-            }
-
-            return -3;
- */
 
             if (_db.isMember("username = '" + p_user + "'")) {
-                _db.markUserAsLogged(p_user,1);
-                return 0;
+                if (!_db.isLogin(p_user)) {
+                    _db.markUserAsLogged(p_user, 1);
+                    return 0;       // no error
+                }
+                else {
+                    return -18;     // user already logged in
+                }
             }
-            else return -3;
+            else return -3;         // username not exist
         }
 
         public int logout(string p_user)
         {
-/*
-            MemberInfo memb = _db.FindMemberByUser(user);
-            if ((memb != null) && (memb.isLogged()))
-            {
-                memb.logout();
-                return 0;
-            }
-*/
             if (_db.isMember("username = '" + p_user + "'")) {
-                _db.markUserAsLogged(p_user, 0);
-                return 0;
+                if (_db.isLogin(p_user)) {
+                    _db.markUserAsLogged(p_user, 0);
+                    return 0;       // no error
+                }
+                else {
+                    return -19;     // user is not logged in
+                }
             }
-            return -3;
+            return -3;         // username not exist
         }
 
         public bool isLogged(string p_user)
@@ -161,9 +152,10 @@ namespace ForumSever
             return 0;
         }
 
-
-        /*Threads founctions  */
-
+        public List<Quartet> getForums() {
+            return _db.getForums();
+        
+        }
 
         //addForum
         public int addForum(int p_userID, string p_topic)
