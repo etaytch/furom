@@ -22,7 +22,7 @@ namespace GuiForumClient
             this.Text = "add new Thread";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public override void button1_Click(object sender, EventArgs e)
         {
             this.client.post(this.textBox1.Text, this.textBox2.Text);
 

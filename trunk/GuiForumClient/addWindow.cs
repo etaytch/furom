@@ -28,7 +28,7 @@ namespace GuiForumClient
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public virtual void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -38,7 +38,7 @@ namespace GuiForumClient
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public virtual void button1_Click(object sender, EventArgs e)
         {
                         
         }

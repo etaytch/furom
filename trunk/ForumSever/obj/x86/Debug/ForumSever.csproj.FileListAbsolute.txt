@@ -92,3 +92,14 @@ C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\common.pdb
 C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\MessagePack.pdb
 C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\Server.pdb
 C:\Users\Vadi\Desktop\furom\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\ForumSever.exe
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\ForumSever.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\common.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\MessagePack.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Server.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\common.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\MessagePack.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Server.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.exe
+D:\My Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.pdb
