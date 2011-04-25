@@ -35,6 +35,11 @@ namespace Protocol {
         {
             Message message;            
             string msg = _client.receive();
+            List<Quartet> topics = new List<Quartet>();
+            String tStr;
+            Quartet quad;
+            int pind, par;
+            string sub, auth;
             EandETokenizer tok = new EandETokenizer(msg, "\n");
             string next = tok.getNextToken();            
             switch (next) {
@@ -69,11 +74,8 @@ namespace Protocol {
                     int forumID = Convert.ToInt32(tok.getNextToken());
                     int threadID = Convert.ToInt32(tok.getNextToken());
                     string uName = tok.getNextToken();
-                    List<Quartet> topics = new List<Quartet>();
-                    String tStr;
-                    Quartet quad;
-                    int pind, par;
-                    string sub, auth;
+                    topics = new List<Quartet>();
+                    
                     while(!(tStr = tok.getNextToken()).Equals("\0")){
                         pind = Convert.ToInt32(tStr);
                         par = Convert.ToInt32(tok.getNextToken());
@@ -97,20 +99,16 @@ namespace Protocol {
                 case "FORUMCONTENT":
                     int t_forumID = Convert.ToInt32(tok.getNextToken());
                     string t_uName = tok.getNextToken();
-                    List<Quartet> t_topics = new List<Quartet>();
-                    String t_tStr;
-                    Quartet tquad;
-                    int tpind, tpar;
-                    string tsub, tauth;
-                    while(!(t_tStr = tok.getNextToken()).Equals("\0")){
-                        tpind = Convert.ToInt32(t_tStr);
-                        tpar = Convert.ToInt32(tok.getNextToken());
-                        tsub = tok.getNextToken();
-                        tauth = tok.getNextToken();
-                        tquad = new Quartet(tpind, tpar, tsub, tauth);
-                        t_topics.Add(tquad);
+                    topics = new List<Quartet>();
+                    while(!(tStr = tok.getNextToken()).Equals("\0")){
+                        pind = Convert.ToInt32(tStr);
+                        par = Convert.ToInt32(tok.getNextToken());
+                        sub = tok.getNextToken();
+                        auth = tok.getNextToken();
+                        quad = new Quartet(pind, par, sub, auth);
+                        topics.Add(quad);
                     }
-                    message = new ForumContentMessage(t_forumID, t_uName, t_topics);
+                    message = new ForumContentMessage(t_forumID, t_uName, topics);
                     return message;
                     
                 /**
@@ -120,12 +118,26 @@ namespace Protocol {
                 **/
                 case "SYSTEMCONTENT":
                     string t_uName2 = tok.getNextToken();
+                    topics = new List<Quartet>();
+                    while(!(tStr = tok.getNextToken()).Equals("\0")){
+                        pind = Convert.ToInt32(tStr);
+                        par = Convert.ToInt32(tok.getNextToken());
+                        sub = tok.getNextToken();
+                        auth = tok.getNextToken();
+                        quad = new Quartet(pind, par, sub, auth);
+                        topics.Add(quad);
+                    }
+                    message = new SystemContentMessage(t_uName2, topics);
+                    return message;
+/*
                     string t_temp;
                     List<string> t_forums = new List<string>();
                     while((t_temp = tok.getNextToken()) != "\0")
                         t_forums.Add(t_temp);
                     message = new SystemContentMessage(t_uName2, t_forums);
                     return message;
+*/
+                    
 
                 /**
                 * ERROR\n

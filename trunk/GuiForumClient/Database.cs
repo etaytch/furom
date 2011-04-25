@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections;
 using GuiForumClient;
 using System.ComponentModel;
-
+using MessagePack;
 namespace DataManagment
 {
     public class Database
@@ -121,9 +121,9 @@ namespace DataManagment
             this.Posts = posts;
         }
 
-        internal void addForum(string topic)
+        internal void addForum(Quartet topic)
         {
-            ViewData t_vd = new ViewData(topic, 0);
+            ViewData t_vd = new ViewData(topic._subject, topic._pIndex);
             this.forums.Add(t_vd);
             this.Forums = forums;
         }

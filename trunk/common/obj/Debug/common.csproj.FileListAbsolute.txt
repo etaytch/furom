@@ -33,3 +33,13 @@ C:\Users\Vadi\Desktop\nn\common\bin\Debug\common.pdb
 C:\Users\Vadi\Desktop\nn\common\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Desktop\nn\common\obj\Debug\common.dll
 C:\Users\Vadi\Desktop\nn\common\obj\Debug\common.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\common\bin\Debug\common.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\common\bin\Debug\common.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\common\obj\Debug\common.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\common\obj\Debug\common.pdb
+C:\Users\Vadi\Desktop\furom\common\bin\Debug\common.dll
+C:\Users\Vadi\Desktop\furom\common\bin\Debug\common.pdb
+C:\Users\Vadi\Desktop\furom\common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\furom\common\obj\Debug\common.dll
+C:\Users\Vadi\Desktop\furom\common\obj\Debug\common.pdb

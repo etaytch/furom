@@ -18,7 +18,7 @@ namespace ForumSever
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;            
-            _conn = new SqlConnection("server=VADI-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -210,6 +210,10 @@ namespace ForumSever
             return recordExsist("SELECT * FROM Posts WHERE " + where);
         }
 
+        public bool isLogin(string username) {
+            return recordExsist("SELECT * FROM Users WHERE (username='"+username+"') and (logged=1)");
+        }
+
         public bool recordExsist(string query) {
             SqlDataReader reader = runSelectSQL(query);
             if (!reader.HasRows) {
@@ -276,7 +280,30 @@ namespace ForumSever
             }
                 return -1;
         }
-        
+
+        public List<Quartet> getForums() {
+            List<Quartet> ans = new List<Quartet>();
+
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Forums");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return null;
+            }
+
+
+            while (reader.Read()) {
+                //public Quartet(int pIndex, int parent, string subject, string author) {
+  //              Console.WriteLine("fid = " + Convert.ToInt32(reader["fid"].ToString()));
+  //              Console.WriteLine("fname = " + reader["fname"].ToString());
+                ans.Add(new Quartet(Convert.ToInt32(reader["fid"].ToString()), 0, reader["fname"].ToString(), ""));
+            }
+            _conn.Close();
+                
+
+            return ans;
+        }
+
 
         public Forum findForum(int fid){
 /*

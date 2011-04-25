@@ -7,11 +7,11 @@ namespace MessagePack
 {
     public class SystemContentMessage : Message {
 
-           
-        public List<string> _forums;
+
+        public List<Quartet> _forums;
 
 
-        public SystemContentMessage(string uName, List<string> forums)
+        public SystemContentMessage(string uName, List<Quartet> forums)
             : base(uName) 
         {            
             _forums = forums;

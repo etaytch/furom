@@ -48,3 +48,13 @@ C:\Users\Vadi\Desktop\nn\MessagePack\bin\Debug\MessagePack.pdb
 C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\MessagePack.dll
 C:\Users\Vadi\Desktop\nn\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\furom\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\furom\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\furom\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\furom\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\furom\MessagePack\obj\x86\Debug\MessagePack.pdb
