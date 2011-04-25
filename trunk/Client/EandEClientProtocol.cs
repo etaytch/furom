@@ -65,6 +65,7 @@ namespace Protocol {
                 * <forumID>\n
                 * <threadID>\n                
                 * <username>\n
+                * <author>\n
                 * <subject>\n
                 * <body>\n
                 * <Topic #1>\n                 
@@ -76,6 +77,7 @@ namespace Protocol {
                     int forumID = Convert.ToInt32(tok.getNextToken());
                     int threadID = Convert.ToInt32(tok.getNextToken());                    
                     string uName = tok.getNextToken();
+                    string author = tok.getNextToken();
                     string subject = tok.getNextToken();
                     string content = tok.getNextToken();
                     topics = new List<Quartet>();
@@ -88,7 +90,7 @@ namespace Protocol {
                         quad = new Quartet(pind, par, sub, auth);
                         topics.Add(quad);
                     }
-                    message = new ThreadContentMessage(forumID, threadID, uName, subject,content,topics);
+                    message = new ThreadContentMessage(forumID, threadID, uName, author,subject, content, topics);
                     return message;
 
                 /**

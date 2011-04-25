@@ -468,7 +468,7 @@ namespace ForumSever
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
-                return null;
+                return ans;
             }
 
             while (reader.Read()) {

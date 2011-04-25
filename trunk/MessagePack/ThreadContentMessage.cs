@@ -10,18 +10,21 @@ namespace MessagePack
         public int _fId;
         public int _tId;
         public string _subject;
+        public string _author;
         public string _body;
         public List<Quartet> _posts;
-        public ThreadContentMessage(int fId, int tId, string uName, string subject,string body,List<Quartet> posts)
+        public ThreadContentMessage(int fId, int tId, string uName, string author,string subject,string body,List<Quartet> posts)
             : base(uName) {
             _fId = fId;
             _tId = tId;
+            _author = author;
             _subject = subject;
             _body = body;
             _posts = posts;        
+
         }
         public override string ToString() {
-            string ans = "THREADCONTENT\n" + _fId + "\n" + _tId + "\n" + _uName + "\n" + _subject + "\n" + _body + "\n";
+            string ans = "THREADCONTENT\n" + _fId + "\n" + _tId + "\n" + _uName + "\n" + _author + "\n" + _subject + "\n" + _body + "\n";
             for (int i = 0; i < _posts.Count;i++ ) {
                 ans += _posts.ElementAt(i) + "\n";
             }
