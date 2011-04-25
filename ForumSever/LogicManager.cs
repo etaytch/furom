@@ -157,6 +157,10 @@ namespace ForumSever
         
         }
 
+        public bool isForum(int p_fid) {
+            return _db.isForum(p_fid);
+        }
+
         //addForum
         public int addForum(int p_userID, string p_topic)
         {
@@ -211,7 +215,7 @@ namespace ForumSever
             return _db.getThread(p_fid, p_tid);
         }
 
-        public Forum getForum(int p_fid)
+        public List<Quartet> getForum(int p_fid)
         {
             return _db.getForum(p_fid);
         }

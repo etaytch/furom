@@ -13,9 +13,6 @@ namespace ForumSever
     {
         private LogicManager _lm;
         private EandEProtocol _ee;
-        //private BlockingQueue<Message> _inputMassage;
-       // private BlockingQueue<Message> _outputMassage; 
-
 
         public MassageHandler()
         {
@@ -247,13 +244,14 @@ namespace ForumSever
 
                 case "GETFORUM":
                     t_fid = ((GetForumMessage)t_msg)._fId;
-                    Forum returnForum = _lm.getForum(t_fid);
-                    if (returnForum == null)
+                    
+                    if (!_lm.isForum(t_fid))
                     {
                         sendError(-9, ((GetForumMessage)t_msg)._uName);
                     }
                     else {
-                        //_ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, returnForum.getTheardsTopics()));
+                        List<Quartet> forumTopics = _lm.getForum(t_fid);
+                        _ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, forumTopics));
                     }
                     break;
                 default:
@@ -290,6 +288,9 @@ namespace ForumSever
                     break;
                 case -8:
                     err = new Error(uname, "the post topic is out of bounds");
+                    break;
+                case -9:
+                    err = new Error(uname, "the forum doesn't exist");
                     break;
                 case -15:
                     err = new Error(uname, "the username is already exist");
