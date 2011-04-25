@@ -464,22 +464,19 @@ namespace ForumSever
         public List<Quartet> getForum(int p_fid) {
             List<Quartet> ans = new List<Quartet>();
             SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid=" + p_fid + ")");
+            Console.WriteLine("SELECT * FROM Threads WHERE (fid=" + p_fid + ")");
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return null;
             }
 
-
             while (reader.Read()) {
                 //public ForumThread(int fid,string p_topic, string p_content, string p_author)                
                 ans.Add(new Quartet(Convert.ToInt32(reader["tid"].ToString()),0, reader["subject"].ToString(), reader["author"].ToString()));
-                _conn.Close();
-                return ans;
             }
-
-            return null;
-
+            _conn.Close();
+            return ans;
         }
 
         //getForum(p_fid)
