@@ -210,6 +210,10 @@ namespace ForumSever
             return recordExsist("SELECT * FROM Posts WHERE " + where);
         }
 
+        public bool isForum(int p_fid) {
+            return recordExsist("SELECT * FROM Forums WHERE fid=" + p_fid);
+        }
+
         public bool isLogin(string username) {
             return recordExsist("SELECT * FROM Users WHERE (username='"+username+"') and (logged=1)");
         }
@@ -457,8 +461,25 @@ namespace ForumSever
             return null;
         }
 
-        public Forum getForum(int fid) {
-            return this._forums.ElementAt(fid);
+        public List<Quartet> getForum(int p_fid) {
+            List<Quartet> ans = new List<Quartet>();
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid=" + p_fid + ")");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return null;
+            }
+
+
+            while (reader.Read()) {
+                //public ForumThread(int fid,string p_topic, string p_content, string p_author)                
+                ans.Add(new Quartet(Convert.ToInt32(reader["tid"].ToString()),0, reader["subject"].ToString(), reader["author"].ToString()));
+                _conn.Close();
+                return ans;
+            }
+
+            return null;
+
         }
 
         //getForum(p_fid)
@@ -494,8 +515,7 @@ namespace ForumSever
             }
 
 
-            while (reader.Read()) {
-                //public Quartet(int pIndex, int parent, string subject, string author) {
+            while (reader.Read()) {                
                 ans.Add(new Quartet(Convert.ToInt32(reader["pid"].ToString()),Convert.ToInt32(reader["parentid"].ToString()),reader["subject"].ToString(),reader["body"].ToString()));                                
             }
             _conn.Close();
