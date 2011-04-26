@@ -73,3 +73,8 @@ C:\Users\Etay\Desktop\xxx\MessagePack\bin\Debug\MessagePack.pdb
 C:\Users\Etay\Desktop\xxx\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Etay\Desktop\xxx\MessagePack\obj\x86\Debug\MessagePack.dll
 C:\Users\Etay\Desktop\xxx\MessagePack\obj\x86\Debug\MessagePack.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\MessagePack\obj\x86\Debug\MessagePack.pdb

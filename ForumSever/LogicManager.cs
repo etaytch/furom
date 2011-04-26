@@ -215,7 +215,7 @@ namespace ForumSever
                 //return "incurrect user name";
 
             }
-            if (_db.isThread("(fid = '" + p_fid + "') and (" + "subject = '" + p_topic + "')"))
+            if (_db.isThread(p_fid ,p_topic))
             {
                 //return "topic already exists, choose new topic";
                 return -5;
@@ -241,37 +241,25 @@ namespace ForumSever
         {
             return _db.getForum(p_fid);
         }
-        /*
-        public int removeTread(int p_fid, int p_tid,string p_uname)
+        
+        public int removeThread(int p_fid, int p_tid,string p_uname)
         {
             if (!_db.isMember(p_uname)) {
                 //return "incurrect user name";
                 return -3;
             }
-            ForumThread tThread = null;
-            for (int i = 0; i < _db.MemberCount(); i++)
-            {
-                tThread = _db.getTreadFrom(p_fid, i);
-                if (tThread.getID() == p_tID)
-                {
-                    if (tThread.getAuthor() == t_user.getUName())
-                    {
-                        _db.RemoveThreadAt(p_fid, i);
-                        return 0;
-                        //return "your thread was removed from the forum";
-                    }
-                    else
-                    {
-                        return -7;
-                        //return "the topic you where trying to remove was submited by a diffrent user";
-                    }
-                }
-
+            if (!_db.getThreadAuthor(p_fid, p_tid).Equals(p_uname)) {
+                //p_uname didn't write this thread..
+                return -7;
             }
-            //return "the topic could not been found"; ;
-            return -6;
+            if (_db.removeThread(p_fid, p_tid)) {
+                return 0;
+            }
+            else {
+                return -22;
+            }            
         }
-        */
+        
 
         /*Posts founctions  */        
         public int addPost(int p_tid, int p_fid, int parentId, string p_topic, string p_content,string p_uname)
@@ -284,7 +272,7 @@ namespace ForumSever
             }
             //ForumThread t_thr = _db.getTread(p_fid, p_tid);
 
-            if (!_db.isThread("(fid = '" + p_fid + "') and (tid = '"+p_tid+"')")){
+            if (!_db.isThread(p_fid,p_tid)){
                 return -6;
                 //return "the topic could not been found";
             }
@@ -302,7 +290,7 @@ namespace ForumSever
                 //return "incurrect user name";
             }
             //ForumThread t_thr = _db.getTread(p_fid, p_tid);
-            if (!_db.isThread("(fid = '" + p_fid + "') and (tid = '"+p_tid+"')"))
+            if (!_db.isThread(p_fid,p_tid))
             {
                 return null;
                 //return "the topic could not been found";
@@ -321,7 +309,7 @@ namespace ForumSever
             }
                 
             //ForumThread t_thr = _db.getTread(p_fId, p_tId);
-            if (!_db.isThread("(fid = '" + p_fid + "') and (tid = '"+p_tid+"')"))
+            if (!_db.isThread(p_fid,p_tid))
             {                        
                 return -6;
                 //return "the topic could not been found";
