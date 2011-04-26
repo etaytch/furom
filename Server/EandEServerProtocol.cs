@@ -33,7 +33,7 @@ namespace Protocol {
             Message message;
             BasicMassage msg = _vadi.receive();
             string uName;
-            EandETokenizer tok = new EandETokenizer(msg.Massage, "\n");
+            EandETokenizer tok = new EandETokenizer(msg.Massage, "/$");
             string next = tok.getNextToken();            
             switch (next) {
                 /**
