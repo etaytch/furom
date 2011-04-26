@@ -41,13 +41,13 @@ namespace ForumSever
                 return -17;
             }
             // user name already in use
-            if (_db.isMember("username = '"+memb.getUName()+"'")){
+            if (_db.isMember(memb.getUName())){
                 //massage = "user name in use. choose  a diffrent one";
                 //return false;
                 return -15;
             }
 
-            if (_db.isMember("username = '" + memb.getEmail() + "'"))
+            if (_db.isMember(memb.getEmail()))
             {
                 //massage = "mail in use. choose  a diffrent one";
                 //return false;
@@ -61,7 +61,7 @@ namespace ForumSever
         public int login(string p_user, string p_pass)
         {
 
-            if (_db.isMember("username = '" + p_user + "'")) {
+            if (_db.isMember(p_user)) {
                 if (!_db.isLogin(p_user)) {
                     _db.markUserAsLogged(p_user, 1);
                     return 0;       // no error
@@ -75,7 +75,7 @@ namespace ForumSever
 
         public int logout(string p_user)
         {
-            if (_db.isMember("username = '" + p_user + "'")) {
+            if (_db.isMember(p_user)) {
                 if (_db.isLogin(p_user)) {
                     _db.markUserAsLogged(p_user, 0);
                     return 0;       // no error
@@ -87,10 +87,22 @@ namespace ForumSever
             return -3;         // username not exist
         }
 
+        public bool isMember(string p_user) {
+            return _db.isMember(p_user);
+        }
+
         public bool isLogged(string p_user)
         {
             MemberInfo memb = _db.FindMember("username = '" + p_user + "'");
             return ((memb != null) && (memb.isLogged()));
+        }
+
+        public List<string> getUsers(string p_uname){
+            return _db.getUsers(p_uname);
+        }
+
+        public List<string> getFriends(string p_uname) {
+            return _db.getFriends(p_uname);
         }
 
         public MemberInfo FindMemberByUser(string p_user)
@@ -98,56 +110,48 @@ namespace ForumSever
             return _db.FindMember("username = '" + p_user + "'");
         }
 
-        public int addMeAsFriend(int p_toBeAddedID, int p_AddedToID)
+        public int addMeAsFriend(string p_uname,string p_friendUname)
         {
-            MemberInfo t_AddedTo = _db.FindMemberByID(p_AddedToID);
-            MemberInfo t_toBeAdded = _db.FindMemberByID(p_toBeAddedID);            
-            if (t_toBeAdded == null)
-            {
+            if (!_db.isMember(p_uname)) {
                 //return "incurrect user name";
                 return -3;
-            }
 
-            if (t_AddedTo == null)
-            {
+            }
+            if (!_db.isMember(p_friendUname)) {
                 //return "the user you are trying to befriend dosn't exist";
                 return -2;
             }
 
-            if (t_AddedTo.hasFriend(p_toBeAddedID))
+            if (_db.isFriend(p_uname,p_friendUname))
             {
                 //return "user is already a friend with this user";
                 return -1;
             }
-            t_AddedTo.addFriend(t_toBeAdded);
+            _db.addFriend(p_uname, p_friendUname);            
             //return "you have a new friend";
-            return t_toBeAdded.getID();
+            return 0;
         }
 
-        public int removeMeAsFriend(int p_toBeRemoved, int p_removedFrom)
+        public int removeMeAsFriend(string p_uname, string p_friendUname)
         {
-            MemberInfo t_removedFrom = _db.FindMemberByID(p_removedFrom);
-            MemberInfo t_toBeRemoved = _db.FindMemberByID(p_toBeRemoved);
-            if (t_toBeRemoved == null)
-            {
-                return -3;
+            if (!_db.isMember(p_uname)) {
                 //return "incurrect user name";
+                return -3;
+
+            }
+            if (!_db.isMember(p_friendUname)) {
+                //"the user you are trying to unfriend dosn't exist"                        
+                return -20;
             }
 
-            if (t_removedFrom == null)
-            {
-                return -2;
-                //return "the user you are trying to befriend dosn't exist";
-            }
 
 
-
-            if (!t_removedFrom.hasFriend(p_toBeRemoved))
+            if (!_db.isFriend(p_uname, p_friendUname))
             {
                 return -4;
                 //return "the user you are trying to unfriend is not a friend of yours";
             }
-            t_removedFrom.removeFriend(t_toBeRemoved);
+            _db.removeFriend(p_uname, p_friendUname);
             //return "you have removed yourself as friend";
             return 0;
         }
@@ -257,7 +261,7 @@ namespace ForumSever
         public int addPost(int p_tid, int p_fid, int parentId, string p_topic, string p_content,string p_uname)
         {
             //MemberInfo t_user = FindMemberByUser(p_uname);            
-            if (!_db.isMember("username = '" + p_uname + "'")){
+            if (!_db.isMember(p_uname)){
                 return -3;
                 //return "incurrect user name";
 
@@ -275,7 +279,7 @@ namespace ForumSever
         //(t_fid, t_tid, t_postIndex,t_uname);
         public ForumPost getPost(int p_fid, int p_tid, int p_index, string p_uname)
         {           
-            if (!_db.isMember("username = '" + p_uname + "'"))
+            if (!_db.isMember(p_uname))
             {
                 return null;
                 //return "incurrect user name";
@@ -293,7 +297,7 @@ namespace ForumSever
         public int removePost(int p_fid, int p_tid, int p_index, string p_uname)
         {
             //MemberInfo t_user = _db.FindMemberByID(p_userID);
-            if (!_db.isMember("username = '" + p_uname + "'"))
+            if (!_db.isMember(p_uname))
             {
                 return -3;
                 //return "incurrect user name";
@@ -326,5 +330,6 @@ namespace ForumSever
             }
             return -1;
         }
+       
     }
 }
