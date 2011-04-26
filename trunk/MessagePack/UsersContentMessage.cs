@@ -13,7 +13,7 @@ namespace MessagePack
                 _users = users;
         }
         public override string ToString() {
-            string ans = "USERSCONTENT/$" + _uName;
+            string ans = "USERSCONTENT/$" + _uName + "/$";
             for (int i = 0; i < _users.Count;i++ ) {
                 ans += _users.ElementAt(i) + "/$";
             }

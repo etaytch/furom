@@ -265,7 +265,7 @@ namespace ForumSever
         }
 
         public bool isFriend(string p_uname, string p_friendUname) {
-            return recordExsist("SELECT * FROM " + p_uname + " WHERE uname=" + p_friendUname);
+            return recordExsist("SELECT * FROM " + p_uname + " WHERE uname='" + p_friendUname+"'");
         }
         public bool isLogin(string username) {
             return recordExsist("SELECT * FROM Users WHERE (username='"+username+"') and (logged=1)");

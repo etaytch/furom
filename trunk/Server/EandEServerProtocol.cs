@@ -35,9 +35,12 @@ namespace Protocol {
             
             char c = (char)4;
             string restMsg = msg;
+            string tmpStr;
             int ind = restMsg.IndexOf(c);
             while(ind>=0){
-                this.msgs.Enqueue(restMsg.Substring(0, ind));
+                tmpStr = restMsg.Substring(0, ind);
+                Console.WriteLine("current MSG = "+tmpStr);
+                this.msgs.Enqueue(tmpStr);
                 restMsg = restMsg.Substring(ind + 1);
                 ind = restMsg.IndexOf(c);
             }            
@@ -52,8 +55,9 @@ namespace Protocol {
             }
 
             string str = msgs.Dequeue(); 
-                string uName;
-            EandETokenizer tok = new EandETokenizer(msg.Massage, "/$");
+            
+            string uName;
+            EandETokenizer tok = new EandETokenizer(str, "/$");
             string next = tok.getNextToken();            
             switch (next) {
                 /**
@@ -248,7 +252,7 @@ namespace Protocol {
             Object t_temp = _table[msg._uName];
             if (t_temp!=null)
             {
-                _vadi.send(msg.ToString(), (int)t_temp);
+                _vadi.send(msg.ToString()+(char)4, (int)t_temp);
             }
         }
 
