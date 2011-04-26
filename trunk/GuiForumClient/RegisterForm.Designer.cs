@@ -66,7 +66,7 @@
             this.button2.Location = new System.Drawing.Point(281, 336);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(77, 23);
-            this.button2.TabIndex = 11;
+            this.button2.TabIndex = 12;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -77,7 +77,7 @@
             this.button1.Location = new System.Drawing.Point(16, 336);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(77, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 13;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -107,7 +107,7 @@
             this.user.Location = new System.Drawing.Point(22, 33);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(138, 20);
-            this.user.TabIndex = 6;
+            this.user.TabIndex = 1;
             // 
             // label3
             // 
@@ -182,7 +182,7 @@
             this.date.Location = new System.Drawing.Point(202, 170);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(94, 20);
-            this.date.TabIndex = 25;
+            this.date.TabIndex = 10;
             this.date.Value = new System.DateTime(2011, 4, 24, 0, 0, 0, 0);
             this.date.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -196,7 +196,7 @@
             this.sex.Location = new System.Drawing.Point(202, 121);
             this.sex.Name = "sex";
             this.sex.Size = new System.Drawing.Size(132, 21);
-            this.sex.TabIndex = 26;
+            this.sex.TabIndex = 9;
             // 
             // label11
             // 
@@ -212,7 +212,7 @@
             this.city.Location = new System.Drawing.Point(202, 77);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(138, 20);
-            this.city.TabIndex = 27;
+            this.city.TabIndex = 8;
             // 
             // checkBox1
             // 
@@ -220,7 +220,7 @@
             this.checkBox1.Location = new System.Drawing.Point(184, 208);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(218, 30);
-            this.checkBox1.TabIndex = 29;
+            this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "I have read the License Agreement \r\nand accept all of its terms and conditions";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -426,7 +426,7 @@
             this.country.Location = new System.Drawing.Point(202, 33);
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(132, 21);
-            this.country.TabIndex = 30;
+            this.country.TabIndex = 7;
             // 
             // label10
             // 
@@ -451,7 +451,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(9, 17);
+            this.label12.Location = new System.Drawing.Point(4, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 13);
             this.label12.TabIndex = 33;
@@ -461,7 +461,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(11, 194);
+            this.label13.Location = new System.Drawing.Point(8, 194);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(11, 13);
             this.label13.TabIndex = 34;
@@ -471,7 +471,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(11, 246);
+            this.label14.Location = new System.Drawing.Point(8, 246);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(11, 13);
             this.label14.TabIndex = 35;
@@ -481,7 +481,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(11, 152);
+            this.label15.Location = new System.Drawing.Point(8, 152);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(11, 13);
             this.label15.TabIndex = 36;
@@ -491,7 +491,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(9, 62);
+            this.label16.Location = new System.Drawing.Point(6, 62);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(11, 13);
             this.label16.TabIndex = 37;
@@ -501,7 +501,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(11, 106);
+            this.label17.Location = new System.Drawing.Point(8, 106);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(11, 13);
             this.label17.TabIndex = 38;
@@ -513,7 +513,7 @@
             this.password.Location = new System.Drawing.Point(24, 77);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(138, 20);
-            this.password.TabIndex = 16;
+            this.password.TabIndex = 2;
             // 
             // repassword
             // 
@@ -521,7 +521,7 @@
             this.repassword.Location = new System.Drawing.Point(24, 122);
             this.repassword.Name = "repassword";
             this.repassword.Size = new System.Drawing.Size(138, 20);
-            this.repassword.TabIndex = 18;
+            this.repassword.TabIndex = 3;
             // 
             // mail
             // 
@@ -529,7 +529,7 @@
             this.mail.Location = new System.Drawing.Point(24, 170);
             this.mail.Name = "mail";
             this.mail.Size = new System.Drawing.Size(138, 20);
-            this.mail.TabIndex = 14;
+            this.mail.TabIndex = 4;
             // 
             // first
             // 
@@ -537,7 +537,7 @@
             this.first.Location = new System.Drawing.Point(22, 213);
             this.first.Name = "first";
             this.first.Size = new System.Drawing.Size(138, 20);
-            this.first.TabIndex = 8;
+            this.first.TabIndex = 5;
             // 
             // last
             // 
@@ -545,7 +545,7 @@
             this.last.Location = new System.Drawing.Point(24, 264);
             this.last.Name = "last";
             this.last.Size = new System.Drawing.Size(138, 20);
-            this.last.TabIndex = 12;
+            this.last.TabIndex = 6;
             // 
             // RegisterForm
             // 

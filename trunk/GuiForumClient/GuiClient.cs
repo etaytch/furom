@@ -90,16 +90,16 @@ namespace GuiForumClient
              GetPostMessage msg = new GetPostMessage(t_fId,t_tId,p_pid, userName);
             protocol.sendMessage(msg);
         }
-        public void reply(string subject,string content)
+        public void addPost(string subject,string content)
         {
             int fIdInt = this.db.CurrentForumId.Id;
             int tIdInt = this.db.CurrentThreadId.Id;
             int pIdInt = this.db.CurrentPost.Id;
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, pIdInt, userName, subject, content);
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, pIdInt, pIdInt, userName, subject, content);
             protocol.sendMessage(msg);
         }
-
-        public void post(string subject,string content)
+        
+        public void addThread(string subject,string content)
         {
             int fIdInt = this.db.CurrentForumId.Id;
             AddThreadMessage msg = new AddThreadMessage(fIdInt, userName, subject, content);
@@ -153,5 +153,14 @@ namespace GuiForumClient
         {
         }
 
+
+        internal void addReply(string p_subject, string p_content)
+        {
+            int fIdInt = this.db.CurrentForumId.Id;
+            int tIdInt = this.db.CurrentThreadId.Id;
+            int pIdInt = this.db.CurrentPost.Id;
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, 0 , userName, p_subject, p_content);
+            protocol.sendMessage(msg);
+        }
     }
 }
