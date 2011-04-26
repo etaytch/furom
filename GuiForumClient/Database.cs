@@ -19,7 +19,9 @@ namespace DataManagment
         private PostObject currentPost;
         private ViewData currentForumId;
         private ViewData currentThreadId;
-
+        private string massege;
+        private List<string> users;
+        private List<string> friends;
 
         public Database()
         {
@@ -29,7 +31,9 @@ namespace DataManagment
             currentPost = new PostObject("Welcom to the \"ALUFIM \" furom!","HaAlufim","Have Fun!",-1);	   
 		    currentForumId = new ViewData("Sheker",-1);
             currentThreadId = new ViewData("Sheker", -1);
-            initData();
+
+            massege = null;  //save the last popup massage
+           // initData();
         }
 
         private void initData()
@@ -49,6 +53,21 @@ namespace DataManagment
             set { forums = value; ForumsChanged(); }
         }
 
+        public List<string> Users
+        {
+            get { return users; }
+            set { users = value; UsersChanged(); }
+        }
+        public List<string> Friends
+        {
+            get { return friends; }
+            set { friends = value; FriendsChanged(); }
+        }
+        public string Massege
+        {
+            get { return massege; }
+            set { massege = value ;  MassegeChanged(); }
+        }
 
         public List<ViewData> Threads
         {
@@ -140,13 +159,18 @@ namespace DataManagment
         public delegate void ThreadsChangedHandler(object sender, ThreadsChangedEventArgs e);
         public delegate void PostsChangedHandler(object sender, PostsChangedEventArgs e);
         public delegate void CurrentPostChangedHandler(object sender, CurrentPostChangedEventArgs e);
+        public delegate void MassegeChangedHandler(object sender, MassegeChangedEventArgs e);
+        public delegate void FriendsChangedHandler(object sender, FriendsChangedEventArgs e);
+        public delegate void UsersChangedHandler(object sender, UsersChangedEventArgs e);
 
         //variables
         public event ForumsChangedHandler ForumsChangedEvent;
         public event ThreadsChangedHandler ThreadsChangedEvent;
         public event PostsChangedHandler PostsChangedEvent;
         public event CurrentPostChangedHandler CurrentPostChangedEvent;
-
+        public event MassegeChangedHandler MassegeChangedEvent;
+        public event FriendsChangedHandler FriendsChangedEvent;
+        public event UsersChangedHandler UsersChangedEvent;
 
         protected void ForumsChanged()
         {
@@ -165,6 +189,23 @@ namespace DataManagment
         {
             CurrentPostChangedEvent(this, new CurrentPostChangedEventArgs(CurrentPost));
         }
+
+        protected void MassegeChanged()
+        {
+            MassegeChangedEvent(this, new MassegeChangedEventArgs(Massege));
+        }
+
+        protected void FriendsChanged()
+        {
+            FriendsChangedEvent(this, new FriendsChangedEventArgs(Friends));
+        }
+        
+        protected void UsersChanged()
+        {
+            UsersChangedEvent(this, new UsersChangedEventArgs(Users));
+        } 
+
+
         /************************MVC END*********************/
 
 
@@ -299,4 +340,37 @@ namespace DataManagment
          { get { return _currentPost; } }
      }
 
+
+     public class MassegeChangedEventArgs : EventArgs
+     {
+         string _massege;
+         public MassegeChangedEventArgs(string p_massege)
+         {
+             _massege = p_massege;
+         }
+         public string Massege
+         { get { return _massege; } }
+     }
+
+     public class FriendsChangedEventArgs : EventArgs
+     {
+         List<string> _friends;
+         public FriendsChangedEventArgs(List<string> p_friends)
+         {
+             _friends = p_friends;
+         }
+         public List<string> Friends
+         { get { return _friends; } }
+     }
+
+     public class UsersChangedEventArgs : EventArgs
+     {
+         List<string> _users;
+         public UsersChangedEventArgs(List<string> p_users)
+         {
+             _users = p_users;
+         }
+         public List<string> Users
+         { get { return _users; } }
+     }
 }

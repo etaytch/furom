@@ -140,3 +140,4 @@ C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GenerateResource.read.1
 C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
 C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb
+C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GuiForumClient.addPostWindow.resources

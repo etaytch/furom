@@ -35,7 +35,7 @@ namespace GuiForumClient
             msg = protocol.getMessage();   
             switch (msg.getMessageType()) 
             {
-                case "Acknowledgement":
+                case "Acknowledgment":
                     handle_Acknowledgment((Acknowledgment)msg);
                     break;
                 case "Error":
@@ -49,6 +49,12 @@ namespace GuiForumClient
                     break;
                 case "THREADCONTENT":
                     handle_ThreadContentMessage((ThreadContentMessage)msg);
+                    break;
+                case "USERSCONTENT":
+                  //  handle_UsersContentMessage((UsersContentMessage)msg);
+                    break;
+                case "FRIENDSCONTENT":
+                  //  handle_FriendsContentMessage((FriendsContentMessage)msg);
                     break;
                 case "POSTCONTENT":
                     handle_PostContentMessage((PostContentMessage)msg);
@@ -115,12 +121,15 @@ namespace GuiForumClient
         private void handle_Error(Error msg)
         {
             string[] lines = {msg.getMsg(),"\n" };
-            System.IO.File.WriteAllLines("..\\..\\..\\Etay's_Syster_log.txt", lines);
+            System.IO.File.WriteAllLines("..\\..\\..\\Error_log.txt", lines);
+            db.Massege = msg.getMsg();
         }
 
         private void handle_Acknowledgment(Acknowledgment msg)
         {
-            throw new NotImplementedException();
+            string[] lines = { msg.getMsg(), "\n" };
+            System.IO.File.WriteAllLines("..\\..\\..\\ack_log.txt", lines);
+            db.Massege = msg.getMsg();
         }
     }
 }

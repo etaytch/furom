@@ -87,6 +87,9 @@
     </Compile>
     <Compile Include="ViewData.cs" />
     <Compile Include="ViewHirarchiData.cs" />
+    <EmbeddedResource Include="addPostWindow.resx">
+      <DependentUpon>addPostWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addThreadWindow.resx">
       <DependentUpon>addThreadWindow.cs</DependentUpon>
     </EmbeddedResource>

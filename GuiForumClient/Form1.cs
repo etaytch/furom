@@ -17,6 +17,9 @@ namespace GuiForumClient
         public delegate void ThreadsChangedInvoker(object sender, ThreadsChangedEventArgs e);
         public delegate void PostsChangedInvoker(object sender, PostsChangedEventArgs e);
         public delegate void CurrentPostChangedInvoker(object sender, CurrentPostChangedEventArgs e);
+        public delegate void MassegeChangedInvoker(object sender, MassegeChangedEventArgs e);
+        public delegate void FriendsChangedInvoker(object sender, FriendsChangedEventArgs e);
+        public delegate void UsersChangedInvoker(object sender, UsersChangedEventArgs e);
 
         private StatusStrip statusStrip1;
         private ToolStripProgressBar toolStripProgressBar1;
@@ -52,6 +55,11 @@ namespace GuiForumClient
         private Database.ThreadsChangedHandler threads_delegate;
         private Database.PostsChangedHandler posts_delegate;
         private Database.CurrentPostChangedHandler CurrentPost_delegate;
+        private Database.MassegeChangedHandler Massege_delegate;
+        private Database.FriendsChangedHandler Friends_delegate;
+        private Database.UsersChangedHandler Users_delegate;
+
+
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
@@ -75,11 +83,19 @@ namespace GuiForumClient
             threads_delegate = new Database.ThreadsChangedHandler(this.ThreadsChanged);
             posts_delegate = new Database.PostsChangedHandler(this.PostsChanged);
             CurrentPost_delegate = new Database.CurrentPostChangedHandler(this.currentPostChanged);
+            Massege_delegate = new Database.MassegeChangedHandler(this.MassegeChanged);
+            Friends_delegate = new Database.FriendsChangedHandler(this.FriendsChanged);
+            Users_delegate = new Database.UsersChangedHandler(this.UsersChanged);
+
             db = new Database();
             db.ForumsChangedEvent += forums_delegate;
             db.ThreadsChangedEvent += threads_delegate;
             db.PostsChangedEvent += posts_delegate;
             db.CurrentPostChangedEvent += CurrentPost_delegate;
+            db.MassegeChangedEvent += Massege_delegate;
+            db.FriendsChangedEvent += Friends_delegate;
+            db.UsersChangedEvent += Users_delegate;
+            
             this.client = new GuiClient("tmp_user", db);
 
         }
@@ -99,7 +115,6 @@ namespace GuiForumClient
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -109,6 +124,7 @@ namespace GuiForumClient
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.addFriend = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.postPreview = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -129,8 +145,8 @@ namespace GuiForumClient
             this.thredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
+            this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.viewDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.postPreview = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -139,7 +155,6 @@ namespace GuiForumClient
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -152,6 +167,7 @@ namespace GuiForumClient
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -230,10 +246,6 @@ namespace GuiForumClient
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // viewDataBindingSource1
-            // 
-            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.listView1);
@@ -273,7 +285,7 @@ namespace GuiForumClient
             // removeFriend
             // 
             this.removeFriend.Name = "removeFriend";
-            this.removeFriend.Size = new System.Drawing.Size(79, 22);
+            this.removeFriend.Size = new System.Drawing.Size(86, 22);
             this.removeFriend.Text = "Remove Friend";
             this.removeFriend.Click += new System.EventHandler(this.removeFriend_Click);
             // 
@@ -315,7 +327,7 @@ namespace GuiForumClient
             // addFriend
             // 
             this.addFriend.Name = "addFriend";
-            this.addFriend.Size = new System.Drawing.Size(79, 22);
+            this.addFriend.Size = new System.Drawing.Size(87, 22);
             this.addFriend.Text = "Add To Friends";
             this.addFriend.Click += new System.EventHandler(this.addFriend_Click);
             // 
@@ -340,14 +352,26 @@ namespace GuiForumClient
             this.splitContainer2.SplitterDistance = 196;
             this.splitContainer2.TabIndex = 0;
             // 
+            // postPreview
+            // 
+            this.postPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.postPreview.Location = new System.Drawing.Point(0, 0);
+            this.postPreview.Name = "postPreview";
+            this.postPreview.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.postPreview.Size = new System.Drawing.Size(493, 196);
+            this.postPreview.TabIndex = 0;
+            this.postPreview.Text = "";
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 25);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.richTextBox1.Size = new System.Drawing.Size(493, 188);
             this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "this is where the user will enter his response...";
+            this.richTextBox1.Text = "";
             // 
             // toolStrip1
             // 
@@ -367,7 +391,7 @@ namespace GuiForumClient
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(77, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(81, 22);
             this.toolStripButton1.Text = "addthread";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -376,7 +400,7 @@ namespace GuiForumClient
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(69, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton2.Text = "add post";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -385,7 +409,7 @@ namespace GuiForumClient
             this.removethread.Image = ((System.Drawing.Image)(resources.GetObject("removethread.Image")));
             this.removethread.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.removethread.Name = "removethread";
-            this.removethread.Size = new System.Drawing.Size(98, 22);
+            this.removethread.Size = new System.Drawing.Size(104, 22);
             this.removethread.Text = "remove thread";
             this.removethread.Click += new System.EventHandler(this.removethread_Click);
             // 
@@ -394,7 +418,7 @@ namespace GuiForumClient
             this.removePost.Image = global::GuiForumClient.Properties.Resources.Delete_icon;
             this.removePost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.removePost.Name = "removePost";
-            this.removePost.Size = new System.Drawing.Size(87, 22);
+            this.removePost.Size = new System.Drawing.Size(93, 22);
             this.removePost.Text = "remove post";
             this.removePost.Click += new System.EventHandler(this.removePost_Click);
             // 
@@ -418,34 +442,34 @@ namespace GuiForumClient
             this.registerToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.toolStripMenuItem1.Text = "Menu";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.loginToolStripMenuItem.Text = "login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.logoutToolStripMenuItem.Text = "logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.registerToolStripMenuItem.Text = "register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.exitToolStripMenuItem.Text = "exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -455,20 +479,20 @@ namespace GuiForumClient
             this.threadToolStripMenuItem,
             this.postToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.addToolStripMenuItem.Text = "add";
             // 
             // threadToolStripMenuItem
             // 
             this.threadToolStripMenuItem.Name = "threadToolStripMenuItem";
-            this.threadToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.threadToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.threadToolStripMenuItem.Text = "Thread";
             this.threadToolStripMenuItem.Click += new System.EventHandler(this.threadToolStripMenuItem_Click);
             // 
             // postToolStripMenuItem
             // 
             this.postToolStripMenuItem.Name = "postToolStripMenuItem";
-            this.postToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.postToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.postToolStripMenuItem.Text = "Post";
             this.postToolStripMenuItem.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
             // 
@@ -478,19 +502,19 @@ namespace GuiForumClient
             this.postToolStripMenuItem1,
             this.thredToolStripMenuItem});
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.removeToolStripMenuItem.Text = "remove";
             // 
             // postToolStripMenuItem1
             // 
             this.postToolStripMenuItem1.Name = "postToolStripMenuItem1";
-            this.postToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
+            this.postToolStripMenuItem1.Size = new System.Drawing.Size(102, 22);
             this.postToolStripMenuItem1.Text = "post";
             // 
             // thredToolStripMenuItem
             // 
             this.thredToolStripMenuItem.Name = "thredToolStripMenuItem";
-            this.thredToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.thredToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.thredToolStripMenuItem.Text = "thred";
             // 
             // toolStripContainer1
@@ -519,18 +543,13 @@ namespace GuiForumClient
             this.toolStripContainer2.TabIndex = 0;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
+            // viewDataBindingSource1
+            // 
+            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
+            // 
             // viewDataBindingSource
             // 
             this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
-            // 
-            // postPreview
-            // 
-            this.postPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.postPreview.Location = new System.Drawing.Point(0, 0);
-            this.postPreview.Name = "postPreview";
-            this.postPreview.Size = new System.Drawing.Size(493, 196);
-            this.postPreview.TabIndex = 0;
-            this.postPreview.Text = "";
             // 
             // Form1
             // 
@@ -541,6 +560,7 @@ namespace GuiForumClient
             this.Controls.Add(this.toolStripContainer2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -552,7 +572,6 @@ namespace GuiForumClient
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
@@ -574,6 +593,7 @@ namespace GuiForumClient
             this.toolStripContainer1.PerformLayout();
             this.toolStripContainer2.ResumeLayout(false);
             this.toolStripContainer2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -600,6 +620,18 @@ namespace GuiForumClient
             object[] args = { sender, e };
             this.Invoke(new ForumsChangedInvoker(ForumsChangedDelegate),args);
         }
+
+        public void FriendsChanged(object sender, FriendsChangedEventArgs e)
+        {
+            object[] args = { sender, e };
+            this.Invoke(new FriendsChangedInvoker(FriendsChangedDelegate), args);
+        }
+
+        public void UsersChanged(object sender, UsersChangedEventArgs e)
+        {
+            object[] args = { sender, e };
+            this.Invoke(new UsersChangedInvoker(UsersChangedDelegate), args);
+        }
         
         public void ThreadsChanged(object sender, ThreadsChangedEventArgs e)
         {
@@ -619,6 +651,29 @@ namespace GuiForumClient
             object[] args = { sender, e };
             this.Invoke(new CurrentPostChangedInvoker(CurrentPostChangedDelegate), args);
 
+        }
+
+        public void MassegeChanged(object sender, MassegeChangedEventArgs e)
+        {
+            object[] args = { sender, e };
+            this.Invoke(new MassegeChangedInvoker(MassegeChangedDelegate), args);
+
+        }
+
+        public void MassegeChangedDelegate(object sender, MassegeChangedEventArgs e)
+        {
+            this.richTextBox1.Text += "\n";
+            this.richTextBox1.Text+=e.Massege;
+        }
+
+        public void FriendsChangedDelegate(object sender, FriendsChangedEventArgs e)
+        {
+            //TODO!
+        }
+
+        public void UsersChangedDelegate(object sender, UsersChangedEventArgs e)
+        {
+            //TODO!
         }
 
         public void CurrentPostChangedDelegate(object sender, CurrentPostChangedEventArgs e)
@@ -845,6 +900,12 @@ namespace GuiForumClient
             Close();
         }
 
+        private void OnClose(object sender, EventArgs e)
+        {
+            client.exit();
+            Close();
+        }
+
         private void removethread_Click(object sender, EventArgs e)
         {
             this.client.removeThread(db.CurrentForumId.Id, db.CurrentThreadId.Id);
@@ -893,6 +954,5 @@ namespace GuiForumClient
                 client.getPost(postId);   
             }
         }
-
     }
 }
