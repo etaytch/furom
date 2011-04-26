@@ -59,29 +59,49 @@ namespace GuiForumClient
         }
         public void logout()
         {
-            LogoutMessage msg = new LogoutMessage(userName);
-            protocol.sendMessage(msg);
-        }
+            if (loggedIn)
+            {
+                LogoutMessage msg = new LogoutMessage(userName);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you are not logged in!";
+            }
+       }
 
         public void getForums()
         {
-            GetSystemMessage msg1 = new GetSystemMessage(userName);
-            protocol.sendMessage(msg1);
-            GetUsersMessage msg3 = new GetUsersMessage(userName);
-            protocol.sendMessage(msg3);
-            GetFriendsMessage msg2 = new GetFriendsMessage(userName);
-            protocol.sendMessage(msg2);
-            
-
+            if (loggedIn)
+            {
+                GetSystemMessage msg1 = new GetSystemMessage(userName);
+                protocol.sendMessage(msg1);
+                GetUsersMessage msg3 = new GetUsersMessage(userName);
+                protocol.sendMessage(msg3);
+                GetFriendsMessage msg2 = new GetFriendsMessage(userName);
+                protocol.sendMessage(msg2);
+            }
+            else
+            {
+                db.Massege = "you are not logged in!";
+            }
 
 
         }
 
+
         public void getThreads()
         {
-            int fIdInt = this.db.CurrentForumId.Id;
-            GetForumMessage msg = new GetForumMessage(fIdInt, userName);
-            protocol.sendMessage(msg);
+            if (loggedIn)
+            {
+                int fIdInt = this.db.CurrentForumId.Id;
+                GetForumMessage msg = new GetForumMessage(fIdInt, userName);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you are not logged in!";
+            }
         }
 
         public void getReplies()
@@ -94,25 +114,41 @@ namespace GuiForumClient
 
         public void getPost(int p_pid)
         {
-            int t_fId = this.db.CurrentForumId.Id;
-            int t_tId = this.db.CurrentThreadId.Id;
-             GetPostMessage msg = new GetPostMessage(t_fId,t_tId,p_pid, userName);
-            protocol.sendMessage(msg);
+            
+                int t_fId = this.db.CurrentForumId.Id;
+                int t_tId = this.db.CurrentThreadId.Id;
+                GetPostMessage msg = new GetPostMessage(t_fId, t_tId, p_pid, userName);
+                protocol.sendMessage(msg);
+            
         }
         public void addPost(string subject,string content)
         {
-            int fIdInt = this.db.CurrentForumId.Id;
-            int tIdInt = this.db.CurrentThreadId.Id;
-            int pIdInt = this.db.CurrentPost.Id;
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, 0, userName, subject, content);
-            protocol.sendMessage(msg);
+            if ((db.CurrentForumId.Id !=-1) &&  (db.CurrentThreadId.Id !=-1))
+            {
+                int fIdInt = this.db.CurrentForumId.Id;
+                int tIdInt = this.db.CurrentThreadId.Id;
+                int pIdInt = this.db.CurrentPost.Id;
+                AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, 0, userName, subject, content);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you need to select Thread first...!";
+            }
         }
         
         public void addThread(string subject,string content)
         {
-            int fIdInt = this.db.CurrentForumId.Id;
-            AddThreadMessage msg = new AddThreadMessage(fIdInt, userName, subject, content);
-            protocol.sendMessage(msg);
+            if ((db.CurrentForumId.Id !=-1))
+            {
+                int fIdInt = this.db.CurrentForumId.Id;
+                AddThreadMessage msg = new AddThreadMessage(fIdInt, userName, subject, content);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you need to select Forum first...!";
+            }
         }
 
 
