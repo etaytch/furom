@@ -84,6 +84,24 @@ namespace ForumSever
             return ans;
         }
 
+
+
+        public bool removeThread(int p_tid, int p_fid) {
+            try {
+                runSelectSQL("Delete From Threads Where " + "(fid = " + p_fid + ") and (tid = " + p_tid + ")");
+                _conn.Close();
+                return true;
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error while removing Post...\n");
+                Console.WriteLine(e.ToString());
+            }
+
+            return false;
+        }
+
+
+
         public bool removePost(int p_tid, int p_fid, int p_index) {
             try {
                 runSelectSQL("Delete From Posts Where " + "(pid = '" + p_index + "') and (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
@@ -139,7 +157,19 @@ namespace ForumSever
             catch (Exception e) {
                 Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName()+"' already exsist?");
                 Console.WriteLine(e.ToString());
+            }
+
+            try {
+                runSelectSQL("INSERT INTO Users Values " + str);
+                _conn.Close();
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName() + "' already exsist?");
+                Console.WriteLine(e.ToString());
             }     
+
+
+
             return true;
         }
 
@@ -218,8 +248,12 @@ namespace ForumSever
             return recordExsist("SELECT * FROM Users WHERE username = '" + username + "'");
         }
 
-        public bool isThread(string where) {
-            return recordExsist("SELECT * FROM Threads WHERE " + where);
+        public bool isThread(int p_fid,int p_tid) {
+            return recordExsist("SELECT * FROM Threads WHERE (fid = " + p_fid + ") and (tid = "+p_tid+")");
+        }
+
+        public bool isThread(int p_fid, string p_topic) {
+            return recordExsist("SELECT * FROM Threads WHERE (fid = " + p_fid + ") and (subject = '" + p_topic + "')");
         }
 
         public bool isPost(string where) {
@@ -248,10 +282,30 @@ namespace ForumSever
             return true;
         }
 
+        public string getThreadAuthor(int p_fid, int p_tid) {
+            string ans = "";
+
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+
+            while (reader.Read()) {
+                ans = reader["author"].ToString();
+                _conn.Close();
+                return ans;
+            }
+            return ans;
+        }
+
+
         public string getPostAuthor(int p_pid,int p_fid,int p_tid){
             string ans="";
 
-            SqlDataReader reader = runSelectSQL("SELECT * FROM Users WHERE " + "(pid = '" + p_pid + "') and (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Posts WHERE " + "(pid = '" + p_pid + "') and (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
@@ -330,7 +384,7 @@ namespace ForumSever
             }
 
             while (reader.Read()) {
-                ans.Add(reader["username"].ToString());
+                ans.Add(reader["uname"].ToString());
             }
             _conn.Close();
             return ans;
@@ -344,7 +398,7 @@ namespace ForumSever
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
-                return null;
+                return ans;
             }
 
 
@@ -427,7 +481,6 @@ namespace ForumSever
                 Console.WriteLine("Error while adding friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
                 Console.WriteLine(e.ToString());
             }     
-
         }
 
         public void removeFriend(string p_uname, string p_friendUname) {
@@ -440,7 +493,6 @@ namespace ForumSever
                 Console.WriteLine("Error while removing friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
                 Console.WriteLine(e.ToString());
             }
-
         }
         /*Threads founctions  */
 

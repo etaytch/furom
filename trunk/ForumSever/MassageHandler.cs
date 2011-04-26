@@ -36,6 +36,7 @@ namespace ForumSever
 
         public void readMassage(){
             Message t_msg = _ee.getMessage();
+            //Console.WriteLine("int readMessage. t_msg="+t_msg);
             //this should be given to a thread
             Handle(t_msg);
         }
@@ -127,15 +128,18 @@ namespace ForumSever
                     //_outputMassage.Enqueue(new Message(""));
                     break;
                 case "GETUSERS":
-                    t_uname = ((GetUsersMessage)t_msg)._uName;                    
+                    Console.WriteLine("in GETUSERS");
+                    t_uname = ((GetUsersMessage)t_msg)._uName;
                     if (_lm.isMember(t_uname)) {
                         if (_lm.isMember(t_uname)) {
                             List<string> users = _lm.getUsers(t_uname);
-                            _ee.sendMessage(new UsersContentMessage(t_uname,users));
+                            _ee.sendMessage(new UsersContentMessage(t_uname, users));
                         }
                         else {
                             sendError(-19, t_uname);
                         }
+                    }
+                    else {
                         sendError(-3, t_uname);
                     }
                     break;
@@ -149,6 +153,8 @@ namespace ForumSever
                         else {
                             sendError(-19, t_uname);
                         }
+                    }
+                    else {
                         sendError(-3, t_uname);
                     }
                     break;
@@ -215,8 +221,8 @@ namespace ForumSever
                     t_uname = ((DeleteThreadMessage)t_msg)._uName;
                     t_tid = ((DeleteThreadMessage)t_msg)._tId;
                     t_fid = ((DeleteThreadMessage)t_msg)._fId;
-                    /*
-                    returnValue = _lm.removeTread(t_fid,t_tid,t_uname);
+                    
+                    returnValue = _lm.removeThread(t_fid,t_tid,t_uname);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, ((DeleteThreadMessage)t_msg)._uName);
@@ -224,7 +230,7 @@ namespace ForumSever
                     else {
                         _ee.sendMessage(new Acknowledgment(((DeleteThreadMessage)t_msg)._uName, "DeleteThread Succssfuly"));
                     }
-                    */
+                    
                     //_outputMassage.Enqueue(new Message(""));
                     break;
 
@@ -241,7 +247,7 @@ namespace ForumSever
                         sendError(-8, ((GetPostMessage)t_msg)._uName);
                     }
                     else {
-                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parentId,((GetPostMessage)t_msg)._uName, returnPost._autor, returnPost._topic, returnPost._content));
+                        _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parentId,t_uname, returnPost._autor, returnPost._topic, returnPost._content));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
@@ -342,6 +348,9 @@ namespace ForumSever
                     break;
                 case -21:
                     err = new Error(uname, "could not retrieve users list");
+                    break;
+                case -22:
+                    err = new Error(uname, "sql error occured");
                     break;
                 default :
                     err = new Error(uname, "an unexpected error append. please try again");

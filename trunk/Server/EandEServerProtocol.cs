@@ -11,6 +11,8 @@ namespace Protocol {
 
         System.Collections.Hashtable _table;
         ForumTcpServer _vadi;
+        Queue<string> msgs;
+        BasicMassage msg = null;
 
         public void startServer()
         {
@@ -26,13 +28,31 @@ namespace Protocol {
         {
             _table = new System.Collections.Hashtable(1000);
             _vadi = new ForumTcpServer();
+            msgs = new Queue<string>();
+        }        
+
+        public void divideMsgs(string msg) {
+            
+            char c = (char)4;
+            string restMsg = msg;
+            int ind = restMsg.IndexOf(c);
+            while(ind>=0){
+                this.msgs.Enqueue(restMsg.Substring(0, ind));
+                restMsg = restMsg.Substring(ind + 1);
+                ind = restMsg.IndexOf(c);
+            }            
         }
 
         public Message getMessage()
         {
             Message message;
-            BasicMassage msg = _vadi.receive();
-            string uName;
+            if (msgs.Count == 0) {
+                msg = _vadi.receive();
+                divideMsgs(msg.Massage);
+            }
+
+            string str = msgs.Dequeue(); 
+                string uName;
             EandETokenizer tok = new EandETokenizer(msg.Massage, "/$");
             string next = tok.getNextToken();            
             switch (next) {
@@ -66,65 +86,81 @@ namespace Protocol {
                     message = new AddForumMessage(tok.getNextToken(), tok.getNextToken());
                     return message;
 
-                /**
-                * ADDPOST\n
-                * <fourumID>\n
-                * <threadID>\n
-                * <postIndex>\n
-                * <username>\n
-                * <postSubjec>\n
-                * <postBody>\n
-                **/
-                case "ADDPOST":
-                    message = new AddPostMessage(Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()),
-                                    Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
-                    return message;
-                /**
-                * ADDTHREAD\n
-                * <fourumID>\n                
-                * <username>\n
-                * <threadSubjec>\n
-                * <threadBody>\n
-                **/
-                case "ADDTHREAD":
-                    message = new AddThreadMessage(Convert.ToInt32(tok.getNextToken()),
-                                    uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
-                    return message;
-                /**
-                * ADDFRIEND\n
-                * <username>\n
-                * <friendUsername>\n
-                **/
-                case "ADDFRIEND":
-                    message = new AddFriendMessage(uName = tok.getNextToken(), tok.getNextToken());
-                    return message;
-                /**
-                * REGISTER\n
-                * <firstName>\n
-                * <lastName>\n
-                * <username>\n
-                * <password>\n
-                * <confirmedPassword>\n
-                * <sex>\n
-                * <country>\n
-                * <city>\n
-                * <email>\n
-                * <birthday>\n
-                **/
-                case "REGISTER":
-                    message = new RegisterMessage(tok.getNextToken(), tok.getNextToken(), uName = tok.getNextToken(), tok.getNextToken(), 
-                                    tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
-                    if (!_table.ContainsKey(uName))
-                        _table.Add(uName, msg.Uid);
-                    return message;
-                /**
-                * REMOVEFRIEND\n
-                * <userame>\n
-                * <friendUsername>\n
-                **/
-                case "REMOVEFRIEND":
-                    message = new RemoveFriendMessage(uName = tok.getNextToken(), tok.getNextToken());
-                    return message;
+                    /**
+                    * ADDPOST\n
+                    * <fourumID>\n
+                    * <threadID>\n
+                    * <postIndex>\n
+                    * <username>\n
+                    * <postSubjec>\n
+                    * <postBody>\n
+                    **/
+                    case "ADDPOST":
+                        message = new AddPostMessage(Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()),
+                                        Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
+                        return message;
+                    /**
+                    * ADDTHREAD\n
+                    * <fourumID>\n                
+                    * <username>\n
+                    * <threadSubjec>\n
+                    * <threadBody>\n
+                    **/
+                    case "ADDTHREAD":
+                        message = new AddThreadMessage(Convert.ToInt32(tok.getNextToken()),
+                                        uName = tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
+                        return message;
+                    /**
+                    * GETUSERS\n
+                    * <username>\n                
+                    **/
+                    case "GETUSERS":
+                        message = new GetUsersMessage(uName = tok.getNextToken());
+                        return message;
+
+                    /**
+                    * GETFRIENDS\n
+                    * <username>\n                
+                    **/
+                    case "GETFRIENDS":
+                        message = new GetFriendsMessage(uName = tok.getNextToken());
+                        return message;
+
+                    /**
+                    * ADDFRIEND\n
+                    * <username>\n
+                    * <friendUsername>\n
+                    **/
+                    case "ADDFRIEND":
+                        message = new AddFriendMessage(uName = tok.getNextToken(), tok.getNextToken());
+                        return message;
+                    /**
+                    * REGISTER\n
+                    * <firstName>\n
+                    * <lastName>\n
+                    * <username>\n
+                    * <password>\n
+                    * <confirmedPassword>\n
+                    * <sex>\n
+                    * <country>\n
+                    * <city>\n
+                    * <email>\n
+                    * <birthday>\n
+                    **/
+                    case "REGISTER":
+                        message = new RegisterMessage(tok.getNextToken(), tok.getNextToken(), uName = tok.getNextToken(), tok.getNextToken(),
+                                        tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
+                        if (!_table.ContainsKey(uName))
+                            _table.Add(uName, msg.Uid);
+                        return message;
+                    /**
+                    * REMOVEFRIEND\n
+                    * <userame>\n
+                    * <friendUsername>\n
+                    **/
+                    case "REMOVEFRIEND":
+                        message = new RemoveFriendMessage(uName = tok.getNextToken(), tok.getNextToken());
+                        return message;
 
                 /**
                 * DELETEPOST\n

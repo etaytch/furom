@@ -330,6 +330,22 @@ namespace Server
                     bytes = new byte[ClientSocket.ReceiveBufferSize];
                     try
                     {
+
+                        /*
+                        char ch = '1';
+                        int BytesRead = 0 ;
+                        int i = 0;
+                        while (ch != '\0') 
+                        {
+
+                            BytesRead = networkStream.Read(bytes,i,1);
+                            ch = (char)bytes[i];
+                            i++;
+                            
+                        }
+                        */
+
+
                         int BytesRead = networkStream.Read(bytes, 0, (int)ClientSocket.ReceiveBufferSize);
                         if (BytesRead > 0)
                         {
