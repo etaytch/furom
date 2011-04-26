@@ -45,6 +45,8 @@ namespace Protocol {
                     message = new LoginMessage(uName = tok.getNextToken(), tok.getNextToken());
                     if (!_table.ContainsKey(uName))
                         _table.Add(uName, msg.Uid);
+                    else
+                        _table[uName] = msg.Uid;
                     return message;
 
                 /**
