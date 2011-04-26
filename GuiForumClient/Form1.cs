@@ -73,6 +73,8 @@ namespace GuiForumClient
         private ToolStripMenuItem postToolStripMenuItem1;
         private ToolStripMenuItem thredToolStripMenuItem;
         private ToolStripButton replyButton;
+        private ToolStrip toolStrip4;
+        private ToolStripLabel removedFriendButten;
         private RichTextBox postPreview;
         
 
@@ -128,10 +130,6 @@ namespace GuiForumClient
             this.postPreview = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.removethread = new System.Windows.Forms.ToolStripButton();
-            this.removePost = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,9 +144,15 @@ namespace GuiForumClient
             this.thredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.removethread = new System.Windows.Forms.ToolStripButton();
+            this.removePost = new System.Windows.Forms.ToolStripButton();
+            this.replyButton = new System.Windows.Forms.ToolStripButton();
             this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.viewDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.replyButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.removedFriendButten = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -171,6 +175,7 @@ namespace GuiForumClient
             this.toolStripContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).BeginInit();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -250,6 +255,7 @@ namespace GuiForumClient
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.toolStrip4);
             this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.toolStrip2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -389,42 +395,6 @@ namespace GuiForumClient
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(89, 22);
-            this.toolStripButton1.Text = "Add Thread";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButton2.Text = "Add Post";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // removethread
-            // 
-            this.removethread.Image = ((System.Drawing.Image)(resources.GetObject("removethread.Image")));
-            this.removethread.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removethread.Name = "removethread";
-            this.removethread.Size = new System.Drawing.Size(110, 22);
-            this.removethread.Text = "Remove Thread";
-            this.removethread.Click += new System.EventHandler(this.removethread_Click);
-            // 
-            // removePost
-            // 
-            this.removePost.Image = global::GuiForumClient.Properties.Resources.Delete_icon;
-            this.removePost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removePost.Name = "removePost";
-            this.removePost.Size = new System.Drawing.Size(96, 22);
-            this.removePost.Text = "Remove Post";
-            this.removePost.Click += new System.EventHandler(this.removePost_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -546,13 +516,41 @@ namespace GuiForumClient
             this.toolStripContainer2.TabIndex = 0;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
-            // viewDataBindingSource1
+            // toolStripButton1
             // 
-            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(89, 22);
+            this.toolStripButton1.Text = "Add Thread";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // viewDataBindingSource
+            // toolStripButton2
             // 
-            this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(75, 22);
+            this.toolStripButton2.Text = "Add Post";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // removethread
+            // 
+            this.removethread.Image = ((System.Drawing.Image)(resources.GetObject("removethread.Image")));
+            this.removethread.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removethread.Name = "removethread";
+            this.removethread.Size = new System.Drawing.Size(110, 22);
+            this.removethread.Text = "Remove Thread";
+            this.removethread.Click += new System.EventHandler(this.removethread_Click);
+            // 
+            // removePost
+            // 
+            this.removePost.Image = global::GuiForumClient.Properties.Resources.Delete_icon;
+            this.removePost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removePost.Name = "removePost";
+            this.removePost.Size = new System.Drawing.Size(96, 22);
+            this.removePost.Text = "Remove Post";
+            this.removePost.Click += new System.EventHandler(this.removePost_Click);
             // 
             // replyButton
             // 
@@ -562,6 +560,31 @@ namespace GuiForumClient
             this.replyButton.Size = new System.Drawing.Size(59, 22);
             this.replyButton.Text = "Reply ";
             this.replyButton.Click += new System.EventHandler(this.replyButton_Click);
+            // 
+            // viewDataBindingSource1
+            // 
+            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
+            // 
+            // viewDataBindingSource
+            // 
+            this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removedFriendButten});
+            this.toolStrip4.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(189, 25);
+            this.toolStrip4.TabIndex = 2;
+            this.toolStrip4.Text = "toolStrip4";
+            // 
+            // removedFriendButten
+            // 
+            this.removedFriendButten.Name = "removedFriendButten";
+            this.removedFriendButten.Size = new System.Drawing.Size(91, 22);
+            this.removedFriendButten.Text = "Remove Friends";
+            this.removedFriendButten.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // Form1
             // 
@@ -607,6 +630,8 @@ namespace GuiForumClient
             this.toolStripContainer2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).EndInit();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -972,6 +997,15 @@ namespace GuiForumClient
            Form addNewReply = new addReplyWindow(db, client);
             addNewReply.ShowDialog();            
 
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection removedFriends = this.listView2.SelectedItems;
+            for (int i = 0; i < removedFriends.Count; i++)
+            {
+                this.client.removeFriend(removedFriends[i].Text);
+            }
         }
     }
 }

@@ -66,6 +66,7 @@ namespace GuiForumClient
         {
             GetSystemMessage msg = new GetSystemMessage(userName);
             protocol.sendMessage(msg);
+           
         }
 
         public void getThreads()
@@ -95,7 +96,7 @@ namespace GuiForumClient
             int fIdInt = this.db.CurrentForumId.Id;
             int tIdInt = this.db.CurrentThreadId.Id;
             int pIdInt = this.db.CurrentPost.Id;
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, pIdInt, pIdInt, userName, subject, content);
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, 0, userName, subject, content);
             protocol.sendMessage(msg);
         }
         
@@ -159,7 +160,7 @@ namespace GuiForumClient
             int fIdInt = this.db.CurrentForumId.Id;
             int tIdInt = this.db.CurrentThreadId.Id;
             int pIdInt = this.db.CurrentPost.Id;
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, 0, 0 , userName, p_subject, p_content);
+            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, pIdInt, pIdInt, userName, p_subject, p_content);
             protocol.sendMessage(msg);
         }
     }
