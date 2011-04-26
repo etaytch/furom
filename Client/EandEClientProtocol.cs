@@ -9,18 +9,29 @@ namespace Protocol {
     public class EandEProtocol : ProtocolInterface {
 
         ForumTcpClient _client;
-
+        Queue<string> msgs;        
 
         public EandEProtocol()
         {
             _client = new ForumTcpClient();
-
+            msgs = new Queue<string>();
         }
 
         public EandEProtocol(int p_port_num, string p_ip_num)
         {
             _client = new ForumTcpClient(p_port_num,p_ip_num);
-            
+            msgs = new Queue<string>();
+        }
+
+        public void divideMsgs(string msg) {
+            char c = (char)4;
+            string restMsg = msg;
+            int ind = restMsg.IndexOf(c);
+            while (ind >= 0) {
+                this.msgs.Enqueue(restMsg.Substring(0, ind));
+                restMsg = restMsg.Substring(ind + 1);
+                ind = restMsg.IndexOf(c);
+            }
         }
 
         public void connect() {
@@ -33,14 +44,21 @@ namespace Protocol {
 
         public Message getMessage()
         {
-            Message message;            
-            string msg = _client.receive();
+            Message message;
+            string str,msg;
+            if (msgs.Count == 0) {
+                msg = _client.receive();
+                divideMsgs(msg);
+            }
+
+            str = msgs.Dequeue(); 
+            
             List<Quartet> topics = new List<Quartet>();
             String tStr;
             Quartet quad;
             int pind, par;
             string sub, auth;
-            EandETokenizer tok = new EandETokenizer(msg, "/$");
+            EandETokenizer tok = new EandETokenizer(str, "/$");
             string next = tok.getNextToken();            
             switch (next) {
                 
@@ -70,8 +88,7 @@ namespace Protocol {
                     string uName = tok.getNextToken();
                     List<string> users = new List<string>();
 
-                    while (!(tStr = tok.getNextToken()).Equals("\0"))
-                    {
+                    while (!(tStr = tok.getNextToken()).Equals("\0")) {
                         users.Add(tStr);
                     }
 
@@ -87,14 +104,13 @@ namespace Protocol {
                 case "FRIENDSCONTENT":
                     uName = tok.getNextToken();
                     List<string> friends = new List<string>();
-                    
-                    while(!(tStr = tok.getNextToken()).Equals("\0")){
+
+                    while (!(tStr = tok.getNextToken()).Equals("\0")) {
                         friends.Add(tStr);
                     }
 
-                    message = new FriendsContentMessage(uName,friends);
+                    message = new FriendsContentMessage(uName, friends);
                     return message;
-
 
                 /**
                 * THREADCONTENT\n
