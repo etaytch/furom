@@ -211,10 +211,12 @@ namespace ForumSever
                     break;
                     
                 case "DELETETHREAD":
-                    t_userID = _lm.FindMemberByUser(((DeleteThreadMessage)t_msg)._uName).getID();
+                    //t_userID = _lm.FindMemberByUser(((DeleteThreadMessage)t_msg)._uName).getID();
+                    t_uname = ((DeleteThreadMessage)t_msg)._uName;
                     t_tid = ((DeleteThreadMessage)t_msg)._tId;
                     t_fid = ((DeleteThreadMessage)t_msg)._fId;
-                    returnValue = _lm.removeTread(t_fid,t_userID, t_tid);
+                    /*
+                    returnValue = _lm.removeTread(t_fid,t_tid,t_uname);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, ((DeleteThreadMessage)t_msg)._uName);
@@ -222,6 +224,7 @@ namespace ForumSever
                     else {
                         _ee.sendMessage(new Acknowledgment(((DeleteThreadMessage)t_msg)._uName, "DeleteThread Succssfuly"));
                     }
+                    */
                     //_outputMassage.Enqueue(new Message(""));
                     break;
 

@@ -18,7 +18,7 @@ namespace ForumSever
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;            
-            _conn = new SqlConnection("server=VADI-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -42,8 +42,8 @@ namespace ForumSever
         }
         */
         }
-        /*Members founctions  */
- 
+        /*Members founctions  */       
+
         public int MemberCount()
         {
             return _Members.Count();
@@ -66,7 +66,7 @@ namespace ForumSever
             }
             return -1; // not reachable..
         }
-        
+
         public bool addPost(int p_tid, int p_fid, int p_parentId, string p_topic, string p_content, string p_uname) {
             Boolean ans = false;
             int nextPostId = 0; 
@@ -116,7 +116,7 @@ namespace ForumSever
             }
             return ans;
         }
-        
+
         public bool addMember(MemberInfo memb)
         {
             memb.setID( _counter);
@@ -162,6 +162,22 @@ namespace ForumSever
             _conn.Close();
         }
 
+        /*
+        public int MemberCount();
+        public int getCurrentPostID(int p_fid, int p_tid);
+        public bool addPost(int p_tid, int p_fid, int p_parentId, string p_topic, string p_content, string p_uname);
+        public bool removePost(int p_tid, int p_fid, int p_index);
+        public ForumPost getPost(int p_fid, int p_tid, int p_index, string p_uname);
+        public bool addMember(MemberInfo memb);
+        private SqlDataReader runSelectSQL(String command);
+        private void runOtherSQL(String command);
+        public object FindMemberByEmail(string mail);
+        public void markUserAsLogged(string username, int logged);
+        public bool isMember(string username);
+        public bool isThread(string where);
+        public bool isPost(string where);
+        */
+
         public object FindMemberByEmail(string mail){
             SqlDataReader reader = runSelectSQL("SELECT * FROM Users WHERE email = '"+mail+"'");
 
@@ -195,11 +211,11 @@ namespace ForumSever
 
         public void markUserAsLogged(string username,int logged) {
             //Console.WriteLine("UPDATE Users SET logged=1 WHERE username = '" + username + "'");
-            runOtherSQL("UPDATE Users SET logged=" + logged + " WHERE username = '" + username + "'");            
+            runOtherSQL("UPDATE Users SET logged=" + logged + " WHERE username = '" + username + "'");
         }
 
-        public bool isMember(string where) {
-            return recordExsist("SELECT * FROM Users WHERE " + where);
+        public bool isMember(string username) {
+            return recordExsist("SELECT * FROM Users WHERE username = '" + username + "'");
         }
 
         public bool isThread(string where) {
@@ -214,6 +230,9 @@ namespace ForumSever
             return recordExsist("SELECT * FROM Forums WHERE fid=" + p_fid);
         }
 
+        public bool isFriend(string p_uname, string p_friendUname) {
+            return recordExsist("SELECT * FROM " + p_uname + " WHERE uname=" + p_friendUname);
+        }
         public bool isLogin(string username) {
             return recordExsist("SELECT * FROM Users WHERE (username='"+username+"') and (logged=1)");
         }
@@ -284,6 +303,39 @@ namespace ForumSever
             }
                 return -1;
         }
+
+        public List<string> getUsers(string p_uname) {
+            List<string> ans = new List<string>(); 
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Users where username <> '"+p_uname+"'");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+            while (reader.Read()) {
+                ans.Add(reader["username"].ToString());
+            }
+            _conn.Close();
+            return ans;
+        }
+
+        public List<string> getFriends(string p_uname) {
+            List<string> ans = new List<string>();
+            SqlDataReader reader = runSelectSQL("SELECT * FROM "+p_uname);
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+            while (reader.Read()) {
+                ans.Add(reader["username"].ToString());
+            }
+            _conn.Close();
+            return ans;
+        }
+
 
         public List<Quartet> getForums() {
             List<Quartet> ans = new List<Quartet>();
@@ -365,6 +417,31 @@ namespace ForumSever
             return -1; // not reachable..
         }
 
+        public void addFriend(string p_uname, string p_friendUname) {
+            try {
+                Console.WriteLine("INSERT INTO " + p_uname + " Values ('" + p_friendUname+"')");
+                runSelectSQL("INSERT INTO " + p_uname + " Values ('" + p_friendUname + "')");
+                _conn.Close();
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error while adding friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
+                Console.WriteLine(e.ToString());
+            }     
+
+        }
+
+        public void removeFriend(string p_uname, string p_friendUname) {
+            try {
+                Console.WriteLine("Delete From " + p_uname + " where uname = '" + p_friendUname + "'");
+                runSelectSQL("Delete From " + p_uname + " where uname = '" + p_friendUname + "'");
+                _conn.Close();
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error while removing friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
+                Console.WriteLine(e.ToString());
+            }
+
+        }
         /*Threads founctions  */
 
         public int addTread(ForumThread p_tread){
@@ -385,12 +462,6 @@ namespace ForumSever
                 Console.WriteLine("Error while adding thread. Maybe the topic '" + p_tread._topic + "' already exsist?");
                 Console.WriteLine(e.ToString());
             }     
-/*
-            Forum tForum = findForum(p_tread.getForumID());
-            if (tForum!=null) {
-                return tForum.addTread(p_tread);                                
-            }
-*/
             // Etay
             return p_tread.getThreadID();
         }
@@ -545,6 +616,6 @@ namespace ForumSever
             }
             return null;
         }
-
+       
     }
 }

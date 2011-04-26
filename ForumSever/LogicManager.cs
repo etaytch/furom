@@ -6,13 +6,7 @@ using MessagePack;
 
 namespace ForumSever
 {
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+
     public class LogicManager
     {
         public Database _db; //should be private
@@ -29,7 +23,32 @@ namespace ForumSever
         }
 
 
-        /*Member functions*/
+        /*
+        public int register(MemberInfo memb);
+        public int login(string p_user, string p_pass);
+        public int logout(string p_user);
+        public bool isMember(string p_user);
+        public bool isLogged(string p_user);
+        public List<string> getUsers(string p_uname);
+        public List<string> getFriends(string p_uname);
+        public MemberInfo FindMemberByUser(string p_user);
+        public int addMeAsFriend(string p_uname, string p_friendUname);
+        public int removeMeAsFriend(string p_uname, string p_friendUname);
+        public List<Quartet> getForums();
+        public bool isForum(int p_fid);
+        public int addForum(int p_userID, string p_topic);
+        public int addTread(string p_uname, int p_fid, string p_topic, string p_content);
+        public List<Quartet> getThreadPosts(int p_fid, int p_tid);
+        public ForumThread getThread(int p_fid, int p_tid);
+        public List<Quartet> getForum(int p_fid);
+        public int removeTread(int p_fid, int p_tid, string p_uname);
+        public int addPost(int p_tid, int p_fid, int parentId, string p_topic, string p_content, string p_uname);
+        public ForumPost getPost(int p_fid, int p_tid, int p_index, string p_uname);
+        public int removePost(int p_fid, int p_tid, int p_index, string p_uname);
+        */
+
+
+        /*Member functions*/        
 
         public int register(MemberInfo memb)
         {
@@ -104,7 +123,7 @@ namespace ForumSever
         public List<string> getFriends(string p_uname) {
             return _db.getFriends(p_uname);
         }
-
+        
         public MemberInfo FindMemberByUser(string p_user)
         {
             return _db.FindMember("username = '" + p_user + "'");
@@ -115,7 +134,6 @@ namespace ForumSever
             if (!_db.isMember(p_uname)) {
                 //return "incurrect user name";
                 return -3;
-
             }
             if (!_db.isMember(p_friendUname)) {
                 //return "the user you are trying to befriend dosn't exist";
@@ -223,14 +241,12 @@ namespace ForumSever
         {
             return _db.getForum(p_fid);
         }
-
-        public int removeTread(int p_fid, int p_userID, int p_tID)
+        /*
+        public int removeTread(int p_fid, int p_tid,string p_uname)
         {
-            MemberInfo t_user = _db.FindMemberByID(p_userID);
-            if (t_user == null)
-            {
-                return -3;
+            if (!_db.isMember(p_uname)) {
                 //return "incurrect user name";
+                return -3;
             }
             ForumThread tThread = null;
             for (int i = 0; i < _db.MemberCount(); i++)
@@ -255,7 +271,7 @@ namespace ForumSever
             //return "the topic could not been found"; ;
             return -6;
         }
-
+        */
 
         /*Posts founctions  */        
         public int addPost(int p_tid, int p_fid, int parentId, string p_topic, string p_content,string p_uname)
@@ -276,7 +292,8 @@ namespace ForumSever
             //int index = t_thr.addPost(p_fid, p_tid, p_topic, p_content, t_user);
             return 0;
         }
-        //(t_fid, t_tid, t_postIndex,t_uname);
+        
+
         public ForumPost getPost(int p_fid, int p_tid, int p_index, string p_uname)
         {           
             if (!_db.isMember(p_uname))
@@ -293,7 +310,7 @@ namespace ForumSever
             return _db.getPost(p_fid, p_tid, p_index, p_uname);
 
         }
-        //t_fid, t_tid, t_postIndex,t_uname
+
         public int removePost(int p_fid, int p_tid, int p_index, string p_uname)
         {
             //MemberInfo t_user = _db.FindMemberByID(p_userID);
