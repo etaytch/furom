@@ -44,7 +44,7 @@ namespace ForumSever
         {
             int returnValue;
             int t_userID;
-            int t_friendID;
+            string t_friendUname;
             int t_tid;
             int t_fid;            
             int t_postIndex;
@@ -126,21 +126,45 @@ namespace ForumSever
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
+                case "GETUSERS":
+                    t_uname = ((GetUsersMessage)t_msg)._uName;                    
+                    if (_lm.isMember(t_uname)) {
+                        if (_lm.isMember(t_uname)) {
+                            List<string> users = _lm.getUsers(t_uname);
+                            _ee.sendMessage(new UsersContentMessage(t_uname,users));
+                        }
+                        else {
+                            sendError(-19, t_uname);
+                        }
+                        sendError(-3, t_uname);
+                    }
+                    break;
+                case "GETFRIENDS":
+                    t_uname = ((GetFriendsMessage)t_msg)._uName;
+                    if (_lm.isMember(t_uname)) {
+                        if (_lm.isMember(t_uname)) {
+                            List<string> friends = _lm.getFriends(t_uname);
+                            _ee.sendMessage(new FriendsContentMessage(t_uname, friends));
+                        }
+                        else {
+                            sendError(-19, t_uname);
+                        }
+                        sendError(-3, t_uname);
+                    }
+                    break;
 
 
                 case "ADDFRIEND":
-                    t_userID = _lm.FindMemberByUser(((AddFriendMessage)t_msg)._uName).getID();
-                    t_friendID = _lm.FindMemberByUser(((AddFriendMessage)t_msg)._friend).getID();
-
-                    returnValue = _lm.addMeAsFriend(t_userID, t_friendID);
+                    t_uname = ((AddFriendMessage)t_msg)._uName;
+                    t_friendUname = ((AddFriendMessage)t_msg)._friend;
+                    returnValue = _lm.addMeAsFriend(t_uname,t_friendUname);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((AddFriendMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
                         _ee.sendMessage(new Acknowledgment(((AddFriendMessage)t_msg)._uName, "AddFriend Succssfuly"));
-                    }
-                    //_outputMassage.Enqueue(new Message(""));
+                    }                    
                     break;
                 case "REGISTER":        // Done with DB
                     //((RegisterMessage)t_msg).
@@ -157,9 +181,9 @@ namespace ForumSever
                     //_outputMassage.Enqueue(new Message(""));
                     break;
                 case "REMOVEFRIEND":
-                    t_userID = _lm.FindMemberByUser(((RemoveFriendMessage)t_msg)._uName).getID();
-                    t_friendID = _lm.FindMemberByUser(((RemoveFriendMessage)t_msg)._friend).getID();
-                    returnValue = _lm.removeMeAsFriend(t_userID, t_friendID);
+                    t_uname = ((RemoveFriendMessage)t_msg)._uName;
+                    t_friendUname = ((RemoveFriendMessage)t_msg)._friend;
+                    returnValue = _lm.removeMeAsFriend(t_uname, t_friendUname);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, ((RemoveFriendMessage)t_msg)._uName);
@@ -278,7 +302,7 @@ namespace ForumSever
                     err = new Error(uname, "incorrect user name");
                     break;
                 case -4:
-                    err = new Error(uname, "nhe user you are trying to unfriend is not a friend of yours");
+                    err = new Error(uname, "the user you are trying to unfriend is not a friend of yours");
                     break;
                 case -5:
                     err = new Error(uname, "topic already exists, choose new topic");
@@ -309,6 +333,12 @@ namespace ForumSever
                     break;
                 case -19:
                     err = new Error(uname, uname + " is not logged in.");
+                    break;
+                case -20:
+                    err = new Error(uname, "the user you are trying to unfriend dosn't exist");
+                    break;
+                case -21:
+                    err = new Error(uname, "could not retrieve users list");
                     break;
                 default :
                     err = new Error(uname, "an unexpected error append. please try again");
