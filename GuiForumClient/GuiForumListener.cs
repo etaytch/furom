@@ -51,10 +51,10 @@ namespace GuiForumClient
                     handle_ThreadContentMessage((ThreadContentMessage)msg);
                     break;
                 case "USERSCONTENT":
-                  //  handle_UsersContentMessage((UsersContentMessage)msg);
+                    handle_UsersContentMessage((UsersContentMessage)msg);
                     break;
                 case "FRIENDSCONTENT":
-                  //  handle_FriendsContentMessage((FriendsContentMessage)msg);
+                    handle_FriendsContentMessage((FriendsContentMessage)msg);
                     break;
                 case "POSTCONTENT":
                     handle_PostContentMessage((PostContentMessage)msg);
@@ -62,6 +62,16 @@ namespace GuiForumClient
                 default:
                     break;
             }
+        }
+
+        private void handle_FriendsContentMessage(FriendsContentMessage friendsContentMessage)
+        {
+            db.Friends = friendsContentMessage._friends;
+        }
+
+        private void handle_UsersContentMessage(UsersContentMessage usersContentMessage)
+        {
+            db.Users = usersContentMessage._users;
         }
 
         private void handle_PostContentMessage(PostContentMessage postContentMessage)

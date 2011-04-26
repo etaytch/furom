@@ -8,6 +8,7 @@ namespace GuiForumClient
 {
     public class GuiClient 
     {
+        //string ip = "10.100.101.105";
         string ip = "10.100.101.124";
         int port = 10116;
         Database db;
@@ -64,9 +65,16 @@ namespace GuiForumClient
 
         public void getForums()
         {
-            GetSystemMessage msg = new GetSystemMessage(userName);
-            protocol.sendMessage(msg);
-           
+            GetSystemMessage msg1 = new GetSystemMessage(userName);
+            protocol.sendMessage(msg1);
+            GetUsersMessage msg3 = new GetUsersMessage(userName);
+            protocol.sendMessage(msg3);
+            GetFriendsMessage msg2 = new GetFriendsMessage(userName);
+            protocol.sendMessage(msg2);
+            
+
+
+
         }
 
         public void getThreads()
