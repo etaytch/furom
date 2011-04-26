@@ -40,7 +40,7 @@ namespace Protocol {
             Quartet quad;
             int pind, par;
             string sub, auth;
-            EandETokenizer tok = new EandETokenizer(msg, "\n");
+            EandETokenizer tok = new EandETokenizer(msg, "/$");
             string next = tok.getNextToken();            
             switch (next) {
                 
