@@ -20,7 +20,7 @@ namespace Protocol {
             }
             else {
                 string ans = _str.Substring(0, ind);                
-                _str = _str.Substring(ind + 1);
+                _str = _str.Substring(ind + 2);
                 return ans;
             }
         }
