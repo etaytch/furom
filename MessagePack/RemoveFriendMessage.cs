@@ -13,7 +13,7 @@ namespace MessagePack
         }
 
         public override string ToString() {
-            return "REMOVEFRIEND\n"+_uName+"\n"+_friend+"\n";
+            return "REMOVEFRIEND/$"+_uName+"/$"+_friend+"/$";
         }
 
         public override string getMessageType() {

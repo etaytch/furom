@@ -14,7 +14,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            string ans = "LOGIN\n"+_uName+"\n"+_password+"\n";
+            string ans = "LOGIN/$"+_uName+"/$"+_password+"/$";
             return ans;
         }
 

@@ -14,7 +14,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "ADDFRIEND\n" + _uName + "\n" + _friend + "\n";
+            return "ADDFRIEND/$" + _uName + "/$" + _friend + "/$";
         }
 
         public override string getMessageType() {

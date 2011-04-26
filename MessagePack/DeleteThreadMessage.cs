@@ -12,7 +12,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "DELETETHREAD\n" + _fId + "\n" + _tId + "\n" + _pIndex + "\n" + _uName + "\n";
+            return "DELETETHREAD/$" + _fId + "/$" + _tId + "/$" + _pIndex + "/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

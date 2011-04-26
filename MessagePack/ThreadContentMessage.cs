@@ -24,9 +24,9 @@ namespace MessagePack
 
         }
         public override string ToString() {
-            string ans = "THREADCONTENT\n" + _fId + "\n" + _tId + "\n" + _uName + "\n" + _author + "\n" + _subject + "\n" + _body + "\n";
+            string ans = "THREADCONTENT/$" + _fId + "/$" + _tId + "/$" + _uName + "/$" + _author + "/$" + _subject + "/$" + _body + "/$";
             for (int i = 0; i < _posts.Count;i++ ) {
-                ans += _posts.ElementAt(i) + "\n";
+                ans += _posts.ElementAt(i) + "/$";
             }
 
             return ans;

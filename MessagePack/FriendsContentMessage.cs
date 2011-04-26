@@ -13,9 +13,9 @@ namespace MessagePack
                 _friends = friends;
         }
         public override string ToString() {
-            string ans = "FRIENDSCONTENT\n" + _uName;
+            string ans = "FRIENDSCONTENT/$" + _uName;
             for (int i = 0; i < _friends.Count; i++) {
-                ans += _friends.ElementAt(i) + "\n";
+                ans += _friends.ElementAt(i) + "/$";
             }
 
             return ans;

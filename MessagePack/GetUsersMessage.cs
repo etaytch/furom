@@ -11,7 +11,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "GETUSERS\n" + _uName + "\n";
+            return "GETUSERS/$" + _uName + "/$";
         }
 
         public override string getMessageType() {
