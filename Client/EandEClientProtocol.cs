@@ -59,6 +59,42 @@ namespace Protocol {
                                     Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken());
                     return message;
 
+                /**
+                * USERSCONTENT\n
+                * <username>\n
+                * <friend #1>\n
+                * ......
+                * <friend #n>\n
+                **/
+                case "USERSCONTENT":
+                    string uName = tok.getNextToken();
+                    List<string> users = new List<string>();
+
+                    while (!(tStr = tok.getNextToken()).Equals("\0"))
+                    {
+                        users.Add(tStr);
+                    }
+
+                    message = new UsersContentMessage(uName, users);
+                    return message;
+                /**
+                * FRIENDSCONTENT\n
+                * <username>\n
+                * <friend #1>\n
+                * ......
+                * <friend #n>\n
+                **/
+                case "FRIENDSCONTENT":
+                    uName = tok.getNextToken();
+                    List<string> friends = new List<string>();
+                    
+                    while(!(tStr = tok.getNextToken()).Equals("\0")){
+                        friends.Add(tStr);
+                    }
+
+                    message = new FriendsContentMessage(uName,friends);
+                    return message;
+
 
                 /**
                 * THREADCONTENT\n
@@ -76,7 +112,7 @@ namespace Protocol {
                 case "THREADCONTENT":
                     int forumID = Convert.ToInt32(tok.getNextToken());
                     int threadID = Convert.ToInt32(tok.getNextToken());                    
-                    string uName = tok.getNextToken();
+                    uName = tok.getNextToken();
                     string author = tok.getNextToken();
                     string subject = tok.getNextToken();
                     string content = tok.getNextToken();
@@ -166,7 +202,7 @@ namespace Protocol {
         }
 
         public void sendMessage(Message msg) {
-            _client.send(msg.ToString());
+            _client.send(msg.ToString()+(char)4);
         }
     }
 }
