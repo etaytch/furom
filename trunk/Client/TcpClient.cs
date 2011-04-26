@@ -54,27 +54,31 @@ namespace Client
         ************************/
         public void connect()
         {
-            try
-            {
-                tcpClient.Connect(ip_num, port_num);
-                networkStream = tcpClient.GetStream();
-                listner_thread = new Thread(new ThreadStart(listen));
-                this.connected = true;
-                listner_thread.Start();
-            }
-            catch (SocketException)
-            {
-                Console.WriteLine("Server not available!");
-            }
-            catch (System.IO.IOException)
-            {
-                Console.WriteLine("Server not available!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("strange exception");
 
-                //Console.WriteLine(e.ToString());
+            if (!connected)
+            {
+                try
+                {
+                    tcpClient.Connect(ip_num, port_num);
+                    networkStream = tcpClient.GetStream();
+                    listner_thread = new Thread(new ThreadStart(listen));
+                    this.connected = true;
+                    listner_thread.Start();
+                }
+                catch (SocketException)
+                {
+                    Console.WriteLine("Server not available!");
+                }
+                catch (System.IO.IOException)
+                {
+                    Console.WriteLine("Server not available!");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("strange exception");
+
+                    //Console.WriteLine(e.ToString());
+                }
             }
         }
 
