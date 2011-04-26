@@ -18,7 +18,7 @@ namespace MessagePack {
         }
 
         public override string ToString() {
-            return _pIndex + "\n" + _parent + "\n" + _subject + "\n" + _author;
+            return _pIndex + "/$" + _parent + "/$" + _subject + "/$" + _author;
         }
 
     }

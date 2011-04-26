@@ -16,7 +16,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "Acknowledgment\n" + _uName + "\n" + _msg+ "\n";
+            return "Acknowledgment/$" + _uName + "/$" + _msg+ "/$";
         }
 
         public override string getMessageType() {

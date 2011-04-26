@@ -19,7 +19,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "ADDTHREAD\n" + _fId + "\n" + _uName + "\n" + _subject + "\n" + _post + "\n";
+            return "ADDTHREAD/$" + _fId + "/$" + _uName + "/$" + _subject + "/$" + _post + "/$";
         }
 
         public override string getMessageType() {

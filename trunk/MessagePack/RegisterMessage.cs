@@ -30,8 +30,8 @@ namespace MessagePack
         }
 
         public override string ToString() {
-            return "REGISTER\n" + _fName + "\n" + _lName + "\n" + _uName + "\n" + _password + "\n" + _confirmedPassword + "\n"
-                + _sex + "\n" + _email + "\n" + _birthday + "\n" + _country + "\n" + _city + "\n";
+            return "REGISTER/$" + _fName + "/$" + _lName + "/$" + _uName + "/$" + _password + "/$" + _confirmedPassword + "/$"
+                + _sex + "/$" + _email + "/$" + _birthday + "/$" + _country + "/$" + _city + "/$";
         }
 
         public override string getMessageType() {

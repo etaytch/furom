@@ -17,7 +17,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "DELETEPOST\n" + _fId + "\n" + _tId + "\n" + _pIndex + "\n" + _uName + "\n";
+            return "DELETEPOST/$" + _fId + "/$" + _tId + "/$" + _pIndex + "/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

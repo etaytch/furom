@@ -10,7 +10,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "LOGOUT\n" + _uName + "\n";
+            return "LOGOUT/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

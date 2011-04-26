@@ -14,7 +14,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "GETFORUM\n" + _fId + "\n" + _uName + "\n";
+            return "GETFORUM/$" + _fId + "/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

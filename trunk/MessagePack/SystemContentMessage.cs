@@ -18,9 +18,9 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            string ans =  "SYSTEMCONTENT\n" + _uName + "\n";
+            string ans =  "SYSTEMCONTENT/$" + _uName + "/$";
             for (int i = 0; i < _forums.Count;i++ ) {
-                ans += _forums.ElementAt(i) + "\n";
+                ans += _forums.ElementAt(i) + "/$";
             }
 
             return ans;

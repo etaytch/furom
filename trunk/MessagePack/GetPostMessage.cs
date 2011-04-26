@@ -19,7 +19,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "GETPOST\n" + _fId + "\n" + _tId + "\n" + _pIndex + "\n" + _uName + "\n";
+            return "GETPOST/$" + _fId + "/$" + _tId + "/$" + _pIndex + "/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

@@ -16,7 +16,7 @@ namespace MessagePack
         }
         public override  string ToString()
         {
-            return "GETSYSTEM\n" + _uName + "\n";
+            return "GETSYSTEM/$" + _uName + "/$";
         }
 
         public override string getMessageType() {

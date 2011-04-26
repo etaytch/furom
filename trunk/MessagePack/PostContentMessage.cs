@@ -26,7 +26,7 @@ namespace MessagePack
         }
         public override string ToString()
         {
-            return "POSTCONTENT\n" + _fId + "\n" + _tId + "\n" + _pIndex + "\n" + _parentInd + "\n" + _uName + "\n" + _author + "\n" + _subject + "\n" + _body + "\n";
+            return "POSTCONTENT/$" + _fId + "/$" + _tId + "/$" + _pIndex + "/$" + _parentInd + "/$" + _uName + "/$" + _author + "/$" + _subject + "/$" + _body + "/$";
         }
 
         public override string getMessageType()

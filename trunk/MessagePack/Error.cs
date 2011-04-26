@@ -18,7 +18,7 @@ namespace MessagePack
 
         public override string ToString()
         {
-            return "ERROR\n" + _uName + "\n" + _msg + "\n";
+            return "ERROR/$" + _uName + "/$" + _msg + "/$";
         }
 
         public override string getMessageType() {
