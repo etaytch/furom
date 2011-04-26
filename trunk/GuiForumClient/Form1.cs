@@ -991,7 +991,14 @@ namespace GuiForumClient
             ListView.SelectedListViewItemCollection newFriends = this.friends_list.SelectedItems;
             for (int i = 0; i < newFriends.Count; i++)
             {
-                this.client.addFriend(newFriends[i].Text);
+                if (db.Friends.Contains(newFriends[i].Text))
+                {
+                    this.db.Massege += newFriends[i].Text + " is already a friend of yours!!!\n";
+                }
+                else
+                {
+                  this.client.addFriend(newFriends[i].Text);
+                }
             }
         }
 
