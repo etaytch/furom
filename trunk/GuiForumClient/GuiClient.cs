@@ -11,7 +11,7 @@ namespace GuiForumClient
         //string ip = "10.100.101.105";
         //string ip = "10.100.101.124";
         //string ip = "132.72.193.200";
-        string ip = "192.168.1.164";
+        string ip = "132.72.198.197";
         int port = 10116;
         Database db;
         string userName;
@@ -19,6 +19,49 @@ namespace GuiForumClient
         GuiForumListener forum;
         bool loggedIn;
         Thread t1;
+
+
+
+
+        
+        public GuiClient(string p_uName, Database p_db)
+        {
+            this.userName = p_uName;
+            this.db = p_db;
+            this.loggedIn = false;
+            protocol = new EandEProtocol(port, ip);
+            //protocol = new EandEProtocol(/*port, ip*/);
+            this.startListner();
+            
+        }
+
+        private void startListner()
+        {
+            forum = new GuiForumListener(protocol, db);
+            t1 = new Thread(new ThreadStart(forum.run));
+            t1.Start();
+        }
+        
+        public string IP
+        {
+            get { return ip; }
+        }
+
+        internal void setNewIp()
+        {
+            this.t1.Abort();
+            protocol = new EandEProtocol();
+            this.startListner();
+            this.db.Massege = "changed server IP to: localhost";
+        }
+        public void setNewIp(string p_ip)
+        {
+            ip = p_ip;
+            this.t1.Abort();
+            protocol = new EandEProtocol(port, ip);
+            this.startListner();
+            this.db.Massege = "changed server IP to: " + p_ip;
+        }
 
         public void connect()
         {
@@ -30,19 +73,7 @@ namespace GuiForumClient
             protocol.disconnect();
         }
 
-        public GuiClient(string p_uName, Database p_db)
-        {
-            this.userName = p_uName;
-            this.db = p_db;
-            this.loggedIn = false;
-            //protocol = new EandEProtocol(/*port, ip*/);
-            protocol = new EandEProtocol(port, ip);
 
-            forum = new GuiForumListener(protocol, db);
-            t1 = new Thread(new ThreadStart(forum.run));
-            t1.Start();
-            
-        }
         public void register(string p_fName,string p_lName,string p_uName,string p_password,string p_cpassword,string p_sex,string p_email,string p_birthday,string p_country,string p_city)
         {
             protocol.connect();
@@ -174,8 +205,8 @@ namespace GuiForumClient
             if (loggedIn)
             {
                 this.logout();
-                protocol.disconnect();
             }
+            protocol.disconnect();
            
         }
 
@@ -212,10 +243,14 @@ namespace GuiForumClient
 
         public void getUsers()
         {
+            GetSystemMessage msg1 = new GetSystemMessage(userName);
+            protocol.sendMessage(msg1);
         }
 
         public void getFriends()
         {
+            GetFriendsMessage msg2 = new GetFriendsMessage(userName);
+            protocol.sendMessage(msg2);
         }
 
 
@@ -234,5 +269,6 @@ namespace GuiForumClient
                 db.Massege = "you need to select Thread first...!";
             }
         }
+
     }
 }

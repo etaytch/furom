@@ -90,11 +90,20 @@ namespace Client
         ************************/
         public void send(string massege)
         {
-            if (networkStream.CanWrite)
+
+            try
             {
-                Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
-                networkStream.Write(sendBytes, 0, sendBytes.Length);
+                if (networkStream.CanWrite)
+                {
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
+                    networkStream.Write(sendBytes, 0, sendBytes.Length);
+                }
             }
+            catch (NullReferenceException e)
+            {
+                this.disconnect();
+            }
+
         }
 
         /************************
@@ -157,9 +166,12 @@ namespace Client
         public void disconnect()
         {
             connected = false;
-            listner_thread.Abort();
-            networkStream.Close();
-            tcpClient.Close();
+            if (listner_thread != null)
+            {
+                listner_thread.Abort();
+                networkStream.Close();
+                tcpClient.Close();
+            }
         }
 
 

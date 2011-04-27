@@ -190,3 +190,9 @@ D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\G
 D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addReplyWindow.resources
 D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
 C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addPostWindow.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addThreadWindow.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addReplyWindow.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.LoginForm.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.RegisterForm.resources
+C:\Users\Vadi\Desktop\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
