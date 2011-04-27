@@ -186,3 +186,7 @@ C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addPostWindow.resources
+D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addReplyWindow.resources
+D:\My Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
+C:\Users\Vadi\Desktop\forum\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources

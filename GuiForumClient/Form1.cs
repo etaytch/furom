@@ -65,15 +65,20 @@ namespace GuiForumClient
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TreeView treeView1;
-        private TabPage tabPage3;
-        private ListView friends_list;
-        private ToolStrip toolStrip3;
-        private ToolStripLabel removeFriends;
         private TabPage tabPage4;
         private ToolStrip toolStrip5;
-        private ToolStripLabel addFriends;
         private ListView users_list;
         private ToolStripMenuItem replayToolStripMenuItem;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private TabPage tabPage3;
+        private ListView friends_list;
+        private ToolStrip toolStrip2;
+        private ToolStrip toolStrip3;
+        private ToolStripLabel removeFriends;
+        private Button removeFriendButton;
+        private Button button1;
         private RichTextBox postPreview;
         
 
@@ -113,13 +118,9 @@ namespace GuiForumClient
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.friends_list = new System.Windows.Forms.ListView();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.removeFriends = new System.Windows.Forms.ToolStripLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.users_list = new System.Windows.Forms.ListView();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
-            this.addFriends = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.postPreview = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -138,15 +139,24 @@ namespace GuiForumClient
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.threadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.thredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-            this.users_list = new System.Windows.Forms.ListView();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.removeFriends = new System.Windows.Forms.ToolStripLabel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.friends_list = new System.Windows.Forms.ListView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.removeFriendButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.viewDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -155,10 +165,7 @@ namespace GuiForumClient
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.toolStrip5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -167,6 +174,8 @@ namespace GuiForumClient
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -246,47 +255,9 @@ namespace GuiForumClient
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.friends_list);
-            this.tabPage3.Controls.Add(this.toolStrip3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(221, 387);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "friends";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // friends_list
-            // 
-            this.friends_list.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.friends_list.Location = new System.Drawing.Point(3, 28);
-            this.friends_list.Name = "friends_list";
-            this.friends_list.Size = new System.Drawing.Size(215, 356);
-            this.friends_list.TabIndex = 1;
-            this.friends_list.UseCompatibleStateImageBehavior = false;
-            this.friends_list.View = System.Windows.Forms.View.List;
-            // 
-            // toolStrip3
-            // 
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeFriends});
-            this.toolStrip3.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(215, 25);
-            this.toolStrip3.TabIndex = 0;
-            this.toolStrip3.Text = "toolStrip3";
-            // 
-            // removeFriends
-            // 
-            this.removeFriends.Name = "removeFriends";
-            this.removeFriends.Size = new System.Drawing.Size(91, 22);
-            this.removeFriends.Text = "Remove Friends";
-            this.removeFriends.Click += new System.EventHandler(this.addFriend_Click);
-            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.users_list);
             this.tabPage4.Controls.Add(this.toolStrip5);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -297,22 +268,23 @@ namespace GuiForumClient
             this.tabPage4.Text = "users";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // users_list
+            // 
+            this.users_list.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.users_list.Location = new System.Drawing.Point(3, 28);
+            this.users_list.Name = "users_list";
+            this.users_list.Size = new System.Drawing.Size(215, 356);
+            this.users_list.TabIndex = 1;
+            this.users_list.UseCompatibleStateImageBehavior = false;
+            this.users_list.View = System.Windows.Forms.View.List;
+            // 
             // toolStrip5
             // 
-            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addFriends});
             this.toolStrip5.Location = new System.Drawing.Point(3, 3);
             this.toolStrip5.Name = "toolStrip5";
             this.toolStrip5.Size = new System.Drawing.Size(215, 25);
             this.toolStrip5.TabIndex = 0;
             this.toolStrip5.Text = "toolStrip5";
-            // 
-            // addFriends
-            // 
-            this.addFriends.Name = "addFriends";
-            this.addFriends.Size = new System.Drawing.Size(87, 22);
-            this.addFriends.Text = "Add To Friends";
-            this.addFriends.Click += new System.EventHandler(this.toolStripLabel1_Click_1);
             // 
             // splitContainer2
             // 
@@ -421,7 +393,8 @@ namespace GuiForumClient
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.addToolStripMenuItem,
-            this.removeToolStripMenuItem});
+            this.removeToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(792, 24);
@@ -480,16 +453,23 @@ namespace GuiForumClient
             // threadToolStripMenuItem
             // 
             this.threadToolStripMenuItem.Name = "threadToolStripMenuItem";
-            this.threadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.threadToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.threadToolStripMenuItem.Text = "Thread";
             this.threadToolStripMenuItem.Click += new System.EventHandler(this.threadToolStripMenuItem_Click);
             // 
             // postToolStripMenuItem
             // 
             this.postToolStripMenuItem.Name = "postToolStripMenuItem";
-            this.postToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.postToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.postToolStripMenuItem.Text = "Post";
             this.postToolStripMenuItem.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
+            // 
+            // replayToolStripMenuItem
+            // 
+            this.replayToolStripMenuItem.Name = "replayToolStripMenuItem";
+            this.replayToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.replayToolStripMenuItem.Text = "replay";
+            this.replayToolStripMenuItem.Click += new System.EventHandler(this.replayToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
@@ -511,6 +491,28 @@ namespace GuiForumClient
             this.thredToolStripMenuItem.Name = "thredToolStripMenuItem";
             this.thredToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.thredToolStripMenuItem.Text = "thred";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.aboutToolStripMenuItem.Text = "About Furom\'s Forum";
             // 
             // toolStripContainer1
             // 
@@ -538,15 +540,75 @@ namespace GuiForumClient
             this.toolStripContainer2.TabIndex = 0;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
-            // users_list
+            // toolStrip3
             // 
-            this.users_list.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.users_list.Location = new System.Drawing.Point(3, 28);
-            this.users_list.Name = "users_list";
-            this.users_list.Size = new System.Drawing.Size(215, 356);
-            this.users_list.TabIndex = 1;
-            this.users_list.UseCompatibleStateImageBehavior = false;
-            this.users_list.View = System.Windows.Forms.View.List;
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeFriends});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(215, 25);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            this.toolStrip3.Visible = false;
+            // 
+            // removeFriends
+            // 
+            this.removeFriends.Name = "removeFriends";
+            this.removeFriends.Size = new System.Drawing.Size(91, 22);
+            this.removeFriends.Text = "Remove Friends";
+            this.removeFriends.Click += new System.EventHandler(this.addFriend_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.removeFriendButton);
+            this.tabPage3.Controls.Add(this.friends_list);
+            this.tabPage3.Controls.Add(this.toolStrip2);
+            this.tabPage3.Controls.Add(this.toolStrip3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(221, 387);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "friends";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // friends_list
+            // 
+            this.friends_list.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.friends_list.Location = new System.Drawing.Point(3, 28);
+            this.friends_list.Name = "friends_list";
+            this.friends_list.Size = new System.Drawing.Size(215, 356);
+            this.friends_list.TabIndex = 3;
+            this.friends_list.UseCompatibleStateImageBehavior = false;
+            this.friends_list.View = System.Windows.Forms.View.List;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(215, 25);
+            this.toolStrip2.TabIndex = 2;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // removeFriendButton
+            // 
+            this.removeFriendButton.Location = new System.Drawing.Point(8, 3);
+            this.removeFriendButton.Name = "removeFriendButton";
+            this.removeFriendButton.Size = new System.Drawing.Size(207, 25);
+            this.removeFriendButton.TabIndex = 4;
+            this.removeFriendButton.Text = "remove Friends";
+            this.removeFriendButton.UseVisualStyleBackColor = true;
+            this.removeFriendButton.Click += new System.EventHandler(this.removeFriendButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(207, 25);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Add to Friends";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // viewDataBindingSource1
             // 
@@ -555,13 +617,6 @@ namespace GuiForumClient
             // viewDataBindingSource
             // 
             this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
-            // 
-            // replayToolStripMenuItem
-            // 
-            this.replayToolStripMenuItem.Name = "replayToolStripMenuItem";
-            this.replayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.replayToolStripMenuItem.Text = "replay";
-            this.replayToolStripMenuItem.Click += new System.EventHandler(this.replayToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -584,14 +639,8 @@ namespace GuiForumClient
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.toolStrip5.ResumeLayout(false);
-            this.toolStrip5.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
@@ -605,6 +654,10 @@ namespace GuiForumClient
             this.toolStripContainer1.PerformLayout();
             this.toolStripContainer2.ResumeLayout(false);
             this.toolStripContainer2.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -681,22 +734,22 @@ namespace GuiForumClient
         public void FriendsChangedDelegate(object sender, FriendsChangedEventArgs e)
         {
             friends_list.Clear();
-
             foreach (string t_username in e.Friends)
             {
                 friends_list.Items.Add(t_username);
             }
+            this.db.Massege += "\nfriends changed\n";
+
         }
 
         public void UsersChangedDelegate(object sender, UsersChangedEventArgs e)
         {
             users_list.Clear();
-
             foreach (string t_username in e.Users)
             {
                 users_list.Items.Add(t_username);
             }
-
+            this.db.Massege += "\nusers changed\n";
         }
 
         public void CurrentPostChangedDelegate(object sender, CurrentPostChangedEventArgs e)
@@ -976,7 +1029,7 @@ namespace GuiForumClient
             addNewReply.ShowDialog();            
 
         }
-
+/*
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection removedFriends = this.friends_list.SelectedItems;
@@ -1001,10 +1054,41 @@ namespace GuiForumClient
                 }
             }
         }
-
+*/
         private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.replyButton_Click(sender, e);
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
+        }
+
+        private void removeFriendButton_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection removedFriends = this.friends_list.SelectedItems;
+            for (int i = 0; i < removedFriends.Count; i++)
+            {
+                this.client.removeFriend(removedFriends[i].Text);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection newFriends = this.friends_list.SelectedItems;
+            for (int i = 0; i < newFriends.Count; i++)
+            {
+                if (db.Friends.Contains(newFriends[i].Text))
+                {
+                    this.db.Massege += newFriends[i].Text + " is already a friend of yours!!!\n";
+                }
+                else
+                {
+                    this.client.addFriend(newFriends[i].Text);
+                }
+            }
         }
     }
 }

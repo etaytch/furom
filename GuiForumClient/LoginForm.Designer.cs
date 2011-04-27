@@ -67,6 +67,7 @@
             // 
             this.password.Location = new System.Drawing.Point(49, 77);
             this.password.Name = "password";
+            this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(138, 20);
             this.password.TabIndex = 2;
             this.password.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
