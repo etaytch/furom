@@ -13,6 +13,7 @@ namespace GuiForumClient
 {
     public partial class Form1 : Form
     {
+
         public delegate void ForumsChangedInvoker(object sender, ForumsChangedEventArgs e);
         public delegate void ThreadsChangedInvoker(object sender, ThreadsChangedEventArgs e);
         public delegate void PostsChangedInvoker(object sender, PostsChangedEventArgs e);
@@ -40,6 +41,8 @@ namespace GuiForumClient
         private ToolStripButton toolStripButton1;
         private GuiClient client;
 
+        private Database.ChangeEventHandler change_delegate;
+        /*
         private Database.ForumsChangedHandler forums_delegate;
         private Database.ThreadsChangedHandler threads_delegate;
         private Database.PostsChangedHandler posts_delegate;
@@ -47,7 +50,7 @@ namespace GuiForumClient
         private Database.MassegeChangedHandler Massege_delegate;
         private Database.FriendsChangedHandler Friends_delegate;
         private Database.UsersChangedHandler Users_delegate;
-
+        */
 
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem loginToolStripMenuItem;
@@ -86,23 +89,10 @@ namespace GuiForumClient
         {
            
             InitializeComponent();
-            forums_delegate = new Database.ForumsChangedHandler(this.ForumsChanged);
-            threads_delegate = new Database.ThreadsChangedHandler(this.ThreadsChanged);
-            posts_delegate = new Database.PostsChangedHandler(this.PostsChanged);
-            CurrentPost_delegate = new Database.CurrentPostChangedHandler(this.currentPostChanged);
-            Massege_delegate = new Database.MassegeChangedHandler(this.MassegeChanged);
-            Friends_delegate = new Database.FriendsChangedHandler(this.FriendsChanged);
-            Users_delegate = new Database.UsersChangedHandler(this.UsersChanged);
-
+            change_delegate = new Database.ChangeEventHandler(this.ChangeEvent);
             db = new Database();
-            db.ForumsChangedEvent += forums_delegate;
-            db.ThreadsChangedEvent += threads_delegate;
-            db.PostsChangedEvent += posts_delegate;
-            db.CurrentPostChangedEvent += CurrentPost_delegate;
-            db.MassegeChangedEvent += Massege_delegate;
-            db.FriendsChangedEvent += Friends_delegate;
-            db.UsersChangedEvent += Users_delegate;
-            
+            db.change += change_delegate;
+
             this.client = new GuiClient("tmp_user", db);
 
         }
@@ -679,50 +669,34 @@ namespace GuiForumClient
 
         /******************** MVC *****************/
  
-        
-        public void ForumsChanged(object sender, ForumsChangedEventArgs e)
+        public void ChangeEvent(object sender, EventArgs e)
         {
             object[] args = { sender, e };
-            this.Invoke(new ForumsChangedInvoker(ForumsChangedDelegate),args);
-        }
-
-        public void FriendsChanged(object sender, FriendsChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new FriendsChangedInvoker(FriendsChangedDelegate), args);
-        }
-
-        public void UsersChanged(object sender, UsersChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new UsersChangedInvoker(UsersChangedDelegate), args);
-        }
-        
-        public void ThreadsChanged(object sender, ThreadsChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new ThreadsChangedInvoker(ThreadsChangedDelegate), args);
-        }
-
-        public void PostsChanged(object sender, PostsChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new PostsChangedInvoker(PostsChangedDelegate), args);
-
-        }
-
-        public void currentPostChanged(object sender, CurrentPostChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new CurrentPostChangedInvoker(CurrentPostChangedDelegate), args);
-
-        }
-
-        public void MassegeChanged(object sender, MassegeChangedEventArgs e)
-        {
-            object[] args = { sender, e };
-            this.Invoke(new MassegeChangedInvoker(MassegeChangedDelegate), args);
-
+            switch (e.ToString()) {
+                case "DataManagment.ForumsChangedEventArgs":
+                    this.Invoke(new ForumsChangedInvoker(ForumsChangedDelegate), args);
+                    break;
+                case "FriendsChangedEventArgs":
+                    this.Invoke(new FriendsChangedInvoker(FriendsChangedDelegate), args);
+                    break;
+                case "DataManagment.UsersChangedEventArgs":
+                    this.Invoke(new UsersChangedInvoker(UsersChangedDelegate), args);
+                    break;
+                case "DataManagment.ThreadsChangedEventArgs":
+                    this.Invoke(new ThreadsChangedInvoker(ThreadsChangedDelegate), args);
+                    break;
+                case "DataManagment.PostsChangedEventArgs":
+                    this.Invoke(new PostsChangedInvoker(PostsChangedDelegate), args);
+                    break;
+                case "DataManagment.CurrentPostChangedEventArgs":
+                    this.Invoke(new CurrentPostChangedInvoker(CurrentPostChangedDelegate), args);
+                    break;
+                case "DataManagment.MassegeChangedEventArgs":
+                    this.Invoke(new MassegeChangedInvoker(MassegeChangedDelegate), args);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void MassegeChangedDelegate(object sender, MassegeChangedEventArgs e)
