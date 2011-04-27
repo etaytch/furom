@@ -20,6 +20,7 @@ namespace DataManagment
         private ViewData currentForumId;
         private ViewData currentThreadId;
         private string massege;
+        private string popupmassege;
         private List<string> users;
         private List<string> friends;
 
@@ -31,8 +32,8 @@ namespace DataManagment
             currentPost = new PostObject("Welcom to the \"ALUFIM \" furom!","HaAlufim","Have Fun!",-1);	   
 		    currentForumId = new ViewData("Sheker",-1);
             currentThreadId = new ViewData("Sheker", -1);
-
-            massege = null;  //save the last popup massage
+            popupmassege = null; //save the last popup massage
+            massege = null;  //save the last console massage
            // initData();
         }
 
@@ -67,6 +68,12 @@ namespace DataManagment
         {
             get { return massege; }
             set { massege = value ;  MassegeChanged(); }
+        }
+
+        public string PopupMassege
+        {
+            get { return popupmassege; }
+            set { popupmassege = value; PopupMassegeChanged(); }
         }
 
         public List<ViewData> Threads
@@ -178,7 +185,14 @@ namespace DataManagment
             change(this, new CurrentPostChangedEventArgs(CurrentPost));
         }
 
+        protected void PopupMassegeChanged()
+        {
+            change(this, new MassegeChangedEventArgs(Massege));
+        }
+
         protected void MassegeChanged()
+      
+        
         {
             change(this, new MassegeChangedEventArgs(Massege));
         }
@@ -333,6 +347,17 @@ namespace DataManagment
      {
          string _massege;
          public MassegeChangedEventArgs(string p_massege)
+         {
+             _massege = p_massege;
+         }
+         public string Massege
+         { get { return _massege; } }
+     }
+
+     public class PopupMassegeChangedEventArgs : EventArgs
+     {
+         string _massege;
+         public PopupMassegeChangedEventArgs(string p_massege)
          {
              _massege = p_massege;
          }
