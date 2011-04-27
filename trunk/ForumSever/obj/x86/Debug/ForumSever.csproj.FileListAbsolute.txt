@@ -125,3 +125,7 @@ C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\S
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.exe
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\obj\x86\Debug\ForumSever.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\GuiForumClient.exe
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.dll
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\GuiForumClient.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.pdb

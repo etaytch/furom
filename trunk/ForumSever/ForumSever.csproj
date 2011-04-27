@@ -58,6 +58,10 @@
       <Project>{606A07C3-DD37-43AB-8B26-B87A358F1D36}</Project>
       <Name>common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GuiForumClient\GuiForumClient.csproj">
+      <Project>{601DE285-9E38-41B5-99D2-E658F516E81D}</Project>
+      <Name>GuiForumClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessagePack\MessagePack.csproj">
       <Project>{8C5660F1-0EFB-4EFF-ABE8-B9E4F7C7D6BF}</Project>
       <Name>MessagePack</Name>
