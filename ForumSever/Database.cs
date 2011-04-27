@@ -160,7 +160,7 @@ namespace ForumSever
             }
 
             try {
-                runSelectSQL("INSERT INTO Users Values " + str);
+                runSelectSQL("CREATE TABLE " + memb.getUName() + " (uname varchar(50) NOT NULL, PRIMARY KEY (uname),FOREIGN KEY (uname) REFERENCES Users(username))");
                 _conn.Close();
             }
             catch (Exception e) {
