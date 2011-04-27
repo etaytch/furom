@@ -108,7 +108,6 @@ namespace GuiForumClient
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.removeFriendButton = new System.Windows.Forms.Button();
             this.friends_list = new System.Windows.Forms.ListView();
@@ -146,6 +145,7 @@ namespace GuiForumClient
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
+            this.viewDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.viewDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -155,7 +155,6 @@ namespace GuiForumClient
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -167,6 +166,7 @@ namespace GuiForumClient
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -244,10 +244,6 @@ namespace GuiForumClient
             this.treeView1.Size = new System.Drawing.Size(215, 381);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // viewDataBindingSource1
-            // 
-            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
             // 
             // tabPage3
             // 
@@ -605,6 +601,10 @@ namespace GuiForumClient
             this.toolStripContainer2.TabIndex = 0;
             this.toolStripContainer2.Text = "toolStripContainer2";
             // 
+            // viewDataBindingSource1
+            // 
+            this.viewDataBindingSource1.DataSource = typeof(DataManagment.ViewData);
+            // 
             // viewDataBindingSource
             // 
             this.viewDataBindingSource.DataSource = typeof(DataManagment.ViewData);
@@ -616,6 +616,7 @@ namespace GuiForumClient
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.toolStripContainer2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -630,7 +631,6 @@ namespace GuiForumClient
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
@@ -650,10 +650,11 @@ namespace GuiForumClient
             this.toolStripContainer1.PerformLayout();
             this.toolStripContainer2.ResumeLayout(false);
             this.toolStripContainer2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-       
+
         }
 
         private void Form1_Load(object sender, System.EventArgs e)
