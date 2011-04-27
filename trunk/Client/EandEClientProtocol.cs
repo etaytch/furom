@@ -212,6 +212,20 @@ namespace Protocol {
                 case "Acknowledgment":
                     message = new Acknowledgment(tok.getNextToken(), tok.getNextToken());
                     return message;
+
+
+                /**
+                 * PopUpThreadContent\n
+                 * <username>\n
+                 * <msg>\n
+                 **/
+                case "PopUpThreadContent":
+                    message = new Acknowledgment(tok.getNextToken(), tok.getNextToken());
+                    return message;
+
+
+                //PopUpThreadContent
+
             }
             Console.WriteLine("(this is the e&e protocol talking) unknown massage! plese check it..... probably will crash now....");
             return null;
