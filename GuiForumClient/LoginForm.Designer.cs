@@ -69,7 +69,7 @@
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(138, 20);
-            this.password.TabIndex = 2;
+            this.password.TabIndex = 1;
             this.password.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
             // 
             // button1
@@ -88,7 +88,7 @@
             this.button2.Location = new System.Drawing.Point(143, 121);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(77, 23);
-            this.button2.TabIndex = 5;
+            this.button2.TabIndex = 3;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
