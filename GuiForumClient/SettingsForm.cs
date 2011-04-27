@@ -56,16 +56,18 @@ namespace GuiForumClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
+
             if (this.checkBox1.Checked)
             {
                 client.setNewIp();
             }
-             */
-            if (correctText(this.textBox1) && correctText(this.textBox2) && correctText(this.textBox3) && correctText(this.textBox4))
+            else
             {
-                string new_ip = this.textBox1.Text + "." + this.textBox2.Text + "." + this.textBox3.Text + "." + this.textBox4.Text;
-                client.setNewIp(new_ip);
+                if (correctText(this.textBox1) && correctText(this.textBox2) && correctText(this.textBox3) && correctText(this.textBox4))
+                {
+                    string new_ip = this.textBox1.Text + "." + this.textBox2.Text + "." + this.textBox3.Text + "." + this.textBox4.Text;
+                    client.setNewIp(new_ip);
+                }
             }
         }
 
@@ -80,7 +82,20 @@ namespace GuiForumClient
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-          //  if checkBox1.Checked)
+
+                this.textBox1.Enabled = !checkBox1.Checked;
+                this.textBox2.Enabled = !checkBox1.Checked;
+                this.textBox3.Enabled = !checkBox1.Checked;
+                this.textBox4.Enabled = !checkBox1.Checked;
+                if (checkBox1.Checked)
+                {
+                    this.label2.ForeColor = System.Drawing.Color.Gray;
+                }
+                else
+                {
+                    this.label2.ForeColor = System.Drawing.Color.Black;
+                }
+
         }
 
     }
