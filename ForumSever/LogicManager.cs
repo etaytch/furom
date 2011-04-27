@@ -82,8 +82,15 @@ namespace ForumSever
 
             if (_db.isMember(p_user)) {
                 if (!_db.isLogin(p_user)) {
-                    _db.markUserAsLogged(p_user, 1);
-                    return 0;       // no error
+                    if (_db.login(p_user, p_pass)) {
+                        _db.markUserAsLogged(p_user, 1);
+                        return 0;       // no error
+                    }
+                    else {
+                        // incorrect pass
+                        return -23;
+                    }
+                    
                 }
                 else {
                     return -18;     // user already logged in

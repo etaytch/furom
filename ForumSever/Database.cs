@@ -135,6 +135,11 @@ namespace ForumSever
             return ans;
         }
 
+
+        public bool login(string p_user, string p_pass) {
+            return recordExsist("SELECT * FROM Users WHERE (username = '" + p_user + "') and (password = '"+p_pass+"')");
+        }
+
         public bool addMember(MemberInfo memb)
         {
             memb.setID( _counter);
@@ -360,7 +365,7 @@ namespace ForumSever
 
         public List<string> getUsers(string p_uname) {
             List<string> ans = new List<string>(); 
-            SqlDataReader reader = runSelectSQL("SELECT * FROM Users where username <> '"+p_uname+"'");
+            SqlDataReader reader = runSelectSQL("SELECT * FROM Users");
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
@@ -668,6 +673,5 @@ namespace ForumSever
             }
             return null;
         }
-       
     }
 }

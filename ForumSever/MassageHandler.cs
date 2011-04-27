@@ -52,86 +52,112 @@ namespace ForumSever
             string t_topic;
             string t_content;
             string t_uname;
+            string t_fname;
+            string t_lname;
+            string t_pass;
+            string t_sex;
+            string t_email;
+            string t_birthday;
+            string t_city;
+            string t_country;
             MemberInfo tMem;
             
             switch (t_msg.getMessageType())
             {
-                case "LOGIN":   // Done with DB
-                    returnValue = _lm.login(((LoginMessage)t_msg)._uName, ((LoginMessage)t_msg)._password);
+                case "LOGIN":   // Done with DB                    
+                    LoginMessage t_loginMsg = ((LoginMessage)t_msg);
+
+                    t_uname     =   t_loginMsg._uName;
+                    t_pass      =   t_loginMsg._password;
+                    
+                    returnValue = _lm.login(t_uname, t_pass);
                     if (returnValue < 0) {
-                        sendError(returnValue, ((LoginMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((LoginMessage)t_msg)._uName, "Login Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "Login Succssfuly"));
                     }
                     //_outputMassage.Enqueue(new Acknowledgment(((LoginMessage)t_msg)._uName,"Login Succssfuly"));
                     break;
                 case "LOGOUT":  // Done with DB
-                    returnValue = _lm.logout(((LogoutMessage)t_msg)._uName);
+                    LogoutMessage t_logoutMsg = ((LogoutMessage)t_msg);
+
+                    t_uname     =    t_logoutMsg._uName;
+                    
+                    returnValue = _lm.logout(t_uname);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((LogoutMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((LogoutMessage)t_msg)._uName, "Logout Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "Logout Succssfuly"));
                     }
 
                     //_outputMassage.Enqueue(new Acknowledgment(((LogoutMessage)t_msg)._uName, "Logout Succssfuly"));
                     break;
                 case "ADDPOST":     // Done with DB
-                    //t_userID = _lm.FindMemberByUser(((AddPostMessage)t_msg)._uName).getID();
-                    t_uname = ((AddPostMessage)t_msg)._uName;
-                    t_tid = ((AddPostMessage)t_msg)._tId;
-                    t_fid = ((AddPostMessage)t_msg)._fId;
+                    AddPostMessage t_addPostMsg = ((AddPostMessage)t_msg);
+
+                    t_uname         =   t_addPostMsg._uName;
+                    t_tid           =   t_addPostMsg._tId;
+                    t_fid           =   t_addPostMsg._fId;
                     // t_postIndex = parentId???
-                    t_postIndex = ((AddPostMessage)t_msg)._pIndex;
-                    t_topic = ((AddPostMessage)t_msg)._subject;
-                    t_content = ((AddPostMessage)t_msg)._post;
+                    t_postIndex     =   t_addPostMsg._pIndex;
+                    t_topic         =   t_addPostMsg._subject;
+                    t_content       =   t_addPostMsg._post;
+
                     returnValue = _lm.addPost(t_tid, t_fid, t_postIndex, t_topic, t_content, t_uname);
                     if (returnValue < 0){
-                        sendError(returnValue, ((AddPostMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((AddPostMessage)t_msg)._uName, "AddPost Succssfuly"));
-                    }
-                    //_outputMassage.Enqueue(new Acknowledgment(((LoginMessage)t_msg)._uName,"Login Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "AddPost Succssfuly"));
+                    }                    
                     break;
                 case "ADDTHREAD":       // Done with DB
-                    t_uname = ((AddThreadMessage)t_msg)._uName;
-                    t_fid = ((AddThreadMessage)t_msg)._fId;                    
-                    t_topic = ((AddThreadMessage)t_msg)._subject;
-                    t_content = ((AddThreadMessage)t_msg)._post;
+                    AddThreadMessage t_addThreadMsg = ((AddThreadMessage)t_msg);
+
+                    t_uname     =   t_addThreadMsg._uName;
+                    t_fid       =   t_addThreadMsg._fId;
+                    t_topic     =   t_addThreadMsg._subject;
+                    t_content   =   t_addThreadMsg._post;
+                    
                     returnValue = _lm.addTread(t_uname, t_fid, t_topic, t_content);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((AddThreadMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((AddThreadMessage)t_msg)._uName, "AddThread Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "AddThread Succssfuly"));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
 
                 // NOT YET IMPLEMENTED AT CLIENT SIDE!!!!!!!!!!!!!!!!! (Etay)
                 case "ADDFORUM":
-                    tMem = _lm.FindMemberByUser(((AddForumMessage)t_msg)._uName);
-                    t_userID = _lm.FindMemberByUser(((AddForumMessage)t_msg)._uName).getID();
-                    
-                    t_topic = ((AddForumMessage)t_msg)._topic;
+                    AddForumMessage t_addForumMsg = ((AddForumMessage)t_msg);
+
+                    t_uname     =   t_addForumMsg._uName;
+                    tMem        =   _lm.FindMemberByUser(t_uname);
+                    t_userID    =   _lm.FindMemberByUser(t_uname).getID();
+                    t_topic     =   t_addForumMsg._topic;
+
                     returnValue = _lm.addForum(t_userID, t_topic);
                     if (returnValue < 0) {
-                        sendError(returnValue, ((AddForumMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((AddForumMessage)t_msg)._uName, "AddForum Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "AddForum Succssfuly"));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
                 case "GETUSERS":
-                    Console.WriteLine("in GETUSERS");
-                    t_uname = ((GetUsersMessage)t_msg)._uName;
+                    GetUsersMessage t_getUsersMsg = ((GetUsersMessage)t_msg);
+
+                    t_uname     =    t_getUsersMsg._uName;
+                    
                     if (_lm.isMember(t_uname)) {
-                        if (_lm.isMember(t_uname)) {
+                        if (_lm.isLogged(t_uname)) {
                             List<string> users = _lm.getUsers(t_uname);
                             _ee.sendMessage(new UsersContentMessage(t_uname, users));
                         }
@@ -144,9 +170,12 @@ namespace ForumSever
                     }
                     break;
                 case "GETFRIENDS":
-                    t_uname = ((GetFriendsMessage)t_msg)._uName;
+                    GetFriendsMessage t_getFriendsMsg = ((GetFriendsMessage)t_msg);
+
+                    t_uname     =   t_getFriendsMsg._uName;
+
                     if (_lm.isMember(t_uname)) {
-                        if (_lm.isMember(t_uname)) {
+                        if (_lm.isLogged(t_uname)) {
                             List<string> friends = _lm.getFriends(t_uname);
                             _ee.sendMessage(new FriendsContentMessage(t_uname, friends));
                         }
@@ -161,134 +190,181 @@ namespace ForumSever
 
 
                 case "ADDFRIEND":
-                    t_uname = ((AddFriendMessage)t_msg)._uName;
-                    t_friendUname = ((AddFriendMessage)t_msg)._friend;
+                    AddFriendMessage t_addFriendMsg = ((AddFriendMessage)t_msg);
+                    
+                    t_uname         =       t_addFriendMsg._uName;
+                    t_friendUname   =       t_addFriendMsg._friend;
+                    
                     returnValue = _lm.addMeAsFriend(t_uname,t_friendUname);
                     if (returnValue < 0)
                     {
                         sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((AddFriendMessage)t_msg)._uName, "AddFriend Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "AddFriend Succssfuly"));
                     }                    
                     break;
-                case "REGISTER":        // Done with DB
-                    //((RegisterMessage)t_msg).
-                    MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._sex, ((RegisterMessage)t_msg)._country, ((RegisterMessage)t_msg)._city, ((RegisterMessage)t_msg)._email, ((RegisterMessage)t_msg)._birthday,"0");
-                    //MemberInfo memb = new MemberInfo(((RegisterMessage)t_msg)._uName, ((RegisterMessage)t_msg)._fName, ((RegisterMessage)t_msg)._lName, ((RegisterMessage)t_msg)._password, ((RegisterMessage)t_msg)._email);
+                case "REGISTER":        // Done with DB                    
+                    RegisterMessage t_registerMsg = ((RegisterMessage)t_msg);
+                    
+                    t_uname         =       t_registerMsg._uName;
+                    t_fname         =       t_registerMsg._fName;
+                    t_lname         =       t_registerMsg._lName;
+                    t_pass          =       t_registerMsg._password;
+                    t_sex           =       t_registerMsg._sex;
+                    t_country       =       t_registerMsg._country;
+                    t_city          =       t_registerMsg._city;
+                    t_email         =       t_registerMsg._email;
+                    t_birthday      =       t_registerMsg._birthday;
+
+                    MemberInfo memb = new MemberInfo(t_uname, t_fname, t_lname, t_pass, t_sex, t_country, t_city, t_city, t_birthday, "0");                    
                     returnValue = _lm.register(memb);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((RegisterMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((RegisterMessage)t_msg)._uName, "REGISTER Succssfuly"));
-                    }
-                    //_outputMassage.Enqueue(new Message(""));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "REGISTER Succssfuly."));
+                        List<string> users = _lm.getUsers(t_uname);
+                        foreach (string str in users) {
+                            if(!t_uname.Equals(str)){
+                                _ee.sendMessage(new UsersContentMessage(t_uname, users));
+                            }                            
+                        }                                                
+                    }                    
                     break;
                 case "REMOVEFRIEND":
-                    t_uname = ((RemoveFriendMessage)t_msg)._uName;
-                    t_friendUname = ((RemoveFriendMessage)t_msg)._friend;
+                    RemoveFriendMessage t_removeFriendMsg = ((RemoveFriendMessage)t_msg);
+
+                    t_uname         =       t_removeFriendMsg._uName;
+                    t_friendUname   =       t_removeFriendMsg._friend;
+
                     returnValue = _lm.removeMeAsFriend(t_uname, t_friendUname);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((RemoveFriendMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((RemoveFriendMessage)t_msg)._uName, "RemoveFriend Succssfuly"));
-                    }
-                    //_outputMassage.Enqueue(new Message(""));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "RemoveFriend Succssfuly"));
+                    }                    
                     break;
                 case "DELETEPOST":      // DB is ready for tests.. Client does not support it!!                    
-                    
-                    t_uname = ((DeletePostMessage)t_msg)._uName;
-                    t_tid = ((DeletePostMessage)t_msg)._tId;
-                    t_fid = ((DeletePostMessage)t_msg)._fId;
-                    t_postIndex = ((DeletePostMessage)t_msg)._pIndex;
+                    DeletePostMessage t_deletePostMsg = ((DeletePostMessage)t_msg);
+
+                    t_uname        =    t_deletePostMsg._uName;
+                    t_tid          =    t_deletePostMsg._tId;
+                    t_fid          =    t_deletePostMsg._fId;
+                    t_postIndex    =    t_deletePostMsg._pIndex;
+                        
                     returnValue = _lm.removePost(t_fid, t_tid, t_postIndex,t_uname);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((DeletePostMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((DeletePostMessage)t_msg)._uName, "DeletePost Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "DeletePost Succssfuly"));
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
                     
                 case "DELETETHREAD":
-                    //t_userID = _lm.FindMemberByUser(((DeleteThreadMessage)t_msg)._uName).getID();
-                    t_uname = ((DeleteThreadMessage)t_msg)._uName;
-                    t_tid = ((DeleteThreadMessage)t_msg)._tId;
-                    t_fid = ((DeleteThreadMessage)t_msg)._fId;
+                    DeleteThreadMessage t_deleteThreadMsg = ((DeleteThreadMessage)t_msg);
+
+                    t_uname     =       t_deleteThreadMsg._uName;
+                    t_tid       =       t_deleteThreadMsg._tId;
+                    t_fid       =       t_deleteThreadMsg._fId;
                     
                     returnValue = _lm.removeThread(t_fid,t_tid,t_uname);
                     if (returnValue < 0)
                     {
-                        sendError(returnValue, ((DeleteThreadMessage)t_msg)._uName);
+                        sendError(returnValue, t_uname);
                     }
                     else {
-                        _ee.sendMessage(new Acknowledgment(((DeleteThreadMessage)t_msg)._uName, "DeleteThread Succssfuly"));
+                        _ee.sendMessage(new Acknowledgment(t_uname, "DeleteThread Succssfuly"));
                     }
-                    
-                    //_outputMassage.Enqueue(new Message(""));
+                                        
                     break;
 
                 case "GETPOST": // DB is ready for tests.. Client does not support it!!                    
-                    //t_userID = _lm.FindMemberByUser(((GetPostMessage)t_msg)._uName).getID();
-                    t_uname = ((GetPostMessage)t_msg)._uName;
-                    t_tid = ((GetPostMessage)t_msg)._tId;
-                    t_fid = ((GetPostMessage)t_msg)._fId;
-                    t_postIndex = ((GetPostMessage)t_msg)._pIndex;
+                    GetPostMessage t_getPostMsg = ((GetPostMessage)t_msg);
+
+                    t_uname         =   t_getPostMsg._uName;
+                    t_tid           =   t_getPostMsg._tId;
+                    t_fid           =   t_getPostMsg._fId;
+                    t_postIndex     =   t_getPostMsg._pIndex;
                     
                     ForumPost returnPost = _lm.getPost(t_fid, t_tid, t_postIndex,t_uname);
                     if (returnPost == null)
                     {
-                        sendError(-8, ((GetPostMessage)t_msg)._uName);
+                        sendError(-8, t_uname);
                     }
                     else {
                         _ee.sendMessage(new PostContentMessage(t_fid, t_tid, t_postIndex, returnPost._parentId,t_uname, returnPost._autor, returnPost._topic, returnPost._content));
                     }
-                    //_outputMassage.Enqueue(new Message(""));
+                    
                     break;
 
                 case "GETTHREAD":
-                    t_tid = ((GetThreadMessage)t_msg)._tId;
-                    t_fid = ((GetThreadMessage)t_msg)._fId;
+                    GetThreadMessage t_getThreadMsg = ((GetThreadMessage)t_msg);
+
+                    t_uname     =       t_getThreadMsg._uName;
+                    t_tid       =       t_getThreadMsg._tId;
+                    t_fid       =       t_getThreadMsg._fId;
 
                     ForumThread returnThread = _lm.getThread(t_fid, t_tid);
                     if (returnThread == null)
                     {
-                        sendError(-6, ((GetThreadMessage)t_msg)._uName);
+                        sendError(-6, t_uname);
                     }
                     else {
                         List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);
-                        if (posts==null) {
-                            Console.WriteLine("posts==null!!");
-                        }
-                        _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, ((GetThreadMessage)t_msg)._uName, returnThread._autor,returnThread._topic, returnThread._content, posts));
+                        _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, t_uname, returnThread._autor, returnThread._topic, returnThread._content, posts));
                     }                    
                     break;
 
                     // Display All forums in the system
                 case "GETSYSTEM":
-                    //t_userID = _lm.FindMemberByUser(((GetSystemMessage)t_msg)._uName).getID();
-                    List<Quartet> t_forums = _lm.getForums();
-                    
-                    _ee.sendMessage(new SystemContentMessage(((GetSystemMessage)t_msg)._uName, t_forums));
+                    GetSystemMessage t_getSystemMsg = ((GetSystemMessage)t_msg);
+                    t_uname = t_getSystemMsg._uName;
+                    if (_lm.isMember(t_uname)) {
+                        if (_lm.isLogged(t_uname)) {
+                            List<Quartet> t_forums = _lm.getForums();
+                            _ee.sendMessage(new SystemContentMessage(t_uname, t_forums));
+                        }
+                        else {
+                            sendError(-19, t_uname);
+                        }
+                    }
+                    else {
+                        sendError(-3, t_uname);
+                    }                                        
                     break;
 
                 case "GETFORUM":
-                    t_fid = ((GetForumMessage)t_msg)._fId;
+                    GetForumMessage t_getForumMsg = ((GetForumMessage)t_msg);
+
+                    t_uname     =    t_getForumMsg._uName;
                     
-                    if (!_lm.isForum(t_fid))
-                    {
-                        sendError(-9, ((GetForumMessage)t_msg)._uName);
+                    if (_lm.isMember(t_uname)) {
+                        if (_lm.isLogged(t_uname)) {
+                            t_fid = t_getForumMsg._fId;
+
+                            if (!_lm.isForum(t_fid)) {
+                                sendError(-9, t_uname);
+                            }
+                            else {
+                                List<Quartet> forumTopics = _lm.getForum(t_fid);
+                                _ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));
+                            }
+                        }
+                        else {
+                            sendError(-19, t_uname);
+                        }
                     }
                     else {
-                        List<Quartet> forumTopics = _lm.getForum(t_fid);
-                        _ee.sendMessage(new ForumContentMessage(t_fid, ((GetForumMessage)t_msg)._uName, forumTopics));
+                        sendError(-3, t_uname);
                     }
+                    
                     break;
                 default:
                     break;
@@ -352,6 +428,10 @@ namespace ForumSever
                 case -22:
                     err = new Error(uname, "sql error occured");
                     break;
+                case -23:
+                    err = new Error(uname, "incorrect password");
+                    break;
+
                 default :
                     err = new Error(uname, "an unexpected error append. please try again");
                     break;

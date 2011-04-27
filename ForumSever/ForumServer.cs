@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-
 namespace ForumSever
 {
     public class ForumServer
@@ -18,7 +17,7 @@ namespace ForumSever
             mh.startForum();
             Thread keyboard_listener = new Thread(new ThreadStart(listen));
             keyboard_listener.Start();
-            Console.WriteLine("Welcome to the Forum Server!");
+            Console.WriteLine("Welcome to the Forum Server!");            
             while (connected)
             {
                 mh.readMassage();
