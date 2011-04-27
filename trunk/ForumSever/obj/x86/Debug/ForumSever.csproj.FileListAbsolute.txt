@@ -131,5 +131,5 @@ C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\G
 C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.pdb
 C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\GuiForumClient.exe
 C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\Client.dll
-C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\GuiForumClient.pdb
 C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\Client.pdb
+C:\Users\Vadi\Desktop\furom\ForumSever\bin\Debug\GuiForumClient.pdb

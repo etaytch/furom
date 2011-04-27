@@ -59,6 +59,9 @@ namespace GuiForumClient
                 case "POSTCONTENT":
                     handle_PostContentMessage((PostContentMessage)msg);
                     break;
+                case "POPUPCONTENT":
+                    handle_PopupContentMessage((PopUpContent)msg);
+                    break;
                 default:
                     break;
             }
@@ -78,7 +81,10 @@ namespace GuiForumClient
         {
             db.setCurrent(postContentMessage._subject, postContentMessage._author, postContentMessage._body, postContentMessage._pIndex);
         }
-
+        private void handle_PopupContentMessage(PopUpContent PopupContentMessage)
+        {
+            db.PopupMassege = PopupContentMessage.getMsg();
+        }
         private void handle_ThreadContentMessage(ThreadContentMessage threadContentMessage)
         {
             int t_tId = threadContentMessage._tId;

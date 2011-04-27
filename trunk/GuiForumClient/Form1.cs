@@ -19,8 +19,10 @@ namespace GuiForumClient
         public delegate void PostsChangedInvoker(object sender, PostsChangedEventArgs e);
         public delegate void CurrentPostChangedInvoker(object sender, CurrentPostChangedEventArgs e);
         public delegate void MassegeChangedInvoker(object sender, MassegeChangedEventArgs e);
+        public delegate void PopupMassegeChangedInvoker(object sender, PopupMassegeChangedEventArgs e);
         public delegate void FriendsChangedInvoker(object sender, FriendsChangedEventArgs e);
         public delegate void UsersChangedInvoker(object sender, UsersChangedEventArgs e);
+
 
         private StatusStrip statusStrip1;
         private ToolStripProgressBar toolStripProgressBar1;
@@ -272,7 +274,7 @@ namespace GuiForumClient
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(243, 384);
+            this.tabPage3.Size = new System.Drawing.Size(268, 384);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "friends";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -292,7 +294,7 @@ namespace GuiForumClient
             this.friends_list.Dock = System.Windows.Forms.DockStyle.Fill;
             this.friends_list.Location = new System.Drawing.Point(3, 28);
             this.friends_list.Name = "friends_list";
-            this.friends_list.Size = new System.Drawing.Size(237, 353);
+            this.friends_list.Size = new System.Drawing.Size(262, 353);
             this.friends_list.TabIndex = 3;
             this.friends_list.UseCompatibleStateImageBehavior = false;
             this.friends_list.View = System.Windows.Forms.View.List;
@@ -301,7 +303,7 @@ namespace GuiForumClient
             // 
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(237, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(262, 25);
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -331,7 +333,7 @@ namespace GuiForumClient
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(243, 384);
+            this.tabPage4.Size = new System.Drawing.Size(268, 384);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "users";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -351,7 +353,7 @@ namespace GuiForumClient
             this.users_list.Dock = System.Windows.Forms.DockStyle.Fill;
             this.users_list.Location = new System.Drawing.Point(3, 28);
             this.users_list.Name = "users_list";
-            this.users_list.Size = new System.Drawing.Size(237, 353);
+            this.users_list.Size = new System.Drawing.Size(262, 353);
             this.users_list.TabIndex = 1;
             this.users_list.UseCompatibleStateImageBehavior = false;
             this.users_list.View = System.Windows.Forms.View.List;
@@ -360,7 +362,7 @@ namespace GuiForumClient
             // 
             this.toolStrip5.Location = new System.Drawing.Point(3, 3);
             this.toolStrip5.Name = "toolStrip5";
-            this.toolStrip5.Size = new System.Drawing.Size(237, 25);
+            this.toolStrip5.Size = new System.Drawing.Size(262, 25);
             this.toolStrip5.TabIndex = 0;
             this.toolStrip5.Text = "toolStrip5";
             // 
@@ -534,21 +536,21 @@ namespace GuiForumClient
             // threadToolStripMenuItem
             // 
             this.threadToolStripMenuItem.Name = "threadToolStripMenuItem";
-            this.threadToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.threadToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.threadToolStripMenuItem.Text = "Thread";
             this.threadToolStripMenuItem.Click += new System.EventHandler(this.threadToolStripMenuItem_Click);
             // 
             // postToolStripMenuItem
             // 
             this.postToolStripMenuItem.Name = "postToolStripMenuItem";
-            this.postToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.postToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.postToolStripMenuItem.Text = "Post";
             this.postToolStripMenuItem.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
             // 
             // replayToolStripMenuItem
             // 
             this.replayToolStripMenuItem.Name = "replayToolStripMenuItem";
-            this.replayToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.replayToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.replayToolStripMenuItem.Text = "replay";
             this.replayToolStripMenuItem.Click += new System.EventHandler(this.replayToolStripMenuItem_Click);
             // 
@@ -564,13 +566,13 @@ namespace GuiForumClient
             // postToolStripMenuItem1
             // 
             this.postToolStripMenuItem1.Name = "postToolStripMenuItem1";
-            this.postToolStripMenuItem1.Size = new System.Drawing.Size(120, 24);
+            this.postToolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
             this.postToolStripMenuItem1.Text = "Post";
             // 
             // thredToolStripMenuItem
             // 
             this.thredToolStripMenuItem.Name = "thredToolStripMenuItem";
-            this.thredToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.thredToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.thredToolStripMenuItem.Text = "Thread";
             // 
             // helpToolStripMenuItem
@@ -732,6 +734,9 @@ namespace GuiForumClient
                 case "DataManagment.MassegeChangedEventArgs":
                     this.Invoke(new MassegeChangedInvoker(MassegeChangedDelegate), args);
                     break;
+                case "DataManagment.PopupMassegeChangedEventArgs":
+                    this.Invoke(new PopupMassegeChangedInvoker(PopupMassegeChangedDelegate), args);
+                    break;
                 default:
                     break;
             }
@@ -741,6 +746,16 @@ namespace GuiForumClient
         {
             this.richTextBox1.Text += "\n\n";
             this.richTextBox1.Text+=e.Massege;
+            this.richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            this.richTextBox1.ScrollToCaret();
+            this.richTextBox1.Refresh();
+        }
+
+        public void PopupMassegeChangedDelegate(object sender, PopupMassegeChangedEventArgs e)
+        {
+            new NotifyWindow("", e.Massege);
+            this.richTextBox1.Text += "\n\n";
+            this.richTextBox1.Text += e.Massege;
             this.richTextBox1.SelectionStart = richTextBox1.Text.Length;
             this.richTextBox1.ScrollToCaret();
             this.richTextBox1.Refresh();

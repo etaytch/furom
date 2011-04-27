@@ -54,6 +54,7 @@
     <Compile Include="FriendsContentMessage.cs" />
     <Compile Include="GetFriendsMessage.cs" />
     <Compile Include="GetUsersMessage.cs" />
+    <Compile Include="PopUpContent.cs" />
     <Compile Include="Quartet.cs" />
     <Compile Include="SystemContentMessage.cs" />
     <Compile Include="ForumContentMessage.cs" />
