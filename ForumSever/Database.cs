@@ -22,25 +22,7 @@ namespace ForumSever
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
-            /*
-                try {
-
-                    _conn.Open();
-                    //SqlDataReader ans = null;
-                    //ans = runSQL("INSERT INTO Users Values ('etaytch1','etay','tchechanovski','1234','m','Israel','Beer Sheva','etaytch@gmail.com','06.04.1985')");
-                
-                    while (myReader.Read()) {
-                        Console.WriteLine(myReader["fid"].ToString());
-                        Console.WriteLine(myReader["fname"].ToString());
-                    }
-                
-                }
-                catch (Exception e) {
-                    Console.WriteLine(e.ToString());
-                }                                                
-            
-        }
-        */
+            runOtherSQL("UPDATE Users SET logged=0, currForum=-1,currThread=-1");            
         }
         /*Members founctions  */       
 
@@ -154,7 +136,9 @@ namespace ForumSever
             str += ",'" + memb.getCity() + "'";
             str += ",'" + memb.getEmail() + "'";
             str += ",'" + memb.getBirthday() + "'";
-            str += ", " + 0 + ")";
+            str += "," + 0;
+            str += "," + (-1);
+            str += "," + (-1) + ")";
             try {             
                 runSelectSQL("INSERT INTO Users Values "+str);
                 _conn.Close();
@@ -182,11 +166,7 @@ namespace ForumSever
             _conn.Open();
             SqlDataReader ans = null;
             SqlCommand myCommand = new SqlCommand(command, _conn);                        
-            return myCommand.ExecuteReader();
-            
-            //SqlCommand cmd = new SqlCommand();
-            //cmd.CommandText = command;
-            //cmd.Connection = _conn;                                                
+            return myCommand.ExecuteReader();            
         }
 
         private void runOtherSQL(String command) {
@@ -408,9 +388,6 @@ namespace ForumSever
 
 
             while (reader.Read()) {
-                //public Quartet(int pIndex, int parent, string subject, string author) {
-  //              Console.WriteLine("fid = " + Convert.ToInt32(reader["fid"].ToString()));
-  //              Console.WriteLine("fname = " + reader["fname"].ToString());
                 ans.Add(new Quartet(Convert.ToInt32(reader["fid"].ToString()), 0, reader["fname"].ToString(), ""));
             }
             _conn.Close();
@@ -672,6 +649,100 @@ namespace ForumSever
 
             }
             return null;
+        }
+
+        public void updateCurrentThread(int t_fid, int t_tid, string t_uname) {
+            runOtherSQL("UPDATE Users SET currForum=" + t_fid + ", currThread = " + t_tid + " WHERE username = '" + t_uname + "'");
+        }
+
+        internal List<string> getFriendsToUpdate(string t_uname) {
+            List<string> ans = new List<string>();
+            List<string> allUsers = getUsers(t_uname);
+            foreach(string user in allUsers){
+                if(!t_uname.Equals(user)){
+                    if (isFriend(user, t_uname)) {
+                        ans.Add(user);
+                    }
+                }
+            }
+            return ans;
+        }
+
+        public string getForumName(int t_fid) {
+            SqlDataReader reader = runSelectSQL("SELECT fname FROM Forums WHERE (fid=" + t_fid + ")");
+            string ans = "";
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+
+            while (reader.Read()) {
+                //public ForumThread(int fid,string p_topic, string p_content, string p_author)
+                ans = reader["fname"].ToString();
+                _conn.Close();
+                return ans;
+            }
+            return ans;                        
+        }
+
+        public List<string> getForumViewers(int t_fid) {
+            List<string> ans = new List<string>();
+
+            SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (curFurom=" + t_fid + ") and (logged=1)");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+
+            while (reader.Read()) {
+                ans.Add(reader["username"].ToString());
+            }
+            _conn.Close();
+
+            return ans;            
+        }
+
+        internal List<string> getThreadViewersToUpdate(string t_uname, int t_fid, int t_tid) {
+            List<string> ans = new List<string>();
+            SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (currForum=" + t_fid+") and (currThread="+t_tid+") and (logged=1)");
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+
+            while (reader.Read()) {
+                ans.Add(reader["username"].ToString());
+            }
+            _conn.Close();
+
+
+            return ans;
+        }
+
+        public string getThreadName(int t_fid, int t_tid) {
+            SqlDataReader reader = runSelectSQL("SELECT subject FROM Threads WHERE (fid=" + t_fid + ") and (fid="+t_tid+")");
+            string ans = "";
+            if (!reader.HasRows) {
+                Console.WriteLine("SQL=empty");
+                _conn.Close();
+                return ans;
+            }
+
+
+            while (reader.Read()) {
+                //public ForumThread(int fid,string p_topic, string p_content, string p_author)
+                ans = reader["fname"].ToString();
+                _conn.Close();
+                return ans;
+            }
+            return ans;                        
+            
         }
     }
 }

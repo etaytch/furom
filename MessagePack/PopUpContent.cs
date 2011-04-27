@@ -9,10 +9,19 @@ namespace MessagePack
     public class PopUpContent : Message
     {
         private string _msg;
+        private string t_uname;
+        private string forumName;
+        private string threadName;
+        private string t_topic;
 
-        public PopUpContent(string uname, string forumName, string topic)
-            : base(uname) {            
-            _msg = "User "+uname+" added new topic \""+topic+"\" to "+forumName;
+        public PopUpContent(string p_uname, string friend,string p_forumName, string p_topic)
+            : base(friend) {
+                _msg = "User " + p_uname + " added new topic \"" + p_topic + "\" to forum: \"" + p_forumName+"\"";
+        }
+
+        public PopUpContent(string p_uname, string friend,string p_forumName, string p_threadName, string p_topic)
+            : base(friend) {
+                _msg = "User " + p_uname + " added new post \"" + p_topic + "\" to thread: \"" + p_topic + "\" in forum: \"" + p_forumName + "\"";
         }
 
         public override string ToString()

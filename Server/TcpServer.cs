@@ -297,11 +297,12 @@ namespace Server
         ************************/
         public void send(string massege)
         {
-            if (networkStream.CanWrite)
-            {
-                Console.WriteLine("Sending: \n---------------------\n{0}\n---------------------\n", massege);
-                Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
-                networkStream.Write(sendBytes, 0, sendBytes.Length);
+            if (networkStream!=null) {
+                if (networkStream.CanWrite) {
+                    Console.WriteLine("Sending: \n---------------------\n{0}\n---------------------\n", massege);
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(massege);
+                    networkStream.Write(sendBytes, 0, sendBytes.Length);
+                }
             }
         }
 

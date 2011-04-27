@@ -236,13 +236,14 @@ namespace Protocol {
                     return message;
 
                 /**
-           * ERROR\n
-           * <errormsg>\n
-           **/
+                * ERROR\n
+                * <errormsg>\n
+                **/
                 case "Acknowledgment":
                     message = new Acknowledgment(tok.getNextToken(), tok.getNextToken());
                     return message;
-
+                default:
+                    return new Error("System","Unrecognized Message for the protocol to send!");
             }
             Console.WriteLine("(this is the e&e protocol talking) unknown massage! plese check it..... probably will crash now....");
             return null;
