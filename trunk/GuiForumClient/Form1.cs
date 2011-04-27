@@ -652,7 +652,7 @@ namespace GuiForumClient
             ((System.ComponentModel.ISupportInitialize)(this.viewDataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+       
         }
 
         private void Form1_Load(object sender, System.EventArgs e)
@@ -666,6 +666,22 @@ namespace GuiForumClient
         }
 
 
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo)) {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;                   
+                default:
+                    client.exit();
+                    break;
+            }
+        }
 
         /******************** MVC *****************/
  
