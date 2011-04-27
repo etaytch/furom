@@ -197,12 +197,12 @@ namespace DataManagment
 
         protected void FriendsChanged()
         {
-            FriendsChangedEvent(this, new FriendsChangedEventArgs(Friends));
+            FriendsChangedEvent(this, new FriendsChangedEventArgs(friends));
         }
         
         protected void UsersChanged()
         {
-            UsersChangedEvent(this, new UsersChangedEventArgs(Users));
+            UsersChangedEvent(this, new UsersChangedEventArgs(users));
         } 
 
 

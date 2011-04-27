@@ -68,7 +68,10 @@ namespace GuiForumClient
             {
                 this.error.Text = "missing last name";
             }
-
+            else if (!(this.checkBox1.Checked))
+            {
+                this.error.Text = "You must read the License agreement";
+            }
             else
             {
               this.client.register(t_fname, t_lname, t_uname, t_pass, t_repass, t_sex, t_mail, t_birthday, t_country, t_city);

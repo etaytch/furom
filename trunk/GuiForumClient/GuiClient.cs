@@ -9,7 +9,9 @@ namespace GuiForumClient
     public class GuiClient 
     {
         //string ip = "10.100.101.105";
-        string ip = "10.100.101.124";
+        //string ip = "10.100.101.124";
+        //string ip = "132.72.193.200";
+        string ip = "192.168.1.164";
         int port = 10116;
         Database db;
         string userName;
@@ -166,10 +168,14 @@ namespace GuiForumClient
 
         public void exit()
         {
-            this.logout();
+            
             GuiForumListener.exit_flag = false;
             t1.Abort();
-            protocol.disconnect();
+            if (loggedIn)
+            {
+                this.logout();
+                protocol.disconnect();
+            }
            
         }
 
@@ -180,14 +186,28 @@ namespace GuiForumClient
 
         public void removeThread(int p_fid,int p_tid)
         {
-            DeleteThreadMessage msg = new DeleteThreadMessage(p_fid, p_tid,this.userName);
-            protocol.sendMessage(msg);
+            if (loggedIn)
+            {
+                DeleteThreadMessage msg = new DeleteThreadMessage(p_fid, p_tid,this.userName);
+                protocol.sendMessage(msg);
+            }  
+            else
+            {
+                db.Massege = "you are not logged in!";
+            }
         }
 
         internal void removePost(int p_fid, int p_tid, int p_index)
         {
-            DeletePostMessage msg = new DeletePostMessage(p_fid, p_tid,p_index, this.userName);
-            protocol.sendMessage(msg);
+            if (loggedIn)
+            {
+                DeletePostMessage msg = new DeletePostMessage(p_fid, p_tid,p_index, this.userName);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you are not logged in!";
+            }
         }
 
         public void getUsers()
@@ -204,8 +224,15 @@ namespace GuiForumClient
             int fIdInt = this.db.CurrentForumId.Id;
             int tIdInt = this.db.CurrentThreadId.Id;
             int pIdInt = this.db.CurrentPost.Id;
-            AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, pIdInt, pIdInt, userName, p_subject, p_content);
-            protocol.sendMessage(msg);
+            if ((db.CurrentForumId.Id != -1) && (db.CurrentThreadId.Id != -1))
+            {
+                AddPostMessage msg = new AddPostMessage(fIdInt, tIdInt, pIdInt, pIdInt, userName, p_subject, p_content);
+                protocol.sendMessage(msg);
+            }
+            else
+            {
+                db.Massege = "you need to select Thread first...!";
+            }
         }
     }
 }
