@@ -61,7 +61,8 @@ namespace ForumSever
             string t_city;
             string t_country;
             MemberInfo tMem;
-            
+            ForumThread returnThread;
+
             switch (t_msg.getMessageType())
             {
                 case "LOGIN":   // Done with DB                    
@@ -112,6 +113,26 @@ namespace ForumSever
                     }
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "AddPost Succssfuly"));
+                        List<string> usersToUpdate = _lm.getFriendsToUpdate(t_uname);   // friends
+                        Console.WriteLine(usersToUpdate.ToString());
+                        List<string> viewersToUpdate = _lm.getThreadViewersToUpdate(t_uname,t_fid,t_tid);
+                        usersToUpdate.Union<string>(viewersToUpdate);
+                        string forumName = _lm.getForumName(t_fid);
+                        string threadName = _lm.getThreadName(t_fid,t_tid);
+                        foreach (string friend in usersToUpdate) {
+                            Console.WriteLine("checking friend: " + friend);
+                            if (_lm.isLogged(friend)) {
+                                Console.WriteLine("***Sending popup to: "+friend);
+                                _ee.sendMessage(new PopUpContent(t_uname, friend, forumName, threadName, t_topic));
+                            }                            
+                        }
+                        
+                        returnThread = _lm.getThread(t_fid, t_tid);
+                        List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);                        
+                        foreach (string viewer in viewersToUpdate) {
+                            _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, t_uname, returnThread._autor, returnThread._topic, returnThread._content, posts));
+                        }
+
                     }                    
                     break;
                 case "ADDTHREAD":       // Done with DB
@@ -129,8 +150,20 @@ namespace ForumSever
                     }
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "AddThread Succssfuly"));
-                    }
-                    //_outputMassage.Enqueue(new Message(""));
+                        List<string> usersToUpdate = _lm.getFriendsToUpdate(t_uname);
+                        string forumName = _lm.getForumName(t_fid);
+                        foreach (string friend in usersToUpdate) {
+                            if (_lm.isLogged(friend)) {
+                                _ee.sendMessage(new PopUpContent(t_uname,friend, forumName, t_topic));
+                            }
+                        }
+
+                        usersToUpdate = _lm.getForumViewers(t_fid);
+                        List<Quartet> forumTopics = _lm.getForum(t_fid);
+                        foreach (string viewer in usersToUpdate) {                            
+                            _ee.sendMessage(new ForumContentMessage(t_fid, viewer, forumTopics));
+                        }
+                    }                    
                     break;
 
                 // NOT YET IMPLEMENTED AT CLIENT SIDE!!!!!!!!!!!!!!!!! (Etay)
@@ -228,7 +261,7 @@ namespace ForumSever
                         List<string> users = _lm.getUsers(t_uname);
                         foreach (string str in users) {
                             if(!t_uname.Equals(str)){
-                                _ee.sendMessage(new UsersContentMessage(t_uname, users));
+                                _ee.sendMessage(new UsersContentMessage(str, users));
                             }                            
                         }                                                
                     }                    
@@ -311,7 +344,7 @@ namespace ForumSever
                     t_tid       =       t_getThreadMsg._tId;
                     t_fid       =       t_getThreadMsg._fId;
 
-                    ForumThread returnThread = _lm.getThread(t_fid, t_tid);
+                    returnThread = _lm.getThread(t_fid, t_tid);
                     if (returnThread == null)
                     {
                         sendError(-6, t_uname);
@@ -319,6 +352,7 @@ namespace ForumSever
                     else {
                         List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);
                         _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, t_uname, returnThread._autor, returnThread._topic, returnThread._content, posts));
+                        _lm.updateCurrentThread(t_fid, t_tid,t_uname);                        
                     }                    
                     break;
 

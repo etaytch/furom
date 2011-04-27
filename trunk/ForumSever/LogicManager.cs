@@ -283,7 +283,7 @@ namespace ForumSever
                 return -6;
                 //return "the topic could not been found";
             }
-            Console.WriteLine("AddPost: "+_db.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname));
+            _db.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname);
             //int index = t_thr.addPost(p_fid, p_tid, p_topic, p_content, t_user);
             return 0;
         }
@@ -342,6 +342,30 @@ namespace ForumSever
             }
             return -1;
         }
-       
+
+
+        public void updateCurrentThread(int t_fid, int t_tid, string t_uname) {
+            _db.updateCurrentThread(t_fid, t_tid, t_uname);
+        }
+
+        public List<string> getFriendsToUpdate(string t_uname) {
+            return _db.getFriendsToUpdate(t_uname);
+        }
+
+        public string getForumName(int t_fid) {
+            return _db.getForumName(t_fid);
+        }
+
+        public List<string> getForumViewers(int t_fid) {
+            return _db.getForumViewers(t_fid);
+        }
+
+        public List<string> getThreadViewersToUpdate(string t_uname, int t_fid, int t_tid) {
+            return _db.getThreadViewersToUpdate(t_uname, t_fid, t_tid);            
+        }
+
+        public string getThreadName(int t_fid, int t_tid) {
+            return _db.getThreadName(t_fid, t_tid);
+        }
     }
 }

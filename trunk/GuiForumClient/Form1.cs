@@ -1044,7 +1044,13 @@ namespace GuiForumClient
             node.Expand();
             if (node.Parent == null)
             {
-                
+                /*
+                TreeNode current = getNodeByName(db.CurrentForumId.Name);
+                if (current != null) 
+                {
+                    current.Collapse();
+                }
+                 */
                 db.CurrentForumId = new ViewData (node.Text,db.findForumIndex(node.Text));
                 client.getThreads();
             }
@@ -1058,6 +1064,17 @@ namespace GuiForumClient
                 int postId= db.findPostIndex(node.Text);
                 client.getPost(postId);
             }
+        }
+
+        private TreeNode getNodeByName(string p_name) {
+            foreach (TreeNode node in treeView1.Nodes) {
+                if (node.Text.Equals(p_name)) 
+                {
+                    return node;
+                }
+
+            }
+            return null;
         }
 
         private void replyButton_Click(object sender, EventArgs e)
