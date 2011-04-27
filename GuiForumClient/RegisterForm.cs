@@ -12,6 +12,7 @@ namespace GuiForumClient
     public partial class RegisterForm : Form
     {
         private GuiClient client;
+        private bool licenseFlag;
 
 
 
@@ -24,6 +25,7 @@ namespace GuiForumClient
         {
             InitializeComponent();
             this.client = client;
+            licenseFlag = true;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -78,6 +80,29 @@ namespace GuiForumClient
               this.client.getForums();
               Close();
             }
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (licenseFlag == true)
+            {
+                this.Licnese.Text = "REALLY???\nYou want to see the License Agreement?\nWhy? Who cares about it?\nJust do what you want with the program\nwe dont care...\n";
+                licenseFlag = false;
+            }
+            else
+            {
+                this.Licnese.Text = "";
+                licenseFlag = true;
+
+            }
+        
+           // this.Licnese.Text = "test";
+           // this.error.Text = "You must read the License agreement"; 
         }
     }
 }

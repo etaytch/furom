@@ -59,6 +59,8 @@
             this.mail = new System.Windows.Forms.MaskedTextBox();
             this.first = new System.Windows.Forms.MaskedTextBox();
             this.last = new System.Windows.Forms.MaskedTextBox();
+            this.Licnese = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // button2
@@ -547,11 +549,33 @@
             this.last.Size = new System.Drawing.Size(138, 20);
             this.last.TabIndex = 6;
             // 
+            // Licnese
+            // 
+            this.Licnese.AutoSize = true;
+            this.Licnese.ForeColor = System.Drawing.Color.MediumBlue;
+            this.Licnese.Location = new System.Drawing.Point(197, 245);
+            this.Licnese.Name = "Licnese";
+            this.Licnese.Size = new System.Drawing.Size(0, 13);
+            this.Licnese.TabIndex = 40;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(276, 208);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(101, 13);
+            this.linkLabel1.TabIndex = 39;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "License Agreement ";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 380);
+            this.Controls.Add(this.Licnese);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -624,5 +648,7 @@
         private System.Windows.Forms.MaskedTextBox mail;
         private System.Windows.Forms.MaskedTextBox first;
         private System.Windows.Forms.MaskedTextBox last;
+        private System.Windows.Forms.Label Licnese;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
