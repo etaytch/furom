@@ -155,54 +155,42 @@ namespace DataManagment
 
         /************************MVC*********************/
         //declerations
-        public delegate void ForumsChangedHandler(object sender, ForumsChangedEventArgs e);
-        public delegate void ThreadsChangedHandler(object sender, ThreadsChangedEventArgs e);
-        public delegate void PostsChangedHandler(object sender, PostsChangedEventArgs e);
-        public delegate void CurrentPostChangedHandler(object sender, CurrentPostChangedEventArgs e);
-        public delegate void MassegeChangedHandler(object sender, MassegeChangedEventArgs e);
-        public delegate void FriendsChangedHandler(object sender, FriendsChangedEventArgs e);
-        public delegate void UsersChangedHandler(object sender, UsersChangedEventArgs e);
+        public delegate void ChangeEventHandler(object sender, EventArgs e);
 
         //variables
-        public event ForumsChangedHandler ForumsChangedEvent;
-        public event ThreadsChangedHandler ThreadsChangedEvent;
-        public event PostsChangedHandler PostsChangedEvent;
-        public event CurrentPostChangedHandler CurrentPostChangedEvent;
-        public event MassegeChangedHandler MassegeChangedEvent;
-        public event FriendsChangedHandler FriendsChangedEvent;
-        public event UsersChangedHandler UsersChangedEvent;
+        public event ChangeEventHandler change;
 
         protected void ForumsChanged()
         {
-            ForumsChangedEvent(this, new ForumsChangedEventArgs(forums,CurrentForumId));
+            change(this, new ForumsChangedEventArgs(forums,CurrentForumId));
         }
         protected void ThreadsChanged()
         {
-            ThreadsChangedEvent(this, new ThreadsChangedEventArgs(threads, CurrentThreadId,currentForumId));
+            change(this, new ThreadsChangedEventArgs(threads, CurrentThreadId,currentForumId));
         }
         protected void PostsChanged()
         {
-            PostsChangedEvent(this, new PostsChangedEventArgs(posts,CurrentThreadId, CurrentForumId,CurrentPost));
+            change(this, new PostsChangedEventArgs(posts,CurrentThreadId, CurrentForumId,CurrentPost));
         }
 
         protected void CurrentPostChanged()
         {
-            CurrentPostChangedEvent(this, new CurrentPostChangedEventArgs(CurrentPost));
+            change(this, new CurrentPostChangedEventArgs(CurrentPost));
         }
 
         protected void MassegeChanged()
         {
-            MassegeChangedEvent(this, new MassegeChangedEventArgs(Massege));
+            change(this, new MassegeChangedEventArgs(Massege));
         }
 
         protected void FriendsChanged()
         {
-            FriendsChangedEvent(this, new FriendsChangedEventArgs(friends));
+            change(this, new FriendsChangedEventArgs(friends));
         }
         
         protected void UsersChanged()
         {
-            UsersChangedEvent(this, new UsersChangedEventArgs(users));
+            change(this, new UsersChangedEventArgs(users));
         } 
 
 
