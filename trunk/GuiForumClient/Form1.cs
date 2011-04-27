@@ -94,9 +94,27 @@ namespace GuiForumClient
             db.change += change_delegate;
 
             this.client = new GuiClient("tmp_user", db);
+            this.disableButtens();
 
         }
 
+        private void disableButtens()
+        {
+            this.toolStripButton1.Enabled = false;
+            this.toolStripButton2.Enabled = false;
+            this.removePost.Enabled = false;
+            this.removethread.Enabled = false;
+            this.replyButton.Enabled = false;
+        }
+
+        private void enableButtens()
+        {
+            this.toolStripButton1.Enabled = true;
+            this.toolStripButton2.Enabled = true;
+            this.removePost.Enabled = true;
+            this.removethread.Enabled = true;
+            this.replyButton.Enabled = true;
+        }
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -694,7 +712,7 @@ namespace GuiForumClient
                 case "DataManagment.ForumsChangedEventArgs":
                     this.Invoke(new ForumsChangedInvoker(ForumsChangedDelegate), args);
                     break;
-                case "FriendsChangedEventArgs":
+                case "DataManagment.FriendsChangedEventArgs":
                     this.Invoke(new FriendsChangedInvoker(FriendsChangedDelegate), args);
                     break;
                 case "DataManagment.UsersChangedEventArgs":
@@ -738,6 +756,7 @@ namespace GuiForumClient
         public void UsersChangedDelegate(object sender, UsersChangedEventArgs e)
         {
             users_list.Clear();
+            ListViewItem tmp_item;
             foreach (string t_username in e.Users)
             {
                 users_list.Items.Add(t_username);
@@ -753,7 +772,6 @@ namespace GuiForumClient
         }
         public void ForumsChangedDelegate(object sender, ForumsChangedEventArgs e)
         {
-            
             // update GUI
             List<ViewData> forums = (List<ViewData>)e.Forums;
 
@@ -793,6 +811,7 @@ namespace GuiForumClient
                 i++;
             }
             System.IO.File.WriteAllLines("..\\..\\..\\log.txt", lines);
+            this.enableButtens();
         }
 
         private TreeNode findNode(TreeNodeCollection p_treeView, string p_type, string p_name)    //type   =  f , t , p
@@ -958,6 +977,7 @@ namespace GuiForumClient
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             client.logout();
+            disableButtens();
             //db.cleanPosts();
             //db.cleanThreads();
         }
@@ -1068,5 +1088,6 @@ namespace GuiForumClient
             }
             this.client.getFriends();
         }
+
     }
 }
