@@ -753,7 +753,7 @@ namespace GuiForumClient
 
         public void PopupMassegeChangedDelegate(object sender, PopupMassegeChangedEventArgs e)
         {
-            new NotifyWindow("", e.Massege);
+            new NotifyWindow("", e.Massege).Notify();
             this.richTextBox1.Text += "\n\n";
             this.richTextBox1.Text += e.Massege;
             this.richTextBox1.SelectionStart = richTextBox1.Text.Length;
