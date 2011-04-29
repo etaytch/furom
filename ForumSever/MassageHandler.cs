@@ -123,14 +123,15 @@ namespace ForumSever
                             Console.WriteLine("checking friend: " + friend);
                             if (_lm.isLogged(friend)) {
                                 Console.WriteLine("***Sending popup to: "+friend);
-                                _ee.sendMessage(new PopUpContent(t_uname, friend, forumName, threadName, t_topic));
+
+                                _ee.sendMessage(new PopUpContent(friend, "User " + t_uname + " added new post \"" + t_topic + "\" to thread: \"" + threadName + "\" in forum: \"" + forumName + "\""));
                             }                            
                         }
                         
                         returnThread = _lm.getThread(t_fid, t_tid);
                         List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);                        
                         foreach (string viewer in viewersToUpdate) {
-                            _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, t_uname, returnThread._autor, returnThread._topic, returnThread._content, posts));
+                            _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, viewer, returnThread._autor, returnThread._topic, returnThread._content, posts));
                         }
 
                     }                    
@@ -154,7 +155,7 @@ namespace ForumSever
                         string forumName = _lm.getForumName(t_fid);
                         foreach (string friend in usersToUpdate) {
                             if (_lm.isLogged(friend)) {
-                                _ee.sendMessage(new PopUpContent(t_uname,friend, forumName, t_topic));
+                                _ee.sendMessage(new PopUpContent(friend, "User " + t_uname + " added new topic \"" + t_topic + "\" to forum: \"" + forumName + "\""));
                             }
                         }
 
@@ -314,6 +315,11 @@ namespace ForumSever
                     }
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "DeleteThread Succssfuly"));
+                        List<Quartet> forumTopics = _lm.getForum(t_fid);
+                        _ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));
+
+                        // NEED TO UPDATE ALL VIEWERS AS WELL!!!!
+
                     }
                                         
                     break;
@@ -389,6 +395,7 @@ namespace ForumSever
                             else {
                                 List<Quartet> forumTopics = _lm.getForum(t_fid);
                                 _ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));
+                                _lm.updateCurrentThread(t_fid, -1, t_uname);     
                             }
                         }
                         else {
