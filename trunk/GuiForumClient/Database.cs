@@ -187,7 +187,7 @@ namespace DataManagment
 
         protected void PopupMassegeChanged()
         {
-            change(this, new MassegeChangedEventArgs(Massege));
+            change(this, new PopupMassegeChangedEventArgs(PopupMassege));
         }
 
         protected void MassegeChanged()

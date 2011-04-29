@@ -219,10 +219,9 @@ namespace Protocol {
                  * <username>\n
                  * <msg>\n
                  **/
-                case "PopUpContent":
-                    message = new Acknowledgment(tok.getNextToken(), tok.getNextToken());
+                case "PopUpContent":                    
+                        message = new PopUpContent(tok.getNextToken(), tok.getNextToken());
                     return message;
-
 
                 //PopUpThreadContent
 

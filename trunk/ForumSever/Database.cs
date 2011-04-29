@@ -18,7 +18,7 @@ namespace ForumSever
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;            
-            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -68,7 +68,7 @@ namespace ForumSever
 
 
 
-        public bool removeThread(int p_tid, int p_fid) {
+        public bool removeThread(int p_fid, int p_tid) {
             try {
                 runSelectSQL("Delete From Threads Where " + "(fid = " + p_fid + ") and (tid = " + p_tid + ")");
                 _conn.Close();
@@ -690,7 +690,7 @@ namespace ForumSever
         public List<string> getForumViewers(int t_fid) {
             List<string> ans = new List<string>();
 
-            SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (curFurom=" + t_fid + ") and (logged=1)");
+            SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (currForum=" + t_fid + ") and (logged=1)");
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
                 _conn.Close();
@@ -726,7 +726,7 @@ namespace ForumSever
         }
 
         public string getThreadName(int t_fid, int t_tid) {
-            SqlDataReader reader = runSelectSQL("SELECT subject FROM Threads WHERE (fid=" + t_fid + ") and (fid="+t_tid+")");
+            SqlDataReader reader = runSelectSQL("SELECT subject FROM Threads WHERE (fid=" + t_fid + ") and (tid="+t_tid+")");
             string ans = "";
             if (!reader.HasRows) {
                 Console.WriteLine("SQL=empty");
@@ -737,7 +737,7 @@ namespace ForumSever
 
             while (reader.Read()) {
                 //public ForumThread(int fid,string p_topic, string p_content, string p_author)
-                ans = reader["fname"].ToString();
+                ans = reader["subject"].ToString();
                 _conn.Close();
                 return ans;
             }

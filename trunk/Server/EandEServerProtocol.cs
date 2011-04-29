@@ -185,7 +185,12 @@ namespace Protocol {
                 * <userame>\n
                 **/
                 case "DELETETHREAD":
-                    message = new DeleteThreadMessage(Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken());
+                    int fid = Convert.ToInt32(tok.getNextToken());
+                    int tid = Convert.ToInt32(tok.getNextToken());
+                    int postIndex = Convert.ToInt32(tok.getNextToken());
+                    string uname = tok.getNextToken();
+                    //message = new DeleteThreadMessage(Convert.ToInt32(tok.getNextToken()), Convert.ToInt32(tok.getNextToken()), uName = tok.getNextToken());
+                    message = new DeleteThreadMessage(fid, tid, uname);
                     return message;
 
                 /**
