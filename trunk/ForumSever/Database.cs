@@ -18,7 +18,7 @@ namespace ForumSever
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;            
-            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -84,9 +84,9 @@ namespace ForumSever
 
 
 
-        public bool removePost(int p_tid, int p_fid, int p_index) {
+        public bool removePost(int p_fid, int p_tid, int p_index) {
             try {
-                runSelectSQL("Delete From Posts Where " + "(pid = '" + p_index + "') and (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
+                runSelectSQL("Delete From Posts Where " + "(pid = " + p_index + ") and (fid = " + p_fid + ") and (tid = " + p_tid + ")");
                 _conn.Close();
                 return true;
             }

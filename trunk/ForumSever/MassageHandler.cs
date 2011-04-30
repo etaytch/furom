@@ -114,20 +114,24 @@ namespace ForumSever
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "AddPost Succssfuly"));
                         List<string> usersToUpdate = _lm.getFriendsToUpdate(t_uname);   // friends
-                        Console.WriteLine(usersToUpdate.ToString());
+                        //Console.WriteLine(usersToUpdate.ToString());
                         List<string> viewersToUpdate = _lm.getThreadViewersToUpdate(t_uname,t_fid,t_tid);
                         usersToUpdate.Union<string>(viewersToUpdate);
                         string forumName = _lm.getForumName(t_fid);
-                        string threadName = _lm.getThreadName(t_fid,t_tid);
+                        returnThread = _lm.getThread(t_fid, t_tid);
+                        string threadName = returnThread._topic;//_lm.getThreadName(t_fid,t_tid);
+                        usersToUpdate.Remove(returnThread._autor);
                         foreach (string friend in usersToUpdate) {
-                            Console.WriteLine("checking friend: " + friend);
+                            //Console.WriteLine("checking friend: " + friend);
                             if (_lm.isLogged(friend)) {
-                                Console.WriteLine("***Sending popup to: "+friend);
+                                //Console.WriteLine("***Sending popup to: "+friend);
 
                                 _ee.sendMessage(new PopUpContent(friend, "User " + t_uname + " added new post \"" + t_topic + "\" to thread: \"" + threadName + "\" in forum: \"" + forumName + "\""));
                             }                            
                         }
-                        
+                        if (_lm.isLogged(returnThread._autor)) {
+                            _ee.sendMessage(new PopUpContent(returnThread._autor, "User " + t_uname + " added new post \"" + t_topic + "\" to your thread: \"" + threadName + "\" in forum: \"" + forumName + "\""));
+                        }   
                         returnThread = _lm.getThread(t_fid, t_tid);
                         List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);                        
                         foreach (string viewer in viewersToUpdate) {
@@ -297,6 +301,17 @@ namespace ForumSever
                     }
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "DeletePost Succssfuly"));
+                        returnThread = _lm.getThread(t_fid, t_tid);
+                        List<Quartet> posts = _lm.getThreadPosts(t_fid, t_tid);
+                        List<string> usersToUpdate = _lm.getThreadViewersToUpdate(t_uname,t_fid,t_tid);
+                        if (!usersToUpdate.Contains(t_uname)) {
+                            usersToUpdate.Add(t_uname);
+                        }
+                        //_ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));                        
+                        foreach (string viewer in usersToUpdate) {
+                            _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, viewer, returnThread._autor, returnThread._topic, returnThread._content, posts));
+                        }
+
                     }
                     //_outputMassage.Enqueue(new Message(""));
                     break;
@@ -316,7 +331,16 @@ namespace ForumSever
                     else {
                         _ee.sendMessage(new Acknowledgment(t_uname, "DeleteThread Succssfuly"));
                         List<Quartet> forumTopics = _lm.getForum(t_fid);
-                        _ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));
+                        List<string> usersToUpdate = _lm.getForumViewers(t_fid);
+                        if (!usersToUpdate.Contains(t_uname)) {
+                            usersToUpdate.Add(t_uname);
+                        }                        
+                        //_ee.sendMessage(new ForumContentMessage(t_fid, t_uname, forumTopics));                        
+                        foreach (string viewer in usersToUpdate) {
+                            _ee.sendMessage(new ForumContentMessage(t_fid, viewer, forumTopics));
+                        }
+
+
 
                         // NEED TO UPDATE ALL VIEWERS AS WELL!!!!
 
@@ -471,6 +495,9 @@ namespace ForumSever
                     break;
                 case -23:
                     err = new Error(uname, "incorrect password");
+                    break;
+                case -24:
+                    err = new Error(uname, "cannot be a friend of yourself;)");
                     break;
 
                 default :

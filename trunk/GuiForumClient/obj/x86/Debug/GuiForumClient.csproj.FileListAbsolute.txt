@@ -219,3 +219,4 @@ C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
 C:\Users\Shiran\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb
+C:\Users\Etay\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
