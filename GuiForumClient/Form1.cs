@@ -827,7 +827,7 @@ namespace GuiForumClient
                 lines[i] = forum.Name;
                 i++;
             }
-            System.IO.File.WriteAllLines("..\\..\\..\\log.txt", lines);
+            System.IO.File.WriteAllLines("log.txt", lines);
             this.enableButtens();
         }
 
@@ -910,7 +910,7 @@ namespace GuiForumClient
             {
                 selected.ExpandAll();
             }
-            System.IO.File.WriteAllLines("..\\..\\..\\Threadlog.txt", lines);
+            System.IO.File.WriteAllLines("Threadlog.txt", lines);
         }
 
         public void PostsChangedDelegate(object sender, PostsChangedEventArgs e)

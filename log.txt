@@ -1,6 +1,3 @@
-SEX
-DRRUGS
-ROCK and ROLL
-Dogs
-Love
-Vampires
+forum1
+forum2
+forum3
