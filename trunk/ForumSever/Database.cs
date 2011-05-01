@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using MessagePack;
+using VS.Logger;
 
 namespace ForumSever
 {
@@ -13,11 +14,13 @@ namespace ForumSever
         public  List<Forum> _forums;         //private
         private int _counter;
         private SqlConnection _conn;
+        private Logger _logger;
 
-        public Database() {
+        public Database(Logger logger) {
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
-            _counter = 0;            
+            _counter = 0;
+            _logger = logger;
             _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
@@ -149,7 +152,7 @@ namespace ForumSever
             }
 
             try {
-                runSelectSQL("CREATE TABLE " + memb.getUName() + " (uname varchar(50) NOT NULL, PRIMARY KEY (uname),FOREIGN KEY (uname) REFERENCES Users(username))");
+                runSelectSQL("CREATE TABLE " + memb.getUName() + " (uname varchar(50) NOT NULL, PRIMARY KEY (uname),FOREIGN KEY (uname) REFERENCES Users(username) ON DELETE CASCADE)");
                 _conn.Close();
             }
             catch (Exception e) {

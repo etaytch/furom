@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MessagePack;
+using VS.Logger;
 
 namespace ForumSever
 {
@@ -10,10 +11,12 @@ namespace ForumSever
     public class LogicManager
     {
         public Database _db; //should be private
+        private Logger _logger; 
 
-        public LogicManager()
+        public LogicManager(Logger logger)
         {
-            _db = new Database();
+            _db = new Database(logger);
+            _logger = logger;
             _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
         }
 
@@ -52,17 +55,21 @@ namespace ForumSever
 
         public int register(MemberInfo memb)
         {
+            string uname = memb.getUName();
             // cant add Member without all fields
             if (memb.getLName() == "" | memb.getFName() == "" | memb.getUName() == "" | memb.getPass() == "" | memb.getEmail() == "")
             {
                 //massage = "missing fields";
                 //return false;
+
+                _logger.log(2, "init", "ERROR: "+uname + "did not type all neseccery details for registering");
                 return -17;
             }
             // user name already in use
             if (_db.isMember(memb.getUName())){
                 //massage = "user name in use. choose  a diffrent one";
                 //return false;
+                _logger.log(2, "init", "ERROR: " + uname + " alread exist.");
                 return -15;
             }
 
@@ -70,6 +77,7 @@ namespace ForumSever
             {
                 //massage = "mail in use. choose  a diffrent one";
                 //return false;
+                _logger.log(2, "init", "ERROR: " + uname + " tried to register with an existing email: "+memb.getEmail());
                 return -16;
             }
   
@@ -88,15 +96,21 @@ namespace ForumSever
                     }
                     else {
                         // incorrect pass
+                        _logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login with wrong password");
                         return -23;
                     }
                     
                 }
                 else {
+                    _logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login while already logged in");
                     return -18;     // user already logged in
                 }
             }
-            else return -3;         // username not exist
+            
+            else {                
+                _logger.log(2, "init", "ERROR LOGIN: " + p_user + " does not exsist");    
+                return -3;         // username not exist
+            }
         }
 
         public int logout(string p_user)
@@ -107,9 +121,11 @@ namespace ForumSever
                     return 0;       // no error
                 }
                 else {
+                    _logger.log(2, "init", "ERROR LOGOUT: " + p_user + " tried to logout while already logged out");
                     return -19;     // user is not logged in
                 }
             }
+            _logger.log(2, "init", "ERROR LOGOUT: " + p_user + " does not exsist");    
             return -3;         // username not exist
         }
 
@@ -139,15 +155,18 @@ namespace ForumSever
         public int addMeAsFriend(string p_uname,string p_friendUname)
         {
             if (!_db.isMember(p_uname)) {
+                _logger.log(2, "init", "ERROR ADDFRIEND: " + p_uname + " does not exsist");    
                 //return "incurrect user name";
                 return -3;
             }
             if (!_db.isMember(p_friendUname)) {
+                _logger.log(2, "init", "ERROR ADDFRIEND: " + p_friendUname + " does not exsist");    
                 //return "the user you are trying to befriend dosn't exist";
                 return -2;
             }
             if (p_uname.Equals(p_friendUname)) {
-                //return "the user you are trying to befriend dosn't exist";
+
+                _logger.log(2, "init", "ERROR ADDFRIEND: User "+p_uname+" tried to add himself as friend");    
                 return -24;
             }
 
@@ -164,19 +183,20 @@ namespace ForumSever
         public int removeMeAsFriend(string p_uname, string p_friendUname)
         {
             if (!_db.isMember(p_uname)) {
+                _logger.log(2, "init", "ERROR REMOVEFRIEND: " + p_uname + " does not exist");    
                 //return "incurrect user name";
                 return -3;
 
             }
             if (!_db.isMember(p_friendUname)) {
+                _logger.log(2, "init", "ERROR REMOVEFRIEND: " + p_friendUname + " does not exist");    
                 //"the user you are trying to unfriend dosn't exist"                        
                 return -20;
             }
 
-
-
             if (!_db.isFriend(p_uname, p_friendUname))
             {
+                _logger.log(2, "init", "ERROR REMOVEFRIEND: " + p_friendUname + " is not a friend of "+p_uname);    
                 return -4;
                 //return "the user you are trying to unfriend is not a friend of yours";
             }
@@ -200,11 +220,13 @@ namespace ForumSever
             MemberInfo t_user = _db.FindMemberByID(p_userID);
             if (t_user == null)
             {
+                _logger.log(2, "init", "ERROR ADDFORUM: incorrect username: " + t_user.getUName());
                 return -3;
                 //return "incurrect user name";
             }
             if (_db.findTopicInForums(p_topic))
             {
+                _logger.log(2, "init", "ERROR ADDFORUM: forum alread exist");
                 //return "topic already exists, choose new topic";
                 return -5;
             }
@@ -222,12 +244,14 @@ namespace ForumSever
         {
             MemberInfo memb = FindMemberByUser(p_uname);
             if (memb == null) {
+                _logger.log(2, "init", "ERROR ADDTHREAD: incorrect username: "+p_uname);
                 return -3;
                 //return "incurrect user name";
 
             }
             if (_db.isThread(p_fid ,p_topic))
             {
+                _logger.log(2, "init", "ERROR ADDTHREAD: Thread alread exist");
                 //return "topic already exists, choose new topic";
                 return -5;
             }
@@ -256,10 +280,12 @@ namespace ForumSever
         public int removeThread(int p_fid, int p_tid,string p_uname)
         {
             if (!_db.isMember(p_uname)) {
+                _logger.log(2, "init", "ERROR REMOVETHREAD: incorrect username: " + p_uname);
                 //return "incurrect user name";
                 return -3;
             }
             if (!_db.getThreadAuthor(p_fid, p_tid).Equals(p_uname)) {
+                _logger.log(2, "init", "ERROR REMOVETHREAD: the thread was not written by " + p_uname);         
                 //p_uname didn't write this thread..
                 return -7;
             }
@@ -267,6 +293,7 @@ namespace ForumSever
                 return 0;
             }
             else {
+                _logger.log(2, "init", "ERROR REMOVETHREAD: SQL ERROR");
                 return -22;
             }            
         }
@@ -277,6 +304,7 @@ namespace ForumSever
         {
             //MemberInfo t_user = FindMemberByUser(p_uname);            
             if (!_db.isMember(p_uname)){
+                _logger.log(2, "init", "ERROR ADDPOST: incourrect username: " + p_uname);
                 return -3;
                 //return "incurrect user name";
 
@@ -284,6 +312,7 @@ namespace ForumSever
             //ForumThread t_thr = _db.getTread(p_fid, p_tid);
 
             if (!_db.isThread(p_fid,p_tid)){
+                _logger.log(2, "init", "ERROR ADDPOST: Thread not found");
                 return -6;
                 //return "the topic could not been found";
             }
@@ -297,12 +326,14 @@ namespace ForumSever
         {           
             if (!_db.isMember(p_uname))
             {
+                _logger.log(2, "init", "ERROR GETPOST: incourrect username: " + p_uname);
                 return null;
                 //return "incurrect user name";
             }
             //ForumThread t_thr = _db.getTread(p_fid, p_tid);
             if (!_db.isThread(p_fid,p_tid))
             {
+                _logger.log(2, "init", "ERROR GETPOST: Thread not found");
                 return null;
                 //return "the topic could not been found";
             }
@@ -315,18 +346,21 @@ namespace ForumSever
             //MemberInfo t_user = _db.FindMemberByID(p_userID);
             if (!_db.isMember(p_uname))
             {
+                _logger.log(2, "init", "ERROR REMOVEPOST: " + p_uname + " does not exist");    
                 return -3;
                 //return "incurrect user name";
             }
                 
             //ForumThread t_thr = _db.getTread(p_fId, p_tId);
             if (!_db.isThread(p_fid,p_tid))
-            {                        
+            {
+                _logger.log(2, "init", "ERROR REMOVEPOST: the thread couldn't be found");         
                 return -6;
                 //return "the topic could not been found";
             }
             if ((p_index < 0) | (p_index > _db.getCurrentPostID(p_fid,p_tid)))
             {
+                _logger.log(2, "init", "ERROR REMOVEPOST: the topic couldn't be found");         
                 return -8;
                 //return "the post topic is out of bounds";
             }
@@ -343,6 +377,7 @@ namespace ForumSever
             }
             else
             {
+                _logger.log(2, "init", "ERROR REMOVEPOST: the post was not written by "+p_uname);         
                 return -7;
                 //return "the topic you where trying to remove was submited by a diffrent user";
             }
