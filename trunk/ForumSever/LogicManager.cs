@@ -368,7 +368,7 @@ namespace ForumSever
             //ForumPost t_post = _db.getPost(p_fid, p_tid, p_index);
             Boolean postExist = _db.isPost("(pid = " + p_index + ") and (fid = " + p_fid + ") and (tid = "+p_tid+")");
             string postAuthor = _db.getPostAuthor(p_index, p_fid, p_tid).ToLower();
-            Console.Out.WriteLine("p_uname: " + p_uname + ", postAuthor: " + postAuthor);
+            //Console.Out.WriteLine("p_uname: " + p_uname + ", postAuthor: " + postAuthor);
             if (postExist && (postAuthor.Equals(p_uname.ToLower())))
             {
                 _db.removePost(p_fid, p_tid, p_index);
