@@ -26,7 +26,8 @@ namespace GuiForumClient
         {
             this.client.addThread(this.textBox2.Text, this.textBox1.Text);
             this.client.getThreads();
-
+            this.textBox2.Text = "";
+            this.textBox1.Text = "";
         }
 
     }

@@ -27,6 +27,9 @@ namespace GuiForumClient
         {
             this.client.addPost(this.textBox2.Text, this.textBox1.Text);
             this.client.getReplies();
+            this.textBox2.Text = "";
+            this.textBox1.Text = "";
+
         }
     }
 

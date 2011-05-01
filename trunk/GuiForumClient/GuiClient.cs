@@ -270,5 +270,10 @@ namespace GuiForumClient
             }
         }
 
+
+        internal void reset()
+        {
+            db.reset();
+        }
     }
 }
