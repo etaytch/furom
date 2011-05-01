@@ -251,6 +251,19 @@ namespace DataManagment
             return -1;
         }
 
+
+        internal void reset()
+        {
+            this.CurrentForumId = new ViewData();
+            this.currentThreadId = new ViewData();
+            this.Forums = new List<ViewData>();
+            this.Posts = new List<Quartet>();
+            this.Threads= new List<ViewData>();
+            this.CurrentPost = new PostObject();
+            this.Massege = "";
+            this.Friends = new List<string>();
+            this.Users = new List<string>();
+        }
     }
 
 
