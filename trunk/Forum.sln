@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSever", "ForumSever\Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiForumClient", "GuiForumClient\GuiForumClient.csproj", "{601DE285-9E38-41B5-99D2-E658F516E81D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForum", "WebForum\WebForum.csproj", "{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{601DE285-9E38-41B5-99D2-E658F516E81D}.Release|Mixed Platforms.Build.0 = Release|x86
 		{601DE285-9E38-41B5-99D2-E658F516E81D}.Release|x86.ActiveCfg = Release|x86
 		{601DE285-9E38-41B5-99D2-E658F516E81D}.Release|x86.Build.0 = Release|x86
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7B80E77A-BAD6-4932-BA8F-B4E561C5ACEC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
