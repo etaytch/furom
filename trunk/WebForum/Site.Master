@@ -7,6 +7,12 @@
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            font-size: large;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -18,28 +24,35 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
+                <asp:Image ID="Image1" runat="server" BorderColor="Black" BorderStyle="Dotted" 
+                    DescriptionUrl="~/boss.ico" GenerateEmptyAlternateText="True" Height="34px" 
+                    ImageAlign="Right" ImageUrl="~/Account/boss.bmp" style="margin-bottom: 0px" 
+                    ViewStateMode="Enabled" Width="32px" />
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Forum.aspx" Text="Forum"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/Login.aspx" Text="account" Value="login">
+                            <asp:MenuItem NavigateUrl="~/Login.aspx" Text="login" Value="login">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="logout" Value="logout" NavigateUrl="~/logout.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Register.aspx" Text="Register" Value="Register">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Users" Value="Users" NavigateUrl="~/Users.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Friends" Value="Friends" NavigateUrl="~/Friends.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>
         </div>
         <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <asp:BulletedList ID="BulletedList1" runat="server">
+                </asp:BulletedList>
+                <br />
+            </asp:ContentPlaceHolder>
         </div>
         <div class="clear">
         </div>

@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.user = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Repet = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -111,15 +111,15 @@
             this.user.Size = new System.Drawing.Size(138, 20);
             this.user.TabIndex = 1;
             // 
-            // label3
+            // Repet
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(23, 151);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "E-mail";
+            this.Repet.AutoSize = true;
+            this.Repet.ForeColor = System.Drawing.Color.Black;
+            this.Repet.Location = new System.Drawing.Point(23, 151);
+            this.Repet.Name = "Repet";
+            this.Repet.Size = new System.Drawing.Size(35, 13);
+            this.Repet.TabIndex = 15;
+            this.Repet.Text = "E-mail";
             // 
             // label4
             // 
@@ -597,7 +597,7 @@
             this.Controls.Add(this.repassword);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.password);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Repet);
             this.Controls.Add(this.mail);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.last);
@@ -622,7 +622,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox user;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Repet;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
