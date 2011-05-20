@@ -4,13 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using ForumSever;
+using VS.Logger;
+
 
 namespace WebForum {
     public class Global : System.Web.HttpApplication {
+        public static LogicManager lm;
+        public static Database db;
+        public static string status;
 
         void Application_Start(object sender, EventArgs e) {
-            // Code that runs on application startup
-
+            /* Code that runs on application startup
+            status = "start";
+            Logger tmp = new Logger(2, "log.txt");
+            db = new Database(tmp);
+            lm = new LogicManager(db);
+            ForumServer.Start(lm,tmp);*/
         }
 
         void Application_End(object sender, EventArgs e) {

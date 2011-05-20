@@ -31,6 +31,11 @@ p
 {
     margin-bottom: 10px;
     line-height: 1.6em;
+    width: 825px;
+    font-size: small;
+    color: #000000;
+    height: 45px;
+    background-color: #FFFFFF;
 }
 
 
@@ -221,13 +226,13 @@ legend
 
 input.textEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
+    direction: ltr;
+    margin-top: 0px;
 }
 
 input.passwordEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
@@ -249,7 +254,7 @@ div.accountInfo
     display: block;
     float: left;
     text-align: left;
-    width: auto;
+    width: 121px;
 }
 
 .loginDisplay

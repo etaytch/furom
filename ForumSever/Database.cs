@@ -14,14 +14,14 @@ namespace ForumSever
         public  List<Forum> _forums;         //private
         private int _counter;
         private SqlConnection _conn;
-        private Logger _logger;
+        //private Logger _logger;
 
-        public Database(Logger logger) {
+        public Database(/*Logger logger*/) {
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;
-            _logger = logger;
-            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
+            //_logger = logger;
+            _conn = new SqlConnection("server=ELIAV-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -168,7 +168,7 @@ namespace ForumSever
         private SqlDataReader runSelectSQL(String command){
             _conn.Open();
             SqlDataReader ans = null;
-            SqlCommand myCommand = new SqlCommand(command, _conn);                        
+            SqlCommand myCommand = new SqlCommand(command, _conn);         
             return myCommand.ExecuteReader();            
         }
 
