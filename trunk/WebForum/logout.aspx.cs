@@ -19,10 +19,12 @@ namespace WebForum {
             int result = General.lm.logout(uname);
             if (result < 0) {
                 sendError(result, uname);
-            }
-            this.error.Text = "logd out";
+            }            
+            General.lm.removeUserIP(clientIP);
+            this.error.Text = "logged out";
             this.logoutButton.Visible = false;
             this.error.Visible = true;
+            
         }
 
         private void sendError(int returnValue, string uname) {

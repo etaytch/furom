@@ -16,6 +16,7 @@ namespace ForumSever
         private static Object _logicLock= new Object();
         private static Object _IPLock= new Object();
         private Hashtable _usersIp;
+        private Hashtable _usersData;
 
         //private Logger _logger; 
 
@@ -25,18 +26,27 @@ namespace ForumSever
             //_logger = logger;
             _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
             _usersIp = new Hashtable();
+            _usersData = new Hashtable();
         }
 
         public LogicManager(Database p_db)
         {
             this._db = p_db;
             _usersIp = new Hashtable();
+            _usersData = new Hashtable();
         }
 
 
         public void addUserIP(string userName,string IP){
             lock(_IPLock){
-                this._usersIp.Add(IP, userName);
+                if (_usersIp[IP] == null) {
+                    this._usersIp.Add(IP, userName);
+                    this._usersData.Add(IP, new UserData(userName));
+                }
+                else {
+                    _usersIp[IP] = userName;
+                    _usersData[IP] = new UserData(userName);
+                }                                
             }
         }
 
@@ -44,21 +54,38 @@ namespace ForumSever
         {
             lock (_IPLock)
             {
-                this._usersIp.Remove(IP);
+                if(this._usersIp[IP]!=null){
+                    this._usersIp.Remove(IP);                    
+                }
+                if (this._usersData[IP] != null) {
+                    this._usersData.Remove(IP);
+                }
+                
             }
         }
 
-        public string getUserFromIP(string IP){
-            string result = ""; 
-            lock(_IPLock){
-                try
-                {
+        public string getUserFromIP(string IP) {
+            string result = "";
+            lock (_IPLock) {
+                try {
                     result = _usersIp[IP] as string;
                 }
-                catch(Exception e){
-                    result="";
+                catch (Exception e) {
+                    result = "";
                 }
+            }
+            return result;
+        }
 
+        public UserData getUserDataFromIP(string IP) {
+            UserData result;
+            lock (_IPLock) {
+                try {
+                    result = _usersData[IP] as UserData;
+                }
+                catch (Exception e) {
+                    result = null;
+                }
             }
             return result;
         }
@@ -243,29 +270,29 @@ namespace ForumSever
                 {
                     // //_logger.log(2, "init", "ERROR ADDFRIEND: " + p_uname + " does not exsist");    
                     //return "incurrect user name";
-                    result = -3;
+                    return -3;
                 }
                 if (!_db.isMember(p_friendUname))
                 {
                     ////_logger.log(2, "init", "ERROR ADDFRIEND: " + p_friendUname + " does not exsist");    
                     //return "the user you are trying to befriend dosn't exist";
-                    result = -2;
+                    return -2;
                 }
                 if (p_uname.Equals(p_friendUname))
                 {
 
                     //_logger.log(2, "init", "ERROR ADDFRIEND: User "+p_uname+" tried to add himself as friend");    
-                    result = -24;
+                    return -24;
                 }
 
                 if (_db.isFriend(p_uname, p_friendUname))
                 {
                     //return "user is already a friend with this user";
-                    result = -1;
+                    return -1;
                 }
                 _db.addFriend(p_uname, p_friendUname);
                 //return "you have a new friend";
-                result = 0;
+                return 0;
             }
             return result;
         }

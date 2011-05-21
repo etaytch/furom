@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using MessagePack;
 using System.Collections;
 using System.Data;
+using ForumSever;
 namespace WebForum {
     public partial class Forum : System.Web.UI.Page {
         private Quartet _currentForum;
@@ -20,30 +21,48 @@ namespace WebForum {
         protected void Page_Load(object sender, EventArgs e) {
             if (IsCallback) { return; }
             General.enable();
-            this._currentForum = new Quartet(0,0,"","");
-            this._currentthread = new Quartet(0, 0, "", "");
+            //this._currentForum = new Quartet(0,0,"","");
+            //this._currentthread = new Quartet(0, 0, "", "");
    
             string userName= General.lm.getUserFromIP(Request.UserHostAddress);
-
-           if (General.lm.isLogged(userName))
+            if (General.lm.isLogged(userName))
             {
+                setCurrents();
                 _userName = userName;
                 activateForums();
+                if (this._currentForum != null) {
+                    this.CreateThreadSource();
+                }
             }
         }
 
-       
-        private void setForums()
-        {
-            this.forumName.Text = this._currentForum._subject;
-            this.AutorName.Text = this._currentForum._author;
+        private void setCurrents() { 
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            if (ud != null) {
+                this._currentForum = ud.curForum;
+                this._currentthread = ud.curThread;
+                this._userName = ud.username;
+            }
+            else {
+                this._currentForum = null;
+                this._currentthread = null;
+                this._userName = "";
+            }
         }
 
-        private void FakeProxy()
-        {
-            this._currentForum._author = "Niv";
-        }
-
+        /*
+         private void setForums()
+         {
+             this.forumName.Text = this._currentForum._subject;
+             this.AutorName.Text = this._currentForum._author;
+         }
+        
+         private void FakeProxy()
+         {
+             this._currentForum._author = "Niv";
+         }
+         */
 
         private void setForumTable()
         {
@@ -70,7 +89,6 @@ namespace WebForum {
 
          ICollection CreateForumSource()
         {
-
             List<Quartet> forums = General.lm.getForums();
             forumData = new DataTable();
             DataRow dr;
@@ -119,7 +137,6 @@ namespace WebForum {
 
          ICollection CreateThreadSource()
          {
-
              List<Quartet> threads = General.lm.getForum(_currentForum._pIndex);
              threadsData = new DataTable();
              DataRow dr;
@@ -141,11 +158,16 @@ namespace WebForum {
         protected void ForumTable_RowCommsnd(Object sender, GridViewCommandEventArgs e)
         {
                 this._currentForum = FindCurrentForum(Convert.ToInt32(e.CommandArgument));
+                string clientIP = HttpContext.Current.Request.UserHostAddress;
+                UserData ud = General.lm.getUserDataFromIP(clientIP);
+                ud.CurForum = this._currentForum;
                 this.setThreads();
                 this.ForumListPanel.Visible = false;
                 this.ForumWithThreadsPanel.Visible = true;
                 this.backToForums.Visible = true;
                 this.forumName.Text = _currentForum._subject;
+                this.AutorName.Text = _currentForum._author;
+                
         }
 
         private Quartet FindCurrentForum(int p_index)
@@ -166,9 +188,16 @@ namespace WebForum {
         {
             
             this._currentthread = FindCurrentThread(Convert.ToInt32(e.CommandArgument));
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            ud.CurThread = this._currentthread;
             this.setPosts();
+            this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
+            this.forumNameInThread.Text = this._currentForum._subject;
+            this.ThreadName.Text = this._currentthread._subject;
+            this.ThreadAutorName.Text = this._currentthread._author;
              
         }
 
@@ -178,7 +207,7 @@ namespace WebForum {
             List<Quartet> t_threads = General.lm.getForum(_currentForum._pIndex);
             foreach (Quartet t_thread in t_threads)
             {
-                if (t_thread._subject.Equals(forumName))
+                if (t_thread._subject.Equals(threadName))
                 {
                     return t_thread;
                 }

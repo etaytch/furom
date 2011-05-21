@@ -11,11 +11,16 @@ namespace WebForum {
             General.enable();
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             string uname = General.lm.getUserFromIP(clientIP);
-
-            List<string> friends = General.lm.getFriends(uname);
-            //List<string> users = proxyUsers();
-            for (int i = 0; i < friends.Count; i++) {
-                this.friendList.Items.Add(new ListItem(friends.ElementAt(i)));
+            if ((uname == null) || (uname.Equals(""))) {
+                Label1.Text = "Please login in order to view users list";
+                Label1.Visible = true;
+            }
+            else {
+                List<string> friends = General.lm.getFriends(uname);
+                //List<string> users = proxyUsers();
+                for (int i = 0; i < friends.Count; i++) {
+                    this.friendList.Items.Add(new ListItem(friends.ElementAt(i)));
+                }
             }
         }
 
