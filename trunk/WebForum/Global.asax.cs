@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using ForumSever;
 using VS.Logger;
+using System.Net;
 
 
 namespace WebForum {
@@ -15,6 +16,8 @@ namespace WebForum {
         public static string status;
 
         void Application_Start(object sender, EventArgs e) {
+            Console.Out.Write("");
+            IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
             /* Code that runs on application startup
             status = "start";
             Logger tmp = new Logger(2, "log.txt");
@@ -35,7 +38,7 @@ namespace WebForum {
 
         void Session_Start(object sender, EventArgs e) {
             // Code that runs when a new session is started
-
+            Console.Out.Write("");
         }
 
         void Session_End(object sender, EventArgs e) {

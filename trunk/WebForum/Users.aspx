@@ -5,12 +5,14 @@
     <br />
 <asp:Button ID="AddFriendButton" runat="server" Text="Add as friends" 
         onclick="AddFriendButton_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 <br />
 <br />
     <strong><span class="style1">&nbsp;
     <asp:Label ID="Label1" runat="server" Text="Availible Users"></asp:Label>
 &nbsp;<asp:Label ID="friendAdded" runat="server" Text="secceed" Visible="False"></asp:Label>
-    <br />
+    `<br />
     <asp:CheckBoxList ID="userList" runat="server">
     </asp:CheckBoxList>
     <br />

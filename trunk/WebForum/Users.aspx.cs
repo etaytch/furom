@@ -11,8 +11,13 @@ namespace WebForum
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             General.enable();
-            List<string> users = General.lm.getUsers(General.uName);
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            Label2.Text = clientIP;
+            string uname = General.lm.getUserFromIP(clientIP);
+            Label2.Text += ", " + uname;
+            List<string> users = General.lm.getUsers(uname);
             //List<string> users = proxyUsers();
             for (int i = 0; i < users.Count; i++)
                 this.userList.Items.Add(new ListItem(users.ElementAt(i)));
@@ -31,11 +36,14 @@ namespace WebForum
 
         protected void AddFriendButton_Click(object sender, EventArgs e)
         {
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);
+
             for (int i=0; i<userList.Items.Count; i++)
                 if (userList.Items[i].Selected) {
-                    int result = General.lm.addMeAsFriend(General.uName, userList.Items[i].Text);
+                    int result = General.lm.addMeAsFriend(uname, userList.Items[i].Text);
                     if (result < 0)
-                        sendError(result, General.uName);
+                        sendError(result, uname);
                 }
             this.userList.Visible = false;
             this.AddFriendButton.Visible = false;

@@ -22,6 +22,15 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// errorPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel errorPanel;
+        
+        /// <summary>
         /// error control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,22 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
-        /// success control.
+        /// Panel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label success;
+        protected global::System.Web.UI.WebControls.Panel Panel3;
+        
+        /// <summary>
+        /// success0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label success0;
         
         /// <summary>
         /// Panel2 control.

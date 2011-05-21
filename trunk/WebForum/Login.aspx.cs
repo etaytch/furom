@@ -14,12 +14,15 @@ namespace WebForum {
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             General.enable();
-            General.uName = this.UserName.Text;
-            int result = General.lm.login(General.uName, this.Password.Text);
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = this.UserName.Text;
+            //General.uName = this.UserName.Text;
+            int result = General.lm.login(uname, this.Password.Text);
             if (result < 0) 
                 sendError(result, this.UserName.Text);            
             else {
                 this.error.Text = " login succeed";
+                General.lm.addUserIP(uname, clientIP);
                 this.LoginButton.Visible = false;
                 this.Panel1.Visible = false;
                 this.error.Visible = true;

@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <asp:Button ID="removFriendButton" runat="server" Text="Remov friends" 
-        onclick="AddFriendButton_Click" />
+        onclick="RemoveFriendButton_Click" />
     <br />
     <br />
     <asp:Label ID="Label1" runat="server" Text="Friends"></asp:Label>

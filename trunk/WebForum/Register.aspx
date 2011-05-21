@@ -11,12 +11,20 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:Panel ID="Panel1" runat="server">
-        <span class="style1"><strong>CREATE A NEW ACCOUNT</strong><br />
-        <asp:Label ID="error" runat="server" style="color: #FF0000"></asp:Label>
-        <asp:Label ID="success" runat="server" Text="register complit" Visible="False"></asp:Label>
-        <br />
-        Passwords are requierd to be minimum of characters in length 6<br /> </span>
+        <span class="style1"><strong>CREATE A NEW ACCOUNT</strong><br /> 
+        <asp:Panel ID="errorPanel" runat="server" Visible="False">
+            <span class="style1">
+            <asp:Label ID="error" runat="server" style="color: #FF0000"></asp:Label>
+            </span>
+        </asp:Panel>
+        <asp:Panel ID="Panel3" runat="server" Visible="False">
+            <span class="style1">
+            <asp:Label ID="success0" runat="server" Text="Register Complete"></asp:Label>
+            </span>
+        </asp:Panel>
+        </span>
         <asp:Panel ID="Panel2" runat="server">
+            <br />
             <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="UserNameLabel0" runat="server" AssociatedControlID="UserName">First name:</asp:Label>
