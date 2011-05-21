@@ -164,7 +164,6 @@ namespace WebForum {
                 this.setThreads();
                 this.ForumListPanel.Visible = false;
                 this.ForumWithThreadsPanel.Visible = true;
-                this.backToForums.Visible = true;
                 this.forumName.Text = _currentForum._subject;
                 this.AutorName.Text = _currentForum._author;                
         }
@@ -194,6 +193,7 @@ namespace WebForum {
             this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
+            removeThreadError.Visible = false;
             this.forumNameInThread.Text = this._currentForum._subject;
             this.ThreadName.Text = this._currentthread._subject;
             this.ThreadAutorName.Text = this._currentthread._author;
@@ -263,14 +263,6 @@ namespace WebForum {
             return dv;
         }
 
-        protected void backToForums_Click(object sender, EventArgs e)
-        {
-            ForumWithThreadsPanel.Visible= false;
-            ThreadWithPostsPanel.Visible = false;
-            ForumListPanel.Visible = true;
-            backToForums.Visible = false;
-        }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             
@@ -288,10 +280,11 @@ namespace WebForum {
 
         protected void addthreadButton_Click(object sender, EventArgs e)
         {
-            this.backToForums.Visible = false;
             this.addThreadPanel.Visible = true;
             this.ForumWithThreadsPanel.Visible = false;
             this.ForumListPanel.Visible = false;
+            this.addThreadError.Visible = false;
+
         }
 
         protected void okThreadButton_Click(object sender, EventArgs e)
@@ -302,7 +295,6 @@ namespace WebForum {
             if (result >= 0)
             {
                 this.setThreads();
-                this.backToForums.Visible = true;
                 this.addThreadPanel.Visible = false;
                 this.ForumWithThreadsPanel.Visible = true;
                 this.ForumListPanel.Visible = false;
@@ -319,10 +311,24 @@ namespace WebForum {
 
         protected void threadcancelButton_Click(object sender, EventArgs e)
         {
-            this.backToForums.Visible = true;
             this.addThreadPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = true;
             this.ForumListPanel.Visible = false;
+        }
+
+        protected void removeThreadButton_Click(object sender, EventArgs e)
+        {
+            int result= General.lm.removeThread(_currentForum._pIndex, _currentthread._pIndex, _userName);
+            if (result >= 0)
+            {
+            }
+            else
+            {
+                removeThreadError.Visible = true;
+                removeThreadError.Text= "ADD error here";
+
+            }
+
         }
 
 

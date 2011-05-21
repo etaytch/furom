@@ -193,6 +193,15 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.GridView PostTable;
         
         /// <summary>
+        /// removeThreadError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label removeThreadError;
+        
+        /// <summary>
         /// removeThreadButton control.
         /// </summary>
         /// <remarks>
@@ -200,15 +209,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button removeThreadButton;
-        
-        /// <summary>
-        /// addPostButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addPostButton;
         
         /// <summary>
         /// PostPanel control.
@@ -290,15 +290,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PostAutorName;
-        
-        /// <summary>
-        /// backToForums control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button backToForums;
         
         /// <summary>
         /// addThreadPanel control.
