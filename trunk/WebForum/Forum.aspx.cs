@@ -287,6 +287,42 @@ namespace WebForum {
             setForumTable();
         }
 
+        protected void addthreadButton_Click(object sender, EventArgs e)
+        {
+            this.backToForums.Visible = false;
+            this.addThreadPanel.Visible = true;
+            this.ForumWithThreadsPanel.Visible = false;
+            this.ForumListPanel.Visible = false;
+        }
+
+        protected void okThreadButton_Click(object sender, EventArgs e)
+        {
+            string t_topic = this.threadTopicBox.Text;
+            string t_content = this.threadContentBox.Text;
+            int result= General.lm.addTread(_userName, _currentForum._pIndex, t_topic, t_content);
+            if (result == 0)
+            {
+                this.backToForums.Visible = true;
+                this.addThreadPanel.Visible = false;
+                this.ForumWithThreadsPanel.Visible = true;
+                this.ForumListPanel.Visible = false;
+            }
+            else
+            {
+                this.addThreadError.Visible = true;
+                this.addThreadError.Text = "Add Error here!";
+
+            }
+        }
+
+        protected void threadcancelButton_Click(object sender, EventArgs e)
+        {
+            this.backToForums.Visible = true;
+            this.addThreadPanel.Visible = false;
+            this.ForumWithThreadsPanel.Visible = true;
+            this.ForumListPanel.Visible = false;
+        }
+
 
        
 

@@ -94,6 +94,15 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.GridView threadTable;
         
         /// <summary>
+        /// addthreadButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addthreadButton;
+        
+        /// <summary>
         /// welcomePanel control.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,24 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.GridView PostTable;
         
         /// <summary>
+        /// removeThreadButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button removeThreadButton;
+        
+        /// <summary>
+        /// addPostButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addPostButton;
+        
+        /// <summary>
         /// PostPanel control.
         /// </summary>
         /// <remarks>
@@ -272,5 +299,59 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button backToForums;
+        
+        /// <summary>
+        /// addThreadPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel addThreadPanel;
+        
+        /// <summary>
+        /// threadTopicBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox threadTopicBox;
+        
+        /// <summary>
+        /// threadContentBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox threadContentBox;
+        
+        /// <summary>
+        /// addThreadError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label addThreadError;
+        
+        /// <summary>
+        /// okThreadButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button okThreadButton;
+        
+        /// <summary>
+        /// threadcancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button threadcancelButton;
     }
 }
