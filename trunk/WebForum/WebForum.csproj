@@ -74,6 +74,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Furom_Body.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -158,6 +159,13 @@
     <Compile Include="Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Furom_Body.aspx.cs">
+      <DependentUpon>Furom_Body.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Furom_Body.aspx.designer.cs">
+      <DependentUpon>Furom_Body.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -170,6 +178,10 @@
     <ProjectReference Include="..\ForumSever\ForumSever.csproj">
       <Project>{BF919658-A9DA-403A-B8AF-D874FF8FDDD7}</Project>
       <Name>ForumSever</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagePack\MessagePack.csproj">
+      <Project>{8C5660F1-0EFB-4EFF-ABE8-B9E4F7C7D6BF}</Project>
+      <Name>MessagePack</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

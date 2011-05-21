@@ -10,15 +10,15 @@
 namespace WebForum {
     
     
-    public partial class Forum {
+    public partial class WebForm1 {
         
         /// <summary>
-        /// _lable control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _lable;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
