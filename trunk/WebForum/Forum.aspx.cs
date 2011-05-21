@@ -15,8 +15,11 @@ namespace WebForum {
         DataTable forumData;
         DataTable threadsData;
         DataTable postData;
+        
+        
         protected void Page_Load(object sender, EventArgs e) {
-           // General.enable();
+            if (IsCallback) { return; }
+            General.enable();
             this._currentForum = new Quartet(0,0,"","");
             this._currentthread = new Quartet(0, 0, "", "");
    
@@ -25,9 +28,7 @@ namespace WebForum {
            if (General.lm.isLogged(userName))
             {
                 _userName = userName;
-                welcomePanel.Visible = false;
-                ForumListPanel.Visible = true;
-                backToForums.Visible = true;
+                activateForums();
             }
         }
 
@@ -46,6 +47,8 @@ namespace WebForum {
 
         private void setForumTable()
         {
+            if (IsCallback) { return; }
+            ForumTable.Columns.Clear();
             BoundField IDColumn = new BoundField();
             IDColumn.DataField = "Index";
             IDColumn.DataFormatString = "{0}";
@@ -55,12 +58,12 @@ namespace WebForum {
             buttonColumn.DataTextField = "Forum";
             buttonColumn.DataTextFormatString = "{0}";
             buttonColumn.HeaderText = "Forum";
-
             ForumTable.Columns.Add(IDColumn);
             ForumTable.Columns.Add(buttonColumn);
             ForumTable.AutoGenerateColumns = false;
 
             ICollection dv = CreateForumSource();
+            
             ForumTable.DataSource = dv;
             ForumTable.DataBind(); 
         }
@@ -88,6 +91,7 @@ namespace WebForum {
 
          private void setThreads()
          {
+             threadTable.Columns.Clear();
              BoundField IDColumn = new BoundField();
              IDColumn.DataField = "Index";
              IDColumn.DataFormatString = "{0}";
@@ -98,9 +102,9 @@ namespace WebForum {
              threadColumn.DataTextFormatString = "{0}";
              threadColumn.HeaderText = "thread";
 
-             ButtonField autorColumn = new ButtonField();
-             autorColumn.DataTextField = "autor";
-             autorColumn.DataTextFormatString = "{0}";
+             BoundField autorColumn = new BoundField();
+             autorColumn.DataField = "autor";
+             autorColumn.DataFormatString = "{0}";
              autorColumn.HeaderText = "autor";
 
              threadTable.Columns.Add(IDColumn);
@@ -115,6 +119,7 @@ namespace WebForum {
 
          ICollection CreateThreadSource()
          {
+
              List<Quartet> threads = General.lm.getForum(_currentForum._pIndex);
              threadsData = new DataTable();
              DataRow dr;
@@ -139,12 +144,14 @@ namespace WebForum {
                 this.setThreads();
                 this.ForumListPanel.Visible = false;
                 this.ForumWithThreadsPanel.Visible = true;
+                this.backToForums.Visible = true;
+                this.forumName.Text = _currentForum._subject;
         }
 
         private Quartet FindCurrentForum(int p_index)
-        { 	     
+        {
             string forumName= (string)(this.forumData.Rows[p_index][1]);
-            List<Quartet> t_forums = Global.lm.getForums();
+            List<Quartet> t_forums = General.lm.getForums();
             foreach (Quartet t_forum in t_forums)
             {
                 if (t_forum._subject.Equals(forumName))
@@ -157,12 +164,75 @@ namespace WebForum {
 
         protected void ThreadTable_RowCommsnd(Object sender, GridViewCommandEventArgs e)
         {
-            /*
-            this._currentForum = FindCurrentForum(Convert.ToInt32(e.CommandArgument));
-            this.setThreads();
-            this.ForumListPanel.Visible = false;
-            this.ForumWithThreadsPanel.Visible = true;
-             */ 
+            
+            this._currentthread = FindCurrentThread(Convert.ToInt32(e.CommandArgument));
+            this.setPosts();
+            this.ForumWithThreadsPanel.Visible = false;
+            this.ThreadWithPostsPanel.Visible = true;
+             
+        }
+
+        private Quartet FindCurrentThread(int p_index)
+        {
+            string threadName = (string)(this.threadsData.Rows[p_index][1]);
+            List<Quartet> t_threads = General.lm.getForum(_currentForum._pIndex);
+            foreach (Quartet t_thread in t_threads)
+            {
+                if (t_thread._subject.Equals(forumName))
+                {
+                    return t_thread;
+                }
+            }
+            return null;
+        }
+
+        private void setPosts()
+        {
+            PostTable.Columns.Clear();
+            BoundField IDColumn = new BoundField();
+            IDColumn.DataField = "Index";
+            IDColumn.DataFormatString = "{0}";
+            IDColumn.HeaderText = "Index";
+
+            ButtonField postColumn = new ButtonField();
+            postColumn.DataTextField = "post";
+            postColumn.DataTextFormatString = "{0}";
+            postColumn.HeaderText = "post";
+
+            ButtonField autorColumn = new ButtonField();
+            autorColumn.DataTextField = "autor";
+            autorColumn.DataTextFormatString = "{0}";
+            autorColumn.HeaderText = "autor";
+
+            threadTable.Columns.Add(IDColumn);
+            threadTable.Columns.Add(postColumn);
+            threadTable.Columns.Add(autorColumn);
+            threadTable.AutoGenerateColumns = false;
+
+            ICollection dv = CreatePostdSource();
+            PostTable.DataSource = dv;
+            PostTable.DataBind();
+        }
+
+        ICollection CreatePostdSource()
+        {
+
+            List<Quartet> posts = General.lm.getThreadPosts(_currentForum._pIndex,_currentthread._pIndex);
+            threadsData = new DataTable();
+            DataRow dr;
+            threadsData.Columns.Add(new DataColumn("Index", typeof(Int32)));
+            threadsData.Columns.Add(new DataColumn("thread", typeof(string)));
+            threadsData.Columns.Add(new DataColumn("autor", typeof(string)));
+            for (int i = 0; i < posts.Count; i++)
+            {
+                dr = threadsData.NewRow();
+                dr[0] = i;
+                dr[1] = posts.ElementAt(i)._subject;
+                dr[2] = posts.ElementAt(i)._author;
+                threadsData.Rows.Add(dr);
+            }
+            DataView dv = new DataView(threadsData);
+            return dv;
         }
 
         protected void backToForums_Click(object sender, EventArgs e)
@@ -170,10 +240,12 @@ namespace WebForum {
             ForumWithThreadsPanel.Visible= false;
             ThreadWithPostsPanel.Visible = false;
             ForumListPanel.Visible = true;
+            backToForums.Visible = false;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             activateForums();
            
         }
@@ -182,7 +254,7 @@ namespace WebForum {
         {
             this.welcomePanel.Visible = false;
             this.ForumListPanel.Visible = true;
-            this.backToForums.Visible = true;
+            //this.backToForums.Visible = true;
             setForumTable();
         }
 
