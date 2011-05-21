@@ -151,6 +151,8 @@ namespace Protocol {
                     * <email>\n
                     * <birthday>\n
                     **/
+
+                        //RegisterMessage msg = new RegisterMessage(p_fName, p_lName, p_uName, p_password, p_cpassword, p_sex, p_email, p_birthday, p_country, p_city);
                     case "REGISTER":
                         message = new RegisterMessage(tok.getNextToken(), tok.getNextToken(), uName = tok.getNextToken(), tok.getNextToken(),
                                         tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken(), tok.getNextToken());

@@ -21,11 +21,14 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             //_logger = logger;
-            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
+            
+            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
+
             runOtherSQL("UPDATE Users SET logged=0, currForum=-1,currThread=-1");            
+             
         }
         /*Members founctions  */       
 
@@ -62,6 +65,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while adding Post...\n" + "INSERT INTO Posts Values (" + nextPostId + "," + p_tid + "," + p_fid + "," + p_parentId + ",'" + p_topic + "','" + p_content + "','" + p_uname + "')");
                 //Console.WriteLine(e.ToString());
             }     
@@ -78,6 +82,7 @@ namespace ForumSever
                 return true;
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while removing Post...\n");
                 //Console.WriteLine(e.ToString());
             }
@@ -94,6 +99,7 @@ namespace ForumSever
                 return true;
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while removing Post...\n");
                 //Console.WriteLine(e.ToString());
             }
@@ -147,6 +153,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName()+"' already exsist?");
                 //Console.WriteLine(e.ToString());
             }
@@ -156,6 +163,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName() + "' already exsist?");
                 //Console.WriteLine(e.ToString());
             }     
@@ -166,7 +174,9 @@ namespace ForumSever
         }
 
         private SqlDataReader runSelectSQL(String command){
-            _conn.Open();
+            if (!_conn.State.Equals("Open")) {
+                _conn.Open();
+            }
             SqlDataReader ans = null;
             SqlCommand myCommand = new SqlCommand(command, _conn);         
             return myCommand.ExecuteReader();            
@@ -463,6 +473,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while adding friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
                 //Console.WriteLine(e.ToString());
             }     
@@ -475,6 +486,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while removing friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
                 //Console.WriteLine(e.ToString());
             }
@@ -496,6 +508,7 @@ namespace ForumSever
                 _conn.Close();
             }
             catch (Exception e) {
+                _conn.Close();
                 //Console.WriteLine("Error while adding thread. Maybe the topic '" + p_tread._topic + "' already exsist?");
                 //Console.WriteLine(e.ToString());
             }     

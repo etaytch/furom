@@ -14,8 +14,7 @@ namespace MessagePack
         public string _country;
         public string _city;
         public string _email;
-        public string _birthday;
-
+        public string _birthday;        
         public RegisterMessage(string fName, string lName, string uName, string password, string confirmedPassword, 
                             string sex, string email, string birthday, string country, string city) : base(uName) {
             _fName = fName;
