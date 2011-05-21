@@ -13,13 +13,13 @@ namespace WebForum {
     public partial class Forum {
         
         /// <summary>
-        /// backToForums control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button backToForums;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// ForumListPanel control.
@@ -175,6 +175,15 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.Label ThreadAutorName;
         
         /// <summary>
+        /// PostTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView PostTable;
+        
+        /// <summary>
         /// PostPanel control.
         /// </summary>
         /// <remarks>
@@ -254,5 +263,14 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PostAutorName;
+        
+        /// <summary>
+        /// backToForums control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button backToForums;
     }
 }
