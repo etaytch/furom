@@ -39,6 +39,15 @@ namespace ForumSever
                 this._usersIp.Add(IP, userName);
             }
         }
+
+        public void removwUserIP(string IP)
+        {
+            lock (_IPLock)
+            {
+                this._usersIp.Remove(IP);
+            }
+        }
+
         public string getUserFromIP(string IP){
             string result = ""; 
             lock(_IPLock){
