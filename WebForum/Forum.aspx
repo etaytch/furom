@@ -13,6 +13,16 @@
         {
             color: #000066;
         }
+        .style5
+        {
+            color: #000066;
+            font-size: xx-large;
+        }
+        .style6
+        {
+            color: #000066;
+            font-size: x-large;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -70,6 +80,10 @@
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
             <br />
+            <asp:Button ID="addthreadButton" runat="server" onclick="addthreadButton_Click" 
+                Text="add Thread" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
         </asp:Panel>
     <asp:Panel ID="welcomePanel" runat="server">
         <asp:Label ID="_lable" runat="server" Font-Bold="True" Font-Italic="True" 
@@ -114,6 +128,9 @@
         </asp:GridView>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
+        <asp:Button ID="removeThreadButton" runat="server" Text="Remove thread" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="addPostButton" runat="server" Text="Add post" />
         <br />
     </asp:Panel>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Panel 
@@ -151,6 +168,29 @@
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
     <br />
+    <asp:Panel ID="addThreadPanel" runat="server" Visible="False">
+        <span class="style6">ADD THREAD</span><span class="style5"><br /> </span>
+        <br />
+        topic:
+        <br />
+        <br />
+        <asp:TextBox ID="threadTopicBox" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        content:<br />
+        <asp:TextBox ID="threadContentBox" runat="server" Height="106px" Width="277px"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="addThreadError" runat="server" style="color: #FF0000" 
+            Text="Label" Visible="False"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="okThreadButton" runat="server" Text="OK" 
+            onclick="okThreadButton_Click" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="threadcancelButton" runat="server" 
+            onclick="threadcancelButton_Click" Text="Cancel" />
+    </asp:Panel>
     <br />
     <br />
 </asp:Content>
