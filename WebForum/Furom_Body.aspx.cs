@@ -16,10 +16,30 @@ namespace WebForum
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack) return;
             General.enable();
-             this.GridView1.DataSource = this.CreateDataSource();
-             // Make the grid databoud.
-             GridView1.DataBind();
+            
+            BoundField IDColumn = new BoundField();
+            IDColumn.DataField = "Index";
+            IDColumn.DataFormatString = "{0}";
+            IDColumn.HeaderText = "Index";
+
+            ButtonField buttonColumn = new ButtonField();
+            buttonColumn.DataTextField = "Forum";
+            buttonColumn.DataTextFormatString = "{0}";
+
+            //buttonColumn.DataNavigateUrlFields = new string[] { "Forum" };
+            //buttonColumn.DataNavigateUrlFormatString = "{0}";
+            buttonColumn.HeaderText = "Forum";
+            
+            GridView1.Columns.Add(IDColumn);
+            GridView1.Columns.Add(buttonColumn);
+            GridView1.AutoGenerateColumns = false;
+            
+            ICollection dv = CreateDataSource(); 
+            GridView1.DataSource = dv;
+            GridView1.DataBind(); 
+
         }
 
         protected void BulletedList1_Click(object sender, BulletedListEventArgs e)
@@ -27,7 +47,7 @@ namespace WebForum
 
         }
 
-        DataTable CreateDataSource()
+        ICollection CreateDataSource()
         {
 
             List<Quartet> forums = General.lm.getForums();
@@ -35,7 +55,6 @@ namespace WebForum
             DataRow dr;
             dt.Columns.Add(new DataColumn("Index", typeof(Int32)));
             dt.Columns.Add(new DataColumn("Forum", typeof(string)));
-            
             for (int i = 0; i < forums.Count; i++)
             {
 
@@ -45,14 +64,15 @@ namespace WebForum
                 dt.Rows.Add(dr);
             }
 
-            
-            
-           
             DataView dv = new DataView(dt);
-            return dt;
+            return dv;
         }
 
-        
-    }
-
+        protected void GridView1_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+                int index = Convert.ToInt32(e.CommandArgument);
+                this.Label1.Text = e.CommandArgument.ToString();
+            }
+        }
 }
+
