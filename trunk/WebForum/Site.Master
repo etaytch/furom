@@ -24,10 +24,11 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-                <asp:Image ID="Image1" runat="server" BorderColor="Black" BorderStyle="Dotted" 
-                    DescriptionUrl="~/boss.ico" GenerateEmptyAlternateText="True" Height="34px" 
-                    ImageAlign="Right" ImageUrl="~/Account/boss.bmp" style="margin-bottom: 0px" 
-                    ViewStateMode="Enabled" Width="32px" />
+                <asp:Image ID="Image1" runat="server" BorderColor="#4B6C9E" 
+                    DescriptionUrl="~/boss.ico" Height="34px" 
+                    ImageAlign="Right" ImageUrl="~/boss.PNG" style="margin-bottom: 0px" 
+                    ViewStateMode="Enabled" Width="32px" BorderWidth="1px" 
+                    CssClass="accountInfo" />
             </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
