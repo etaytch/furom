@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using MessagePack;
+using System.Collections.Generic;
 using VS.Logger;
+
 
 namespace ForumSever
 {
@@ -11,6 +13,10 @@ namespace ForumSever
     public class LogicManager
     {
         public Database _db; //should be private
+        private static Object _logicLock;
+        private static Object _IPLock;
+        private Hashtable _usersIp;
+
         //private Logger _logger; 
 
         public LogicManager(/*Logger logger*/)
@@ -18,14 +24,35 @@ namespace ForumSever
             _db = new Database(/*logger*/);
             //_logger = logger;
             _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
+            _usersIp = new Hashtable();
         }
 
         public LogicManager(Database p_db)
         {
             this._db = p_db;
+            _usersIp = new Hashtable();
         }
 
 
+        public void addUserIP(string userName,string IP){
+            lock(_IPLock){
+                this._usersIp.Add(IP, userName);
+            }
+        }
+        public string getUserFromIP(string IP){
+            string result = ""; 
+            lock(_IPLock){
+                try
+                {
+                    result = _usersIp[IP] as string;
+                }
+                catch(Exception e){
+                    result="";
+                }
+
+            }
+            return result;
+        }
         /*
         public int register(MemberInfo memb);
         public int login(string p_user, string p_pass);
@@ -55,88 +82,112 @@ namespace ForumSever
 
         public int register(MemberInfo memb)
         {
-            string uname = memb.getUName();
-            // cant add Member without all fields
-            if (memb.getLName() == "" | memb.getFName() == "" | memb.getUName() == "" | memb.getPass() == "" | memb.getEmail() == "")
+            lock (_logicLock)
             {
-                //massage = "missing fields";
-                //return false;
+                string uname = memb.getUName();
+                // cant add Member without all fields
+                if (memb.getLName() == "" | memb.getFName() == "" | memb.getUName() == "" | memb.getPass() == "" | memb.getEmail() == "")
+                {
+                    //massage = "missing fields";
+                    //return false;
 
-                ////_logger.log(2, "init", "ERROR: "+uname + "did not type all neseccery details for registering");
-                return -17;
-            }
-            // user name already in use
-            if (_db.isMember(memb.getUName())){
-                //massage = "user name in use. choose  a diffrent one";
-                //return false;
-                ////_logger.log(2, "init", "ERROR: " + uname + " alread exist.");
-                return -15;
-            }
+                    ////_logger.log(2, "init", "ERROR: "+uname + "did not type all neseccery details for registering");
+                    return -17;
+                }
+                // user name already in use
+                if (_db.isMember(memb.getUName()))
+                {
+                    //massage = "user name in use. choose  a diffrent one";
+                    //return false;
+                    ////_logger.log(2, "init", "ERROR: " + uname + " alread exist.");
+                    return -15;
+                }
 
-            if (_db.isMember(memb.getEmail()))
-            {
-                //massage = "mail in use. choose  a diffrent one";
-                //return false;
-                ////_logger.log(2, "init", "ERROR: " + uname + " tried to register with an existing email: "+memb.getEmail());
-                return -16;
+                if (_db.isMember(memb.getEmail()))
+                {
+                    //massage = "mail in use. choose  a diffrent one";
+                    //return false;
+                    ////_logger.log(2, "init", "ERROR: " + uname + " tried to register with an existing email: "+memb.getEmail());
+                    return -16;
+                }
+
+                _db.addMember(memb);
+                return 0;
             }
-  
-            _db.addMember(memb);
-            return 0;
         }
 
         public int login(string p_user, string p_pass)
-        {
+        {   int result=0;
+            lock (_logicLock)
+            {
+                if (_db.isMember(p_user))
+                {
+                    if (!_db.isLogin(p_user))
+                    {
+                        if (_db.login(p_user, p_pass))
+                        {
+                            _db.markUserAsLogged(p_user, 1);
+                            result = 0;       // no error
+                        }
+                        else
+                        {
+                            // incorrect pass
+                            ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login with wrong password");
+                            result = -23;
+                        }
 
-            if (_db.isMember(p_user)) {
-                if (!_db.isLogin(p_user)) {
-                    if (_db.login(p_user, p_pass)) {
-                        _db.markUserAsLogged(p_user, 1);
-                        return 0;       // no error
                     }
-                    else {
-                        // incorrect pass
-                        ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login with wrong password");
-                        return -23;
+                    else
+                    {
+                        ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login while already logged in");
+                        result = -18;     // user already logged in
                     }
-                    
                 }
-                else {
-                    ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login while already logged in");
-                    return -18;     // user already logged in
+
+                else
+                {
+                    ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " does not exsist");    
+                    result= - 3;         // username not exist
                 }
             }
-            
-            else {                
-                ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " does not exsist");    
-                return -3;         // username not exist
-            }
+            return result;
         }
 
         public int logout(string p_user)
         {
-            if (_db.isMember(p_user)) {
-                if (_db.isLogin(p_user)) {
-                    _db.markUserAsLogged(p_user, 0);
-                    return 0;       // no error
+            lock (_logicLock)
+            {
+                if (_db.isMember(p_user))
+                {
+                    if (_db.isLogin(p_user))
+                    {
+                        _db.markUserAsLogged(p_user, 0);
+                        return 0;       // no error
+                    }
+                    else
+                    {
+                        ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " tried to logout while already logged out");
+                        return -19;     // user is not logged in
+                    }
                 }
-                else {
-                    ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " tried to logout while already logged out");
-                    return -19;     // user is not logged in
-                }
+                ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " does not exsist");    
+                return -3;         // username not exist
             }
-            ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " does not exsist");    
-            return -3;         // username not exist
-        }
 
+        }
         public bool isMember(string p_user) {
-            return _db.isMember(p_user);
+            lock (_logicLock)
+            {
+                return _db.isMember(p_user);
+            }
         }
 
         public bool isLogged(string p_user)
         {
             MemberInfo memb = _db.FindMember("username = '" + p_user + "'");
+                            
             return ((memb != null) && (memb.isLogged()));
+
         }
 
         public List<string> getUsers(string p_uname){
