@@ -166,8 +166,7 @@ namespace WebForum {
                 this.ForumWithThreadsPanel.Visible = true;
                 this.backToForums.Visible = true;
                 this.forumName.Text = _currentForum._subject;
-                this.AutorName.Text = _currentForum._author;
-                
+                this.AutorName.Text = _currentForum._author;                
         }
 
         private Quartet FindCurrentForum(int p_index)
@@ -300,8 +299,9 @@ namespace WebForum {
             string t_topic = this.threadTopicBox.Text;
             string t_content = this.threadContentBox.Text;
             int result= General.lm.addTread(_userName, _currentForum._pIndex, t_topic, t_content);
-            if (result == 0)
+            if (result >= 0)
             {
+                this.setThreads();
                 this.backToForums.Visible = true;
                 this.addThreadPanel.Visible = false;
                 this.ForumWithThreadsPanel.Visible = true;
@@ -309,8 +309,10 @@ namespace WebForum {
             }
             else
             {
+                this.addThreadPanel.Visible = true;
                 this.addThreadError.Visible = true;
                 this.addThreadError.Text = "Add Error here!";
+                this.ForumListPanel.Visible = false;
 
             }
         }
