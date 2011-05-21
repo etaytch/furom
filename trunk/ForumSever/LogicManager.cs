@@ -40,7 +40,7 @@ namespace ForumSever
             }
         }
 
-        public void removwUserIP(string IP)
+        public void removeUserIP(string IP)
         {
             lock (_IPLock)
             {
