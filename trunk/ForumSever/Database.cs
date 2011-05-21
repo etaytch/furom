@@ -634,7 +634,7 @@ namespace ForumSever
 
 
             while (reader.Read()) {                
-                ans.Add(new Quartet(Convert.ToInt32(reader["pid"].ToString()),Convert.ToInt32(reader["parentid"].ToString()),reader["subject"].ToString(),reader["body"].ToString()));                                
+                ans.Add(new Quartet(Convert.ToInt32(reader["pid"].ToString()),Convert.ToInt32(reader["parentid"].ToString()),reader["subject"].ToString(),reader["author"].ToString()));
             }
             _conn.Close();
             return ans;
