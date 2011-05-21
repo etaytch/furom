@@ -11,16 +11,28 @@ namespace WebForum
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             General.enable();
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             Label2.Text = clientIP;
             string uname = General.lm.getUserFromIP(clientIP);
-            Label2.Text += ", " + uname;
-            List<string> users = General.lm.getUsers(uname);
-            //List<string> users = proxyUsers();
-            for (int i = 0; i < users.Count; i++)
-                this.userList.Items.Add(new ListItem(users.ElementAt(i)));
+            if ((uname==null) || (uname.Equals(""))) {
+                Label1.Text = "Please login in order to view users list";
+                Label1.Visible = true;
+            }
+            else{
+                Label1.Text = "Availible Users:";
+                Label2.Text += ", " + uname;
+                List<string> users = General.lm.getUsers(uname);
+                //List<string> users = proxyUsers();
+                for (int i = 0; i < users.Count; i++) {                    
+                    this.userList.Items.Add(new ListItem(users.ElementAt(i)));                    
+                }
+                Label1.Visible = true;
+                userList.Visible = true;
+                AddFriendButton.Visible = true;
+            }
+            
         }
 
         /*private List<string> proxyUsers()
@@ -38,13 +50,28 @@ namespace WebForum
         {
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             string uname = General.lm.getUserFromIP(clientIP);
+            string errMsg="";
+            int counter = 0;
 
             for (int i=0; i<userList.Items.Count; i++)
                 if (userList.Items[i].Selected) {
-                    int result = General.lm.addMeAsFriend(uname, userList.Items[i].Text);
-                    if (result < 0)
-                        sendError(result, uname);
+                    if (!uname.Equals(userList.Items[i].Text)) {
+                        int result = General.lm.addMeAsFriend(uname, userList.Items[i].Text);
+                        if (result < 0) {
+                            sendError(result, uname);
+                        }
+                        else {
+                            counter++;
+                        }
+                    }
+                    else{
+                        errMsg = "Dear " + uname + ", You cannot add yourself as friend! :|"+Environment.NewLine;
+                    }                    
                 }
+            this.friendAdded.Text = counter + " new friend(s) were added!";
+            if(!errMsg.Equals("")){
+                this.friendAdded.Text = errMsg + this.friendAdded.Text;
+            }
             this.userList.Visible = false;
             this.AddFriendButton.Visible = false;
             this.Label1.Visible = false;

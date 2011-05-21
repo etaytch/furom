@@ -54,6 +54,7 @@
     <Compile Include="Queue.cs" />
     <Compile Include="Treads.cs" />
     <Compile Include="Types.cs" />
+    <Compile Include="UserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\common.csproj">

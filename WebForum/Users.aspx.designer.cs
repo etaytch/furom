@@ -13,15 +13,6 @@ namespace WebForum {
     public partial class Users {
         
         /// <summary>
-        /// AddFriendButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddFriendButton;
-        
-        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -31,13 +22,13 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Label1 control.
+        /// AddFriendButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button AddFriendButton;
         
         /// <summary>
         /// friendAdded control.
@@ -47,6 +38,15 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label friendAdded;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// userList control.
