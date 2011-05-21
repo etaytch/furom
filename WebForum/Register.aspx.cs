@@ -24,7 +24,8 @@ namespace WebForum {
             string t_mail = this.Email.Text;
             string t_birthday = this.Birthday.Text;
             string t_city = this.City.Text;
-
+            this.error.Text = "";
+            this.errorPanel.Visible = true;
             if ((t_uname == "") || (t_uname == null))
             {
                 this.error.Text = "missing user name";
@@ -33,6 +34,9 @@ namespace WebForum {
             {
                 this.error.Text = "missing password";
             }
+            else if (t_pass.Length<6) {
+                this.error.Text = "Password is requierd to be minimum of characters in length 6";
+            }            
             else if (t_pass != t_repass)
             {
                 this.error.Text = "password mismatch, retype password";
@@ -52,6 +56,7 @@ namespace WebForum {
 
             else
             {
+                this.errorPanel.Visible = false;
                 try
                 {
                     string t_country = this.Country.SelectedItem.Text;
@@ -65,15 +70,17 @@ namespace WebForum {
                 //CODE OF REGISTER
 
                 General.enable();
-                General.uName = this.UserName.Text;
+                //General.uName = this.UserName.Text;
                 int result = General.lm.register(new MemberInfo(t_uname, t_fname, t_lname, t_pass, this.Sex.Text, 
                     this.Country.Text, t_city, t_mail, t_birthday, "0"));
                 if (result < 0)
                     sendError(result, this.UserName.Text);
                 else {
-
                     //this.Panel1.Visible = false;
-                    //this.seccess.Visible = true;
+                    this.Panel2.Visible = false;
+                    this.error.Visible = false;
+                    this.Panel3.Visible = true;
+                    //this.success0.Visible = false;
                 }     
             }
         }
@@ -83,6 +90,7 @@ namespace WebForum {
             switch (returnValue) {
                 case -15:
                     this.error.Text = "the username is already exist";
+                    
                     break;
                 case -16:
                     this.error.Text = "the email is already exist";
@@ -102,8 +110,9 @@ namespace WebForum {
             }
             //this.Panel1.Visible = false;
             //this.error.Visible = true;
-
+            this.errorPanel.Visible = true;
         }
 
     }
 }
+

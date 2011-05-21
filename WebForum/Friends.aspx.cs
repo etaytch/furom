@@ -9,19 +9,25 @@ namespace WebForum {
     public partial class Friends : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             General.enable();
-            List<string> friends = General.lm.getFriends(General.uName);
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);
+
+            List<string> friends = General.lm.getFriends(uname);
             //List<string> users = proxyUsers();
             for (int i = 0; i < friends.Count; i++) {
                 this.friendList.Items.Add(new ListItem(friends.ElementAt(i)));
             }
         }
 
-        protected void AddFriendButton_Click(object sender, EventArgs e) {
+        protected void RemoveFriendButton_Click(object sender, EventArgs e) {
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);
+
             for (int i = 0; i < friendList.Items.Count; i++)
                 if (friendList.Items[i].Selected) {
-                    int result = General.lm.removeMeAsFriend(General.uName, friendList.Items[i].Text);
+                    int result = General.lm.removeMeAsFriend(uname, friendList.Items[i].Text);
                     if (result < 0)
-                        sendError(result, General.uName);
+                        sendError(result, uname);
                 }
             this.friendList.Visible = false;
             this.removFriendButton.Visible = false;

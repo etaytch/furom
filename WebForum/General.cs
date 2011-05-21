@@ -11,15 +11,16 @@ namespace WebForum {
         public static bool enabled = false;
         public static LogicManager lm;
         public static Database db;
-        public static string uName;
+        //public static string uName;
         public static Hashtable table;
+        public static Object theLock;
 
         public General() {
-            //Logger tmp = new Logger(2, "log.txt");
-            db = new Database(/*tmp*/);
+            //Logger tmp = new Logger(2, "log.txt");            
+            db = new Database(/*tmp*/);            
             lm = new LogicManager(db);
             //ForumServer.Start(lm/*, tmp*/);
-            table = new Hashtable();
+            //table = new Hashtable();
             enabled = true;
         }
 
@@ -29,8 +30,14 @@ namespace WebForum {
                 db = new Database(/*tmp*/);
                 lm = new LogicManager(db);
                 //ForumServer.Start(lm/*, tmp*/);
-                table = new Hashtable();
+                //table = new Hashtable();
                 enabled = true;
+            }
+        }
+
+        public static void setUsername(string username, string password) {
+            lock (theLock) {
+
             }
         }
     }

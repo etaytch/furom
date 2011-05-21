@@ -12,11 +12,13 @@ namespace WebForum {
         }
 
         protected void Button1_Click(object sender, EventArgs e) {
-
             General.enable();
-            int result = General.lm.logout(General.uName);
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);            
+
+            int result = General.lm.logout(uname);
             if (result < 0) {
-                sendError(result, General.uName);
+                sendError(result, uname);
             }
             this.error.Text = "logd out";
             this.logoutButton.Visible = false;
