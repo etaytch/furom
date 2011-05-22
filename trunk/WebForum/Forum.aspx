@@ -23,6 +23,11 @@
             color: #000066;
             font-size: x-large;
         }
+        .style7
+        {
+            font-size: x-large;
+            color: #0000CC;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -161,16 +166,9 @@
         <br />
         <br />
     </asp:Panel>
-    &nbsp;<asp:Button ID="backToForums" runat="server" 
-        Text="back to Forums" Width="115px" 
-        Visible="False" onclick="backToForums_Click" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
-    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-    <br />
+    \<br />
     <asp:Panel ID="addThreadPanel" runat="server" Visible="False">
         <span class="style6">ADD THREAD</span><span class="style5"><br /> </span>
         <br />
@@ -192,8 +190,29 @@
             onclick="okThreadButton_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="threadcancelButton" runat="server" 
-            onclick="threadcancelButton_Click" Text="Cancel" />
+            onclick="threadcancelButton_Click" Text="Cancel" Height="26px" />
     </asp:Panel>
     <br />
+    <asp:Panel ID="addPostPanel" runat="server">
+        <span class="style7">ADD POST</span><br />
+        <br />
+        topic:<br />
+        <br />
+        <asp:TextBox ID="postTopicBox" runat="server" Height="22px"></asp:TextBox>
+        <br />
+        content:<br />
+        <br />
+        <asp:TextBox ID="PostContextBox" runat="server" Height="55px" Width="181px"></asp:TextBox>
+        <br />
+        <asp:Label ID="addPostError" runat="server" 
+            style="color: #CC0000; font-size: medium" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="OkPostButton" runat="server" onclick="OkPostButton_Click" 
+            Text="ok" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="CancelPost" runat="server" onclick="CancelPost_Click" 
+            Text="Cancel" />
+    </asp:Panel>
     <br />
 </asp:Content>
