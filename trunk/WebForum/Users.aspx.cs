@@ -9,13 +9,13 @@ namespace WebForum
 {
     public partial class Users : System.Web.UI.Page, PageLoader {
 
-        
+        string clientIP = HttpContext.Current.Request.UserHostAddress;
+        List<string> users = new List<string>();
+        HashSet<string> addedUsers = new HashSet<string>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             General.enable();
-            string clientIP = HttpContext.Current.Request.UserHostAddress;
-
             Label2.Text = clientIP;
             string uname = General.lm.getUserFromIP(clientIP);
             string tmpUser;
@@ -26,16 +26,13 @@ namespace WebForum
             else {
                 Label1.Text = "Availible Users:";
                 Label2.Text += ", " + uname;
-                List<string> users = General.lm.getUsers(uname);
+                users = General.lm.getUsers(uname);
                 //List<string> users = proxyUsers();
-                //this.userList.Items.Clear();
-                HashSet<string> addedUsers = General.lm.getUserDataFromIP(clientIP).addedUsers;
+                
                 for (int i = 0; i < users.Count; i++) {
                     tmpUser = users.ElementAt(i);
-                    if (!addedUsers.Contains(tmpUser)) {
-                        this.userList.Items.Add(new ListItem(tmpUser));
-                        addedUsers.Add(tmpUser);
-                    }                                                                                
+                    userList.Items.Add(new ListItem(tmpUser));
+                    addedUsers.Add(tmpUser);
                 }
                 Label1.Visible = true;
                 userList.Visible = true;
@@ -45,9 +42,19 @@ namespace WebForum
              
         }
 
-        protected void Ticks(object sender, EventArgs e) {
-            //EventArgs w = EventArgs.
-            Page_Load(sender,e);
+        protected void Timer1_Tick(object sender, EventArgs e) {
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);
+            users = General.lm.getUsers(uname);
+            string tmpUser;
+
+            for (int i = 0; i < users.Count; i++) {
+                tmpUser = users.ElementAt(i);
+                if (!addedUsers.Contains(tmpUser)) {
+                    userList.Items.Add(new ListItem(tmpUser));
+                    addedUsers.Add(tmpUser);
+                }
+            }
         }
 
         public void update(string ip) {
