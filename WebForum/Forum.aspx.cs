@@ -12,6 +12,7 @@ namespace WebForum {
     public partial class Forum : System.Web.UI.Page {
         private Quartet _currentForum;
         private Quartet _currentthread;
+        private Quartet _currentPost;
         private string _userName;
         DataTable forumData;
         DataTable threadsData;
@@ -329,6 +330,45 @@ namespace WebForum {
 
             }
 
+        }
+
+        protected void addPostButton_Click(object sender, EventArgs e)
+        {
+            this.addPostPanel.Visible = true;
+            this.ThreadWithPostsPanel.Visible = false;
+            this.ForumListPanel.Visible = false;
+            this.addPostError.Visible = false;
+
+        }
+
+        protected void OkPostButton_Click(object sender, EventArgs e)
+        {
+            string t_topic = this.postTopicBox.Text;
+            string t_content = this.PostContextBox.Text;
+            int result = General.lm.addPost( _currentForum._pIndex,_currentthread._pIndex,_currentPost._pIndex, t_topic, t_content,_userName);
+            if (result >= 0)
+            {
+                this.setPosts();
+                this.addPostPanel.Visible = false;
+                this.ThreadWithPostsPanel.Visible = true;
+                this.ForumListPanel.Visible = false;
+            }
+            else
+            {
+                this.addPostPanel.Visible = true;
+                this.addPostError.Visible = true;
+                this.addPostError.Text = "Add Error here!";
+                this.ForumListPanel.Visible = false;
+
+            }
+
+        }
+
+        protected void CancelPost_Click(object sender, EventArgs e)
+        {
+            this.addPostPanel.Visible = false;
+            this.ThreadWithPostsPanel.Visible = true;
+            this.ForumListPanel.Visible = false;
         }
 
 
