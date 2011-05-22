@@ -7,32 +7,57 @@ using System.Web.UI.WebControls;
 
 namespace WebForum
 {
-    public partial class Users : System.Web.UI.Page
-    {
+    public partial class Users : System.Web.UI.Page, PageLoader {
+        private object _sender;
+        private EventArgs _e;
+        private string _ip;
+        private int first = 0;
+        private HttpContext _con;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            _sender = sender;
+            _e = e;
             General.enable();
-            string clientIP = HttpContext.Current.Request.UserHostAddress;
-            Label2.Text = clientIP;
-            string uname = General.lm.getUserFromIP(clientIP);
-            if ((uname==null) || (uname.Equals(""))) {
+            if (_ip == null) {
+                _con = HttpContext.Current;
+                string clientIP = HttpContext.Current.Request.UserHostAddress;
+                _ip = clientIP;
+            }
+            else {
+                HttpContext.Current = _con;
+            }
+            
+
+            Label2.Text = _ip;
+            string uname = General.lm.getUserFromIP(_ip);
+            if ((uname == null) || (uname.Equals(""))) {
                 Label1.Text = "Please login in order to view users list";
                 Label1.Visible = true;
             }
-            else{
+            else {
                 Label1.Text = "Availible Users:";
                 Label2.Text += ", " + uname;
                 List<string> users = General.lm.getUsers(uname);
                 //List<string> users = proxyUsers();
-                for (int i = 0; i < users.Count; i++) {                    
-                    this.userList.Items.Add(new ListItem(users.ElementAt(i)));                    
+                this.userList.Items.Clear();
+                for (int i = 0; i < users.Count; i++) {
+                    this.userList.Items.Add(new ListItem(users.ElementAt(i)));
                 }
                 Label1.Visible = true;
                 userList.Visible = true;
                 AddFriendButton.Visible = true;
             }
-            
+            if (first == 0) {
+                General.setPage(_ip, this);
+                first++;
+            }
+        }
+
+        public void update(string ip) {
+            //string clientIP = /*HttpContext.Current.*/Request.UserHostAddress;
+            _ip = ip;
+            Page_Load(_sender, _e);
         }
 
         /*private List<string> proxyUsers()

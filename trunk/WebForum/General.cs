@@ -5,23 +5,27 @@ using System.Web;
 using ForumSever;
 using VS.Logger;
 using System.Collections;
+using System.Threading;
+using System.Web.UI;
 
 namespace WebForum {
     public class General {
         public static bool enabled = false;
         public static LogicManager lm;
-        public static Database db;
+        private static Database db;
         //public static string uName;
         public static Hashtable table;
-        public static Object theLock;
+        public static Hashtable pages;        
+        private static Object _refreshLock = new Object();
 
         public General() {
             //Logger tmp = new Logger(2, "log.txt");            
             db = new Database(/*tmp*/);            
             lm = new LogicManager(db);
             //ForumServer.Start(lm/*, tmp*/);
-            //table = new Hashtable();
+            pages = new Hashtable();
             enabled = true;
+            //refreshPages();
         }
 
         public static void enable(){
@@ -30,15 +34,41 @@ namespace WebForum {
                 db = new Database(/*tmp*/);
                 lm = new LogicManager(db);
                 //ForumServer.Start(lm/*, tmp*/);
-                //table = new Hashtable();
+                pages = new Hashtable();
                 enabled = true;
+                Thread t = new Thread(new ThreadStart(refreshPages));
+                t.Start();
             }
         }
 
-        public static void setUsername(string username, string password) {
-            lock (theLock) {
-
+        public static void setPage(string IP, PageLoader page) {
+            lock (_refreshLock) {
+                if (pages[IP] == null) {
+                    pages.Add(IP, page);
+                }
+                else {
+                    pages[IP] = page;
+                }
             }
         }
+
+        public static void refreshPages() {
+            while (true) {             
+                Thread.Sleep(100);
+                lock (_refreshLock) {
+                    IDictionaryEnumerator iter = pages.GetEnumerator();
+                    DictionaryEntry di;
+                    string ip;
+                    PageLoader page;
+                    while(iter.MoveNext()){
+                        di = iter.Entry;
+                        ip = (string)di.Key;
+                        page = (PageLoader)di.Value;
+                        page.update(ip);
+                    }                
+                }
+            }
+        }
+
     }
 }
