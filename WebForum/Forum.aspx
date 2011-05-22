@@ -98,9 +98,7 @@
         <br />
         please <a href="Login.aspx">Log In</a><br /> <br />
         </asp:Panel>
-    <br />
-    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Panel 
+    <asp:Panel 
         ID="ThreadWithPostsPanel" runat="server" Visible="False">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" CssClass="style2" 
             style="color: #000066" Text="Forum:"></asp:Label>
@@ -117,7 +115,8 @@
         <asp:Label ID="ThreadAutorName" runat="server" style="color: #006600" 
             Text="Label"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:GridView ID="PostTable" runat="server" CellPadding="4" 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:GridView ID="PostTable" OnRowCommand="PostsTable_RowCommsnd" runat="server" CellPadding="4" 
             ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <EditRowStyle BackColor="#2461BF" />
@@ -166,9 +165,6 @@
         <br />
         <br />
     </asp:Panel>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    \<br />
     <asp:Panel ID="addThreadPanel" runat="server" Visible="False">
         <span class="style6">ADD THREAD</span><span class="style5"><br /> </span>
         <br />

@@ -30,9 +30,15 @@ namespace WebForum {
             {
                 setCurrents();
                 _userName = userName;
+                
                 activateForums();
-                if (this._currentForum != null) {
+                if (this._currentForum != null)
+                {
                     this.CreateThreadSource();
+                    if (this._currentthread != null)
+                    {
+                        this.CreatePostdSource(0);
+                    }
                 }
             }
         }
@@ -43,11 +49,13 @@ namespace WebForum {
             if (ud != null) {
                 this._currentForum = ud.curForum;
                 this._currentthread = ud.curThread;
+                this._currentPost = ud.CurPost;
                 this._userName = ud.username;
             }
             else {
                 this._currentForum = null;
                 this._currentthread = null;
+                this._currentPost = null;
                 this._userName = "";
             }
         }
@@ -190,7 +198,7 @@ namespace WebForum {
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             UserData ud = General.lm.getUserDataFromIP(clientIP);
             ud.CurThread = this._currentthread;
-            this.setPosts();
+            this.setPosts(0);
             this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
@@ -215,53 +223,110 @@ namespace WebForum {
             return null;
         }
 
-        private void setPosts()
+        private Quartet FindCurrentPost(int p_index)
+        {
+            string postName = (string)(this.postData.Rows[p_index][2]);
+            List<Quartet> t_posts = General.lm.getThreadPosts(_currentForum._pIndex, _currentthread._pIndex);
+            foreach (Quartet t_post in t_posts)
+            {
+                if (t_post._subject.Equals(postName))
+                {
+                    return t_post;
+                }
+            }
+            return null;
+        }
+
+
+        private void setPosts(int par)
         {
             PostTable.Columns.Clear();
+
+            ButtonField plusColumn = new ButtonField();
+            plusColumn.DataTextField = "plus";
+            plusColumn.DataTextFormatString = "{0}";
+            plusColumn.HeaderText = "";
+
             BoundField IDColumn = new BoundField();
             IDColumn.DataField = "Index";
             IDColumn.DataFormatString = "{0}";
             IDColumn.HeaderText = "Index";
 
-            ButtonField postColumn = new ButtonField();
-            postColumn.DataTextField = "post";
-            postColumn.DataTextFormatString = "{0}";
+            BoundField postColumn = new BoundField();
+            postColumn.DataField = "post";
+            postColumn.DataFormatString = "{0}";
             postColumn.HeaderText = "post";
 
-            ButtonField autorColumn = new ButtonField();
-            autorColumn.DataTextField = "autor";
-            autorColumn.DataTextFormatString = "{0}";
+            BoundField autorColumn = new BoundField();
+            autorColumn.DataField = "autor";
+            autorColumn.DataFormatString = "{0}";
             autorColumn.HeaderText = "autor";
 
-            threadTable.Columns.Add(IDColumn);
-            threadTable.Columns.Add(postColumn);
-            threadTable.Columns.Add(autorColumn);
-            threadTable.AutoGenerateColumns = false;
+            PostTable.Columns.Add(plusColumn);
+            PostTable.Columns.Add(IDColumn);
+            PostTable.Columns.Add(postColumn);
+            PostTable.Columns.Add(autorColumn);
+            PostTable.AutoGenerateColumns = false;
 
-            ICollection dv = CreatePostdSource();
+            ICollection dv = CreatePostdSource(par);
             PostTable.DataSource = dv;
             PostTable.DataBind();
         }
 
-        ICollection CreatePostdSource()
+        ICollection CreatePostdSource(int par)
         {
 
             List<Quartet> posts = General.lm.getThreadPosts(_currentForum._pIndex,_currentthread._pIndex);
-            threadsData = new DataTable();
+            postData = new DataTable();
             DataRow dr;
-            threadsData.Columns.Add(new DataColumn("Index", typeof(Int32)));
-            threadsData.Columns.Add(new DataColumn("thread", typeof(string)));
-            threadsData.Columns.Add(new DataColumn("autor", typeof(string)));
+
+            postData.Columns.Add(new DataColumn("plus", typeof(string)));
+            postData.Columns.Add(new DataColumn("Index", typeof(Int32)));
+            postData.Columns.Add(new DataColumn("post", typeof(string)));
+            postData.Columns.Add(new DataColumn("autor", typeof(string)));
+           // postData.Columns.Add(new DataColumn("grid", typeof(GridView)));
+
+            posts.Sort(delegate(Quartet q1, Quartet q2){return q1._parent.CompareTo(q2._parent);});
+            
             for (int i = 0; i < posts.Count; i++)
             {
-                dr = threadsData.NewRow();
-                dr[0] = i;
-                dr[1] = posts.ElementAt(i)._subject;
-                dr[2] = posts.ElementAt(i)._author;
-                threadsData.Rows.Add(dr);
+                if (posts.ElementAt(i)._parent == par)
+                {
+                    dr = postData.NewRow();
+                    dr[0] = "[+]";
+                    dr[1] = i;
+                    dr[2] = posts.ElementAt(i)._subject;
+                    dr[3] = posts.ElementAt(i)._author;
+                    postData.Rows.Add(dr);
+                    
+
+                }
             }
-            DataView dv = new DataView(threadsData);
+            DataView dv = new DataView(postData);
             return dv;
+        }
+
+
+
+        protected void PostsTable_RowCommsnd(Object sender, GridViewCommandEventArgs e)
+        {
+
+            this._currentthread = FindCurrentThread(Convert.ToInt32(e.CommandArgument));
+            this._currentPost = FindCurrentPost(Convert.ToInt32(e.CommandArgument)); 
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            ud.CurThread = this._currentthread;
+            ud.CurPost = this._currentPost;
+            this.setPosts(ud.CurPost._pIndex);
+            this.ForumListPanel.Visible = false;
+            this.ForumWithThreadsPanel.Visible = false;
+            this.ThreadWithPostsPanel.Visible = true;
+            this.ForumListPanel.Visible = false;
+            this.ForumWithThreadsPanel.Visible = false;
+            this.ThreadWithPostsPanel.Visible = true;
+            this.forumNameInThread.Text = this._currentForum._subject;
+            this.ThreadName.Text = this._currentthread._subject;
+            this.ThreadAutorName.Text = this._currentthread._author;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -348,7 +413,7 @@ namespace WebForum {
             int result = General.lm.addPost( _currentForum._pIndex,_currentthread._pIndex,_currentPost._pIndex, t_topic, t_content,_userName);
             if (result >= 0)
             {
-                this.setPosts();
+                this.setPosts(_currentPost._pIndex);
                 this.addPostPanel.Visible = false;
                 this.ThreadWithPostsPanel.Visible = true;
                 this.ForumListPanel.Visible = false;
