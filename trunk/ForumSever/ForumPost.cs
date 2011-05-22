@@ -51,9 +51,19 @@ namespace ForumSever
             return _ID;
         }
 
-        internal string getAuthor()
+        public string getAuthor()
         {
             return _autor;
+        }
+
+        public string getContent()
+        {
+            return _content;
+        }
+
+        public string getContent2()
+        {
+            return _content;
         }
     }
 }

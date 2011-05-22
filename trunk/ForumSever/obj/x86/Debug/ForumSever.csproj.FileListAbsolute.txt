@@ -190,3 +190,18 @@ C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.dll
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\GuiForumClient.pdb
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\ForumSever.exe
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\ForumSever.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\common.dll
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\GuiForumClient.exe
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\Server.dll
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\Client.dll
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\common.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\GuiForumClient.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\Server.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\bin\Debug\Client.pdb
+C:\Users\Vadi\Desktop\forumm\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\forumm\ForumSever\obj\x86\Debug\ForumSever.exe
+C:\Users\Vadi\Desktop\forumm\ForumSever\obj\x86\Debug\ForumSever.pdb
