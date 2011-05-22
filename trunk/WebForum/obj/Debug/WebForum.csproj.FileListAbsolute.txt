@@ -32,3 +32,24 @@ C:\Users\Vadi\Desktop\furom\WebForum\bin\Microsoft.Vbe.Interop.dll
 C:\Users\Vadi\Desktop\furom\WebForum\bin\office.xml
 C:\Users\Vadi\Desktop\furom\WebForum\bin\Microsoft.Office.Interop.Excel.xml
 C:\Users\Vadi\Desktop\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
+C:\Users\Vadi\Desktop\New folder\WebForum\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\New folder\WebForum\obj\Debug\WebForum.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\obj\Debug\WebForum.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\WebForum.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\WebForum.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\ForumSever.exe
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\MessagePack.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Server.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\common.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\office.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Excel.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.MSProject.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Outlook.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Vbe.Interop.dll
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\ForumSever.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\MessagePack.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Server.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\common.pdb
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\office.xml
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Excel.xml
+C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
