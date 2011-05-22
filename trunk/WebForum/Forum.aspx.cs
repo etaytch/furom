@@ -324,6 +324,7 @@ namespace WebForum {
             this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
+            this.PostPanel.Visible = true;
             this.forumNameInThread.Text = this._currentForum._subject;
             this.ThreadName.Text = this._currentthread._subject;
             this.ThreadAutorName.Text = this._currentthread._author;

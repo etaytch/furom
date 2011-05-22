@@ -5,10 +5,6 @@
         {
             font-size: x-large;
         }
-        .style3
-        {
-            font-size: xx-large;
-        }
         .style4
         {
             color: #000066;
@@ -142,26 +138,20 @@
     </asp:Panel>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Panel 
         ID="PostPanel" runat="server" Visible="False">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label8" runat="server" CssClass="style3" 
-            style="color: #000066" Text="Forum:"></asp:Label>
-        <asp:Label ID="forumNameInPost" runat="server" CssClass="style3" 
-            style="color: #0000CC" Text="Label"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label9" runat="server" CssClass="style2" 
-            style="color: #003366" Text="Thread:"></asp:Label>
-        <asp:Label ID="ThreadNameInPost" runat="server" CssClass="style2" 
-            style="color: #0099FF" Text="Label"></asp:Label>
-        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="Label5" runat="server" style="font-size: large; color: #660066" 
             Text="Post:"></asp:Label>
-        &nbsp;&nbsp;
-        <asp:Label ID="postName" runat="server" 
+        &nbsp;<asp:Label ID="postName" runat="server" 
             style="font-size: large; color: #9900FF" Text="Label"></asp:Label>
-        &nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
         <asp:Label ID="Label6" runat="server" style="color: #003300" Text="Autor: "></asp:Label>
         <asp:Label ID="PostAutorName" runat="server" style="color: #006600" 
             Text="Label"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="postText" runat="server" 
+            Height="133px" ReadOnly="True" 
+            TextMode="MultiLine" Width="463px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
     </asp:Panel>
@@ -175,7 +165,8 @@
         <br />
         <br />
         content:<br />
-        <asp:TextBox ID="threadContentBox" runat="server" Height="106px" Width="277px"></asp:TextBox>
+        <asp:TextBox ID="threadContentBox" runat="server" Height="106px" Width="277px" 
+            TextMode="MultiLine"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="addThreadError" runat="server" style="color: #FF0000" 
@@ -189,7 +180,7 @@
             onclick="threadcancelButton_Click" Text="Cancel" Height="26px" />
     </asp:Panel>
     <br />
-    <asp:Panel ID="addPostPanel" runat="server">
+    <asp:Panel ID="addPostPanel" runat="server" Visible="False">
         <span class="style7">ADD POST</span><br />
         <br />
         topic:<br />
@@ -198,7 +189,8 @@
         <br />
         content:<br />
         <br />
-        <asp:TextBox ID="PostContextBox" runat="server" Height="55px" Width="181px"></asp:TextBox>
+        <asp:TextBox ID="PostContextBox" runat="server" Height="55px" Width="181px" 
+            TextMode="MultiLine"></asp:TextBox>
         <br />
         <asp:Label ID="addPostError" runat="server" 
             style="color: #CC0000; font-size: medium" Text="Label"></asp:Label>
