@@ -37,7 +37,8 @@ namespace WebForum {
                     this.CreateThreadSource();
                     if (this._currentthread != null)
                     {
-                        this.CreatePostdSource(0);
+
+                        this.CreatePostdSource(0); //vadi 
                     }
                 }
             }
@@ -199,10 +200,14 @@ namespace WebForum {
             UserData ud = General.lm.getUserDataFromIP(clientIP);
             ud.CurThread = this._currentthread;
             this.setPosts(0);
+
+            //this.postText.Text = fp.getContent2();
+            
             this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
             removeThreadError.Visible = false;
+            this.PostPanel.Visible = true;
             this.forumNameInThread.Text = this._currentForum._subject;
             this.ThreadName.Text = this._currentthread._subject;
             this.ThreadAutorName.Text = this._currentthread._author;
@@ -290,7 +295,7 @@ namespace WebForum {
             
             for (int i = 0; i < posts.Count; i++)
             {
-                if (posts.ElementAt(i)._parent == par)
+                if ((posts.ElementAt(i)._parent == par) || (par==-1))
                 {
                     dr = postData.NewRow();
                     dr[0] = "[+]";
@@ -298,8 +303,6 @@ namespace WebForum {
                     dr[2] = posts.ElementAt(i)._subject;
                     dr[3] = posts.ElementAt(i)._author;
                     postData.Rows.Add(dr);
-                    
-
                 }
             }
             DataView dv = new DataView(postData);
@@ -311,13 +314,18 @@ namespace WebForum {
         protected void PostsTable_RowCommsnd(Object sender, GridViewCommandEventArgs e)
         {
 
-            this._currentthread = FindCurrentThread(Convert.ToInt32(e.CommandArgument));
+            //this._currentthread = FindCurrentThread(Convert.ToInt32(e.CommandArgument));
             this._currentPost = FindCurrentPost(Convert.ToInt32(e.CommandArgument)); 
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             UserData ud = General.lm.getUserDataFromIP(clientIP);
             ud.CurThread = this._currentthread;
             ud.CurPost = this._currentPost;
+
             this.setPosts(ud.CurPost._pIndex);
+            ForumPost fp  = General.lm.getPost(ud.CurForum._pIndex, ud.CurThread._pIndex, ud.curPost._pIndex, ud.Username);
+            this.postText.Text = fp.getContent2();
+            this.postName.Text = ud.CurPost._subject;
+            this.PostAutorName.Text = ud.CurPost._author;
             this.ForumListPanel.Visible = false;
             this.ForumWithThreadsPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
@@ -435,6 +443,14 @@ namespace WebForum {
             this.addPostPanel.Visible = false;
             this.ThreadWithPostsPanel.Visible = true;
             this.ForumListPanel.Visible = false;
+        }
+
+        protected void addPostButton_Click1(object sender, EventArgs e)
+        {
+            this.addPostPanel.Visible = true;
+            this.ThreadWithPostsPanel.Visible = false;
+            this.ForumListPanel.Visible = false;
+            this.addPostError.Visible = false;
         }
 
 

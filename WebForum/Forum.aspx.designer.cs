@@ -265,6 +265,24 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.TextBox postText;
         
         /// <summary>
+        /// addPostButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addPostButton;
+        
+        /// <summary>
+        /// removePostButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button removePostButton;
+        
+        /// <summary>
         /// addThreadPanel control.
         /// </summary>
         /// <remarks>
