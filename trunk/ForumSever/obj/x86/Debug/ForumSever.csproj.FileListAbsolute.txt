@@ -186,3 +186,7 @@ C:\Users\Vadi\Desktop\New folder\ForumSever\bin\Debug\Client.pdb
 C:\Users\Vadi\Desktop\New folder\ForumSever\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Desktop\New folder\ForumSever\obj\x86\Debug\ForumSever.exe
 C:\Users\Vadi\Desktop\New folder\ForumSever\obj\x86\Debug\ForumSever.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\GuiForumClient.exe
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\GuiForumClient.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\ForumSever\bin\Debug\Client.pdb
