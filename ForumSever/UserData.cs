@@ -10,11 +10,13 @@ namespace ForumSever {
         public Quartet curThread;
         public Quartet curPost;
         public string username;
+        public HashSet<string> addedUsers;
 
         public UserData() {
             this.curForum = null;
             this.curThread = null;
             this.curPost = null;
+            this.addedUsers = new HashSet<string>();
             this.username = "";
         }
 
@@ -22,6 +24,7 @@ namespace ForumSever {
             this.curForum = null;
             this.curThread = null;
             this.curPost = null;
+            this.addedUsers = new HashSet<string>();
             this.username = username;
         }
 
@@ -45,6 +48,11 @@ namespace ForumSever {
         public string Username {
             get { return this.username; }
             set { this.username = value; }
+        }
+
+        public HashSet<string> AddedUsers {
+            get { return this.addedUsers; }
+            set { this.addedUsers = value; }
         }
 
     }

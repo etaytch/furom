@@ -8,29 +8,17 @@ using System.Web.UI.WebControls;
 namespace WebForum
 {
     public partial class Users : System.Web.UI.Page, PageLoader {
-        private object _sender;
-        private EventArgs _e;
-        private string _ip;
-        private int first = 0;
-        private HttpContext _con;
+
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _sender = sender;
-            _e = e;
             General.enable();
-            if (_ip == null) {
-                _con = HttpContext.Current;
-                string clientIP = HttpContext.Current.Request.UserHostAddress;
-                _ip = clientIP;
-            }
-            else {
-                HttpContext.Current = _con;
-            }
-            
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
 
-            Label2.Text = _ip;
-            string uname = General.lm.getUserFromIP(_ip);
+            Label2.Text = clientIP;
+            string uname = General.lm.getUserFromIP(clientIP);
+            string tmpUser;
             if ((uname == null) || (uname.Equals(""))) {
                 Label1.Text = "Please login in order to view users list";
                 Label1.Visible = true;
@@ -40,24 +28,34 @@ namespace WebForum
                 Label2.Text += ", " + uname;
                 List<string> users = General.lm.getUsers(uname);
                 //List<string> users = proxyUsers();
-                this.userList.Items.Clear();
+                //this.userList.Items.Clear();
+                HashSet<string> addedUsers = General.lm.getUserDataFromIP(clientIP).addedUsers;
                 for (int i = 0; i < users.Count; i++) {
-                    this.userList.Items.Add(new ListItem(users.ElementAt(i)));
+                    tmpUser = users.ElementAt(i);
+                    if (!addedUsers.Contains(tmpUser)) {
+                        this.userList.Items.Add(new ListItem(tmpUser));
+                        addedUsers.Add(tmpUser);
+                    }                                                                                
                 }
                 Label1.Visible = true;
                 userList.Visible = true;
                 AddFriendButton.Visible = true;
             }
-            if (first == 0) {
-                General.setPage(_ip, this);
-                first++;
-            }
+            General.setPage(clientIP, this);
+             
+        }
+
+        protected void Ticks(object sender, EventArgs e) {
+            //EventArgs w = EventArgs.
+            Page_Load(sender,e);
         }
 
         public void update(string ip) {
             //string clientIP = /*HttpContext.Current.*/Request.UserHostAddress;
-            _ip = ip;
-            Page_Load(_sender, _e);
+            
+            
+
+
         }
 
         /*private List<string> proxyUsers()
@@ -78,7 +76,7 @@ namespace WebForum
             string errMsg="";
             int counter = 0;
 
-            for (int i=0; i<userList.Items.Count; i++)
+            for (int i=0; i<userList.Items.Count; i++)                
                 if (userList.Items[i].Selected) {
                     if (!uname.Equals(userList.Items[i].Text)) {
                         int result = General.lm.addMeAsFriend(uname, userList.Items[i].Text);
