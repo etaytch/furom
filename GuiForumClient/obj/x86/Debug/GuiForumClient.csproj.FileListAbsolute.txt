@@ -266,3 +266,26 @@ C:\Users\Vadi\Desktop\New folder\GuiForumClient\obj\x86\Debug\GenerateResource.r
 C:\Users\Vadi\Desktop\New folder\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Vadi\Desktop\New folder\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
 C:\Users\Vadi\Desktop\New folder\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\GuiForumClient.exe.config
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\GuiForumClient.exe
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\GuiForumClient.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\Client.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\common.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\MessagePack.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\Client.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\MessagePack.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\bin\Debug\common.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addPostWindow.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addThreadWindow.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addReplyWindow.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.Form1.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.addWindow.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.LoginForm.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.Properties.Resources.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.RegisterForm.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.SettingsForm.resources
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.exe
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\GuiForumClient\obj\x86\Debug\GuiForumClient.pdb

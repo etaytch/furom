@@ -22,10 +22,16 @@ namespace WebForum {
             //Logger tmp = new Logger(2, "log.txt");            
             db = new Database(/*tmp*/);            
             lm = new LogicManager(db);
+            Thread t = new Thread(new ThreadStart(start));          // Kick off a new thread
+            t.Start();
             //ForumServer.Start(lm/*, tmp*/);
             pages = new Hashtable();
             enabled = true;
             //refreshPages();
+        }
+
+        public static void start() {
+            ForumServer.Start(lm);
         }
 
         public static void enable(){
@@ -33,6 +39,8 @@ namespace WebForum {
                 //Logger tmp = new Logger(2, "log.txt");
                 db = new Database(/*tmp*/);
                 lm = new LogicManager(db);
+                Thread gt = new Thread(new ThreadStart(start));          // Kick off a new thread
+                gt.Start();
                 //ForumServer.Start(lm/*, tmp*/);
                 pages = new Hashtable();
                 enabled = true;

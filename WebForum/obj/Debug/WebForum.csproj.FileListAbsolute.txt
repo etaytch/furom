@@ -53,3 +53,16 @@ C:\Users\Vadi\Desktop\New folder\WebForum\bin\common.pdb
 C:\Users\Vadi\Desktop\New folder\WebForum\bin\office.xml
 C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Excel.xml
 C:\Users\Vadi\Desktop\New folder\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\WebForum.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\WebForum.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\WebForum.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\WebForum.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\ForumSever.exe
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\MessagePack.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Server.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\common.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\ForumSever.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\MessagePack.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Server.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\common.pdb
