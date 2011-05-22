@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebForum {
-    public partial class Friends : System.Web.UI.Page {
+    public partial class Friends : System.Web.UI.Page, PageLoader {
         protected void Page_Load(object sender, EventArgs e) {
             General.enable();
             string clientIP = HttpContext.Current.Request.UserHostAddress;
@@ -22,6 +22,10 @@ namespace WebForum {
                     this.friendList.Items.Add(new ListItem(friends.ElementAt(i)));
                 }
             }
+        }
+
+        public void update(string ip) {     
+            // do nothing..
         }
 
         protected void RemoveFriendButton_Click(object sender, EventArgs e) {

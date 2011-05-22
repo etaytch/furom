@@ -6,9 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebForum {
-    public partial class logout : System.Web.UI.Page {
+    public partial class logout : System.Web.UI.Page, PageLoader {
         protected void Page_Load(object sender, EventArgs e) {
 
+        }
+
+
+        public void update(string ip) {
+            // do nothing..
         }
 
         protected void Button1_Click(object sender, EventArgs e) {

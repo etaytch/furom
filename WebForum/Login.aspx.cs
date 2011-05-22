@@ -6,14 +6,21 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebForum {
-    public partial class Login : System.Web.UI.Page {
+    public partial class Login : System.Web.UI.Page, PageLoader {
         protected void Page_Load(object sender, EventArgs e) {
          //   RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            General.enable();
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            //General.setPage(clientIP, this);
+        }
+
+        public void update(string ip) { 
+            // do nothing..
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            General.enable();
+            //General.enable();
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             string uname = this.UserName.Text;
             //General.uName = this.UserName.Text;

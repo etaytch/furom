@@ -8,10 +8,14 @@ using System.Web.UI.WebControls;
 using ForumSever;
 
 namespace WebForum {
-    public partial class Register : System.Web.UI.Page {
+    public partial class Register : System.Web.UI.Page, PageLoader {
 
         protected void Page_Load(object sender, EventArgs e) {
  
+        }
+
+        public void update(string ip) {
+            // do nothing..
         }
 
         protected void registerButton_Click(object sender, EventArgs e)
