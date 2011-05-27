@@ -94,15 +94,6 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.TextBox UserName;
         
         /// <summary>
-        /// UserNameRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
-        
-        /// <summary>
         /// First control.
         /// </summary>
         /// <remarks>
@@ -110,15 +101,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox First;
-        
-        /// <summary>
-        /// UserNameRequired0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired0;
         
         /// <summary>
         /// PasswordLabel control.
@@ -148,15 +130,6 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.TextBox Password;
         
         /// <summary>
-        /// PasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
-        
-        /// <summary>
         /// Last control.
         /// </summary>
         /// <remarks>
@@ -164,15 +137,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Last;
-        
-        /// <summary>
-        /// PasswordRequired0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired0;
         
         /// <summary>
         /// UserNameLabel1 control.
@@ -200,15 +164,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox RePassword;
-        
-        /// <summary>
-        /// UserNameRequired1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired1;
         
         /// <summary>
         /// Country control.
@@ -247,15 +202,6 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
-        /// PasswordRequired1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired1;
-        
-        /// <summary>
         /// City control.
         /// </summary>
         /// <remarks>
@@ -290,15 +236,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Email0;
-        
-        /// <summary>
-        /// PasswordRequired3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired3;
         
         /// <summary>
         /// Sex control.
