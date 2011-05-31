@@ -26,6 +26,10 @@
                     $submitButton.removeAttr("disabled");
                     $('#usernameError').html("").fadeIn();
                 }
+                else if (data == "empty") {
+                    $submitButton.attr("disabled", "true");
+                    $('#usernameError').html("").fadeIn();
+                }
                 else {
                     $submitButton.attr("disabled", "true");
                     $('#usernameError').html("userName not available").fadeIn();

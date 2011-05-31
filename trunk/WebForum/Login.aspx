@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="WebForum.Login" %>
 
+
+
+
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
         .style2
@@ -10,6 +14,51 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
+<script src="Scripts/jquery-1.6.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $LoginButton = $('#<%=LoginButton.ClientID%>');
+        $LoginButton.attr("disabled", "true");
+        $('#<%=UserName.ClientID%>').blur(function () {
+                $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+                    if (data == "true") {
+                        $LoginButton.attr("disabled", "true");
+                        $('#usernameError').html("userName don't exist").fadeIn();
+                    }
+                    else if (data == "empty") {
+                        $LoginButton.attr("disabled", "true");
+                        $('#usernameError').html("").fadeIn();
+                    }
+                    else {                       
+                        $LoginButton.removeAttr("disabled");
+                        $('#usernameError').html("").fadeIn();
+                    }
+                }});
+        });
+
+    });
+
+function validate() {
+    if (document.getElementById("<%=UserName.ClientID%>").value == "") {
+        alert("UserName can not be blank");
+        document.getElementById("<%=UserName.ClientID%>").focus();
+        return false;
+    }
+    if (document.getElementById("<%=Password.ClientID %>").value == "") {
+        alert("Password  can not be blank");
+        document.getElementById("<%=Password.ClientID %>").focus();
+        return false;
+    }
+}
+
+</script>
+
+
+
+
+
     <h2>
         &nbsp;<asp:Label ID="error" runat="server" style="color: #FF3300" Text="Label" 
             Visible="False"></asp:Label>
@@ -24,27 +73,20 @@
             if you don&#39;t have an account.
         </p>
         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
-        <br />
+        <br /><div style="position:relative; top: 5px; left: 1px;">
         <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
-                             CssClass="failureNotification" 
-            ErrorMessage="User Name is required." ToolTip="User Name is required." 
-                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
+        <div style="position:absolute; left:160px; color:Red; font-size:small; font-weight:normal; top: -2px; height: 19px;" 
+                id="usernameError"></div>
         <br />
         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
         <br />
         <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" 
                             TextMode="Password"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
-            ControlToValidate="Password" CssClass="failureNotification" 
-            ErrorMessage="Password is required." ToolTip="Password is required." 
-            ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
         <br />
         <br />
         <br />
     </asp:Panel>
     <br />
-                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
-                        ValidationGroup="LoginUserValidationGroup" 
-        onclick="LoginButton_Click" style="height: 26px"/>
+    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" 
+       OnClientClick="return validate()" onclick="LoginButton_Click" style="height: 26px"/>
                 </asp:Content>
