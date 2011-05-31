@@ -14,7 +14,29 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-<script language="javascript" type="text/javascript">
+<script src="Scripts/jquery-1.6.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $submitButton = $('#<%=registerButton.ClientID%>');
+        $submitButton.attr("disabled", "true");
+        $('#<%=UserName.ClientID%>').blur(function () {
+            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+                if (data == "true") {
+                    $submitButton.removeAttr("disabled");
+                    $('#usernameError').html("").fadeIn();
+                }
+                else {
+                    $submitButton.attr("disabled", "true");
+                    $('#usernameError').html("userName not available").fadeIn();
+                }
+            }
+            });
+
+        });
+    });
+
+
     function validate() {
         if (document.getElementById("<%=UserName.ClientID%>").value == "") {
             alert("UserName Feild can not be blank");
@@ -69,9 +91,13 @@
             document.getElementById("<%=Email.ClientID %>").focus();
             return false;
         }
-    }
-</script>
 
+        
+    }
+
+    
+</script>
+    
 
     <asp:Panel ID="Panel1" runat="server">
         <span class="style1"><strong>CREATE A NEW ACCOUNT</strong><br /> 
@@ -85,12 +111,13 @@
             <asp:Label ID="success0" runat="server" Text="Register Complete"></asp:Label>
             </span>
         </asp:Panel>
-        </span>
+        </span><div style="position:relative">
         <asp:Panel ID="Panel2" runat="server">
             <br />
             <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="UserNameLabel0" runat="server" AssociatedControlID="UserName">First name:</asp:Label>
+            <div style="position:absolute; left:155px; color:Red; font-size:small; font-weight:normal;" id="usernameError"><img id="loadergif" src="6-0.gif" style="display:none;" /></div>
             <br />
             <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -99,6 +126,8 @@
             <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="PasswordLabel0" runat="server" AssociatedControlID="Password">Last name:</asp:Label>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            </asp:ScriptManager>
             <br />
             <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" 
                 TextMode="Password"></asp:TextBox>
@@ -139,10 +168,11 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="Birthday" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="registerButton" OnClientClick=" return validate()" runat="server" onclick="registerButton_Click" 
+            <asp:Button ID="registerButton" OnClientClick=" return validate()" 
+                runat="server" onclick="registerButton_Click" 
                 Text="Register" />
             <br />
-        </asp:Panel>
+        </asp:Panel></div>
         <br />
     </asp:Panel>
 </asp:Content>
