@@ -12,7 +12,7 @@ namespace WebForum {
     public class General {
         public static bool enabled = false;
         public static LogicManager lm;
-        private static Database db;
+        public static Database db;
         //public static string uName;
         public static Hashtable table;
         public static Hashtable pages;        

@@ -87,3 +87,11 @@ C:\Users\Vadi\Desktop\forumm\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
 C:\Users\Vadi\Desktop\forumm\WebForum\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Vadi\Desktop\forumm\WebForum\obj\Debug\WebForum.dll
 C:\Users\Vadi\Desktop\forumm\WebForum\obj\Debug\WebForum.pdb
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\office.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Excel.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.MSProject.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Vbe.Interop.dll
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\office.xml
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Excel.xml
+C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.xml

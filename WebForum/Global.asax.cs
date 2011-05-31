@@ -15,6 +15,7 @@ namespace WebForum {
         public static Database db;
         public static string status;
 
+
         void Application_Start(object sender, EventArgs e) {
             Console.Out.Write("");
             IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
