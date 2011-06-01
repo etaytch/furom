@@ -19,7 +19,6 @@
 
     $(document).ready(function () {
         var $submitButton = $('#<%=registerButton.ClientID%>');
-        var $img = $('#<%=loadergif.ClientID%>');
         $submitButton.attr("disabled", "true");
         $('#<%=UserName.ClientID%>').blur(function () {
             $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
