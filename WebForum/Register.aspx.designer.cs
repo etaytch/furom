@@ -220,15 +220,6 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.TextBox City;
         
         /// <summary>
-        /// PasswordLabel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordLabel3;
-        
-        /// <summary>
         /// PasswordLabel4 control.
         /// </summary>
         /// <remarks>
@@ -236,15 +227,6 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PasswordLabel4;
-        
-        /// <summary>
-        /// Email0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email0;
         
         /// <summary>
         /// Sex control.
