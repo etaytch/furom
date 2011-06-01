@@ -21,6 +21,18 @@
     $(document).ready(function () {
         var $LoginButton = $('#<%=LoginButton.ClientID%>');
         $LoginButton.attr("disabled", "true");
+        if ($('#<%=UserName.ClientID%>').val() != "")
+            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+                if (data == "true") {
+                    $LoginButton.attr("disabled", "true");
+                    $('#usernameError').html("userName don't exist").fadeIn();
+                }
+                else {
+                    $LoginButton.removeAttr("disabled");
+                    $('#usernameError').html("").fadeIn();
+                }
+            } 
+            });
         $('#<%=UserName.ClientID%>').blur(function () {
                 $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
                     if (data == "true") {
@@ -36,21 +48,22 @@
                         $('#usernameError').html("").fadeIn();
                     }
                 }});
-        });
+         });
 
     });
 
 function validate() {
     if (document.getElementById("<%=UserName.ClientID%>").value == "") {
-        alert("UserName can not be blank");
+        $('#DivError').html("UserName can not be blank").fadeIn();
         document.getElementById("<%=UserName.ClientID%>").focus();
         return false;
     }
     if (document.getElementById("<%=Password.ClientID %>").value == "") {
-        alert("Password  can not be blank");
+        $('#DivError').html("Password can not be blank").fadeIn();
         document.getElementById("<%=Password.ClientID %>").focus();
         return false;
     }
+    $('#DivError').html("").fadeIn();
 }
 
 </script>
@@ -87,6 +100,8 @@ function validate() {
         <br />
     </asp:Panel>
     <br />
+    <div style="position:absolute;  color:Red; font-size:small; font-weight:normal; top: 380px;" 
+                id="DivError"></div>
     <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" 
        OnClientClick="return validate()" onclick="LoginButton_Click" style="height: 26px"/>
                 </asp:Content>
