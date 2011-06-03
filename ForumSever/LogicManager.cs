@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using MessagePack;
 using System.Collections.Generic;
-using VS.Logger;
-
 
 namespace ForumSever
 {
@@ -18,13 +16,10 @@ namespace ForumSever
         private Hashtable _usersIp;
         private Hashtable _usersData;
 
-        //private Logger _logger; 
-
-        public LogicManager(/*Logger logger*/)
+        public LogicManager()
         {
-            _db = new Database(/*logger*/);
-            //_logger = logger;
-            _db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
+            _db = new Database();
+            //_db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
             _usersIp = new Hashtable();
             _usersData = new Hashtable();
         }
@@ -419,6 +414,41 @@ namespace ForumSever
             }
             return result;
         }
+
+        public PostsTree getThreadPostsAndContent(int p_fid, int p_tid, string uname)
+        {
+            PostsTree pt = new PostsTree();  
+            List<Quartet> result = null;
+            lock (_logicLock)
+            {
+                result = _db.getThreadPosts(p_fid, p_tid);
+            }
+
+            pt.Children = fillPostTree(p_fid, p_tid, pt, result, uname);
+            return pt;
+        }
+
+        private List<PostsTree> fillPostTree(int p_fid, int p_tid,PostsTree pt, List<Quartet> result, string uname)
+        {
+            List<PostsTree> ptl = null;
+            foreach (Quartet post in result)
+            {
+                if (post._parent == pt.Post._pIndex)
+                {
+                    ptl = new List<PostsTree>();
+                    PostsTree child = new PostsTree();
+                    child.Content = getPost(p_fid, p_tid, post._pIndex, uname).getContent(); //get the post content
+                    child.Post = post;  //post metadata
+                    pt.Children = fillPostTree(p_fid, p_tid, child, result, uname); //now look for posts children
+                    ptl.Add(child);
+                }
+            }
+
+            return ptl;
+        }
+
+
+
 
         public ForumThread getThread(int p_fid, int p_tid)
         {
