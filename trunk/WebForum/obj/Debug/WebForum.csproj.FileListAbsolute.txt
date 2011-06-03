@@ -95,3 +95,24 @@ C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsof
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\office.xml
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Excel.xml
 C:\Users\eliav\Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\WebForum.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\obj\Debug\WebForum.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\WebForum.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\WebForum.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\ForumSever.exe
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\MessagePack.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Server.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\common.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\office.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Excel.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.MSProject.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Vbe.Interop.dll
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\ForumSever.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\MessagePack.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Server.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\common.pdb
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\office.xml
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Excel.xml
+D:\My Documents\Visual Studio 2010\Projects\furom\WebForum\bin\Microsoft.Office.Interop.Outlook.xml
