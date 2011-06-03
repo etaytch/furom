@@ -14,7 +14,7 @@
         }
     </style>
 </head>
-<body>
+<body id="MasterPageBodyTag" runat="server">
     <form runat="server">
     <div class="page">
         <div class="header">
