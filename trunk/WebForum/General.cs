@@ -13,7 +13,6 @@ namespace WebForum {
         public static bool enabled = false;
         public static LogicManager lm;
         public static Database db;
-        //public static string uName;
         public static Hashtable table;
         public static Hashtable pages;        
         private static Object _refreshLock = new Object();
