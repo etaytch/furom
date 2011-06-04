@@ -21,7 +21,7 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             
-            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
