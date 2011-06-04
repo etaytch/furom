@@ -19,15 +19,13 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    Furom
-                </h1>
+                <asp:Image ID="Image2" runat="server" 
+                    ImageAlign="Left" ImageUrl="~/furom.png" style="margin-bottom: 0px" 
+                    CssClass="accountInfo" />
             </div>
             <div class="loginDisplay">
-                <asp:Image ID="Image1" runat="server" BorderColor="#4B6C9E" 
-                    DescriptionUrl="~/boss.ico" Height="34px" 
-                    ImageAlign="Right" ImageUrl="~/boss.PNG" style="margin-bottom: 0px" 
-                    ViewStateMode="Enabled" Width="32px" BorderWidth="1px" 
+                <asp:Image ID="Image1" runat="server"
+                    ImageAlign="Right" ImageUrl="~/boss.gif" style="margin-bottom: 0px" 
                     CssClass="accountInfo" />
             </div>
             <div class="clear hideSkiplink">
