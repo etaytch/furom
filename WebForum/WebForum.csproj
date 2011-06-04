@@ -57,7 +57,7 @@
     <Content Include="Account\boss.bmp" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
-    <Content Include="addReplay.aspx" />
+    <Content Include="addReply.aspx" />
     <Content Include="boss.ico" />
     <Content Include="chat-delete.png" />
     <Content Include="css\demos.css" />
@@ -250,6 +250,7 @@
     <Content Include="js\ui\minified\jquery.ui.widget.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="logout.aspx" />
+    <Content Include="notify.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="replay2.png" />
     <Content Include="Scripts\jquery-1.6.1.js" />
@@ -292,12 +293,11 @@
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="addReplay.aspx.cs">
-      <DependentUpon>addReplay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="addReply.aspx.cs">
+      <DependentUpon>addReply.aspx</DependentUpon>
     </Compile>
-    <Compile Include="addReplay.aspx.designer.cs">
-      <DependentUpon>addReplay.aspx</DependentUpon>
+    <Compile Include="addReply.aspx.designer.cs">
+      <DependentUpon>addReply.aspx</DependentUpon>
     </Compile>
     <Compile Include="davar.aspx.cs">
       <DependentUpon>davar.aspx</DependentUpon>
@@ -344,6 +344,12 @@
     </Compile>
     <Compile Include="logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="notify.aspx.cs">
+      <DependentUpon>notify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="notify.aspx.designer.cs">
+      <DependentUpon>notify.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
