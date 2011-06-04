@@ -20,7 +20,7 @@ namespace WebForum {
         private static Object _refreshLock = new Object();
         private static Process fs;
        // private static string server_location = "C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe";
-        private static string server_location = "C:/Users/Vadi/Desktop/furom/ForumSever/bin/Debug/ForumSever.exe";
+        private static string server_location = "C:/Users/Shiran/Documents/Visual Studio 2010/Projects/furom/ForumSever/bin/Debug/ForumSever.exe";
 
         public General() {        
             db = new Database();            
