@@ -72,11 +72,11 @@
         </asp:Panel>
     <asp:Panel ID="welcomePanel" runat="server">
         <asp:Label ID="_lable" runat="server" Font-Bold="True" Font-Italic="True" 
-        Font-Names="Forte" Font-Size="XX-Large" Text="Welcome to the Furom" 
+        Font-Names="Forte" Font-Size="XX-Large" Text="Welcome" 
             style="text-align: center"></asp:Label>
         &nbsp;
         <br />
-        please <a href="Login.aspx">Log In</a><br /> <br />
+        Please <a href="Login.aspx">log in</a><br /> <br />
         </asp:Panel>
     <asp:Panel ID="addThreadPanel" runat="server" Visible="False">
         <span class="style6">Add New Thread</span><br />

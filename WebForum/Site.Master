@@ -33,10 +33,10 @@
                     EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Forum.aspx" Text="Forum"/>
-                        <asp:MenuItem NavigateUrl="~/Login.aspx" Text="account" Value="login">
-                            <asp:MenuItem NavigateUrl="~/Login.aspx" Text="login" Value="login">
+                        <asp:MenuItem NavigateUrl="~/Login.aspx" Text="Account" Value="login">
+                            <asp:MenuItem NavigateUrl="~/Login.aspx" Text="Login" Value="login">
                             </asp:MenuItem>
-                            <asp:MenuItem Text="logout" Value="logout" NavigateUrl="~/logout.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Logout" Value="logout" NavigateUrl="~/logout.aspx"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Register.aspx" Text="Register" Value="Register">
                             </asp:MenuItem>
                         </asp:MenuItem>

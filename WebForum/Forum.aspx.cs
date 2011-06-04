@@ -123,14 +123,14 @@ namespace WebForum {
              IDColumn.ItemStyle.Width = 5;
 
              ButtonField threadColumn = new ButtonField();
-             threadColumn.DataTextField = "thread";
+             threadColumn.DataTextField = "Thread";
              threadColumn.DataTextFormatString = "{0}";
-             threadColumn.HeaderText = "thread";
+             threadColumn.HeaderText = "Thread";
 
              BoundField autorColumn = new BoundField();
-             autorColumn.DataField = "autor";
+             autorColumn.DataField = "Author";
              autorColumn.DataFormatString = "{0}";
-             autorColumn.HeaderText = "autor";
+             autorColumn.HeaderText = "Author";
              autorColumn.ItemStyle.Width = 20;
 
              threadTable.Columns.Add(IDColumn);
@@ -149,8 +149,8 @@ namespace WebForum {
              threadsData = new DataTable();
              DataRow dr;
              threadsData.Columns.Add(new DataColumn("Index", typeof(Int32)));
-             threadsData.Columns.Add(new DataColumn("thread", typeof(string)));
-             threadsData.Columns.Add(new DataColumn("autor", typeof(string)));
+             threadsData.Columns.Add(new DataColumn("Thread", typeof(string)));
+             threadsData.Columns.Add(new DataColumn("Author", typeof(string)));
              for (int i = 0; i < threads.Count; i++)
              {
                  dr = threadsData.NewRow();
