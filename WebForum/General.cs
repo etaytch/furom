@@ -7,6 +7,8 @@ using VS.Logger;
 using System.Collections;
 using System.Threading;
 using System.Web.UI;
+using System.Diagnostics;
+using System.IO;
 
 namespace WebForum {
     public class General {
@@ -16,14 +18,15 @@ namespace WebForum {
         public static Hashtable table;
         public static Hashtable pages;        
         private static Object _refreshLock = new Object();
+        private static Process fs;
 
         public General() {
             //Logger tmp = new Logger(2, "log.txt");            
             db = new Database(/*tmp*/);            
             lm = new LogicManager(db);
-            Thread t = new Thread(new ThreadStart(start));          // Kick off a new thread
-            t.Start();
-            //ForumServer.Start(lm/*, tmp*/);
+            fs = Process.Start("C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe");
+            /*Thread t = new Thread(new ThreadStart(start));          // Kick off a new thread
+            t.Start();*/
             pages = new Hashtable();
             enabled = true;
             //refreshPages();
@@ -38,9 +41,11 @@ namespace WebForum {
                 //Logger tmp = new Logger(2, "log.txt");
                 db = new Database(/*tmp*/);
                 lm = new LogicManager(db);
-                Thread gt = new Thread(new ThreadStart(start));          // Kick off a new thread
-                gt.Start();
-                //ForumServer.Start(lm/*, tmp*/);
+                //FileStream fs = File.Create("qerty.txt");
+                //fs.Close();
+                fs = Process.Start("C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe");
+                /*Thread gt = new Thread(new ThreadStart(start));          // Kick off a new thread
+                gt.Start();*/
                 pages = new Hashtable();
                 enabled = true;
                 Thread t = new Thread(new ThreadStart(refreshPages));
