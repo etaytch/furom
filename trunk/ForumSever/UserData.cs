@@ -11,6 +11,7 @@ namespace ForumSever {
         public Quartet curPost;
         public string username;
         public HashSet<string> addedUsers;
+        public Queue<string> notifications;
 
         public UserData() {
             this.curForum = null;
@@ -18,6 +19,7 @@ namespace ForumSever {
             this.curPost = null;
             this.addedUsers = new HashSet<string>();
             this.username = "";
+            this.notifications = new Queue<string>();
         }
 
         public UserData(string username) {
@@ -26,6 +28,8 @@ namespace ForumSever {
             this.curPost = null;
             this.addedUsers = new HashSet<string>();
             this.username = username;
+            this.notifications = new Queue<string>();
+            notifications.Enqueue("Hello " + username);
         }
 
         
