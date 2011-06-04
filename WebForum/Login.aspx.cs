@@ -5,16 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebForum {
-    public partial class Login : System.Web.UI.Page, PageLoader {
-        protected void Page_Load(object sender, EventArgs e) {
-         //   RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+namespace WebForum
+{
+    public partial class Login : System.Web.UI.Page, PageLoader
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //   RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             General.enable();
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             //General.setPage(clientIP, this);
         }
 
-        public void update(string ip) { 
+        public void update(string ip)
+        {
             // do nothing..
         }
 
@@ -25,9 +29,10 @@ namespace WebForum {
             string uname = this.UserName.Text;
             //General.uName = this.UserName.Text;
             int result = General.lm.login(uname, this.Password.Text);
-            if (result < 0) 
-                sendError(result, this.UserName.Text);            
-            else {
+            if (result < 0)
+                sendError(result, this.UserName.Text);
+            else
+            {
                 this.error.Text = " login succeed";
                 General.lm.addUserIP(uname, clientIP);
                 this.LoginButton.Visible = false;
@@ -36,9 +41,11 @@ namespace WebForum {
             }
         }
 
-        private void sendError(int returnValue, string uname) {
+        private void sendError(int returnValue, string uname)
+        {
             // TODO case with all posible errors and the creation of the proper message, with pushing the error to the queue 
-            switch (returnValue) {
+            switch (returnValue)
+            {
                 case -1:
                     this.error.Text = uname + " is already a friend with this user";
                     break;
@@ -46,7 +53,7 @@ namespace WebForum {
                     this.error.Text = uname + " user you are trying to befriend dosn't exist";
                     break;
                 case -3:
-                   this.error.Text = "incorrect user name";
+                    this.error.Text = "incorrect user name";
                     break;
                 case -4:
                     this.error.Text = "the user you are trying to unfriend is not a friend of yours";

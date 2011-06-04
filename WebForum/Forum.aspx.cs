@@ -199,9 +199,9 @@ namespace WebForum {
             ud.CurThread = this._currentthread;
 
             //this.postText.Text = fp.getContent2();
-            
-            this.ForumListPanel.Visible = false;
-            this.ForumWithThreadsPanel.Visible = false;            
+            //this.ForumListPanel.Visible = false;
+            //this.ForumWithThreadsPanel.Visible = false;         
+            Response.Redirect("ThreadBody.aspx");
         }
 
         private Quartet FindCurrentThread(int p_index)

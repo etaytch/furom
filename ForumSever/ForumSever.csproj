@@ -48,6 +48,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="ForumPost.cs" />
     <Compile Include="ForumServer.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="LogicManager.cs" />
     <Compile Include="MassageHandler.cs" />
     <Compile Include="PostsTree.cs" />
