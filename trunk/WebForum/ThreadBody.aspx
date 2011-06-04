@@ -15,36 +15,33 @@
         <script src="js/ui/jquery.ui.accordion.js" type="text/javascript"></script>
         <script language="javascript" type= "text/javascript">
             $(document).ready(function () {
-                //$('div[name^="accordion"]').each(function(index) {
-                //   append('<asp:ImageButton runat="server" Height="66px"  ImageUrl="~/replay2.png" onclick="ImageButton1_Click" Width="54px" />');
-                //}
 
-                $('div[name^="accordion"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" onclick="ImageButton1_Click" Width="24px" />');
-                $('div[name^="accordion"]').accordion({ collapsible: true, autoHeight: false,
-                    change: function changeFunction() {
-                       // var title = "1";
-                        //var title= .attr("ID");
-                        //                        var title = this.attr("postID");
-                       // alert("change: " + title);
 
-                    }
-                });
+                $('div[name^="accordion"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/>');
+                $('div[name^="accordion"]').accordion({ collapsible: true, autoHeight: false });
                 $('div[name^="accordion"]').resize();
+                $('div[name^="accordion"] > h3 > a').click(function () {
+                    $("#myPost").attr("postID", $(this).parent().parent().attr("postID"));
+                    //  $("#myPost").attr("perantID", $(this).parent().parent().attr("perantID"));
+                    //  $("#myPost").attr("subject", $(this).parent().parent().attr("subject"));
+                    //  $("#myPost").attr("userName", $(this).parent().parent().attr("userName"));
+                })
+
             });
 
             function replayfunction() {
-                alert("click!!");
-            }
+                window.location = "/addReply.aspx?postID=" + $("#myPost").attr("postID");
+                //    window.location = "/addReply.aspx?userName=" + $("#myPost").attr("userName") + "&postID=" + $("#myPost").attr("postID") + "&perantID=" + $("#myPost").attr("perantID") + "&subject=" + $("#myPost").attr("subject");
+           }
 
 
         </script>
-        <asp:Panel ID="Panel1" runat="server">
-            <asp:Panel ID="Panel2" runat="server">
+        <asp:Panel ID="Panel1" runat="server">        
+        </asp:Panel>
+        <asp:Panel ID="Panel2" runat="server">
                 <br />
-                <br />
-                <br />
+                <asp:ImageButton ID="removeThreadButton"  runat="server" Height="46px" ImageUrl="~/chat-delete.png" Width="44px" onclick="removeThreadButton_Click"  />Remove Thread<br/>';
                 <br />
             </asp:Panel>
-        </asp:Panel>
 </asp:Content>
 

@@ -16,27 +16,44 @@ namespace WebForum
         protected void Page_Load(object sender, EventArgs e)
         {
             accCounter = 0;
-            
+            /*
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
             PostsTree posts = General.lm.getThreadPostsAndContent(ud.CurForum._pIndex, ud.CurThread._pIndex, ud.Username);
             string threadContent = General.lm.getThread(ud.CurForum._pIndex, ud.CurThread._pIndex).getContent();
-            /*
-            UserData ud = createUd();
-            PostsTree posts = createPosts(ud.Username,1,0);
-            string threadContent = "the thread content";
             */
+            UserData ud = createUd();
+            PostsTree posts = createPosts(ud.Username,3,2);
+            string threadContent = "the thread content";
+            
             HtmlGenericControl mainThread = setAccordions(posts, threadContent);
             HtmlGenericControl wrapper = new HtmlGenericControl("div");
             wrapper.Attributes["name"] = "accordion0";
             wrapper.Controls.Add(addHeader(ud.CurThread._subject));
             wrapper.Controls.Add(mainThread);
+
             Panel1.Controls.Add(wrapper);
+            Panel1.Controls.Add(currentPost());
+
+
+        }
+
+        private Control currentPost()
+        {
+            HtmlGenericControl result = new HtmlGenericControl("div");
+            result.Attributes["ID"] = "myPost";
+            result.Attributes["name"] = "myPost";
+            result.Attributes["postID"] = "0";
+            result.Attributes["perantID"] = "0";
+            result.Attributes["subject"] = "0";
+            result.Attributes["userName"] = "0";
+
+            return result;
         }
 
         private PostsTree createPosts(string p_userName,int level,int num)
         {
             PostsTree result = new PostsTree();
-            result.Post = new Quartet(1, 1, "I am post #" +num+ " in level "+level, p_userName);
+            result.Post = new Quartet((num+1)*(level+1), 1, "I am post #" +num+ " in level "+level, p_userName);
             result.Content = "bla bla bla";
             level--;
             if (level>=0){
@@ -64,24 +81,20 @@ namespace WebForum
             HtmlGenericControl acc = new HtmlGenericControl("div");
             acc.Attributes["name"] = "accordion" + accCounter;
             acc.Attributes["postID"] = "" + p_posts.Post._pIndex;
+//            acc.Attributes["perantID"] = "" + p_posts.Post._parent;
+//            acc.Attributes["subject"] = p_posts.Post._subject;
+//            acc.Attributes["userName"] = p_posts.Post._author;
             accCounter++;
-            //acc.Controls.Add(addContent(p_content));
+            acc.Controls.Add(addHeader("content"));
+            acc.Controls.Add(addContent(p_content));
             if (p_posts.Children != null)
             {
-                acc.Controls.Add(addHeader("content"));
-                acc.Controls.Add(addContent(p_content));
                 foreach (PostsTree pt in p_posts.Children)
                 {
-                    acc.Controls.Add(addHeader(pt.Post._subject));
+                    acc.Controls.Add(addHeader(pt.Post._author + " says: " + pt.Post._subject));
                     acc.Controls.Add(setAccordions(pt, pt.Content));
                 }
             }
-            else
-            {
-                acc.Controls.Add(addHeader("content"));
-                acc.Controls.Add(addContent(p_content));
-            }
-            
             return acc;
         }
 
@@ -96,38 +109,6 @@ namespace WebForum
             return div;
         }
 
-
-        /*
-        private void addAccordions(HtmlGenericControl acc)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                HtmlGenericControl tmpdiv = new HtmlGenericControl("div");
-                tmpdiv.Attributes["name"] = "accordion" + i;
-                addDivs(tmpdiv);
-                acc.Controls.Add(addHeader("section" + i));
-                acc.Controls.Add(tmpdiv);
-            }
-        }
-        private void addDivs(HtmlGenericControl acc)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                HtmlGenericControl tmpdiv = createDiv(i);
-                acc.Controls.Add(addHeader("section" + i));
-                acc.Controls.Add(tmpdiv);
-            }
-        }
-        private HtmlGenericControl createDiv(int i)
-        {
-            HtmlGenericControl div = new HtmlGenericControl("div");
-            HtmlGenericControl p = new HtmlGenericControl("p");
-            p.InnerText = "I am div " + i + "!!!\n";
-            div.Controls.Add(p);
-            this.Controls.Add(div);
-            return div;
-        }
-        */
         HtmlGenericControl addHeader(string topic)
         {
             HtmlGenericControl div = new HtmlGenericControl("h3");
@@ -138,9 +119,14 @@ namespace WebForum
 
             return div;
         }
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-        {
 
+        protected void removeThreadButton_Click(object sender, ImageClickEventArgs e)
+        {    
+            UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
+            General.lm.removeThread(ud.CurForum._pIndex,ud.CurThread._pIndex,ud.Username);
+            Response.Redirect("/Forum.aspx");
         }
+
+        
     }
 }
