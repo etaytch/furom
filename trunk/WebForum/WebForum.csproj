@@ -57,7 +57,9 @@
     <Content Include="Account\boss.bmp" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="addReplay.aspx" />
     <Content Include="boss.ico" />
+    <Content Include="chat-delete.png" />
     <Content Include="css\demos.css" />
     <Content Include="css\jquery.ui.all.css" />
     <Content Include="css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -249,6 +251,7 @@
     <Content Include="Login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="replay2.png" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -288,6 +291,13 @@
     </Compile>
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addReplay.aspx.cs">
+      <DependentUpon>addReplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addReplay.aspx.designer.cs">
+      <DependentUpon>addReplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="davar.aspx.cs">
       <DependentUpon>davar.aspx</DependentUpon>
