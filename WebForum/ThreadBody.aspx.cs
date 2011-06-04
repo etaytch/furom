@@ -16,15 +16,15 @@ namespace WebForum
         protected void Page_Load(object sender, EventArgs e)
         {
             accCounter = 0;
-            /*
+            
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
             PostsTree posts = General.lm.getThreadPostsAndContent(ud.CurForum._pIndex, ud.CurThread._pIndex, ud.Username);
             string threadContent = General.lm.getThread(ud.CurForum._pIndex, ud.CurThread._pIndex).getContent();
-            */
+            /*
             UserData ud = createUd();
             PostsTree posts = createPosts(ud.Username,1,0);
             string threadContent = "the thread content";
-            
+            */
             HtmlGenericControl mainThread = setAccordions(posts, threadContent);
             HtmlGenericControl wrapper = new HtmlGenericControl("div");
             wrapper.Attributes["name"] = "accordion0";

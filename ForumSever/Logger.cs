@@ -17,10 +17,16 @@ namespace Log
         private static int _ERROR = 50;
         private static int _OFF = 0;
         public static String _LEVEL = "ALL" ; //ALL|INFO|ERROR|OFF        
-        private static String logDirectory = "../../../Proxy_Log";
+        //private static String logDirectory = "../../../Furom_Log";
+        private static String logDirectory = "C:/Users/Vadi/Desktop/furom/Furom_Log/Furom_Log";
         public static int ALL
         {
             get { return _ALL; }
+        }
+
+        public static string LOGDIR
+        {
+            set { logDirectory  = value; }
         }
 
         public static int ERROR

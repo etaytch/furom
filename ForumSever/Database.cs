@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using MessagePack;
-using VS.Logger;
 using System.Security.Cryptography;
+using Log;
 
 namespace ForumSever
 {
@@ -15,19 +15,17 @@ namespace ForumSever
         public  List<Forum> _forums;         //private
         private int _counter;
         private SqlConnection _conn;
-        //private Logger _logger;
 
-        public Database(/*Logger logger*/) {
+        public Database() {
             _Members = new List<MemberInfo>();
             _forums = new List<Forum>();
             _counter = 0;
-            //_logger = logger;
             
             _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
-
+            Logger.append("Started SQL Server", Logger.INFO);
             runOtherSQL("UPDATE Users SET logged=0, currForum=-1,currThread=-1");            
              
         }
@@ -43,7 +41,6 @@ namespace ForumSever
             int ans;
             SqlDataReader reader = runSelectSQL("select pid from Posts where (fid = " + p_fid + ") and (tid = " + p_tid + ") and (pid >=all (select pid from Posts where (fid = " + p_fid + ") and (tid = " + p_tid + ")))");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return 0;
             }
@@ -67,8 +64,6 @@ namespace ForumSever
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while adding Post...\n" + "INSERT INTO Posts Values (" + nextPostId + "," + p_tid + "," + p_fid + "," + p_parentId + ",'" + p_topic + "','" + p_content + "','" + p_uname + "')");
-                //Console.WriteLine(e.ToString());
             }     
 
             return ans;
@@ -84,8 +79,6 @@ namespace ForumSever
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while removing Post...\n");
-                //Console.WriteLine(e.ToString());
             }
 
             return false;
@@ -100,9 +93,8 @@ namespace ForumSever
                 return true;
             }
             catch (Exception e) {
+                
                 _conn.Close();
-                //Console.WriteLine("Error while removing Post...\n");
-                //Console.WriteLine(e.ToString());
             }
 
             return false;
@@ -112,14 +104,12 @@ namespace ForumSever
             ForumPost ans=null;
             SqlDataReader reader = runSelectSQL("SELECT * FROM Posts WHERE (pid=" +p_index+") and (fid="+p_fid+") and (tid="+p_tid+")");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return null;
             }
 
 
-            while (reader.Read()) {
-                //public ForumPost(int fid, int tid, string p_topic, string p_content, string p_author)                
+            while (reader.Read()) {           
                 ans = new ForumPost(Convert.ToInt32(reader["fid"].ToString()), Convert.ToInt32(reader["tid"].ToString()), Convert.ToInt32(reader["parentid"].ToString()), reader["subject"].ToString(), reader["body"].ToString(), reader["author"].ToString());
                 _conn.Close();
                 return ans;
@@ -157,8 +147,6 @@ namespace ForumSever
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName()+"' already exsist?");
-                //Console.WriteLine(e.ToString());
             }
 
             try {
@@ -167,8 +155,6 @@ namespace ForumSever
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while adding member. Maybe the username '" + memb.getUName() + "' already exsist?");
-                //Console.WriteLine(e.ToString());
             }     
 
 
@@ -180,14 +166,12 @@ namespace ForumSever
             if (!_conn.State.Equals("Open")) {
                 _conn.Open();
             }
-            SqlDataReader ans = null;
             SqlCommand myCommand = new SqlCommand(command, _conn);         
             return myCommand.ExecuteReader();            
         }
 
         private void runOtherSQL(String command) {
             _conn.Open();
-            SqlDataReader ans = null;
             SqlCommand myCommand1 = new SqlCommand(command, _conn);
             myCommand1.ExecuteNonQuery();
             _conn.Close();
@@ -241,7 +225,6 @@ namespace ForumSever
         }
 
         public void markUserAsLogged(string username,int logged) {
-            //Console.WriteLine("UPDATE Users SET logged=1 WHERE username = '" + username + "'");
             runOtherSQL("UPDATE Users SET logged=" + logged + " WHERE username = '" + username + "'");
         }
 
@@ -275,7 +258,6 @@ namespace ForumSever
         public bool recordExsist(string query) {
             SqlDataReader reader = runSelectSQL(query);
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return false;
             }
@@ -288,7 +270,6 @@ namespace ForumSever
 
             SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -308,7 +289,6 @@ namespace ForumSever
 
             SqlDataReader reader = runSelectSQL("SELECT * FROM Posts WHERE " + "(pid = '" + p_pid + "') and (fid = '" + p_fid + "') and (tid = '" + p_tid + "')");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return null;
             }
@@ -326,7 +306,6 @@ namespace ForumSever
             MemberInfo ans;
             SqlDataReader reader = runSelectSQL("SELECT * FROM Users WHERE " + where);
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return null;
             }
@@ -363,7 +342,6 @@ namespace ForumSever
             List<string> ans = new List<string>(); 
             SqlDataReader reader = runSelectSQL("SELECT * FROM Users");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -379,7 +357,6 @@ namespace ForumSever
             List<string> ans = new List<string>();
             SqlDataReader reader = runSelectSQL("SELECT * FROM "+p_uname);
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -397,7 +374,6 @@ namespace ForumSever
 
             SqlDataReader reader = runSelectSQL("SELECT * FROM Forums");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -456,7 +432,6 @@ namespace ForumSever
             int ans;
             SqlDataReader reader = runSelectSQL("select tid from Threads where tid >=all (select tid from threads)");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return 1;
             }
@@ -471,27 +446,21 @@ namespace ForumSever
 
         public void addFriend(string p_uname, string p_friendUname) {
             try {
-                //Console.WriteLine("INSERT INTO " + p_uname + " Values ('" + p_friendUname+"')");
                 runSelectSQL("INSERT INTO " + p_uname + " Values ('" + p_friendUname + "')");
                 _conn.Close();
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while adding friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
-                //Console.WriteLine(e.ToString());
             }     
         }
 
         public void removeFriend(string p_uname, string p_friendUname) {
             try {
-                //Console.WriteLine("Delete From " + p_uname + " where uname = '" + p_friendUname + "'");
                 runSelectSQL("Delete From " + p_uname + " where uname = '" + p_friendUname + "'");
                 _conn.Close();
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while removing friend. uname: " + p_uname + ", friendUname: " + p_friendUname);
-                //Console.WriteLine(e.ToString());
             }
         }
         /*Threads founctions  */
@@ -506,14 +475,11 @@ namespace ForumSever
             str += ",'" + p_tread._content + "'";
             str += ",'" + p_tread._autor + "')";
             try {
-                //Console.WriteLine("INSERT INTO Threads Values " + str);
                 runSelectSQL("INSERT INTO Threads Values " + str);
                 _conn.Close();
             }
             catch (Exception e) {
                 _conn.Close();
-                //Console.WriteLine("Error while adding thread. Maybe the topic '" + p_tread._topic + "' already exsist?");
-                //Console.WriteLine(e.ToString());
             }     
             // Etay
             return p_tread.getThreadID();
@@ -532,7 +498,6 @@ namespace ForumSever
         public bool isTopic(int fid, string topic) {
             SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE fid="+fid+" and subject = '"+topic+"'");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return false;
             }
@@ -588,35 +553,28 @@ namespace ForumSever
         public List<Quartet> getForum(int p_fid) {
             List<Quartet> ans = new List<Quartet>();
             SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid=" + p_fid + ")");
-            //Console.WriteLine("SELECT * FROM Threads WHERE (fid=" + p_fid + ")");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
 
-            while (reader.Read()) {
-                //public ForumThread(int fid,string p_topic, string p_content, string p_author)                
+            while (reader.Read()) {              
                 ans.Add(new Quartet(Convert.ToInt32(reader["tid"].ToString()),0, reader["subject"].ToString(), reader["author"].ToString()));
             }
             _conn.Close();
             return ans;
         }
 
-        //getForum(p_fid)
-
         public ForumThread getThread(int p_fid, int p_tid) {
             ForumThread ans=null;
             SqlDataReader reader = runSelectSQL("SELECT * FROM Threads WHERE (fid=" + p_fid + ") and (tid=" + p_tid + ")");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return null;
             }
 
 
             while (reader.Read()) {
-                //public ForumThread(int fid,string p_topic, string p_content, string p_author)
                 ans = new ForumThread(Convert.ToInt32(reader["fid"].ToString()), reader["subject"].ToString(), reader["body"].ToString(), reader["author"].ToString());
                 _conn.Close();
                 return ans;
@@ -630,7 +588,6 @@ namespace ForumSever
             
             SqlDataReader reader = runSelectSQL("SELECT * FROM Posts WHERE (fid=" + p_fid + ") and (tid=" + p_tid + ")");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -691,14 +648,12 @@ namespace ForumSever
             SqlDataReader reader = runSelectSQL("SELECT fname FROM Forums WHERE (fid=" + t_fid + ")");
             string ans = "";
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
 
 
             while (reader.Read()) {
-                //public ForumThread(int fid,string p_topic, string p_content, string p_author)
                 ans = reader["fname"].ToString();
                 _conn.Close();
                 return ans;
@@ -711,7 +666,6 @@ namespace ForumSever
 
             SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (currForum=" + t_fid + ") and (logged=1)");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -729,7 +683,6 @@ namespace ForumSever
             List<string> ans = new List<string>();
             SqlDataReader reader = runSelectSQL("SELECT username FROM Users Where (currForum=" + t_fid+") and (currThread="+t_tid+") and (logged=1)");
             if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
                 _conn.Close();
                 return ans;
             }
@@ -747,15 +700,14 @@ namespace ForumSever
         public string getThreadName(int t_fid, int t_tid) {
             SqlDataReader reader = runSelectSQL("SELECT subject FROM Threads WHERE (fid=" + t_fid + ") and (tid="+t_tid+")");
             string ans = "";
-            if (!reader.HasRows) {
-                //Console.WriteLine("SQL=empty");
+            if (!reader.HasRows) 
+            {
                 _conn.Close();
                 return ans;
             }
 
 
             while (reader.Read()) {
-                //public ForumThread(int fid,string p_topic, string p_content, string p_author)
                 ans = reader["subject"].ToString();
                 _conn.Close();
                 return ans;

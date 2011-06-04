@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ForumSever;
-using VS.Logger;
+using Log;
 using System.Collections;
 using System.Threading;
 using System.Web.UI;
@@ -19,12 +19,13 @@ namespace WebForum {
         public static Hashtable pages;        
         private static Object _refreshLock = new Object();
         private static Process fs;
+       // private static string server_location = "C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe";
+        private static string server_location = "C:/Users/Vadi/Desktop/furom/ForumSever/bin/Debug/ForumSever.exe";
 
-        public General() {
-            //Logger tmp = new Logger(2, "log.txt");            
-            db = new Database(/*tmp*/);            
+        public General() {        
+            db = new Database();            
             lm = new LogicManager(db);
-            fs = Process.Start("C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe");
+            fs = Process.Start(server_location);
             /*Thread t = new Thread(new ThreadStart(start));          // Kick off a new thread
             t.Start();*/
             pages = new Hashtable();
@@ -38,12 +39,14 @@ namespace WebForum {
 
         public static void enable(){
             if (!enabled) {
+                Logger.append("WEB SERVER Enabled", Logger.INFO);
                 //Logger tmp = new Logger(2, "log.txt");
                 db = new Database(/*tmp*/);
                 lm = new LogicManager(db);
-                //FileStream fs = File.Create("qerty.txt");
-                //fs.Close();
-                fs = Process.Start("C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe");
+                //FileStream fss = File.Create("qerty.txt");
+                //fss.Close();
+                fs = Process.Start(server_location);
+                Logger.append("TCP SERVER Started", Logger.INFO);
                 /*Thread gt = new Thread(new ThreadStart(start));          // Kick off a new thread
                 gt.Start();*/
                 pages = new Hashtable();
