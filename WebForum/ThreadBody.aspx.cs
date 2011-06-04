@@ -40,7 +40,7 @@ namespace WebForum
             result.Content = "bla bla bla";
             level--;
             if (level>=0){
-                 for (int  i = 0;  i < 5;  i++)
+                 for (int  i = 0;  i < 2;  i++)
                  {
                     result.Children.Add(createPosts(p_userName,level,i));
                 }
@@ -62,7 +62,8 @@ namespace WebForum
         private HtmlGenericControl setAccordions(PostsTree p_posts,string p_content)
         {
             HtmlGenericControl acc = new HtmlGenericControl("div");
-            acc.Attributes["name"] = "accordion"+accCounter;
+            acc.Attributes["name"] = "accordion" + accCounter;
+            acc.Attributes["postID"] = "" + p_posts.Post._pIndex;
             accCounter++;
             //acc.Controls.Add(addContent(p_content));
             if (p_posts.Children != null)
@@ -74,6 +75,11 @@ namespace WebForum
                     acc.Controls.Add(addHeader(pt.Post._subject));
                     acc.Controls.Add(setAccordions(pt, pt.Content));
                 }
+            }
+            else
+            {
+                acc.Controls.Add(addHeader("content"));
+                acc.Controls.Add(addContent(p_content));
             }
             
             return acc;
