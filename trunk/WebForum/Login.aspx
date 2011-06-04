@@ -16,11 +16,14 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
 <script src="Scripts/jquery-1.6.1.js" type="text/javascript"></script>
+
+
 <script type="text/javascript">
 
     $(document).ready(function () {
         var $LoginButton = $('#<%=LoginButton.ClientID%>');
         $LoginButton.attr("disabled", "true");
+        //$LoginButton.attr("enabaled", "true");
         if ($('#<%=UserName.ClientID%>').val() != "")
             $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
                 if (data == "true") {
@@ -31,40 +34,42 @@
                     $LoginButton.removeAttr("disabled");
                     $('#usernameError').html("").fadeIn();
                 }
-            } 
+            }
             });
         $('#<%=UserName.ClientID%>').blur(function () {
-                $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
-                    if (data == "true") {
-                        $LoginButton.attr("disabled", "true");
-                        $('#usernameError').html("userName don't exist").fadeIn();
-                    }
-                    else if (data == "empty") {
-                        $LoginButton.attr("disabled", "true");
-                        $('#usernameError').html("").fadeIn();
-                    }
-                    else {                       
-                        $LoginButton.removeAttr("disabled");
-                        $('#usernameError').html("").fadeIn();
-                    }
-                }});
-         });
+            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+                if (data == "true") {
+                    $LoginButton.attr("disabled", "true");
+                    $('#usernameError').html("userName don't exist").fadeIn();
+                }
+                else if (data == "empty") {
+                    $LoginButton.attr("disabled", "true");
+                    $('#usernameError').html("").fadeIn();
+                }
+                else {
+                    $LoginButton.removeAttr("disabled");
+                    $('#usernameError').html("").fadeIn();
+                }
+            } 
+            });
+        });
 
     });
 
-function validate() {
-    if (document.getElementById("<%=UserName.ClientID%>").value == "") {
-        $('#DivError').html("UserName can not be blank").fadeIn();
-        document.getElementById("<%=UserName.ClientID%>").focus();
-        return false;
+function validate() 
+    {
+        if (document.getElementById("<%=UserName.ClientID%>").value == "") {
+            $('#DivError').html("UserName can not be blank").fadeIn();
+            document.getElementById("<%=UserName.ClientID%>").focus();
+            return false;
+        }
+        if (document.getElementById("<%=Password.ClientID %>").value == "") {
+            $('#DivError').html("Password can not be blank").fadeIn();
+            document.getElementById("<%=Password.ClientID %>").focus();
+            return false;
+        }
+        $('#DivError').html("").fadeIn();
     }
-    if (document.getElementById("<%=Password.ClientID %>").value == "") {
-        $('#DivError').html("Password can not be blank").fadeIn();
-        document.getElementById("<%=Password.ClientID %>").focus();
-        return false;
-    }
-    $('#DivError').html("").fadeIn();
-}
 
 </script>
 

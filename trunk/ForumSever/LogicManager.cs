@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MessagePack;
 using System.Collections.Generic;
+using Log;
 
 namespace ForumSever
 {
@@ -19,7 +20,6 @@ namespace ForumSever
         public LogicManager()
         {
             _db = new Database();
-            //_db.addForum(new Forum("SEX DRUGS & ROCKn'ROLL"));   //vadi: temp
             _usersIp = new Hashtable();
             _usersData = new Hashtable();
         }
@@ -119,29 +119,22 @@ namespace ForumSever
                 // cant add Member without all fields
                 if (memb.getLName() == "" | memb.getFName() == "" | memb.getUName() == "" | memb.getPass() == "" | memb.getEmail() == "")
                 {
-                    //massage = "missing fields";
-                    //return false;
-
-                    ////_logger.log(2, "init", "ERROR: "+uname + "did not type all neseccery details for registering");
+                    Logger.append(" ERROR: "+uname + "did not type all neseccery details for registering", Logger.ERROR);
                     return -17;
                 }
                 // user name already in use
                 if (_db.isMember(memb.getUName()))
                 {
-                    //massage = "user name in use. choose  a diffrent one";
-                    //return false;
-                    ////_logger.log(2, "init", "ERROR: " + uname + " alread exist.");
+                    Logger.append(" ERROR: " + uname + " alread exist.", Logger.ERROR);
+
                     return -15;
                 }
 
                 if (_db.isMember(memb.getEmail()))
                 {
-                    //massage = "mail in use. choose  a diffrent one";
-                    //return false;
-                    ////_logger.log(2, "init", "ERROR: " + uname + " tried to register with an existing email: "+memb.getEmail());
+                    Logger.append("ERROR: " + uname + " tried to register with an existing email: " + memb.getEmail(), Logger.ERROR);
                     return -16;
                 }
-
                 _db.addMember(memb);
                 return 0;
             }
@@ -164,21 +157,21 @@ namespace ForumSever
                         else
                         {
                             // incorrect pass
-                            ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login with wrong password");
+                            Logger.append("ERROR LOGIN: " + p_user + " tried to login with wrong password", Logger.ERROR);
                             result = -23;
                         }
 
                     }
                     else
                     {
-                        ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " tried to login while already logged in");
+                        Logger.append("ERROR LOGIN: " + p_user + " tried to login while already logged in", Logger.ERROR);
                         result = -18;     // user already logged in
                     }
                 }
 
                 else
                 {
-                    ////_logger.log(2, "init", "ERROR LOGIN: " + p_user + " does not exsist");    
+                    Logger.append("ERROR LOGIN: " + p_user + " does not exsist", Logger.ERROR);
                     result= - 3;         // username not exist
                 }
             }
@@ -199,11 +192,12 @@ namespace ForumSever
                     }
                     else
                     {
-                        ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " tried to logout while already logged out");
+                        Logger.append("ERROR LOGOUT: " + p_user + " tried to logout while already logged out", Logger.ERROR);
                         result= - 19;     // user is not logged in
                     }
                 }
-                ////_logger.log(2, "init", "ERROR LOGOUT: " + p_user + " does not exsist");    
+                Logger.append("ERROR LOGOUT: " + p_user + " does not exsist", Logger.ERROR);
+
                 result= - 3;         // username not exist
             }
             return result;
@@ -263,7 +257,8 @@ namespace ForumSever
             {
                 if (!_db.isMember(p_uname))
                 {
-                    // //_logger.log(2, "init", "ERROR ADDFRIEND: " + p_uname + " does not exsist");    
+                    // //_logger.log(2, "init", "ERROR ADDFRIEND: " + p_uname + " does not exsist");   
+ 
                     //return "incurrect user name";
                     return -3;
                 }
@@ -417,7 +412,7 @@ namespace ForumSever
 
         public PostsTree getThreadPostsAndContent(int p_fid, int p_tid, string uname)
         {
-            PostsTree pt = new PostsTree();  
+            PostsTree pt = new PostsTree();
             List<Quartet> result = null;
             lock (_logicLock)
             {
@@ -430,20 +425,19 @@ namespace ForumSever
 
         private List<PostsTree> fillPostTree(int p_fid, int p_tid,PostsTree pt, List<Quartet> result, string uname)
         {
-            List<PostsTree> ptl = null;
+            List<PostsTree> ptl = new List<PostsTree>();
             foreach (Quartet post in result)
             {
                 if (post._parent == pt.Post._pIndex)
                 {
-                    ptl = new List<PostsTree>();
                     PostsTree child = new PostsTree();
                     child.Content = getPost(p_fid, p_tid, post._pIndex, uname).getContent(); //get the post content
                     child.Post = post;  //post metadata
-                    pt.Children = fillPostTree(p_fid, p_tid, child, result, uname); //now look for posts children
+                    child.Children = fillPostTree(p_fid, p_tid, child, result, uname); //now look for posts children
                     ptl.Add(child);
                 }
             }
-
+            if (ptl.Count == 0) return null;
             return ptl;
         }
 

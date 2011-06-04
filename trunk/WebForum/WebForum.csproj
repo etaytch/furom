@@ -115,6 +115,7 @@
     <Content Include="css\themes\smoothness\jquery.ui.slider.css" />
     <Content Include="css\themes\smoothness\jquery.ui.tabs.css" />
     <Content Include="css\themes\smoothness\jquery.ui.theme.css" />
+    <Content Include="davar.aspx" />
     <Content Include="Forum.aspx" />
     <Content Include="Friends.aspx" />
     <Content Include="js\jquery-1.5.1.js" />
@@ -287,6 +288,13 @@
     </Compile>
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="davar.aspx.cs">
+      <DependentUpon>davar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="davar.aspx.designer.cs">
+      <DependentUpon>davar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
