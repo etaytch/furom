@@ -138,16 +138,14 @@ namespace Server
             try
             {
                 //vadi
-
                 listener.Start();
                 int Cycle = MAX_NUM_OF_CLIENTS;    //after MAX_NUM_OF_CLIENTS the server will shotdown  
                 int ClientNbr = 0;
 
-                // Start listening for connections.
+                //Start listening for connections.
                 Console.WriteLine("Waiting for a connection...");
                 while ((Cycle > 0) && is_running)
                 {
-
                     TcpClient handler = listener.AcceptTcpClient();
                     if (handler != null)
                     {
