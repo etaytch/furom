@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
+    <link rel="shortcut icon" type="image/x-icon" href="boss.ico" />
+	<link rel="icon" type="image/x-icon" href="boss.ico" />
     <script src="Scripts/jquery-1.6.1.js" type="text/javascript"></script>
     <script type="text/javascript">
         function loadXMLDoc() {
@@ -16,9 +18,7 @@
             xmlhttp.open("GET", "notify.aspx", true);
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    if (xmlhttp.responseText != "" || !xmlhttp.responseText.equals(document.getElementById("Div1").innerHTML)) {
-                        document.getElementById("Div1").innerHTML = xmlhttp.responseText;
-                    }
+                    document.getElementById("Div1").innerHTML = xmlhttp.responseText;
                 }
             }
             xmlhttp.send();
