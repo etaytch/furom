@@ -33,21 +33,17 @@ namespace WebForum
             ud.CurPost = new Quartet(post_id, parent_id, subject, userName);
             */
 
+
+            // running On Server
             /*
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
             ForumPost myPost= General.lm.getPost(ud.CurForum._pIndex, ud.CurThread._pIndex, Int32.Parse(this.currentPost.Attributes["postID"]), ud.username);
              */
+
+            // running localy
             ForumPost myPost = new ForumPost(0, 0, 0, "my topic", "bla bla blah", "Nigi");
             this.OriginalContent.Text = myPost.getContent();
             this.OriginalTopic.Text = myPost.getTopic();
-            /*
-            if (userName == "")
-                Response.Write("empty");
-            else if (!General.db.isMember(userName))
-                Response.Write("true");
-            else
-                Response.Write("false");
-             */ 
         }
 
         protected void Button1_Click(object sender, EventArgs e)

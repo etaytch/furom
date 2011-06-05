@@ -17,7 +17,7 @@
             $(document).ready(function () {
 
 
-                $('div[name^="accordion"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/>');
+                $('div[name^="accordion"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/><asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
                 $('div[name^="accordion"]').accordion({ collapsible: true, autoHeight: false });
                 $('div[name^="accordion"]').resize();
                 $('div[name^="accordion"] > h3 > a').click(function () {
@@ -32,11 +32,13 @@
             function replayfunction() {
                 window.location = "/addReply.aspx?postID=" + $("#myPost").attr("postID");
                 //    window.location = "/addReply.aspx?userName=" + $("#myPost").attr("userName") + "&postID=" + $("#myPost").attr("postID") + "&perantID=" + $("#myPost").attr("perantID") + "&subject=" + $("#myPost").attr("subject");
-           }
+            }
+
 
 
         </script>
-        <asp:Panel ID="Panel1" runat="server">        
+        <asp:Panel ID="Panel1" runat="server">
+        <br />        
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server">
                 <br />

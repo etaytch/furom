@@ -16,11 +16,15 @@ namespace WebForum
         protected void Page_Load(object sender, EventArgs e)
         {
             accCounter = 0;
+
+            // running OF server
             /*
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
             PostsTree posts = General.lm.getThreadPostsAndContent(ud.CurForum._pIndex, ud.CurThread._pIndex, ud.Username);
             string threadContent = General.lm.getThread(ud.CurForum._pIndex, ud.CurThread._pIndex).getContent();
             */
+
+            // running localy
             UserData ud = createUd();
             PostsTree posts = createPosts(ud.Username,3,2);
             string threadContent = "the thread content";
@@ -127,6 +131,13 @@ namespace WebForum
             Response.Redirect("/Forum.aspx");
         }
 
-        
+        protected void deletePostFunction(object sender, ImageClickEventArgs e)
+        {
+            UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
+            int post_id = -1;
+            General.lm.removePost(ud.CurForum._pIndex, ud.CurThread._pIndex,post_id, ud.Username);
+
+        }
+
     }
 }
