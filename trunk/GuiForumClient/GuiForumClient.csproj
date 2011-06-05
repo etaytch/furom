@@ -122,21 +122,26 @@
     <Compile Include="ViewHirarchiData.cs" />
     <EmbeddedResource Include="addPostWindow.resx">
       <DependentUpon>addPostWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="addThreadWindow.resx">
       <DependentUpon>addThreadWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="addReplyWindow.resx">
       <DependentUpon>addReplyWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="addWindow.resx">
       <DependentUpon>addWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,9 +155,11 @@
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\DataSources\DataManagment.Database.datasource" />
@@ -186,6 +193,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="boss.ico" />
+    <None Include="Resources\button5up.png" />
+    <None Include="Resources\button5over.png" />
+    <None Include="Resources\button4up.png" />
+    <None Include="Resources\button4over.png" />
+    <None Include="Resources\button3up.png" />
+    <None Include="Resources\button3over.png" />
+    <None Include="Resources\button2up.png" />
+    <None Include="Resources\button2over.png" />
+    <None Include="Resources\button1up.png" />
+    <None Include="Resources\button1over.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

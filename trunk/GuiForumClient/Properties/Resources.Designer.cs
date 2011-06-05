@@ -60,6 +60,76 @@ namespace GuiForumClient.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap button1over {
+            get {
+                object obj = ResourceManager.GetObject("button1over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button1up {
+            get {
+                object obj = ResourceManager.GetObject("button1up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button2over {
+            get {
+                object obj = ResourceManager.GetObject("button2over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button2up {
+            get {
+                object obj = ResourceManager.GetObject("button2up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button3over {
+            get {
+                object obj = ResourceManager.GetObject("button3over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button3up {
+            get {
+                object obj = ResourceManager.GetObject("button3up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button4over {
+            get {
+                object obj = ResourceManager.GetObject("button4over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button4up {
+            get {
+                object obj = ResourceManager.GetObject("button4up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button5over {
+            get {
+                object obj = ResourceManager.GetObject("button5over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap button5up {
+            get {
+                object obj = ResourceManager.GetObject("button5up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Delete_icon {
             get {
                 object obj = ResourceManager.GetObject("Delete-icon", resourceCulture);
