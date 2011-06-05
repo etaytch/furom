@@ -295,6 +295,7 @@
     </Compile>
     <Compile Include="addReply.aspx.cs">
       <DependentUpon>addReply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="addReply.aspx.designer.cs">
       <DependentUpon>addReply.aspx</DependentUpon>
@@ -347,6 +348,7 @@
     </Compile>
     <Compile Include="notify.aspx.cs">
       <DependentUpon>notify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="notify.aspx.designer.cs">
       <DependentUpon>notify.aspx</DependentUpon>
