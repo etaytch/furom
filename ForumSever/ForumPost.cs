@@ -33,7 +33,7 @@ namespace ForumSever
             this._pindex = p_pindex;
         }
 
-        internal string getTopic()
+        public string getTopic()
         {
             return _topic;
         }
