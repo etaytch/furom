@@ -136,15 +136,11 @@ namespace GuiForumClient
 
         private void handle_Error(Error msg)
         {
-            string[] lines = {msg.getMsg(),"\n" };
-            System.IO.File.WriteAllLines("..\\..\\..\\Error_log.txt", lines);
             db.Massege = msg.getMsg();
         }
 
         private void handle_Acknowledgment(Acknowledgment msg)
         {
-            string[] lines = { msg.getMsg(), "\n" };
-            System.IO.File.WriteAllLines("..\\..\\..\\ack_log.txt", lines);
             db.Massege = msg.getMsg();
         }
     }
