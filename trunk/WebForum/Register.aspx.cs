@@ -7,7 +7,6 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ForumSever;
-using System.Web.Services;
 
 namespace WebForum {
     public partial class Register : System.Web.UI.Page, PageLoader {
@@ -39,8 +38,7 @@ namespace WebForum {
                 string t_country = this.Country.SelectedItem.Text;
                 string t_sex = this.Sex.SelectedItem.Text;
             }
-            catch (Exception ejggj)
-            {
+            catch (Exception) {
             }
 
 
