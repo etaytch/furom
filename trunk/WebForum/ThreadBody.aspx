@@ -17,20 +17,41 @@
             $(document).ready(function () {
 
 
-                $('div[name^="accordion"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/><asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
+                $('div[name^="wrapper"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/><asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
                 $('div[name^="accordion"]').accordion({ collapsible: true, autoHeight: false });
+                $('div[name^="wrapper"]').accordion({ collapsible: true, autoHeight: false });
                 $('div[name^="accordion"]').resize();
                 $('div[name^="accordion"] > h3 > a').click(function () {
-                    $("#myPost").attr("postID", $(this).parent().parent().attr("postID"));
+                    //if ($(this).parent().parent().attr("postID") == "0") {
+                    var id = $(this).attr("postID");
+                    //var name = $(this).parent().parent().attr("content");
+                     //alert("post is "+id+" in ");
+                        //}
+                    $("#myPost").attr("postID", id);
                     //  $("#myPost").attr("perantID", $(this).parent().parent().attr("perantID"));
                     //  $("#myPost").attr("subject", $(this).parent().parent().attr("subject"));
                     //  $("#myPost").attr("userName", $(this).parent().parent().attr("userName"));
+                })
+                $('[name^="replay"]').click(function () {
+                    var id = $(this).parent().attr("postID");
+                    //var name = $(this).parent().parent().attr("content");
+                 //    alert("post is "+this+" in ");
+                    //}
+                    $("#myPost").attr("postID", id);
                 })
 
             });
 
             function replayfunction() {
-                window.location = "/addReply.aspx?postID=" + $("#myPost").attr("postID");
+              //  var name = $(this).parent.attr("name");
+              
+                //alert(" in " + name);
+                id = $("#myPost").attr("postID");
+                //name = $(this).parent().attr("content");
+                alert("post  " + id);
+
+                window.location = "/addReply.aspx?postID=" + id;
+
                 //    window.location = "/addReply.aspx?userName=" + $("#myPost").attr("userName") + "&postID=" + $("#myPost").attr("postID") + "&perantID=" + $("#myPost").attr("perantID") + "&subject=" + $("#myPost").attr("subject");
             }
 

@@ -7,27 +7,23 @@ using MessagePack;
 using Server;
 using System.Threading;
 using Protocol;
-using VS.Logger;
+using Log;
 namespace ForumSever
 {
     public class MassageHandler
     {
         private LogicManager _lm;
         private EandEProtocol _ee;
-       // private Logger logger;
 
         public MassageHandler()
         {            
-            //logger = Logger.singleton();
-            //logger.addSpecialLogger(2, "log.txt");
-            _lm = new LogicManager(/*logger*/);
+            _lm = new LogicManager();
             _ee = new EandEProtocol();
         }
 
-        public MassageHandler(LogicManager lm/*,Logger log*/)
+        public MassageHandler(LogicManager lm)
         {    
             _lm = lm;
-            //logger = log;
             _ee = new EandEProtocol();
         }
 
@@ -35,7 +31,8 @@ namespace ForumSever
         public void startForum()
         {
             _ee.startServer();
-            //logger.log(2, "init", "starting server");
+            //Logger.append("StartingTcpServer", Logger.INFO);
+
         }
 
         public void stopForum()
@@ -47,8 +44,6 @@ namespace ForumSever
 
         public void readMassage(){
             Message t_msg = _ee.getMessage();
-            //Console.WriteLine("int readMessage. t_msg="+t_msg);
-            //this should be given to a thread
             Handle(t_msg);
         }
 

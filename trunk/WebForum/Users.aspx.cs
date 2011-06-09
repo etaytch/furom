@@ -43,18 +43,7 @@ namespace WebForum
         }
 
         protected void Timer1_Tick(object sender, EventArgs e) {
-            string clientIP = HttpContext.Current.Request.UserHostAddress;
-            string uname = General.lm.getUserFromIP(clientIP);
-            users = General.lm.getUsers(uname);
-            string tmpUser;
 
-            for (int i = 0; i < users.Count; i++) {
-                tmpUser = users.ElementAt(i);
-                if (!addedUsers.Contains(tmpUser)) {
-                    userList.Items.Add(new ListItem(tmpUser));
-                    addedUsers.Add(tmpUser);
-                }
-            }
         }
 
         public void update(string ip) {
