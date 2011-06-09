@@ -21,7 +21,7 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             
-            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -62,7 +62,7 @@ namespace ForumSever
                 ans = true;
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }     
 
@@ -77,7 +77,7 @@ namespace ForumSever
                 _conn.Close();
                 return true;
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }
 
@@ -92,7 +92,7 @@ namespace ForumSever
                 _conn.Close();
                 return true;
             }
-            catch (Exception e) {
+            catch (Exception) {
                 
                 _conn.Close();
             }
@@ -145,7 +145,7 @@ namespace ForumSever
                 runSelectSQL("INSERT INTO Users Values "+str);
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }
 
@@ -153,7 +153,7 @@ namespace ForumSever
                 runSelectSQL("CREATE TABLE " + memb.getUName() + " (uname varchar(50) NOT NULL, PRIMARY KEY (uname),FOREIGN KEY (uname) REFERENCES Users(username) ON DELETE CASCADE)");
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }     
 
@@ -449,7 +449,7 @@ namespace ForumSever
                 runSelectSQL("INSERT INTO " + p_uname + " Values ('" + p_friendUname + "')");
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }     
         }
@@ -459,7 +459,7 @@ namespace ForumSever
                 runSelectSQL("Delete From " + p_uname + " where uname = '" + p_friendUname + "'");
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }
         }
@@ -478,7 +478,7 @@ namespace ForumSever
                 runSelectSQL("INSERT INTO Threads Values " + str);
                 _conn.Close();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _conn.Close();
             }     
             // Etay

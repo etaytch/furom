@@ -65,7 +65,7 @@ namespace ForumSever
                 try {
                     result = _usersIp[IP] as string;
                 }
-                catch (Exception e) {
+                catch (Exception) {
                     result = "";
                 }
             }
@@ -78,7 +78,7 @@ namespace ForumSever
                 try {
                     result = _usersData[IP] as UserData;
                 }
-                catch (Exception e) {
+                catch (Exception) {
                     result = null;
                 }
             }
