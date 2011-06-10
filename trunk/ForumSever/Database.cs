@@ -21,7 +21,8 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             
-            _conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
+            //_conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=Etay-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -230,6 +231,11 @@ namespace ForumSever
 
         public bool isMember(string username) {
             return recordExsist("SELECT * FROM Users WHERE username = '" + username + "'");
+        }
+
+
+        public bool isAdmin(string username) {
+            return recordExsist("SELECT * FROM Admins WHERE username = '" + username + "'");
         }
 
         public bool isThread(int p_fid,int p_tid) {
@@ -772,9 +778,5 @@ namespace ForumSever
             }
 
         }
-
-
     }
-
-
 }
