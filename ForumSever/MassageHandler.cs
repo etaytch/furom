@@ -139,6 +139,7 @@ namespace ForumSever
                                 //Console.WriteLine("***Sending popup to: "+friend);
 
                                 _ee.sendMessage(new PopUpContent(friend, "User " + t_uname + " added new post \"" + t_topic + "\" to thread: \"" + threadName + "\" in forum: \"" + forumName + "\""));
+                     
                             }                            
                         }
                         if (_lm.isLogged(returnThread._autor)) {
@@ -149,6 +150,12 @@ namespace ForumSever
                         foreach (string viewer in viewersToUpdate) {
                             _ee.sendMessage(new ThreadContentMessage(t_fid, t_tid, viewer, returnThread._autor, returnThread._topic, returnThread._content, posts));
                         }
+
+                        List<UserData> webUsersDataToUpdate = _lm.getFriendsAndWatchersUserData(t_uname, t_fid, t_tid);
+                        foreach (UserData viewer in webUsersDataToUpdate) {
+                            viewer.notifications.Enqueue("User " + t_uname + " added new post to thread " + threadName + " in " + forumName);
+                        }
+
 
                     }                    
                     break;
@@ -181,6 +188,11 @@ namespace ForumSever
                         List<Quartet> forumTopics = _lm.getForum(t_fid);
                         foreach (string viewer in usersToUpdate) {                            
                             _ee.sendMessage(new ForumContentMessage(t_fid, viewer, forumTopics));
+                        }
+
+                        List<UserData> webFriends = _lm.getFriendsUserData(t_uname);
+                        foreach (UserData viewer in webFriends) {
+                            viewer.notifications.Enqueue("User " + t_uname + " added new thread in " + forumName);
                         }
                     }                    
                     break;
