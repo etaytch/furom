@@ -252,6 +252,7 @@
     <Content Include="logout.aspx" />
     <Content Include="notify.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="removePost.aspx" />
     <Content Include="replay2.png" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Styles\Site.css" />
@@ -361,6 +362,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="removePost.aspx.cs">
+      <DependentUpon>removePost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="removePost.aspx.designer.cs">
+      <DependentUpon>removePost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
