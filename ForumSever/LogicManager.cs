@@ -124,14 +124,22 @@ namespace ForumSever
             }
             return result;
         }
-        
 
+        public string findIPbyUsername(string username) { 
+            foreach(string key in _usersIp.Keys){
+                string val = (string)_usersIp[key];
+                if(val.Equals(username)){
+                    return key;
+                }
+            }
+            return "";
+        }
 
-        public List<UserData> getFriendsAndWatchersUserData(string IP,int p_fid,int p_tid) {
-            List<UserData> result = new List<UserData>();
-            string username;
+        public List<UserData> getFriendsAndWatchersUserData(string username,int p_fid,int p_tid) {
+            List<UserData> result = new List<UserData>();            
             List<UserData> friends;
-            List<UserData> watchers; 
+            List<UserData> watchers;
+            string IP = findIPbyUsername(username);
             lock (_IPLock) {
                 try {
                     friends = getFriendsUserData(IP);
