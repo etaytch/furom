@@ -90,6 +90,48 @@ namespace ForumSever
             return result;
         }
 
+        
+        /*
+        public List<UserData> getWatchersUserData(string IP) {
+            List<UserData> result = new List<UserData>();
+            UserData posterUser;
+            lock (_IPLock) {
+                try {
+                    posterUser = getUserDataFromIP(IP);
+                    List<string> watchers = getThreadViewersToUpdate(t_uname,t_fid,t_tid);
+                    foreach (string ip in _usersData.Keys) {
+                        UserData tmp = (UserData)_usersData[ip];
+                        if(posterUser.){
+                        }
+                        result.Add(getUserDataFromIP(getUserFromIP(fr)));
+                    }
+                }
+                catch (Exception) {
+                    result = null;
+                }
+            }
+            return result;
+        }
+        */
+
+
+        public List<UserData> getFriendsAndWatchersUserData(string IP) {
+            List<UserData> result = new List<UserData>();
+            string username;
+            lock (_IPLock) {
+                try {
+                    username = getUserFromIP(IP);
+                    List<UserData> friends = getFriendsUserData(IP);
+                    
+                    
+                }
+                catch (Exception) {
+                    result = null;
+                }
+            }
+            return result;
+        }
+
         public UserData getUserDataFromIP(string IP) {
             UserData result;
             lock (_IPLock) {
@@ -241,6 +283,10 @@ namespace ForumSever
                 memb = _db.FindMember("username = '" + p_user + "'");
             }           
             return ((memb != null) && (memb.isLogged()));
+        }
+
+        public bool isAdmin(string p_user) {
+            return _db.isAdmin(p_user);
         }
 
         public List<string> getUsers(string p_uname){
@@ -635,6 +681,8 @@ namespace ForumSever
             }
             return result;
         }
+
+
 
         public List<string> getThreadViewersToUpdate(string t_uname, int t_fid, int t_tid) {
             List<string> result = null;
