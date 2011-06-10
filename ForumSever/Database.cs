@@ -21,8 +21,7 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             
-            //_conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
-            _conn = new SqlConnection("server=Vadi-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=ELIAV-pc\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -30,8 +29,13 @@ namespace ForumSever
             runOtherSQL("UPDATE Users SET logged=0, currForum=-1,currThread=-1");            
              
         }
-        /*Members founctions  */       
 
+        private SqlConnection conn {
+            get { return _conn; }
+        }
+
+
+        /*Members founctions  */  
         public int MemberCount()
         {
             return _Members.Count();
@@ -163,8 +167,13 @@ namespace ForumSever
             return true;
         }
 
-        private SqlDataReader runSelectSQL(String command){
+        public void closeconn() {
+            _conn.Close();
+        }
+
+        public SqlDataReader runSelectSQL(String command){
             if (!_conn.State.Equals("Open")) {
+
                 _conn.Open();
             }
             SqlCommand myCommand = new SqlCommand(command, _conn);         
@@ -231,11 +240,6 @@ namespace ForumSever
 
         public bool isMember(string username) {
             return recordExsist("SELECT * FROM Users WHERE username = '" + username + "'");
-        }
-
-
-        public bool isAdmin(string username) {
-            return recordExsist("SELECT * FROM Admins WHERE username = '" + username + "'");
         }
 
         public bool isThread(int p_fid,int p_tid) {
@@ -723,7 +727,7 @@ namespace ForumSever
         }
         // Hash an input string and return the hash as
         // a 32 character hexadecimal string.
-        private string getMd5Hash(string input) {
+        public string getMd5Hash(string input) {
             // Create a new instance of the MD5CryptoServiceProvider object.
             MD5 md5Hasher = MD5.Create();
 
@@ -778,5 +782,9 @@ namespace ForumSever
             }
 
         }
+
+
     }
+
+
 }
