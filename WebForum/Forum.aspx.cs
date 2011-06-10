@@ -28,6 +28,10 @@ namespace WebForum {
                 _userName = userName;
                 
                 activateForums();
+                if (General.lm.isAdmin(userName))
+                {
+                    adminPanel.Visible = true;
+                }
                 if (this._currentForum != null)
                 {
                     this.CreateThreadSource();
@@ -283,6 +287,14 @@ namespace WebForum {
             {
             }
 
+        }
+
+        protected void removeForumButton_Click(object sender, EventArgs e)
+        {
+            //General.lm.removeForum(_userName, _currentForum._pIndex, t_topic, t_content);
+            this.addThreadPanel.Visible = false;
+            this.ForumWithThreadsPanel.Visible = false;
+            this.ForumListPanel.Visible = true;
         }
     }
 }
