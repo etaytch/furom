@@ -72,6 +72,24 @@ namespace ForumSever
             return result;
         }
 
+        public List<UserData> getFriendsUserData(string IP) {
+            List<UserData> result = new List<UserData>();
+            string username;
+            lock (_IPLock) {
+                try {
+                    username = getUserFromIP(IP);
+                    List<string> friends = getFriends(username);
+                    foreach(string fr in friends){
+                        result.Add(getUserDataFromIP(getUserFromIP(fr)));
+                    }                                        
+                }
+                catch (Exception) {
+                    result = null;
+                }
+            }
+            return result;
+        }
+
         public UserData getUserDataFromIP(string IP) {
             UserData result;
             lock (_IPLock) {
