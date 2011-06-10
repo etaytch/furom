@@ -72,12 +72,10 @@ namespace ForumSever
             return result;
         }
 
-        public List<UserData> getFriendsUserData(string IP) {
-            List<UserData> result = new List<UserData>();
-            string username;
+        public List<UserData> getFriendsUserData(string username) {
+            List<UserData> result = new List<UserData>();            
             lock (_IPLock) {
-                try {
-                    username = getUserFromIP(IP);
+                try {                    
                     List<string> friendsNames = getFriends(username);
                     List<string> friendsIPs = getFriendsIPS(friendsNames);
                     foreach (string frIP in friendsIPs) {
