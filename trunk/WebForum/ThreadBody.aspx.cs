@@ -153,9 +153,10 @@ namespace WebForum
         protected void deletePostFunction(object sender, ImageClickEventArgs e)
         {
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
-            int post_id = -1;
+            HtmlGenericControl cp = (HtmlGenericControl)this.currentPost();
+            int post_id = Int32.Parse(cp.Attributes["postID"]);
             General.lm.removePost(ud.CurForum._pIndex, ud.CurThread._pIndex,post_id, ud.Username);
-
+            Response.Redirect("/ThreadBody.aspx");
         }
 
     }

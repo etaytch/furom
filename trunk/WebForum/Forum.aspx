@@ -68,6 +68,10 @@
                 Font-Overline="False" Font-Size="Medium" Font-Strikeout="False" 
                 onclick="addthreadButton_Click" Text="Add Thread" Width="911px" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Panel ID="adminPanel" runat="server" Visible="False">
+                <asp:Button ID="removeForumButton" runat="server" 
+                    onclick="removeForumButton_Click" Text="removeForum" Width="915px" />
+            </asp:Panel>
             <br />
         </asp:Panel>
     <asp:Panel ID="welcomePanel" runat="server">
