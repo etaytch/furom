@@ -17,7 +17,25 @@
             $(document).ready(function () {
 
 
-                $('div[name^="wrapper"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/><asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
+
+                $('div[name^="wrapper"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClientClick= "replayfunction()" Width="24px"  />Replay<br/>');
+
+                var admin = $("#myPost").attr("admin");
+                if (admin == "true") {
+                    var myUserName = $("#myPost").attr("currentUserName");
+                    alert("I am admin: " + myUserName);
+                    $('div[name^="wrapper"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
+                    $("#Panel2").attr["Visible"] = "true";
+
+                }
+                else {
+                    var myUserName = $("#myPost").attr("currentUserName");
+                    alert("I am user: " + myUserName);
+                    $('div[author="' + myUserName + '"]').append('<asp:ImageButton name= "replay" runat="server" Height="26px"  ImageUrl="~/replay2.png" OnClick= "deletePostFunction" Width="24px"  />delete<br/>');
+                    $("#Panel2").attr["Visible"] = "false";
+                }
+
+
                 $('div[name^="accordion"]').accordion({ collapsible: true, autoHeight: false });
                 $('div[name^="wrapper"]').accordion({ collapsible: true, autoHeight: false });
                 $('div[name^="accordion"]').resize();
@@ -25,8 +43,8 @@
                     //if ($(this).parent().parent().attr("postID") == "0") {
                     var id = $(this).attr("postID");
                     //var name = $(this).parent().parent().attr("content");
-                     //alert("post is "+id+" in ");
-                        //}
+                    //alert("post is "+id+" in ");
+                    //}
                     $("#myPost").attr("postID", id);
                     //  $("#myPost").attr("perantID", $(this).parent().parent().attr("perantID"));
                     //  $("#myPost").attr("subject", $(this).parent().parent().attr("subject"));
@@ -35,7 +53,7 @@
                 $('[name^="replay"]').click(function () {
                     var id = $(this).parent().attr("postID");
                     //var name = $(this).parent().parent().attr("content");
-                 //    alert("post is "+this+" in ");
+                    //    alert("post is "+this+" in ");
                     //}
                     $("#myPost").attr("postID", id);
                 })
@@ -63,8 +81,7 @@
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server">
                 <br />
-                <asp:ImageButton ID="removeThreadButton"  runat="server" Height="46px" ImageUrl="~/chat-delete.png" Width="44px" onclick="removeThreadButton_Click"  />Remove Thread<br/>';
-                <br />
+                <asp:ImageButton ID="removeThreadButton"  runat="server" Height="46px" ImageUrl="~/chat-delete.png" Width="44px" onclick="removeThreadButton_Click"  />Remove Thread<br />
             </asp:Panel>
 </asp:Content>
 

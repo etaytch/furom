@@ -12,13 +12,17 @@ namespace WebForum
 {
     public partial class ThreadBody : System.Web.UI.Page
     {
+        bool isAdmin;
+        UserData ud;
         protected int accCounter;
         protected void Page_Load(object sender, EventArgs e)
         {
             accCounter = 0;
 
             // running OF server
-            UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
+            ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
+            isAdmin = General.lm.isAdmin(ud.Username);
+           
             PostsTree posts = General.lm.getThreadPostsAndContent(ud.CurForum._pIndex, ud.CurThread._pIndex, ud.Username);
             string threadContent = General.lm.getThread(ud.CurForum._pIndex, ud.CurThread._pIndex).getContent();
             
@@ -49,8 +53,16 @@ namespace WebForum
             result.Attributes["postID"] = "0";
             result.Attributes["perantID"] = "0";
             result.Attributes["subject"] = "0";
-            result.Attributes["userName"] = "0";
-
+            result.Attributes["currentUserName"] = General.lm.getUserDataFromIP(Request.UserHostAddress).Username;
+            
+            if (isAdmin)
+            {
+                result.Attributes["admin"] = "true";
+            }
+            else
+            {
+                result.Attributes["admin"] = "false";
+            }        
             return result;
         }
 
@@ -91,7 +103,7 @@ namespace WebForum
 //            acc.Attributes["userName"] = p_posts.Post._author;
             accCounter++;
             acc.Controls.Add(addHeader("content",p_posts.Post._pIndex));
-            acc.Controls.Add(addContent(p_content, p_posts.Post._pIndex));
+            acc.Controls.Add(addContent(p_content, p_posts.Post._pIndex, p_posts.Post._author));
             if (p_posts.Children != null)
             {
                 foreach (PostsTree pt in p_posts.Children)
@@ -103,11 +115,12 @@ namespace WebForum
             return acc;
         }
 
-        private HtmlGenericControl addContent(string p_content,int p_index)
+        private HtmlGenericControl addContent(string p_content,int p_index,string p_autor)
         {
             HtmlGenericControl div = new HtmlGenericControl("div");
             HtmlGenericControl wrapper = new HtmlGenericControl("div");
             wrapper.Attributes["name"] = "wrapper";
+            wrapper.Attributes["author"] = p_autor;
             wrapper.Controls.Add(addHeader("",p_index));
             HtmlGenericControl p = new HtmlGenericControl("p");
             div.Attributes["name"] = "postContent"+accCounter;
