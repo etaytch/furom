@@ -73,8 +73,6 @@
                 //    window.location = "/addReply.aspx?userName=" + $("#myPost").attr("userName") + "&postID=" + $("#myPost").attr("postID") + "&perantID=" + $("#myPost").attr("perantID") + "&subject=" + $("#myPost").attr("subject");
             }
 
-
-
         </script>
         <asp:Panel ID="Panel1" runat="server">
         <br />        
