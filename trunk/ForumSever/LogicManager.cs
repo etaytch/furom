@@ -456,31 +456,30 @@ namespace ForumSever
         
         public int removeThread(int p_fid, int p_tid,string p_uname)
         {
-            int result = 0;
-            lock (_logicLock)
+            string userType = "user";
+            if (!_db.isMember(p_uname))
             {
-                if (!_db.isMember(p_uname))
-                {
-                    Logger.append("ERROR REMOVETHREAD: incorrect username: " + p_uname, Logger.ERROR);
-                    result = -3;
-                }
-                if (!_db.getThreadAuthor(p_fid, p_tid).Equals(p_uname))
-                { 
-                    Logger.append("ERROR REMOVETHREAD: the thread was not written by " + p_uname, Logger.ERROR);
-                    result = -7;
-                }
-                if (_db.removeThread(p_fid, p_tid))
-                {
-                    result = 0;
-                }
-                else
-                {
-                    Logger.append("ERROR REMOVETHREAD: SQL ERROR", Logger.ERROR);
-                    result= -22;
-                }
+                Logger.append("ERROR REMOVETHREAD: incorrect username: " + p_uname, Logger.ERROR);
+                return -3;
             }
-            Logger.append("The Thread " + this.getThreadName(p_fid, p_tid) + " removed from the forum" + getForumName(p_fid)+ " by th user "+p_uname, Logger.INFO);
-            return result;
+            if (_db.isAdmin(p_uname)) {
+                userType = "admin";
+            }
+            else if (!_db.getThreadAuthor(p_fid, p_tid).Equals(p_uname))
+            { 
+                Logger.append("ERROR REMOVETHREAD: the thread was not written by " + p_uname, Logger.ERROR);
+                return -7;
+            }
+            if (_db.removeThread(p_fid, p_tid))
+            {
+                Logger.append("The Thread " + this.getThreadName(p_fid, p_tid) + " removed from the forum" + getForumName(p_fid) + " by the "+userType+": " + p_uname, Logger.INFO);
+                return 0;
+            }
+            else
+            {
+                Logger.append("ERROR REMOVETHREAD: SQL ERROR", Logger.ERROR);
+                return -22;
+            }            
         }
         
 
@@ -538,44 +537,51 @@ namespace ForumSever
 
         public int removePost(int p_fid, int p_tid, int p_index, string p_uname)
         {
-            int result = -1;
-            lock (_logicLock)
+            string userType = "user";
+            
+            if (!_db.isMember(p_uname))
             {
-                if (!_db.isMember(p_uname))
-                {
-                    Logger.append("ERROR REMOVEPOST: " + p_uname + " does not exist", Logger.ERROR);    
-                    result= - 3;
-                    //return "incurrect user name";
-                }
-                else if (!_db.isThread(p_fid, p_tid))
-                {
-                    Logger.append("ERROR REMOVEPOST: the thread couldn't be found", Logger.ERROR);          
-                    result= - 6;
-                }
-                else if ((p_index < 0) | (p_index > _db.getCurrentPostID(p_fid, p_tid)))
-                {
-                    Logger.append("ERROR REMOVEPOST: the topic couldn't be found", Logger.ERROR);          
-                    result= - 8;
-                }
-                if (result == -1)
-                {
-                    Boolean postExist = _db.isPost("(pid = " + p_index + ") and (fid = " + p_fid + ") and (tid = " + p_tid + ")");
-                    string postAuthor = _db.getPostAuthor(p_index, p_fid, p_tid).ToLower();
-                    if (postExist && (postAuthor.Equals(p_uname.ToLower())))
-                    {
-                        Logger.append("post "+ p_index+ " removed from the thread " + getThreadName(p_fid,p_tid) +" in forum "+getForumName(p_fid) + " by the user " + p_uname, Logger.INFO);
-                        _db.removePost(p_fid, p_tid, p_index);
-                        result = 0;
-                        
-                    }
-                    else
-                    {
-                        Logger.append("ERROR REMOVEPOST: the post was not written by " + p_uname, Logger.ERROR);        
-                        result = -7;
-                    }
-                }
+                Logger.append("ERROR REMOVEPOST: " + p_uname + " does not exist", Logger.ERROR);    
+                return -3;
+                //return "incurrect user name";
             }
-            return result;
+            if (!_db.isThread(p_fid, p_tid))
+            {
+                Logger.append("ERROR REMOVEPOST: the thread couldn't be found", Logger.ERROR);
+                return -6;
+            }
+            if ((p_index < 0) | (p_index > _db.getCurrentPostID(p_fid, p_tid)))
+            {
+                Logger.append("ERROR REMOVEPOST: the topic couldn't be found", Logger.ERROR);
+                return -8;
+            }
+            
+            Boolean postExist = _db.isPost("(pid = " + p_index + ") and (fid = " + p_fid + ") and (tid = " + p_tid + ")");
+            string postAuthor = _db.getPostAuthor(p_index, p_fid, p_tid).ToLower();
+            if (!postExist) {
+                Logger.append("ERROR REMOVEPOST: the topic couldn't be found", Logger.ERROR);
+                return -8;
+            }
+
+            if (_db.isAdmin(p_uname)) {
+                userType = "admin";
+            }
+            else if (!postAuthor.Equals(p_uname.ToLower()))
+            {
+                Logger.append("ERROR REMOVEPOST: the post was not written by " + p_uname, Logger.ERROR);
+                return -7;                        
+            }            
+            if(_db.removePost(p_fid, p_tid, p_index)){
+                    Logger.append("post " + p_index + " removed from the thread " + getThreadName(p_fid, p_tid) + " in forum " + getForumName(p_fid) + " by the "+userType+": " + p_uname, Logger.INFO);
+                return 0;
+            }
+            else {
+                Logger.append("ERROR REMOVEPOST: SQL ERROR", Logger.ERROR);
+                return -22;
+            }            
+            
+            
+               
         }
 
         public void updateCurrentThread(int t_fid, int t_tid, string t_uname) {
