@@ -38,6 +38,10 @@ namespace WebForum
                 userList.Visible = true;
                 AddFriendButton.Visible = true;
             }
+            if (General.lm.isAdmin(uname))
+            {
+                AdminPanel.Visible = true;
+            }
             General.setPage(clientIP, this);
              
         }
@@ -133,6 +137,46 @@ namespace WebForum
             this.AddFriendButton.Visible = false;
             this.Label1.Visible = false;
             this.friendAdded.Visible = true;
+        }
+
+        protected void removeButton_Click(object sender, EventArgs e)
+        {
+            string clientIP = HttpContext.Current.Request.UserHostAddress;
+            string uname = General.lm.getUserFromIP(clientIP);
+            string errMsg = "";
+            int counter = 0;
+
+            for (int i = 0; i < userList.Items.Count; i++)
+                if (userList.Items[i].Selected)
+                {
+                    if (!uname.Equals(userList.Items[i].Text))
+                    {
+                        //int result = General.lm.removeUser(uname, userList.Items[i].Text);
+                        int result = 1;
+                        if (result < 0)
+                        {
+                            sendError(result, uname);
+                        }
+                        else
+                        {
+                            counter++;
+                        }
+                    }
+                    else
+                    {
+                        errMsg = "Dear " + uname + ", You cannot remove yourself! :|" + Environment.NewLine;
+                    }
+                }
+            this.friendAdded.Text = counter + " users were removed!";
+            if (!errMsg.Equals(""))
+            {
+                this.friendAdded.Text = errMsg + this.friendAdded.Text;
+            }
+            this.userList.Visible = false;
+            this.AddFriendButton.Visible = false;
+            this.Label1.Visible = false;
+            this.friendAdded.Visible = true;
+
         }
     }
 }

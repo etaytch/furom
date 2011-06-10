@@ -19,5 +19,9 @@
     <asp:CheckBoxList ID="userList" runat="server" Visible="False">
     </asp:CheckBoxList>
     <br />
+    <asp:Panel ID="AdminPanel" runat="server">
+        <asp:Button ID="removeButton" runat="server" 
+    Text="Remove Users" onclick="removeButton_Click" Visible="False" />
+    </asp:Panel>
     </span></strong>
 </asp:Content>
