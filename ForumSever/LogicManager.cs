@@ -78,9 +78,10 @@ namespace ForumSever
             lock (_IPLock) {
                 try {
                     username = getUserFromIP(IP);
-                    List<string> friends = getFriends(username);
-                    foreach(string fr in friends){
-                        result.Add(getUserDataFromIP(getUserFromIP(fr)));
+                    List<string> friendsNames = getFriends(username);
+                    List<string> friendsIPs = getFriendsIPS(friendsNames);
+                    foreach (string frIP in friendsIPs) {
+                        result.Add(getUserDataFromIP(frIP));
                     }                                        
                 }
                 catch (Exception) {
@@ -90,20 +91,31 @@ namespace ForumSever
             return result;
         }
 
+        private List<string> getFriendsIPS(List<string> friendsNames) {
+            List<string> result = new List<string>();
+            Hashtable reverseHash = new Hashtable();
+            foreach(string key in _usersIp.Keys){
+                string val = (string)_usersIp[key];
+                reverseHash[val] = key;
+            }
+
+            foreach (string fr in friendsNames) {                
+                result.Add((string)reverseHash[fr]);
+            }
+            return result;
+        }        
         
-        /*
-        public List<UserData> getWatchersUserData(string IP) {
+        public List<UserData> getWatchersUserData(string IP,int p_fid,int p_tid) {
             List<UserData> result = new List<UserData>();
-            UserData posterUser;
+            //UserData posterUser;
             lock (_IPLock) {
                 try {
-                    posterUser = getUserDataFromIP(IP);
-                    List<string> watchers = getThreadViewersToUpdate(t_uname,t_fid,t_tid);
+                    //posterUser = getUserDataFromIP(IP);                    
                     foreach (string ip in _usersData.Keys) {
                         UserData tmp = (UserData)_usersData[ip];
-                        if(posterUser.){
-                        }
-                        result.Add(getUserDataFromIP(getUserFromIP(fr)));
+                        if ((tmp.curForum._pIndex == p_fid) && (tmp.curThread._pIndex == p_tid)) {
+                            result.Add(tmp);
+                        }                        
                     }
                 }
                 catch (Exception) {
@@ -112,18 +124,19 @@ namespace ForumSever
             }
             return result;
         }
-        */
+        
 
 
-        public List<UserData> getFriendsAndWatchersUserData(string IP) {
+        public List<UserData> getFriendsAndWatchersUserData(string IP,int p_fid,int p_tid) {
             List<UserData> result = new List<UserData>();
             string username;
+            List<UserData> friends;
+            List<UserData> watchers; 
             lock (_IPLock) {
                 try {
-                    username = getUserFromIP(IP);
-                    List<UserData> friends = getFriendsUserData(IP);
-                    
-                    
+                    friends = getFriendsUserData(IP);
+                    watchers = getWatchersUserData(IP, p_fid, p_tid);
+                    result = (List<UserData>)friends.Union(watchers);
                 }
                 catch (Exception) {
                     result = null;
