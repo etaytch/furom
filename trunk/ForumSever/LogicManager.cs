@@ -31,6 +31,7 @@ namespace ForumSever
             _usersData = new Hashtable();
         }
 
+      
 
         public void addUserIP(string userName,string IP){
             lock(_IPLock){
@@ -163,31 +164,7 @@ namespace ForumSever
             }
             return result;
         }
-        /*
-        public int register(MemberInfo memb);
-        public int login(string p_user, string p_pass);
-        public int logout(string p_user);
-        public bool isMember(string p_user);
-        public bool isLogged(string p_user);
-        public List<string> getUsers(string p_uname);
-        public List<string> getFriends(string p_uname);
-        public MemberInfo FindMemberByUser(string p_user);
-        public int addMeAsFriend(string p_uname, string p_friendUname);
-        public int removeMeAsFriend(string p_uname, string p_friendUname);
-        public List<Quartet> getForums();
-        public bool isForum(int p_fid);
-        public int addForum(int p_userID, string p_topic);
-        public int addTread(string p_uname, int p_fid, string p_topic, string p_content);
-        public List<Quartet> getThreadPosts(int p_fid, int p_tid);
-        public ForumThread getThread(int p_fid, int p_tid);
-        public List<Quartet> getForum(int p_fid);
-        public int removeTread(int p_fid, int p_tid, string p_uname);
-        public int addPost(int p_tid, int p_fid, int parentId, string p_topic, string p_content, string p_uname);
-        public ForumPost getPost(int p_fid, int p_tid, int p_index, string p_uname);
-        public int removePost(int p_fid, int p_tid, int p_index, string p_uname);
-        */
-
-
+      
         /*Member functions*/        
 
         public int register(MemberInfo memb)
@@ -721,6 +698,18 @@ namespace ForumSever
                 result = _db.getThreadName(t_fid, t_tid);
             }
             return result;
+        }
+
+        public Database db {
+            get { return this._db; }
+        }
+
+        public Hashtable usersIp {
+            get { return _usersIp; }
+        }
+
+        public Hashtable usersData {
+            get { return _usersData; }
         }
     }
 }
