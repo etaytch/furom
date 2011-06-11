@@ -25,7 +25,7 @@ namespace WebForum
             {
                 General.lm.removeThread(ud.CurForum._pIndex, thread_id, ud.username);
             }
-            Response.Redirect("/ThreadBody.aspx");
+            Response.Redirect("/ForumPage.aspx");
         }
     }
 }
