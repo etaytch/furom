@@ -251,9 +251,7 @@ namespace Protocol {
                     return message;
                 default:
                     return new Error("System","Unrecognized Message for the protocol to send!");
-            }
-            Console.WriteLine("(this is the e&e protocol talking) unknown massage! plese check it..... probably will crash now....");
-            return null;
+            }                        
         }
 
         public void sendMessage(Message msg) {

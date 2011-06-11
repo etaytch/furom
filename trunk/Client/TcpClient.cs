@@ -73,7 +73,7 @@ namespace Client
                 {
                     Console.WriteLine("Server not available!");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("strange exception");
 
@@ -99,7 +99,7 @@ namespace Client
                     networkStream.Write(sendBytes, 0, sendBytes.Length);
                 }
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 this.disconnect();
             }
@@ -149,7 +149,7 @@ namespace Client
             {
                 Console.WriteLine("Server not available!");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("strange exception");
 
