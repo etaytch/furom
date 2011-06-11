@@ -178,24 +178,8 @@ namespace WebForum
         protected void removeButton_Click(object sender, EventArgs e)
         {
             string clientIP = HttpContext.Current.Request.UserHostAddress;
-            string uname = General.lm.getUserFromIP(clientIP);
-            string errMsg = "";
-            List<String> usersToDelete = new List<String>();
-            int counter = 0;
-            /*
-            for (int i = 0; i < userList.Items.Count; i++) {
-                if (userList.Items[i].Selected) {
-                    if (!uname.Equals(userList.Items[i].Text)) {
-                        
-                        usersToDelete.Add(userList.Items[i].Text);
-                    }
-                    else {
-                        errMsg = "Dear " + uname + ", You cannot remove yourself! :|" + Environment.NewLine;
-                    }
-                }
-            }
-             */ 
-            //int result = General.lm.removeUsers(uname, usersToDelete);
+            string uname = General.lm.getUserFromIP(clientIP);            
+            List<String> usersToDelete = new List<String>();            
             string usersAsParameter = "";
             UserData ud = General.lm.getUserDataFromIP(clientIP);
             usersToDelete = ud.UsersToUpdate;
@@ -207,28 +191,7 @@ namespace WebForum
                 int result = General.lm.removeUsers(uname, usersToDelete);
                 
                 Response.Redirect("Users.aspx");
-            }
-            
-            
-
-            /*
-            if (result < 0) {
-                sendError(result, uname);
-            }
-            else {
-                counter=result; // Oh Lord, forgive me for this stupid assignment.. (Etay)
-            }
-
-            this.friendAdded.Text = counter + " users were removed!";
-            if (!errMsg.Equals(""))
-            {
-                this.friendAdded.Text = errMsg + this.friendAdded.Text;
-            }
-            this.userList.Visible = false;
-            this.AddFriendButton.Visible = false;
-            this.Label1.Visible = false;
-            this.friendAdded.Visible = true;
-            */
+            }                        
         }
     }
 }
