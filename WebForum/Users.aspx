@@ -6,8 +6,6 @@
 
     <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
     <br />
-<asp:Button ID="AddFriendButton" runat="server" Text="Add as friends" 
-        onclick="AddFriendButton_Click" Visible="False" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     <asp:Label ID="friendAdded" runat="server" Text="Friend added successfuly" 
@@ -19,9 +17,11 @@
     <asp:CheckBoxList ID="userList" runat="server" Visible="False">
     </asp:CheckBoxList>
     <br />
-    <asp:Panel ID="AdminPanel" runat="server">
+    <asp:Panel ID="AdminPanel" runat="server" Visible="False">
         <asp:Button ID="removeButton" runat="server" 
-    Text="Remove Users" onclick="removeButton_Click" Visible="False" />
+    Text="Remove Users" onclick="removeButton_Click" />
     </asp:Panel>
+    <asp:Button ID="AddFriendButton" runat="server" Text="Add as friends" 
+        onclick="AddFriendButton_Click" Visible="False" />
     </span></strong>
 </asp:Content>
