@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Forum.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="ForumPost.cs" />

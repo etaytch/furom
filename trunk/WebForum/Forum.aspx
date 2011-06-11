@@ -1,14 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="WebForum.Forum" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <style type="text/css">
-        .style6
-        {
-            color: #000066;
-            font-size: x-large;
-            direction: ltr;
-        }
-        </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="Panel1" runat="server">
     </asp:Panel>
@@ -38,10 +30,6 @@
     <br />
 
             <asp:Panel ID="adminPanel" runat="server" Visible="False">
-                <asp:Button ID="removeForumButton" runat="server" 
-                    onclick="removeForumButton_Click" Text="remove Forum" Width="915px" />
-                <br />
-                <br />
                 <asp:Button ID="AddForumButton" runat="server" onclick="AddForumButton_Click" 
                     Text="Add Forum" Width="912px" />
             </asp:Panel>
