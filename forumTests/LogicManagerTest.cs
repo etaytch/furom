@@ -64,15 +64,22 @@ namespace forumTests
         //
         #endregion
 
+        //Use ClassInitialize to run code before running the first test in the class
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+        }
+        
+        //Use ClassCleanup to run code after all tests in a class have run
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+        }
+
+
         [TestInitialize]
         public void Initialize() {
             lg = new LogicManager();
-            lg.db.runSelectSQL("Delete From Users where username = 'userTest'");
-            lg.db.closeconn();
-            lg.db.runSelectSQL("Delete From Users where username = 'userTest2'");
-            lg.db.closeconn();
-            lg.db.runSelectSQL("Delete From Users where username = 'utest'");
-            lg.db.closeconn();
             for (int i = 0; i < 3; i++) {
                 MemberInfo memb = new MemberInfo("utest"+i, "ftest", "itest", "ptest", "bla", "bla", "bla", "etest", "bla", "0");
                 lg.register(memb);
