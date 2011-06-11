@@ -13,21 +13,23 @@ namespace WebForum
     {
         UserData ud;
         int post_id;
+        int thread_id;
         protected void Page_Load(object sender, EventArgs e)
         {            
             post_id = Int32.Parse(Request.QueryString["postID"]);
-           
+            thread_id = Int32.Parse(Request.QueryString["threadID"]);
+
             ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
             
             if (post_id > 0)
             {
-                ForumPost myPost = General.lm.getPost(ud.CurForum._pIndex, ud.CurThread._pIndex, post_id, ud.username);
+                ForumPost myPost = General.lm.getPost(ud.CurForum._pIndex, thread_id, post_id, ud.username);
                 this.OriginalContent.Text = myPost.getContent();
                 this.OriginalTopic.Text = myPost.getTopic();
             }
             else
             {
-                ForumThread myThread= General.lm.getThread(ud.CurForum._pIndex, ud.CurThread._pIndex);
+                ForumThread myThread= General.lm.getThread(ud.CurForum._pIndex, thread_id);
                 this.OriginalContent.Text = myThread.getContent();
                 this.OriginalTopic.Text = myThread.getTopic();
             }
@@ -35,13 +37,13 @@ namespace WebForum
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            General.lm.addPost(ud.CurThread._pIndex, ud.CurForum._pIndex,post_id, this.topic.Text, this.content.Text, ud.Username);
-            Response.Redirect("/ThreadBody.aspx");
+            General.lm.addPost(thread_id, ud.CurForum._pIndex,post_id, this.topic.Text, this.content.Text, ud.Username);
+            Response.Redirect("/ForumPage.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ThreadBody.aspx");
+            Response.Redirect("/ForumPage.aspx");
         }
     }
 }
