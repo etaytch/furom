@@ -20,18 +20,33 @@ namespace WebForum
             thread_id = Int32.Parse(Request.QueryString["threadID"]);
 
             ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
-            
-            if (post_id > 0)
+
+            if (thread_id >= 0)
             {
-                ForumPost myPost = General.lm.getPost(ud.CurForum._pIndex, thread_id, post_id, ud.username);
-                this.OriginalContent.Text = myPost.getContent();
-                this.OriginalTopic.Text = myPost.getTopic();
+                Panel1.Visible = true;
+                Panel2.Visible = false;
+                if (post_id > 0)
+                {
+                    ForumPost myPost = General.lm.getPost(ud.CurForum._pIndex, thread_id, post_id, ud.username);
+                    this.OriginalContent.Text = myPost.getContent();
+                    this.OriginalTopic.Text = myPost.getTopic();
+                }
+                else
+                {
+                    ForumThread myThread = General.lm.getThread(ud.CurForum._pIndex, thread_id);
+                    this.OriginalContent.Text = myThread.getContent();
+                    this.OriginalTopic.Text = myThread.getTopic();
+                }
             }
             else
             {
-                ForumThread myThread= General.lm.getThread(ud.CurForum._pIndex, thread_id);
-                this.OriginalContent.Text = myThread.getContent();
-                this.OriginalTopic.Text = myThread.getTopic();
+
+                Panel1.Visible = true;
+                Panel2.Visible = false;
+                 ForumThread myThread = General.lm.getThread(ud.CurForum._pIndex, thread_id);
+                 ForumName.Text = ud.CurForum._subject;
+                 this.newThreadtopic.Text = myThread.getTopic();
+                 this.NewThreadContent.Text = myThread.getContent();
             }
           }
 
@@ -42,6 +57,17 @@ namespace WebForum
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ForumPage.aspx");
+        }
+
+        protected void newThreadButtenOk_Click(object sender, EventArgs e)
+        {
+            General.lm.addTread(ud.Username,ud.curForum._pIndex,newThreadtopic.Text,NewThreadContent.Text);
+            Response.Redirect("/ForumPage.aspx");
+        }
+
+        protected void NewThreadCancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/ForumPage.aspx");
         }
