@@ -296,5 +296,10 @@ namespace WebForum {
             this.ForumWithThreadsPanel.Visible = false;
             this.ForumListPanel.Visible = true;
         }
+
+        protected void AddForumButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddForum.aspx");
+        }
     }
 }
