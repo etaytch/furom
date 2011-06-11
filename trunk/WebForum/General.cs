@@ -20,11 +20,11 @@ namespace WebForum {
         private static Object _refreshLock = new Object();
         private static Process fs;
        //private static string server_location = "C:\\Users\\eliav\\Documents\\Visual Studio 2010\\Projects\\furom\\ForumSever\\bin\\Debug\\ForumSever.exe";
-       private static string server_location = "C:/Users/Shiran/Documents/Visual Studio 2010/Projects/furom/ForumSever/bin/Debug/ForumSever.exe";
+       private static string server_location = "C:/Users/Etay/Documents/Visual Studio 2010/Projects/furom/ForumSever/bin/Debug/ForumSever.exe";
        // private static string server_location = "C:/Users/Vadi/Desktop/furom/ForumSever/bin/Debug/ForumSever.exe";
         public General() {        
             db = new Database();            
-            lm = new LogicManager(db);
+            lm = new LogicManager(db,"web");
             fs = Process.Start(server_location);
             /*Thread t = new Thread(new ThreadStart(start));          // Kick off a new thread
             t.Start();*/
@@ -42,7 +42,7 @@ namespace WebForum {
                 Logger.append("WEB SERVER Enabled", Logger.INFO);
                 //Logger tmp = new Logger(2, "log.txt");
                 db = new Database(/*tmp*/);
-                lm = new LogicManager(db);
+                lm = new LogicManager(db,"web");
                 //FileStream fss = File.Create("qerty.txt");
                 //fss.Close();
                 fs = Process.Start(server_location);
