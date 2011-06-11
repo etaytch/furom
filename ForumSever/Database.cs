@@ -21,7 +21,8 @@ namespace ForumSever
             _forums = new List<Forum>();
             _counter = 0;
             
-            _conn = new SqlConnection("server=ELIAV-pc\\SQLEXPRESS;" +
+            //_conn = new SqlConnection("server=Shiran-Vaio\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=Etay-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");
@@ -74,6 +75,15 @@ namespace ForumSever
             return ans;
         }
 
+        public bool removeForum(int p_fid) {
+            try {
+                runSelectSQL("Delete From forums Where " + "(fid = " + p_fid + ")");
+                _conn.Close();
+                return true;
+            }
+            catch (Exception) {
+                _conn.Close();
+            }
 
 
         public bool removeThread(int p_fid, int p_tid) {
@@ -240,6 +250,11 @@ namespace ForumSever
 
         public bool isMember(string username) {
             return recordExsist("SELECT * FROM Users WHERE username = '" + username + "'");
+        }
+
+
+        public bool isAdmin(string username) {
+            return recordExsist("SELECT * FROM Admins WHERE username = '" + username + "'");
         }
 
         public bool isThread(int p_fid,int p_tid) {
@@ -453,6 +468,23 @@ namespace ForumSever
             }
             return -1; // not reachable..
         }
+
+        public int getCurrentForumID() {
+            int ans;
+            SqlDataReader reader = runSelectSQL("select fid from forums where fid >=all (select fid from forums)");
+            if (!reader.HasRows) {
+                _conn.Close();
+                return 1;
+            }
+
+            while (reader.Read()) {
+                ans = Convert.ToInt32(reader["fid"].ToString());
+                _conn.Close();
+                return ans;
+            }
+            return -1; // not reachable..
+        }
+
 
         public void addFriend(string p_uname, string p_friendUname) {
             try {
@@ -784,7 +816,20 @@ namespace ForumSever
         }
 
 
+        public bool addForum(string p_topic) {
+            int nextId = getCurrentForumID() + 1;            
+
+            string str = "('" + nextId + "'";
+            str += ",'" + p_topic + "')";
+            try {
+                runSelectSQL("INSERT INTO forums Values " + str);                
+                _conn.Close();
+                return true;
+            }
+            catch (Exception) {
+                _conn.Close();
+                return false;
+            }     
+        }
     }
-
-
 }
