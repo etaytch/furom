@@ -434,15 +434,15 @@ namespace ForumSever
                 if (memb == null)
                 {
                     Logger.append("ERROR ADDTHREAD: incorrect username: " + p_uname, Logger.ERROR);
-                    result= - 3;
+                    result= -3;
                 }
                 else if (_db.isThread(p_fid, p_topic))
                 {
                     Logger.append("ERROR ADDTHREAD: Thread "+p_topic+" alread exist", Logger.ERROR);
-                    result= - 5;
+                    result= -5;
                 }
 
-                else if (result == 0)
+                else
                 {
                     ForumThread t_thr = new ForumThread(p_fid, p_topic, p_content, p_uname);
                     result = _db.addTread(t_thr);
@@ -584,25 +584,26 @@ namespace ForumSever
                 }
                 //ForumThread t_thr = _db.getTread(p_fid, p_tid);
 
-                if (!_db.isThread(p_fid, p_tid))
-                {
-                    Logger.append("ERROR ADDPOST: Thread " + p_tid + " was not found in forum " +getForumName(p_fid), Logger.ERROR);
+                else if (!_db.isThread(p_fid, p_tid)) {
+                    Logger.append("ERROR ADDPOST: Thread " + p_tid + " was not found in forum " + getForumName(p_fid), Logger.ERROR);
                     result = -6;
                 }
-                _db.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname);
+                else {
+                    _db.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname);
 
-                string threadName = _db.getThreadName(p_fid, p_tid);
-                string forumName = _db.getForumName(p_fid);
+                    string threadName = _db.getThreadName(p_fid, p_tid);
+                    string forumName = _db.getForumName(p_fid);
 
-                List<UserData> webUsersDataToUpdate = getFriendsAndWatchersUserData(p_uname, p_fid, p_tid);
-                if (webUsersDataToUpdate!=null) {
-                    foreach (UserData viewer in webUsersDataToUpdate) {
-                        viewer.notifications.Enqueue("User " + p_uname + " added new post to thread " + threadName + " in " + forumName);
-                        Logger.append("Notifing " + viewer.Username+ " that the user " + p_uname + " added new post to thread " + threadName + " in " + forumName, Logger.INFO);
+                    List<UserData> webUsersDataToUpdate = getFriendsAndWatchersUserData(p_uname, p_fid, p_tid);
+                    if (webUsersDataToUpdate != null) {
+                        foreach (UserData viewer in webUsersDataToUpdate) {
+                            viewer.notifications.Enqueue("User " + p_uname + " added new post to thread " + threadName + " in " + forumName);
+                            Logger.append("Notifing " + viewer.Username + " that the user " + p_uname + " added new post to thread " + threadName + " in " + forumName, Logger.INFO);
+                        }
                     }
+
+                    result = 0;
                 }
-                  
-                result= 0;
             }
             Logger.append("The Post " + p_topic + " added to the forum " + getForumName(p_fid) +" by the user "+p_uname, Logger.INFO);
             return result;
