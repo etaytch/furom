@@ -68,6 +68,10 @@ namespace ForumSever
             this._friends = p_other.getFriends();
         }
 
+        public void setpass(string pass){
+            _pass = pass;
+        }
+
         public MemberInfo()
         {
         }
