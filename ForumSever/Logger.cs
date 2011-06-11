@@ -18,7 +18,7 @@ namespace Log
         private static int _OFF = 0;
         public static String _LEVEL = "ALL" ; //ALL|INFO|ERROR|OFF        
         //private static String logDirectory = "../../../Furom_Log";
-        private static String logDirectory = "C:/Users/Vadi/Desktop/furom/Furom_Log";
+        private static String logDirectory = "C:/Users/Etay/Documents/Visual Studio 2010/Projects/furom/Furom_Log";        
         public static int ALL
         {
             get { return _ALL; }

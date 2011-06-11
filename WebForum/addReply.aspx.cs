@@ -53,23 +53,24 @@ namespace WebForum
         protected void Button1_Click(object sender, EventArgs e)
         {
             General.lm.addPost(thread_id, ud.CurForum._pIndex,post_id, this.topic.Text, this.content.Text, ud.Username);
-            Response.Redirect("/ForumPage.aspx");
+
+            Response.Redirect("ForumPage.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ForumPage.aspx");
+            Response.Redirect("ForumPage.aspx");
         }
 
         protected void newThreadButtenOk_Click(object sender, EventArgs e)
         {
             General.lm.addTread(ud.Username,ud.curForum._pIndex,newThreadtopic.Text,NewThreadContent.Text);
-            Response.Redirect("/ForumPage.aspx");
+            Response.Redirect("ForumPage.aspx");
         }
 
         protected void NewThreadCancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ForumPage.aspx");
+            Response.Redirect("ForumPage.aspx");
         }
     }
 }
