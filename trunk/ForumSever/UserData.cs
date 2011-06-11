@@ -12,6 +12,7 @@ namespace ForumSever {
         public string username;
         public HashSet<string> addedUsers;
         public Queue<string> notifications;
+        public List<String> usersToUpdate;
 
         public UserData() {
             this.curForum = null;
@@ -20,6 +21,7 @@ namespace ForumSever {
             this.addedUsers = new HashSet<string>();
             this.username = "";
             this.notifications = new Queue<string>();
+            usersToUpdate = new List<String>();
         }
 
         public UserData(string username) {
@@ -30,9 +32,15 @@ namespace ForumSever {
             this.username = username;
             this.notifications = new Queue<string>();
             notifications.Enqueue("Hello " + username);
+            usersToUpdate = new List<String>();
         }
 
-        
+
+        public List<String> UsersToUpdate {
+            get { return this.usersToUpdate; }
+            set { this.usersToUpdate = value; }
+        }
+
         public Quartet CurForum
         {
             get { return this.curForum; }
