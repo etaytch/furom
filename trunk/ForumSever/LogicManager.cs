@@ -432,13 +432,13 @@ namespace ForumSever
                     Logger.append("ERROR ADDTHREAD: incorrect username: " + p_uname, Logger.ERROR);
                     result= - 3;
                 }
-                if (_db.isThread(p_fid, p_topic))
+                else if (_db.isThread(p_fid, p_topic))
                 {
                     Logger.append("ERROR ADDTHREAD: Thread "+p_topic+" alread exist", Logger.ERROR);
                     result= - 5;
                 }
 
-                if (result == 0)
+                else if (result == 0)
                 {
                     ForumThread t_thr = new ForumThread(p_fid, p_topic, p_content, p_uname);
                     result = _db.addTread(t_thr);
