@@ -41,12 +41,12 @@ namespace WebForum
             else
             {
 
-                Panel1.Visible = true;
-                Panel2.Visible = false;
-                 ForumThread myThread = General.lm.getThread(ud.CurForum._pIndex, thread_id);
+                Panel1.Visible = false;
+                Panel2.Visible = true;
+               //  ForumThread myThread = General.lm.getThread(ud.CurForum._pIndex, thread_id);
                  ForumName.Text = ud.CurForum._subject;
-                 this.newThreadtopic.Text = myThread.getTopic();
-                 this.NewThreadContent.Text = myThread.getContent();
+                 //this.newThreadtopic.Text = myThread.getTopic();
+                 //this.NewThreadContent.Text = myThread.getContent();
             }
           }
 

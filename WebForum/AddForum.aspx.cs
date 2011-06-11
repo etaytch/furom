@@ -18,6 +18,7 @@ namespace WebForum
         {
             string userName = General.lm.getUserFromIP(Request.UserHostAddress);
             General.lm.addForum(userName, ForumName.Text);
+            Response.Redirect("Forum.aspx");
         }
     }
 }
