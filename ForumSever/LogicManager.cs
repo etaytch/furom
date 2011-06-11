@@ -413,6 +413,10 @@ namespace ForumSever
                 Logger.append("ERROR ADDFORUM: the user: " + p_uname + " is not admin! ", Logger.ERROR);
                 return -7;
             }
+            if (_db.recordExsist("Select * from forums where fname = '"+p_topic+"'")) {
+                Logger.append("ERROR ADDFORUM: the forum: " + p_topic + " is already exsist! ", Logger.ERROR);
+                return -8;
+            }
             if (_db.addForum(p_topic)) {
                 Logger.append("The Forum " + p_topic + " has been created successfully by the admin " + p_uname, Logger.INFO);
                 return 0;
@@ -630,6 +634,30 @@ namespace ForumSever
 
         }
 
+        public int removeUsers(string adminUser, List<string> usersToDelete) {
+            List<string> existUsersToDelete = new List<string>();
+            if (!_db.isMember(adminUser)) {
+                Logger.append("ERROR REMOVEUSERS: " + adminUser + " does not exist", Logger.ERROR);
+                return -3;
+                //return "incurrect user name";
+            }
+            if (!_db.isAdmin(adminUser)) {
+                Logger.append("ERROR REMOVEUSERS: the user: " + adminUser + " is not admin! ", Logger.ERROR);
+                return -7;
+            }
+
+            foreach(string user in usersToDelete){
+                if (_db.isMember(user)) {
+                    existUsersToDelete.Add(user);
+                }
+            }
+
+            _db.removeFriendsFromTables(adminUser,existUsersToDelete);      // remove users from every user' friends table
+            _db.removeUsers(existUsersToDelete);                            // remove users from the database
+            return existUsersToDelete.Count;
+        }
+
+
         public int removePost(int p_fid, int p_tid, int p_index, string p_uname)
         {
             string userType = "user";
@@ -746,5 +774,7 @@ namespace ForumSever
         public Hashtable usersData {
             get { return _usersData; }
         }
+
+       
     }
 }
