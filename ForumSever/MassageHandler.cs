@@ -17,7 +17,7 @@ namespace ForumSever
 
         public MassageHandler()
         {            
-            _lm = new LogicManager();
+            _lm = new LogicManager("app");
             _ee = new EandEProtocol();
         }
 
@@ -255,7 +255,7 @@ namespace ForumSever
             t_userID    =   _lm.FindMemberByUser(t_uname).getID();
             t_topic     =   t_addForumMsg._topic;
 
-            returnValue = _lm.addForum(t_userID, t_topic);
+            returnValue = _lm.addForum(t_uname, t_topic);
             if (returnValue < 0) {
                 sendError(returnValue, t_uname);
             }
@@ -333,18 +333,8 @@ namespace ForumSever
 
 
         private void Handle(RegisterMessage t_registerMsg) {
-            string t_uname;
-            string t_fname;
-            string t_lname;
-            string t_pass;
-            string t_sex;
-            string t_email;
-            string t_birthday;
-            string t_city;
-            string t_country;
-            int returnValue;
-                
-                    
+            string t_uname, t_fname, t_lname, t_pass, t_sex, t_email, t_birthday, t_city, t_country;
+            int returnValue;        
             t_uname         =       t_registerMsg._uName;
             t_fname         =       t_registerMsg._fName;
             t_lname         =       t_registerMsg._lName;
@@ -354,7 +344,6 @@ namespace ForumSever
             t_city          =       t_registerMsg._city;
             t_email         =       t_registerMsg._email;
             t_birthday      =       t_registerMsg._birthday;
-
             MemberInfo memb = new MemberInfo(t_uname, t_fname, t_lname, t_pass, t_sex, t_country, t_city, t_email, t_birthday, "0");                    
             returnValue = _lm.register(memb);
             if (returnValue < 0)
