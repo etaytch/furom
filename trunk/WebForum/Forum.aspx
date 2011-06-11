@@ -70,7 +70,11 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Panel ID="adminPanel" runat="server" Visible="False">
                 <asp:Button ID="removeForumButton" runat="server" 
-                    onclick="removeForumButton_Click" Text="removeForum" Width="915px" />
+                    onclick="removeForumButton_Click" Text="remove Forum" Width="915px" />
+                <br />
+                <br />
+                <asp:Button ID="AddForumButton" runat="server" onclick="AddForumButton_Click" 
+                    Text="Add Forum" Width="912px" />
             </asp:Panel>
             <br />
         </asp:Panel>
