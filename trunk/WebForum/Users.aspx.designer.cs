@@ -31,15 +31,6 @@ namespace WebForum {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// AddFriendButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddFriendButton;
-        
-        /// <summary>
         /// friendAdded control.
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace WebForum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button removeButton;
+        
+        /// <summary>
+        /// AddFriendButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddFriendButton;
     }
 }
