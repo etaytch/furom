@@ -10,7 +10,7 @@
     <br />
     <br />
     <asp:Button ID="createButton" runat="server" onclick="createButton_Click" 
-        Text="Create new Forum" Width="163px" />
+        Text="Create new Forum" />
     <br />
     <br />
 </asp:Content>

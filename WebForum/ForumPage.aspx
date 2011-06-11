@@ -32,7 +32,7 @@
 		            img.alt = '[+]';
 		        }
 		        return true;
-		    }
+		    }   
 		//-->
 		</script>
 

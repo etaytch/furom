@@ -168,7 +168,10 @@ namespace WebForum {
                 HtmlGenericControl indent = new HtmlGenericControl("div");
                 indent.Attributes["class"] = "indent";
                 indent.Attributes["id"] = "level_" + counter;
-                foreach (PostsTree pt in p_posts.Children) {
+                
+
+                foreach (PostsTree pt in p_posts.Children)
+                {
                     setchildMsg(indent, pt, pt.Content, p_posts.Post._pIndex, threadID);
                 }
                 container.Controls.Add(indent);

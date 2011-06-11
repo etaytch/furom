@@ -26,7 +26,7 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <br />
-        <asp:Panel ID="adminPanel2" runat="server" Visible="False">
+        <asp:Panel ID="adminPanel" runat="server" Visible="False">
             <asp:Button ID="AddForumButton" runat="server" onclick="AddForumButton_Click" 
                 Text="Add Forum" Width="912px" />
         </asp:Panel>
@@ -34,8 +34,6 @@
 
     <br />
 
-            <asp:Panel ID="adminPanel" runat="server" Visible="False">
-            </asp:Panel>
 
     <asp:Panel ID="welcomePanel" runat="server">
         <asp:Label ID="_lable" runat="server" Font-Bold="True" Font-Italic="True" 
