@@ -16,16 +16,22 @@ namespace WebForum
             int thread_id = Int32.Parse(Request.QueryString["threadID"]);
 
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
-
-            if (post_id > 0)
+            if (thread_id < 0)
+            {
+                General.lm.removeForum(ud.CurForum._pIndex, ud.username);
+                Response.Redirect("Forum.aspx");
+            }
+            else if (post_id > 0)
             {
                 General.lm.removePost(ud.CurForum._pIndex, thread_id, post_id, ud.username);
+                Response.Redirect("ForumPage.aspx");
             }
             else if (post_id == 0)
             {
                 General.lm.removeThread(ud.CurForum._pIndex, thread_id, ud.username);
+                Response.Redirect("ForumPage.aspx");
             }
-            Response.Redirect("/ForumPage.aspx");
+          
         }
     }
 }
