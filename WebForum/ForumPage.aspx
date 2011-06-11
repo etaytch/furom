@@ -39,26 +39,4 @@
         <asp:Panel ID="ForumPanel" runat="server">     
         </asp:Panel>
 
-        <asp:Panel ID="addThreadPanel" runat="server" Visible="False">
-            <span class="style6">Add new thread</span><br />
-            topic:
-            <br />
-            <asp:TextBox ID="threadTopicBox" runat="server"></asp:TextBox>
-            <br />
-            content:<br />
-            <asp:TextBox ID="threadContentBox" runat="server" Height="106px" 
-                TextMode="MultiLine" Width="562px"></asp:TextBox>
-            <br />
-            <br />
-            <asp:Label ID="addThreadError" runat="server" style="color: #FF0000" 
-                Text="Label" Visible="False"></asp:Label>
-            <br />
-            <br />
-            <asp:Button ID="okThreadButton" runat="server" Text="OK" 
-                onclick="okThreadButton_Click" Width="94px" />
-            &nbsp;<asp:Button ID="threadcancelButton" runat="server" 
-                onclick="threadcancelButton_Click" Text="Cancel" Height="26px" 
-                Width="104px" />
-      </asp:Panel>
-
 </asp:Content>
