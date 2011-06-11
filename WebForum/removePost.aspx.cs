@@ -13,12 +13,17 @@ namespace WebForum
         protected void Page_Load(object sender, EventArgs e)
         {
             int post_id = Int32.Parse(Request.QueryString["postID"]);
+            int thread_id = Int32.Parse(Request.QueryString["threadID"]);
 
             UserData ud = General.lm.getUserDataFromIP(Request.UserHostAddress);
 
             if (post_id > 0)
             {
-                General.lm.removePost(ud.CurForum._pIndex, ud.CurThread._pIndex, post_id, ud.username);
+                General.lm.removePost(ud.CurForum._pIndex, thread_id, post_id, ud.username);
+            }
+            else if (post_id == 0)
+            {
+                General.lm.removeThread(ud.CurForum._pIndex, thread_id, ud.username);
             }
             Response.Redirect("/ThreadBody.aspx");
         }
