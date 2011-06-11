@@ -27,9 +27,20 @@ namespace WebForum {
             HtmlGenericControl actions = new HtmlGenericControl("div");
             actions.Attributes["class"] = "actions";
             HtmlGenericControl actionsa = new HtmlGenericControl("a");
-            actionsa.Attributes["onclick"] = "addthread()";
-            actionsa.InnerText = "Add Thread";
+            actionsa.Attributes["href"] = "addReply.aspx?threadID=-1&postID=0";
+            actionsa.InnerText = "Add thread";
             actions.Controls.Add(actionsa);
+
+            if (isAdmin) {
+                HtmlGenericControl nbsp = new HtmlGenericControl();
+                nbsp.InnerHtml = "&nbsp&nbsp";
+                actions.Controls.Add(nbsp);
+                HtmlGenericControl actionsb = new HtmlGenericControl("a");
+                actionsb.Attributes["href"] = "removePost.aspx?threadID=-1&postID=0";
+                actionsb.InnerText = "Remove forum";
+                actions.Controls.Add(actionsb);
+            }
+            
             navbar.Controls.Add(actions);
             centerContainer.Controls.Add(navbar);
             HtmlGenericControl main = new HtmlGenericControl("div");
@@ -162,27 +173,6 @@ namespace WebForum {
                 }
                 container.Controls.Add(indent);
             }
-        }
-
-        protected void okThreadButton_Click(object sender, EventArgs e) {
-            string t_topic = this.threadTopicBox.Text;
-            string t_content = this.threadContentBox.Text;
-            int result = General.lm.addTread(ud.username, ud.curForum._pIndex, t_topic, t_content);
-            if (result >= 0) {
-                this.addThreadPanel.Visible = false;
-                this.ForumPanel.Visible = true;
-            }
-            else {
-                this.addThreadPanel.Visible = true;
-                this.addThreadError.Visible = true;
-                this.addThreadError.Text = "Error adding new thread";
-                this.ForumPanel.Visible = false;
-            }
-        }
-
-        protected void threadcancelButton_Click(object sender, EventArgs e) {
-            this.addThreadPanel.Visible = false;
-            this.ForumPanel.Visible = true;
         }
     }
 }

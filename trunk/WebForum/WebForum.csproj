@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddForum.aspx" />
     <Content Include="addReply.aspx" />
     <Content Include="boss.ico" />
     <Content Include="css\demos.css" />
@@ -249,6 +250,7 @@
     <Content Include="logout.aspx" />
     <Content Include="notify.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="removePost.aspx" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -272,6 +274,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddForum.aspx.cs">
+      <DependentUpon>AddForum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddForum.aspx.designer.cs">
+      <DependentUpon>AddForum.aspx</DependentUpon>
     </Compile>
     <Compile Include="addReply.aspx.cs">
       <DependentUpon>addReply.aspx</DependentUpon>
@@ -348,6 +357,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="removePost.aspx.cs">
+      <DependentUpon>removePost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="removePost.aspx.designer.cs">
+      <DependentUpon>removePost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
