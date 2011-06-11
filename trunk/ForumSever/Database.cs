@@ -22,7 +22,7 @@ namespace ForumSever
             _counter = 0;
             
             //_conn = new SqlConnection("server=VADI-PC\\SQLEXPRESS;" +
-            _conn = new SqlConnection("server=VADI-PC\\SQLEXPRESS;" +
+            _conn = new SqlConnection("server=ETAY-PC\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
                                        "database=Furom; " +
                                        "connection timeout=30");

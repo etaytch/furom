@@ -93,11 +93,7 @@ namespace ForumSever
 
         private List<string> getFriendsIPS(List<string> friendsNames) {
             List<string> result = new List<string>();
-            Hashtable reverseHash = new Hashtable();
-            foreach(string key in _usersIp.Keys){
-                string val = (string)_usersIp[key];
-                reverseHash[val] = key;
-            }
+            Hashtable reverseHash = getReverseHashTable();            
 
             foreach (string fr in friendsNames) {
                 string ip = (string)reverseHash[fr];
@@ -106,9 +102,19 @@ namespace ForumSever
                 }                
             }
             return result;
-        }        
-        
-        public List<UserData> getWatchersUserData(string username,int p_fid,int p_tid) {
+        }
+
+        public Hashtable getReverseHashTable() {
+            Hashtable reverseHash = new Hashtable();
+            foreach (string key in _usersIp.Keys) {
+                string val = (string)_usersIp[key];
+                reverseHash[val] = key;
+            }
+
+            return reverseHash;
+        }
+
+        public List<UserData> getWatchersUserData(string username,int p_fid) {
             List<UserData> result = new List<UserData>();
             //UserData posterUser;
             lock (_IPLock) {
@@ -117,7 +123,7 @@ namespace ForumSever
                     foreach (string ip in _usersData.Keys) {
                         UserData tmp = (UserData)_usersData[ip];
                         if(!tmp.Username.Equals(username)){
-                            if ((tmp.curForum._pIndex == p_fid) && (tmp.curThread._pIndex == p_tid)) {
+                            if (tmp.curForum._pIndex == p_fid) {
                                 result.Add(tmp);
                             }                        
                         }                        
@@ -140,7 +146,16 @@ namespace ForumSever
             return "";
         }
 
-        public List<UserData> getFriendsAndWatchersUserData(string username,int p_fid,int p_tid) {
+        public void printHash() {
+            Logger.append("Start of Hash content:", Logger.ERROR);
+            foreach (string key in _usersIp.Keys) {
+                string val = (string)_usersIp[key];
+                Logger.append("key: "+key+", val: "+val, Logger.ERROR);
+            }
+            Logger.append("End of Hash content:", Logger.ERROR);
+        }
+
+        public List<UserData> getFriendsAndWatchersUserData(string username,int p_fid) {
             List<UserData> result = new List<UserData>();            
             List<UserData> friends;
             List<UserData> watchers;
@@ -148,7 +163,7 @@ namespace ForumSever
             lock (_IPLock) {
                 try {
                     friends = getFriendsUserData(username);
-                    watchers = getWatchersUserData(username, p_fid, p_tid);
+                    watchers = getWatchersUserData(username, p_fid);
                     result = (List<UserData>)friends.Union(watchers);
                 }
                 catch (Exception) {
@@ -162,6 +177,7 @@ namespace ForumSever
             UserData result;
             lock (_IPLock) {
                 try {
+                    printHash();
                     result = _usersData[IP] as UserData;
                 }
                 catch (Exception) {
@@ -593,8 +609,24 @@ namespace ForumSever
 
                     string threadName = _db.getThreadName(p_fid, p_tid);
                     string forumName = _db.getForumName(p_fid);
+                    string author = _db.getThreadAuthor(p_fid,p_tid);
 
-                    List<UserData> webUsersDataToUpdate = getFriendsAndWatchersUserData(p_uname, p_fid, p_tid);
+                    List<UserData> webUsersDataToUpdate = getFriendsAndWatchersUserData(p_uname, p_fid);
+                    if (webUsersDataToUpdate == null) {
+                        webUsersDataToUpdate = new List<UserData>();
+                    }
+
+                    Hashtable reversedHash = getReverseHashTable();
+                    string authorIP = (string)reversedHash[author];
+                    if(authorIP!=null){
+                        UserData ud = getUserDataFromIP(authorIP);
+                        Logger.append("authorIP: "+authorIP, Logger.INFO);
+                        string name = ud.Username;
+                        if(!webUsersDataToUpdate.Contains(ud)){
+                            webUsersDataToUpdate.Add(ud);
+                        }
+                    }                    
+
                     if (webUsersDataToUpdate != null) {
                         foreach (UserData viewer in webUsersDataToUpdate) {
                             viewer.notifications.Enqueue("User " + p_uname + " added new post to thread " + threadName + " in " + forumName);

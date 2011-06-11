@@ -148,3 +148,2319 @@
 07:59:32|ERROR LOGOUT: a does not exsist
 07:59:32|The user a logged out succesfully 
 07:59:54|The user a logged in succesfully 
+09:01:50|WEB SERVER Enabled
+09:01:50|Started SQL Server
+09:01:50|WEB SERVER Enabled
+09:01:50|Started SQL Server
+09:01:50|WEB SERVER Enabled
+09:01:50|Started SQL Server
+09:01:50|TCP SERVER Started
+09:01:50|TCP SERVER Started
+09:01:50|TCP SERVER Started
+09:01:51|Started SQL Server
+09:01:51|Started SQL Server
+09:01:51|Started SQL Server
+09:02:20|The user eliav registered succesfully 
+09:07:11|WEB SERVER Enabled
+09:07:11|Started SQL Server
+09:07:11|WEB SERVER Enabled
+09:07:11|Started SQL Server
+09:07:11|TCP SERVER Started
+09:07:12|Started SQL Server
+09:07:12|TCP SERVER Started
+09:07:12|Started SQL Server
+09:07:14|WEB SERVER Enabled
+09:07:14|Started SQL Server
+09:07:14|WEB SERVER Enabled
+09:07:14|Started SQL Server
+09:07:14|TCP SERVER Started
+09:07:14|WEB SERVER Enabled
+09:07:14|Started SQL Server
+09:07:14|TCP SERVER Started
+09:07:14|Started SQL Server
+09:07:14|TCP SERVER Started
+09:07:14|Started SQL Server
+09:07:14|Started SQL Server
+09:07:57|WEB SERVER Enabled
+09:07:57|Started SQL Server
+09:07:58|TCP SERVER Started
+09:07:58|TCP SERVER Started
+09:07:58|Started SQL Server
+09:07:58|Started SQL Server
+09:08:15|The user gafniv logged in succesfully 
+09:08:27|WEB SERVER Enabled
+09:08:27|Started SQL Server
+09:08:27|TCP SERVER Started
+09:08:27|Started SQL Server
+09:08:30|ERROR ADDFORUM: incorrect username: 
+09:08:44|The user gafniv logged in succesfully 
+09:08:47|The user etay logged in succesfully 
+09:08:52|The Forum Travel has been created successfully by the admin gafniv
+09:08:58|The Forum  was removed by the admin etay
+09:09:00|The Forum Books has been created successfully by the admin gafniv
+09:09:41|The Forum Study has been created successfully by the admin gafniv
+09:09:50|The Forum Pets has been created successfully by the admin gafniv
+09:10:22|The Thread Best Dog ever added to the forum Pets
+09:15:09|WEB SERVER Enabled
+09:15:09|WEB SERVER Enabled
+09:15:09|Started SQL Server
+09:15:09|Started SQL Server
+09:15:09|TCP SERVER Started
+09:15:09|TCP SERVER Started
+09:15:10|Started SQL Server
+09:15:10|Started SQL Server
+09:15:12|WEB SERVER Enabled
+09:15:12|Started SQL Server
+09:15:12|TCP SERVER Started
+09:15:12|WEB SERVER Enabled
+09:15:12|Started SQL Server
+09:15:12|TCP SERVER Started
+09:15:12|Started SQL Server
+09:15:12|Started SQL Server
+09:15:20|The user etay logged in succesfully 
+09:15:33|The user gafniv logged in succesfully 
+09:17:49|The Thread enders game added to the forum Books
+09:17:52|The Thread  removed from the forumBooks by the admin: gafniv
+09:18:28|The Thread Enders game added to the forum Books
+09:18:58|The Forum Hebrew has been created successfully by the admin gafniv
+09:19:05|The user vadi logged in succesfully 
+09:19:38|The Thread למה לא באמת added to the forum Hebrew
+09:19:43|The Thread  removed from the forumHebrew by the admin: gafniv
+09:19:45|The Forum  was removed by the admin gafniv
+09:20:18|The Forum Funny Itune has been created successfully by the admin gafniv
+09:20:55|The Post NIGI! added to the forum Pets by the user vadi
+09:21:00|The user Shiran registered succesfully 
+09:21:18|The user Shiran logged in succesfully 
+09:21:46|The user Shiran added vadi to his friend list succesfully 
+09:21:55|Notifing etay that the user vadi added new thread in Study
+09:21:55|The Thread Sadna added to the forum Study
+09:22:04|The user vadi added Shiran to his friend list succesfully 
+09:22:21|The Thread funny Commercial  added to the forum Funny Itune
+09:22:30|The user gafniv added vadi to his friend list succesfully 
+09:22:46|Notifing etay that the user vadi added new thread in Travel
+09:22:46|Notifing Shiran that the user vadi added new thread in Travel
+09:22:46|The Thread South america added to the forum Travel
+09:23:19|The Post hi!!! added to the forum Travel by the user Shiran
+09:23:53|WEB SERVER Enabled
+09:23:53|Started SQL Server
+09:23:53|WEB SERVER Enabled
+09:23:53|Started SQL Server
+09:23:54|TCP SERVER Started
+09:23:54|TCP SERVER Started
+09:23:55|Started SQL Server
+09:23:55|Started SQL Server
+09:23:58|WEB SERVER Enabled
+09:23:58|Started SQL Server
+09:23:58|TCP SERVER Started
+09:23:58|TCP SERVER Started
+09:23:59|Started SQL Server
+09:23:59|TCP SERVER Started
+09:23:59|Started SQL Server
+09:23:59|Started SQL Server
+09:24:01|WEB SERVER Enabled
+09:24:01|WEB SERVER Enabled
+09:24:01|Started SQL Server
+09:24:01|Started SQL Server
+09:24:01|TCP SERVER Started
+09:24:01|TCP SERVER Started
+09:24:01|Started SQL Server
+09:24:01|Started SQL Server
+09:24:09|The user vadi logged in succesfully 
+09:24:29|The user Shiran logged in succesfully 
+09:24:36|WEB SERVER Enabled
+09:24:36|Started SQL Server
+09:24:37|TCP SERVER Started
+09:24:37|Started SQL Server
+09:24:39|WEB SERVER Enabled
+09:24:39|WEB SERVER Enabled
+09:24:39|Started SQL Server
+09:24:39|Started SQL Server
+09:24:39|TCP SERVER Started
+09:24:39|TCP SERVER Started
+09:24:39|Started SQL Server
+09:24:40|Started SQL Server
+09:24:42|WEB SERVER Enabled
+09:24:42|Started SQL Server
+09:24:42|Started SQL Server
+09:24:42|TCP SERVER Started
+09:24:42|TCP SERVER Started
+09:24:42|Started SQL Server
+09:24:42|Started SQL Server
+09:24:43|WEB SERVER Enabled
+09:24:43|Started SQL Server
+09:24:43|TCP SERVER Started
+09:24:43|Started SQL Server
+09:24:43|WEB SERVER Enabled
+09:24:43|Started SQL Server
+09:24:43|TCP SERVER Started
+09:24:44|Started SQL Server
+09:24:55|The user etay logged in succesfully 
+09:25:08|The Forum Music has been created successfully by the admin etay
+09:25:25|The Thread The End added to the forum Music
+09:25:28|The user gafniv logged in succesfully 
+09:25:43|The user Shiran logged in succesfully 
+09:25:53|The Post aaa added to the forum Travel by the user Shiran
+09:25:57|The Thread The End added to the forum Music
+09:26:01|post 1 removed from the thread South america in forum Travel by the user: Shiran
+09:26:26|The Post hi!!! added to the forum Travel by the user Shiran
+09:26:36|The Thread The End added to the forum Music
+09:26:37|The Post a added to the forum Travel by the user Shiran
+09:26:45|post 1 removed from the thread South america in forum Travel by the user: Shiran
+09:26:56|The Post hi added to the forum Travel by the user Shiran
+09:27:16|The user vadi logged in succesfully 
+09:27:55|Notifing vadi that the user Shiran added new thread in Travel
+09:27:55|The Thread o_O added to the forum Travel
+09:28:31|post 1 removed from the thread South america in forum Travel by the user: Shiran
+09:28:40|post 2 removed from the thread South america in forum Travel by the admin: gafniv
+09:28:41|post 3 removed from the thread South america in forum Travel by the admin: gafniv
+09:28:42|post 4 removed from the thread South america in forum Travel by the admin: gafniv
+09:28:50|The Thread  removed from the forumTravel by the admin: gafniv
+09:29:17|Notifing vadi that the user Shiran added new thread in Travel
+09:29:17|The Thread mm added to the forum Travel
+09:29:52|The user nigi registered succesfully 
+09:30:00|The user nigi logged in succesfully 
+09:30:45|The user Isis registered succesfully 
+09:30:51|The user Isis logged in succesfully 
+09:30:55|WEB SERVER Enabled
+09:30:55|Started SQL Server
+09:30:55|TCP SERVER Started
+09:30:55|Started SQL Server
+09:31:00|The user Isis logged in succesfully 
+09:31:07|The user vadi logged in succesfully 
+09:31:42|The user etay logged in succesfully 
+09:31:44|The Post Bark!!! added to the forum Pets by the user Isis
+09:31:51|Notifing etay that the user vadi added new thread in Travel
+09:31:51|The Thread India India India added to the forum Travel
+09:32:08|ERROR LOGOUT: Isis does not exsist
+09:32:08|The user Isis logged out succesfully 
+09:32:15|The user gafniv logged in succesfully 
+09:32:25|The user Shiran logged in succesfully 
+09:33:21|The user gafniv added Shiran to his friend list succesfully 
+09:33:30|WEB SERVER Enabled
+09:33:30|Started SQL Server
+09:33:30|TCP SERVER Started
+09:33:30|Started SQL Server
+09:33:45|The user etay logged in succesfully 
+09:34:03|The Post hjk added to the forum Travel by the user etay
+09:34:24|ERROR LOGIN: gafniv tried to login with wrong password
+09:34:24|The user gafniv logged in succesfully 
+09:34:29|The user gafniv logged in succesfully 
+09:34:51|WEB SERVER Enabled
+09:34:51|Started SQL Server
+09:34:51|TCP SERVER Started
+09:34:52|Started SQL Server
+09:34:54|The user vadi logged in succesfully 
+09:35:11|The user etay logged in succesfully 
+09:35:24|Notifing etay that the user vadi added new thread in Books
+09:35:24|The Thread ss added to the forum Books
+09:38:13|WEB SERVER Enabled
+09:38:13|Started SQL Server
+09:38:13|TCP SERVER Started
+09:38:13|Started SQL Server
+09:38:26|WEB SERVER Enabled
+09:38:26|Started SQL Server
+09:38:26|TCP SERVER Started
+09:38:27|Started SQL Server
+09:38:27|TCP SERVER Started
+09:38:27|Started SQL Server
+09:41:07|WEB SERVER Enabled
+09:41:07|WEB SERVER Enabled
+09:41:07|Started SQL Server
+09:41:07|Started SQL Server
+09:41:07|TCP SERVER Started
+09:41:07|TCP SERVER Started
+09:41:07|Started SQL Server
+09:41:08|Started SQL Server
+09:41:24|WEB SERVER Enabled
+09:41:25|Started SQL Server
+09:41:25|TCP SERVER Started
+09:41:25|Started SQL Server
+09:41:55|WEB SERVER Enabled
+09:41:55|WEB SERVER Enabled
+09:41:55|Started SQL Server
+09:41:55|TCP SERVER Started
+09:41:55|TCP SERVER Started
+09:41:55|Started SQL Server
+09:41:55|Started SQL Server
+09:42:05|The user etay logged in succesfully 
+09:42:42|The user vadi logged in succesfully 
+09:42:55|authorIP: 132.72.250.216
+09:43:11|ERROR LOGIN: vadi tried to login while already logged in
+09:43:11|The user vadi logged in succesfully 
+09:43:20|Notifing etay that the user vadi added new thread in Books
+09:43:20|The Thread I cant read... added to the forum Books
+09:43:31|ERROR LOGIN: vadi tried to login while already logged in
+09:43:31|The user vadi logged in succesfully 
+09:43:45|ERROR LOGIN: vadi tried to login while already logged in
+09:43:45|The user vadi logged in succesfully 
+09:43:50|ERROR LOGIN: vadi tried to login while already logged in
+09:43:50|The user vadi logged in succesfully 
+09:43:56|ERROR LOGOUT:  does not exsist
+09:43:56|The user  logged out succesfully 
+09:44:00|ERROR LOGIN: vadi tried to login while already logged in
+09:44:00|The user vadi logged in succesfully 
+09:44:04|ERROR LOGOUT:  does not exsist
+09:44:04|The user  logged out succesfully 
+09:47:48|WEB SERVER Enabled
+09:47:48|Started SQL Server
+09:47:48|WEB SERVER Enabled
+09:47:48|Started SQL Server
+09:47:48|TCP SERVER Started
+09:47:48|TCP SERVER Started
+09:47:48|Started SQL Server
+09:47:48|Started SQL Server
+09:47:50|WEB SERVER Enabled
+09:47:50|Started SQL Server
+09:47:50|TCP SERVER Started
+09:47:51|Started SQL Server
+09:48:21|WEB SERVER Enabled
+09:48:21|Started SQL Server
+09:48:21|Started SQL Server
+09:48:21|TCP SERVER Started
+09:48:21|TCP SERVER Started
+09:48:21|Start of Hash content:
+09:48:21|End of Hash content:
+09:48:21|Start of Hash content:
+09:48:21|End of Hash content:
+09:48:21|Start of Hash content:
+09:48:21|End of Hash content:
+09:48:21|Started SQL Server
+09:48:21|Started SQL Server
+09:48:21|Start of Hash content:
+09:48:21|End of Hash content:
+09:48:25|Start of Hash content:
+09:48:25|End of Hash content:
+09:48:25|Start of Hash content:
+09:48:25|End of Hash content:
+09:48:28|Start of Hash content:
+09:48:28|End of Hash content:
+09:48:29|Start of Hash content:
+09:48:29|End of Hash content:
+09:48:32|Start of Hash content:
+09:48:32|End of Hash content:
+09:48:32|Start of Hash content:
+09:48:32|End of Hash content:
+09:48:34|The user etay logged in succesfully 
+09:48:35|Start of Hash content:
+09:48:35|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:35|End of Hash content:
+09:48:36|Start of Hash content:
+09:48:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:36|End of Hash content:
+09:48:36|Start of Hash content:
+09:48:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:36|End of Hash content:
+09:48:36|Start of Hash content:
+09:48:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:36|End of Hash content:
+09:48:39|Start of Hash content:
+09:48:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:39|End of Hash content:
+09:48:39|Start of Hash content:
+09:48:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:39|End of Hash content:
+09:48:42|The user vadi logged in succesfully 
+09:48:42|Start of Hash content:
+09:48:42|key: 132.72.249.192, val: vadi
+09:48:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:42|End of Hash content:
+09:48:43|Start of Hash content:
+09:48:43|key: 132.72.249.192, val: vadi
+09:48:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:43|End of Hash content:
+09:48:45|Start of Hash content:
+09:48:45|key: 132.72.249.192, val: vadi
+09:48:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:45|End of Hash content:
+09:48:46|Start of Hash content:
+09:48:46|key: 132.72.249.192, val: vadi
+09:48:46|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:46|End of Hash content:
+09:48:46|Start of Hash content:
+09:48:46|key: 132.72.249.192, val: vadi
+09:48:46|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:46|End of Hash content:
+09:48:49|Start of Hash content:
+09:48:49|key: 132.72.249.192, val: vadi
+09:48:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:49|End of Hash content:
+09:48:49|Start of Hash content:
+09:48:49|key: 132.72.249.192, val: vadi
+09:48:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:49|End of Hash content:
+09:48:52|Start of Hash content:
+09:48:52|key: 132.72.249.192, val: vadi
+09:48:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:52|End of Hash content:
+09:48:52|Start of Hash content:
+09:48:52|key: 132.72.249.192, val: vadi
+09:48:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:52|End of Hash content:
+09:48:53|Start of Hash content:
+09:48:53|key: 132.72.249.192, val: vadi
+09:48:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:53|End of Hash content:
+09:48:53|Start of Hash content:
+09:48:53|key: 132.72.249.192, val: vadi
+09:48:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:53|End of Hash content:
+09:48:53|authorIP: 132.72.249.192
+09:48:53|Start of Hash content:
+09:48:53|key: 132.72.249.192, val: vadi
+09:48:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:53|End of Hash content:
+09:48:53|Start of Hash content:
+09:48:53|key: 132.72.249.192, val: vadi
+09:48:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:53|End of Hash content:
+09:48:56|Start of Hash content:
+09:48:56|key: 132.72.249.192, val: vadi
+09:48:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:56|End of Hash content:
+09:48:56|Start of Hash content:
+09:48:56|key: 132.72.249.192, val: vadi
+09:48:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:48:56|End of Hash content:
+09:49:00|Start of Hash content:
+09:49:00|key: 132.72.249.192, val: vadi
+09:49:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:00|End of Hash content:
+09:49:00|Start of Hash content:
+09:49:00|key: 132.72.249.192, val: vadi
+09:49:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:00|End of Hash content:
+09:49:03|Start of Hash content:
+09:49:03|key: 132.72.249.192, val: vadi
+09:49:03|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:03|End of Hash content:
+09:49:03|Start of Hash content:
+09:49:03|key: 132.72.249.192, val: vadi
+09:49:03|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:03|End of Hash content:
+09:49:07|Start of Hash content:
+09:49:07|key: 132.72.249.192, val: vadi
+09:49:07|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:07|End of Hash content:
+09:49:07|Start of Hash content:
+09:49:07|key: 132.72.249.192, val: vadi
+09:49:07|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:07|End of Hash content:
+09:49:10|Start of Hash content:
+09:49:10|key: 132.72.249.192, val: vadi
+09:49:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:10|End of Hash content:
+09:49:10|Start of Hash content:
+09:49:10|key: 132.72.249.192, val: vadi
+09:49:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:10|End of Hash content:
+09:49:14|Start of Hash content:
+09:49:14|key: 132.72.249.192, val: vadi
+09:49:14|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:14|End of Hash content:
+09:49:14|Start of Hash content:
+09:49:14|key: 132.72.249.192, val: vadi
+09:49:14|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:14|End of Hash content:
+09:49:17|Start of Hash content:
+09:49:17|key: 132.72.249.192, val: vadi
+09:49:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:17|End of Hash content:
+09:49:17|Start of Hash content:
+09:49:17|key: 132.72.249.192, val: vadi
+09:49:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:17|End of Hash content:
+09:49:21|Start of Hash content:
+09:49:21|key: 132.72.249.192, val: vadi
+09:49:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:21|End of Hash content:
+09:49:21|Start of Hash content:
+09:49:21|key: 132.72.249.192, val: vadi
+09:49:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:21|End of Hash content:
+09:49:24|Start of Hash content:
+09:49:24|key: 132.72.249.192, val: vadi
+09:49:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:24|End of Hash content:
+09:49:24|Start of Hash content:
+09:49:24|key: 132.72.249.192, val: vadi
+09:49:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:24|End of Hash content:
+09:49:28|Start of Hash content:
+09:49:28|key: 132.72.249.192, val: vadi
+09:49:28|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:28|End of Hash content:
+09:49:28|Start of Hash content:
+09:49:28|key: 132.72.249.192, val: vadi
+09:49:28|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:28|End of Hash content:
+09:49:31|Start of Hash content:
+09:49:31|key: 132.72.249.192, val: vadi
+09:49:31|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:31|End of Hash content:
+09:49:31|Start of Hash content:
+09:49:31|key: 132.72.249.192, val: vadi
+09:49:31|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:31|End of Hash content:
+09:49:35|Start of Hash content:
+09:49:35|key: 132.72.249.192, val: vadi
+09:49:35|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:35|End of Hash content:
+09:49:35|Start of Hash content:
+09:49:35|key: 132.72.249.192, val: vadi
+09:49:35|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:35|End of Hash content:
+09:49:38|Start of Hash content:
+09:49:38|key: 132.72.249.192, val: vadi
+09:49:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:38|End of Hash content:
+09:49:38|Start of Hash content:
+09:49:38|key: 132.72.249.192, val: vadi
+09:49:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:38|End of Hash content:
+09:49:42|Start of Hash content:
+09:49:42|key: 132.72.249.192, val: vadi
+09:49:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:42|End of Hash content:
+09:49:42|Start of Hash content:
+09:49:42|key: 132.72.249.192, val: vadi
+09:49:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:42|End of Hash content:
+09:49:45|Start of Hash content:
+09:49:45|key: 132.72.249.192, val: vadi
+09:49:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:45|End of Hash content:
+09:49:45|Start of Hash content:
+09:49:45|key: 132.72.249.192, val: vadi
+09:49:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:45|End of Hash content:
+09:49:49|Start of Hash content:
+09:49:49|key: 132.72.249.192, val: vadi
+09:49:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:49|End of Hash content:
+09:49:49|Start of Hash content:
+09:49:49|key: 132.72.249.192, val: vadi
+09:49:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:49|End of Hash content:
+09:49:52|Start of Hash content:
+09:49:52|key: 132.72.249.192, val: vadi
+09:49:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:52|End of Hash content:
+09:49:52|Start of Hash content:
+09:49:52|key: 132.72.249.192, val: vadi
+09:49:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:52|End of Hash content:
+09:49:56|Start of Hash content:
+09:49:56|key: 132.72.249.192, val: vadi
+09:49:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:56|End of Hash content:
+09:49:56|Start of Hash content:
+09:49:56|key: 132.72.249.192, val: vadi
+09:49:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:56|End of Hash content:
+09:49:59|Start of Hash content:
+09:49:59|key: 132.72.249.192, val: vadi
+09:49:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:59|End of Hash content:
+09:49:59|Start of Hash content:
+09:49:59|key: 132.72.249.192, val: vadi
+09:49:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:49:59|End of Hash content:
+09:50:03|Start of Hash content:
+09:50:03|key: 132.72.249.192, val: vadi
+09:50:03|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:03|End of Hash content:
+09:50:03|Start of Hash content:
+09:50:03|key: 132.72.249.192, val: vadi
+09:50:03|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:03|End of Hash content:
+09:50:06|Start of Hash content:
+09:50:06|key: 132.72.249.192, val: vadi
+09:50:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:06|End of Hash content:
+09:50:06|Start of Hash content:
+09:50:06|key: 132.72.249.192, val: vadi
+09:50:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:06|End of Hash content:
+09:50:10|Start of Hash content:
+09:50:10|key: 132.72.249.192, val: vadi
+09:50:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:10|End of Hash content:
+09:50:10|Start of Hash content:
+09:50:10|key: 132.72.249.192, val: vadi
+09:50:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:10|End of Hash content:
+09:50:13|Start of Hash content:
+09:50:13|key: 132.72.249.192, val: vadi
+09:50:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:13|End of Hash content:
+09:50:13|Start of Hash content:
+09:50:13|key: 132.72.249.192, val: vadi
+09:50:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:13|End of Hash content:
+09:50:17|Start of Hash content:
+09:50:17|key: 132.72.249.192, val: vadi
+09:50:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:17|End of Hash content:
+09:50:17|Start of Hash content:
+09:50:17|key: 132.72.249.192, val: vadi
+09:50:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:17|End of Hash content:
+09:50:20|Start of Hash content:
+09:50:20|key: 132.72.249.192, val: vadi
+09:50:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:20|End of Hash content:
+09:50:20|Start of Hash content:
+09:50:20|key: 132.72.249.192, val: vadi
+09:50:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:20|End of Hash content:
+09:50:24|Start of Hash content:
+09:50:24|key: 132.72.249.192, val: vadi
+09:50:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:24|End of Hash content:
+09:50:24|Start of Hash content:
+09:50:24|key: 132.72.249.192, val: vadi
+09:50:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:24|End of Hash content:
+09:50:27|Start of Hash content:
+09:50:27|key: 132.72.249.192, val: vadi
+09:50:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:27|End of Hash content:
+09:50:27|Start of Hash content:
+09:50:27|key: 132.72.249.192, val: vadi
+09:50:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:27|End of Hash content:
+09:50:31|Start of Hash content:
+09:50:31|key: 132.72.249.192, val: vadi
+09:50:31|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:31|End of Hash content:
+09:50:31|Start of Hash content:
+09:50:31|key: 132.72.249.192, val: vadi
+09:50:31|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:31|End of Hash content:
+09:50:34|Start of Hash content:
+09:50:34|key: 132.72.249.192, val: vadi
+09:50:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:34|End of Hash content:
+09:50:34|Start of Hash content:
+09:50:34|key: 132.72.249.192, val: vadi
+09:50:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:34|End of Hash content:
+09:50:38|Start of Hash content:
+09:50:38|key: 132.72.249.192, val: vadi
+09:50:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:38|End of Hash content:
+09:50:38|Start of Hash content:
+09:50:38|key: 132.72.249.192, val: vadi
+09:50:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:38|End of Hash content:
+09:50:41|Start of Hash content:
+09:50:41|key: 132.72.249.192, val: vadi
+09:50:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:41|End of Hash content:
+09:50:41|Start of Hash content:
+09:50:41|key: 132.72.249.192, val: vadi
+09:50:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:41|End of Hash content:
+09:50:45|Start of Hash content:
+09:50:45|key: 132.72.249.192, val: vadi
+09:50:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:45|End of Hash content:
+09:50:45|Start of Hash content:
+09:50:45|key: 132.72.249.192, val: vadi
+09:50:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:45|End of Hash content:
+09:50:48|Start of Hash content:
+09:50:48|key: 132.72.249.192, val: vadi
+09:50:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:48|End of Hash content:
+09:50:48|Start of Hash content:
+09:50:48|key: 132.72.249.192, val: vadi
+09:50:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:48|End of Hash content:
+09:50:52|Start of Hash content:
+09:50:52|key: 132.72.249.192, val: vadi
+09:50:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:52|End of Hash content:
+09:50:52|Start of Hash content:
+09:50:52|key: 132.72.249.192, val: vadi
+09:50:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:52|End of Hash content:
+09:50:55|Start of Hash content:
+09:50:55|key: 132.72.249.192, val: vadi
+09:50:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:55|End of Hash content:
+09:50:55|Start of Hash content:
+09:50:55|key: 132.72.249.192, val: vadi
+09:50:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:55|End of Hash content:
+09:50:59|Start of Hash content:
+09:50:59|key: 132.72.249.192, val: vadi
+09:50:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:59|End of Hash content:
+09:50:59|Start of Hash content:
+09:50:59|key: 132.72.249.192, val: vadi
+09:50:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:50:59|End of Hash content:
+09:51:02|Start of Hash content:
+09:51:02|key: 132.72.249.192, val: vadi
+09:51:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:02|End of Hash content:
+09:51:02|Start of Hash content:
+09:51:02|key: 132.72.249.192, val: vadi
+09:51:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:02|End of Hash content:
+09:51:06|Start of Hash content:
+09:51:06|key: 132.72.249.192, val: vadi
+09:51:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:06|End of Hash content:
+09:51:06|Start of Hash content:
+09:51:06|key: 132.72.249.192, val: vadi
+09:51:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:06|End of Hash content:
+09:51:09|Start of Hash content:
+09:51:09|key: 132.72.249.192, val: vadi
+09:51:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:09|End of Hash content:
+09:51:09|Start of Hash content:
+09:51:09|key: 132.72.249.192, val: vadi
+09:51:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:09|End of Hash content:
+09:51:13|Start of Hash content:
+09:51:13|key: 132.72.249.192, val: vadi
+09:51:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:13|End of Hash content:
+09:51:13|Start of Hash content:
+09:51:13|key: 132.72.249.192, val: vadi
+09:51:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:13|End of Hash content:
+09:51:16|Start of Hash content:
+09:51:16|key: 132.72.249.192, val: vadi
+09:51:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:16|End of Hash content:
+09:51:16|Start of Hash content:
+09:51:16|key: 132.72.249.192, val: vadi
+09:51:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:16|End of Hash content:
+09:51:20|Start of Hash content:
+09:51:20|key: 132.72.249.192, val: vadi
+09:51:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:20|End of Hash content:
+09:51:20|Start of Hash content:
+09:51:20|key: 132.72.249.192, val: vadi
+09:51:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:20|End of Hash content:
+09:51:23|Start of Hash content:
+09:51:23|key: 132.72.249.192, val: vadi
+09:51:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:23|End of Hash content:
+09:51:23|Start of Hash content:
+09:51:23|key: 132.72.249.192, val: vadi
+09:51:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:23|End of Hash content:
+09:51:27|Start of Hash content:
+09:51:27|key: 132.72.249.192, val: vadi
+09:51:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:27|End of Hash content:
+09:51:27|Start of Hash content:
+09:51:27|key: 132.72.249.192, val: vadi
+09:51:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:27|End of Hash content:
+09:51:30|Start of Hash content:
+09:51:30|key: 132.72.249.192, val: vadi
+09:51:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:30|End of Hash content:
+09:51:34|Start of Hash content:
+09:51:34|key: 132.72.249.192, val: vadi
+09:51:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:34|End of Hash content:
+09:51:37|Start of Hash content:
+09:51:37|key: 132.72.249.192, val: vadi
+09:51:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:37|End of Hash content:
+09:51:43|Start of Hash content:
+09:51:43|key: 132.72.249.192, val: vadi
+09:51:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:43|End of Hash content:
+09:51:45|Start of Hash content:
+09:51:45|key: 132.72.249.192, val: vadi
+09:51:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:45|End of Hash content:
+09:51:48|Start of Hash content:
+09:51:48|key: 132.72.249.192, val: vadi
+09:51:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:48|End of Hash content:
+09:51:51|Start of Hash content:
+09:51:51|key: 132.72.249.192, val: vadi
+09:51:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:51|End of Hash content:
+09:51:55|Start of Hash content:
+09:51:55|key: 132.72.249.192, val: vadi
+09:51:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:55|End of Hash content:
+09:51:58|Start of Hash content:
+09:51:58|key: 132.72.249.192, val: vadi
+09:51:58|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:51:58|End of Hash content:
+09:52:05|WEB SERVER Enabled
+09:52:05|Started SQL Server
+09:52:06|TCP SERVER Started
+09:52:06|Start of Hash content:
+09:52:06|End of Hash content:
+09:52:06|Started SQL Server
+09:52:07|Start of Hash content:
+09:52:07|End of Hash content:
+09:52:12|WEB SERVER Enabled
+09:52:12|Started SQL Server
+09:52:12|Started SQL Server
+09:52:12|TCP SERVER Started
+09:52:12|Start of Hash content:
+09:52:12|End of Hash content:
+09:52:12|TCP SERVER Started
+09:52:12|Start of Hash content:
+09:52:12|End of Hash content:
+09:52:12|Started SQL Server
+09:52:12|Started SQL Server
+09:52:16|Start of Hash content:
+09:52:16|End of Hash content:
+09:52:19|Start of Hash content:
+09:52:19|End of Hash content:
+09:52:23|Start of Hash content:
+09:52:23|End of Hash content:
+09:52:26|Start of Hash content:
+09:52:26|End of Hash content:
+09:52:30|Start of Hash content:
+09:52:30|End of Hash content:
+09:52:37|WEB SERVER Enabled
+09:52:37|Started SQL Server
+09:52:37|TCP SERVER Started
+09:52:37|Start of Hash content:
+09:52:37|End of Hash content:
+09:52:38|Started SQL Server
+09:52:40|WEB SERVER Enabled
+09:52:40|Started SQL Server
+09:52:40|TCP SERVER Started
+09:52:40|Start of Hash content:
+09:52:40|End of Hash content:
+09:52:40|Started SQL Server
+09:52:40|Start of Hash content:
+09:52:40|End of Hash content:
+09:52:47|Start of Hash content:
+09:52:47|End of Hash content:
+09:52:53|The user etay logged in succesfully 
+09:52:54|Start of Hash content:
+09:52:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:52:54|End of Hash content:
+09:53:02|Start of Hash content:
+09:53:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:02|End of Hash content:
+09:53:02|The user vadi logged in succesfully 
+09:53:05|Start of Hash content:
+09:53:05|key: 132.72.249.192, val: vadi
+09:53:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:05|End of Hash content:
+09:53:05|Start of Hash content:
+09:53:05|key: 132.72.249.192, val: vadi
+09:53:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:05|End of Hash content:
+09:53:09|Start of Hash content:
+09:53:09|key: 132.72.249.192, val: vadi
+09:53:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:09|End of Hash content:
+09:53:09|Start of Hash content:
+09:53:09|key: 132.72.249.192, val: vadi
+09:53:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:09|End of Hash content:
+09:53:09|Start of Hash content:
+09:53:09|key: 132.72.249.192, val: vadi
+09:53:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:09|End of Hash content:
+09:53:12|Start of Hash content:
+09:53:12|key: 132.72.249.192, val: vadi
+09:53:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:12|End of Hash content:
+09:53:16|Start of Hash content:
+09:53:16|key: 132.72.249.192, val: vadi
+09:53:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:16|End of Hash content:
+09:53:19|Start of Hash content:
+09:53:19|key: 132.72.249.192, val: vadi
+09:53:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:19|End of Hash content:
+09:53:21|Start of Hash content:
+09:53:21|key: 132.72.249.192, val: vadi
+09:53:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:21|End of Hash content:
+09:53:22|Start of Hash content:
+09:53:22|key: 132.72.249.192, val: vadi
+09:53:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:22|End of Hash content:
+09:53:22|Start of Hash content:
+09:53:22|key: 132.72.249.192, val: vadi
+09:53:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:22|End of Hash content:
+09:53:22|authorIP: 132.72.249.192
+09:53:27|Start of Hash content:
+09:53:27|key: 132.72.249.192, val: vadi
+09:53:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:27|End of Hash content:
+09:53:33|Start of Hash content:
+09:53:33|key: 132.72.249.192, val: vadi
+09:53:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:33|End of Hash content:
+09:53:41|Start of Hash content:
+09:53:41|key: 132.72.249.192, val: vadi
+09:53:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:41|End of Hash content:
+09:53:48|Start of Hash content:
+09:53:48|key: 132.72.249.192, val: vadi
+09:53:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:48|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:52|Start of Hash content:
+09:53:52|key: 132.72.249.192, val: vadi
+09:53:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:52|End of Hash content:
+09:53:54|Start of Hash content:
+09:53:54|key: 132.72.249.192, val: vadi
+09:53:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:54|End of Hash content:
+09:53:55|Start of Hash content:
+09:53:55|key: 132.72.249.192, val: vadi
+09:53:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:53:55|End of Hash content:
+09:54:01|Start of Hash content:
+09:54:01|key: 132.72.249.192, val: vadi
+09:54:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:01|End of Hash content:
+09:54:02|Start of Hash content:
+09:54:02|key: 132.72.249.192, val: vadi
+09:54:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:02|End of Hash content:
+09:54:08|Start of Hash content:
+09:54:08|key: 132.72.249.192, val: vadi
+09:54:08|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:08|End of Hash content:
+09:54:09|Start of Hash content:
+09:54:09|key: 132.72.249.192, val: vadi
+09:54:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:09|End of Hash content:
+09:54:16|Start of Hash content:
+09:54:16|key: 132.72.249.192, val: vadi
+09:54:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:16|End of Hash content:
+09:54:23|Start of Hash content:
+09:54:23|key: 132.72.249.192, val: vadi
+09:54:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:23|End of Hash content:
+09:54:35|WEB SERVER Enabled
+09:54:35|Started SQL Server
+09:54:35|TCP SERVER Started
+09:54:35|Start of Hash content:
+09:54:35|End of Hash content:
+09:54:35|Started SQL Server
+09:54:40|WEB SERVER Enabled
+09:54:40|Started SQL Server
+09:54:40|TCP SERVER Started
+09:54:40|Start of Hash content:
+09:54:40|End of Hash content:
+09:54:40|Started SQL Server
+09:54:42|WEB SERVER Enabled
+09:54:42|Started SQL Server
+09:54:42|TCP SERVER Started
+09:54:42|Start of Hash content:
+09:54:42|End of Hash content:
+09:54:42|Started SQL Server
+09:54:44|Start of Hash content:
+09:54:44|End of Hash content:
+09:54:46|Start of Hash content:
+09:54:46|End of Hash content:
+09:54:49|The user etay logged in succesfully 
+09:54:54|The user vadi logged in succesfully 
+09:54:56|Start of Hash content:
+09:54:56|key: 132.72.249.192, val: vadi
+09:54:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:56|End of Hash content:
+09:54:59|Start of Hash content:
+09:54:59|key: 132.72.249.192, val: vadi
+09:54:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:59|End of Hash content:
+09:54:59|Start of Hash content:
+09:54:59|key: 132.72.249.192, val: vadi
+09:54:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:54:59|End of Hash content:
+09:55:00|Start of Hash content:
+09:55:00|key: 132.72.249.192, val: vadi
+09:55:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:00|End of Hash content:
+09:55:00|Start of Hash content:
+09:55:00|key: 132.72.249.192, val: vadi
+09:55:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:00|End of Hash content:
+09:55:05|Start of Hash content:
+09:55:05|key: 132.72.249.192, val: vadi
+09:55:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:05|End of Hash content:
+09:55:07|Start of Hash content:
+09:55:07|key: 132.72.249.192, val: vadi
+09:55:07|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:07|End of Hash content:
+09:55:12|Start of Hash content:
+09:55:12|key: 132.72.249.192, val: vadi
+09:55:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:12|End of Hash content:
+09:55:12|Start of Hash content:
+09:55:12|key: 132.72.249.192, val: vadi
+09:55:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:12|End of Hash content:
+09:55:13|Start of Hash content:
+09:55:13|key: 132.72.249.192, val: vadi
+09:55:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:13|End of Hash content:
+09:55:13|Start of Hash content:
+09:55:13|key: 132.72.249.192, val: vadi
+09:55:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:13|End of Hash content:
+09:55:13|authorIP: 132.72.249.192
+09:55:13|Notifing vadi that the user etay added new post to thread ss in Books
+09:55:13|The Post fdsvfkdfkdkdkd added to the forum Books by the user etay
+09:55:13|Start of Hash content:
+09:55:13|key: 132.72.249.192, val: vadi
+09:55:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:13|End of Hash content:
+09:55:14|Start of Hash content:
+09:55:14|key: 132.72.249.192, val: vadi
+09:55:14|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:14|End of Hash content:
+09:55:20|Start of Hash content:
+09:55:20|key: 132.72.249.192, val: vadi
+09:55:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:20|End of Hash content:
+09:55:21|Start of Hash content:
+09:55:21|key: 132.72.249.192, val: vadi
+09:55:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:21|End of Hash content:
+09:55:27|Start of Hash content:
+09:55:27|key: 132.72.249.192, val: vadi
+09:55:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:27|End of Hash content:
+09:55:30|Start of Hash content:
+09:55:30|key: 132.72.249.192, val: vadi
+09:55:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:30|End of Hash content:
+09:55:30|Start of Hash content:
+09:55:30|key: 132.72.249.192, val: vadi
+09:55:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:30|End of Hash content:
+09:55:34|Start of Hash content:
+09:55:34|key: 132.72.249.192, val: vadi
+09:55:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:34|End of Hash content:
+09:55:38|ERROR LOGOUT: vadi does not exsist
+09:55:38|The user vadi logged out succesfully 
+09:55:41|Start of Hash content:
+09:55:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:41|End of Hash content:
+09:55:48|Start of Hash content:
+09:55:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:48|End of Hash content:
+09:55:52|Start of Hash content:
+09:55:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:52|End of Hash content:
+09:55:55|Start of Hash content:
+09:55:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:55|End of Hash content:
+09:55:59|Start of Hash content:
+09:55:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:55:59|End of Hash content:
+09:56:02|Start of Hash content:
+09:56:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:02|End of Hash content:
+09:56:06|Start of Hash content:
+09:56:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:06|End of Hash content:
+09:56:09|Start of Hash content:
+09:56:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:09|End of Hash content:
+09:56:13|Start of Hash content:
+09:56:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:13|End of Hash content:
+09:56:16|Start of Hash content:
+09:56:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:16|End of Hash content:
+09:56:20|Start of Hash content:
+09:56:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:20|End of Hash content:
+09:56:23|Start of Hash content:
+09:56:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:23|End of Hash content:
+09:56:27|Start of Hash content:
+09:56:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:27|End of Hash content:
+09:56:30|Start of Hash content:
+09:56:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:30|End of Hash content:
+09:56:34|Start of Hash content:
+09:56:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:34|End of Hash content:
+09:56:37|Start of Hash content:
+09:56:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:37|End of Hash content:
+09:56:41|Start of Hash content:
+09:56:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:41|End of Hash content:
+09:56:44|Start of Hash content:
+09:56:44|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:44|End of Hash content:
+09:56:48|Start of Hash content:
+09:56:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:48|End of Hash content:
+09:56:51|Start of Hash content:
+09:56:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:51|End of Hash content:
+09:56:55|Start of Hash content:
+09:56:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:55|End of Hash content:
+09:56:58|Start of Hash content:
+09:56:58|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:56:58|End of Hash content:
+09:57:02|Start of Hash content:
+09:57:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:02|End of Hash content:
+09:57:05|Start of Hash content:
+09:57:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:05|End of Hash content:
+09:57:09|Start of Hash content:
+09:57:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:09|End of Hash content:
+09:57:12|Start of Hash content:
+09:57:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:12|End of Hash content:
+09:57:16|Start of Hash content:
+09:57:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:16|End of Hash content:
+09:57:19|Start of Hash content:
+09:57:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:19|End of Hash content:
+09:57:23|Start of Hash content:
+09:57:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:23|End of Hash content:
+09:57:26|Start of Hash content:
+09:57:26|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:26|End of Hash content:
+09:57:30|Start of Hash content:
+09:57:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:30|End of Hash content:
+09:57:33|Start of Hash content:
+09:57:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:33|End of Hash content:
+09:57:37|Start of Hash content:
+09:57:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:37|End of Hash content:
+09:57:40|Start of Hash content:
+09:57:40|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:40|End of Hash content:
+09:57:44|Start of Hash content:
+09:57:44|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:44|End of Hash content:
+09:57:47|Start of Hash content:
+09:57:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:47|End of Hash content:
+09:57:51|Start of Hash content:
+09:57:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:51|End of Hash content:
+09:57:54|Start of Hash content:
+09:57:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:54|End of Hash content:
+09:57:58|Start of Hash content:
+09:57:58|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:57:58|End of Hash content:
+09:58:01|Start of Hash content:
+09:58:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:01|End of Hash content:
+09:58:05|Start of Hash content:
+09:58:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:05|End of Hash content:
+09:58:08|Start of Hash content:
+09:58:08|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:08|End of Hash content:
+09:58:12|Start of Hash content:
+09:58:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:12|End of Hash content:
+09:58:15|Start of Hash content:
+09:58:15|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:15|End of Hash content:
+09:58:19|Start of Hash content:
+09:58:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:19|End of Hash content:
+09:58:22|Start of Hash content:
+09:58:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:22|End of Hash content:
+09:58:26|Start of Hash content:
+09:58:26|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:26|End of Hash content:
+09:58:29|Start of Hash content:
+09:58:29|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:29|End of Hash content:
+09:58:33|Start of Hash content:
+09:58:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:33|End of Hash content:
+09:58:36|Start of Hash content:
+09:58:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:36|End of Hash content:
+09:58:40|Start of Hash content:
+09:58:40|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:40|End of Hash content:
+09:58:43|Start of Hash content:
+09:58:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:43|End of Hash content:
+09:58:47|Start of Hash content:
+09:58:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:47|End of Hash content:
+09:58:50|Start of Hash content:
+09:58:50|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:50|End of Hash content:
+09:58:54|Start of Hash content:
+09:58:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:54|End of Hash content:
+09:58:57|Start of Hash content:
+09:58:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:58:57|End of Hash content:
+09:59:01|Start of Hash content:
+09:59:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:59:01|End of Hash content:
+09:59:04|Start of Hash content:
+09:59:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:59:04|End of Hash content:
+09:59:08|Start of Hash content:
+09:59:08|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:59:08|End of Hash content:
+09:59:11|Start of Hash content:
+09:59:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:59:11|End of Hash content:
+09:59:15|Start of Hash content:
+09:59:15|key: fe80::13d:8903:8d69:e819%11, val: etay
+09:59:15|End of Hash content:
+09:59:25|WEB SERVER Enabled
+09:59:25|Started SQL Server
+09:59:25|TCP SERVER Started
+09:59:25|Start of Hash content:
+09:59:25|End of Hash content:
+09:59:25|Started SQL Server
+09:59:26|Start of Hash content:
+09:59:26|End of Hash content:
+09:59:29|Start of Hash content:
+09:59:29|End of Hash content:
+09:59:32|Start of Hash content:
+09:59:32|End of Hash content:
+09:59:36|Start of Hash content:
+09:59:36|End of Hash content:
+09:59:39|Start of Hash content:
+09:59:39|End of Hash content:
+09:59:43|Start of Hash content:
+09:59:43|End of Hash content:
+09:59:46|Start of Hash content:
+09:59:46|End of Hash content:
+09:59:51|Start of Hash content:
+09:59:51|End of Hash content:
+09:59:53|Start of Hash content:
+09:59:53|End of Hash content:
+09:59:57|Start of Hash content:
+09:59:57|End of Hash content:
+10:00:00|Start of Hash content:
+10:00:00|End of Hash content:
+10:00:04|Start of Hash content:
+10:00:04|End of Hash content:
+10:00:07|Start of Hash content:
+10:00:07|End of Hash content:
+10:00:11|Start of Hash content:
+10:00:12|End of Hash content:
+10:00:14|Start of Hash content:
+10:00:14|End of Hash content:
+10:00:19|Start of Hash content:
+10:00:19|End of Hash content:
+10:00:21|Start of Hash content:
+10:00:21|End of Hash content:
+10:00:26|Start of Hash content:
+10:00:26|End of Hash content:
+10:00:28|Start of Hash content:
+10:00:28|End of Hash content:
+10:00:33|Start of Hash content:
+10:00:33|End of Hash content:
+10:00:35|Start of Hash content:
+10:00:35|End of Hash content:
+10:00:40|Start of Hash content:
+10:00:40|End of Hash content:
+10:00:42|Start of Hash content:
+10:00:42|End of Hash content:
+10:00:47|Start of Hash content:
+10:00:47|End of Hash content:
+10:00:49|Start of Hash content:
+10:00:49|End of Hash content:
+10:00:54|Start of Hash content:
+10:00:54|End of Hash content:
+10:00:56|Start of Hash content:
+10:00:56|End of Hash content:
+10:01:03|WEB SERVER Enabled
+10:01:03|Started SQL Server
+10:01:03|TCP SERVER Started
+10:01:03|Start of Hash content:
+10:01:03|End of Hash content:
+10:01:03|Started SQL Server
+10:01:04|Start of Hash content:
+10:01:04|End of Hash content:
+10:01:08|Start of Hash content:
+10:01:08|End of Hash content:
+10:01:10|Start of Hash content:
+10:01:10|End of Hash content:
+10:01:15|Start of Hash content:
+10:01:15|End of Hash content:
+10:01:17|Start of Hash content:
+10:01:17|End of Hash content:
+10:01:27|WEB SERVER Enabled
+10:01:27|Started SQL Server
+10:01:27|TCP SERVER Started
+10:01:27|Start of Hash content:
+10:01:27|End of Hash content:
+10:01:27|Started SQL Server
+10:01:29|Start of Hash content:
+10:01:29|End of Hash content:
+10:01:31|Start of Hash content:
+10:01:31|End of Hash content:
+10:01:36|Start of Hash content:
+10:01:36|End of Hash content:
+10:01:38|Start of Hash content:
+10:01:38|End of Hash content:
+10:01:43|Start of Hash content:
+10:01:43|End of Hash content:
+10:01:44|The user etay logged in succesfully 
+10:01:44|The user vadi logged in succesfully 
+10:01:48|Start of Hash content:
+10:01:48|key: 132.72.249.192, val: vadi
+10:01:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:48|End of Hash content:
+10:01:48|Start of Hash content:
+10:01:48|key: 132.72.249.192, val: vadi
+10:01:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:48|End of Hash content:
+10:01:51|Start of Hash content:
+10:01:51|key: 132.72.249.192, val: vadi
+10:01:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:51|End of Hash content:
+10:01:51|Start of Hash content:
+10:01:51|key: 132.72.249.192, val: vadi
+10:01:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:51|End of Hash content:
+10:01:53|Start of Hash content:
+10:01:53|key: 132.72.249.192, val: vadi
+10:01:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:53|End of Hash content:
+10:01:56|Start of Hash content:
+10:01:56|key: 132.72.249.192, val: vadi
+10:01:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:56|End of Hash content:
+10:01:56|Start of Hash content:
+10:01:56|key: 132.72.249.192, val: vadi
+10:01:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:56|End of Hash content:
+10:01:56|Notifing vadi that the user etay added new thread in Study
+10:01:56|The Thread jk added to the forum Study
+10:01:57|Start of Hash content:
+10:01:57|key: 132.72.249.192, val: vadi
+10:01:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:57|End of Hash content:
+10:01:59|Start of Hash content:
+10:01:59|key: 132.72.249.192, val: vadi
+10:01:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:01:59|End of Hash content:
+10:02:04|Start of Hash content:
+10:02:04|key: 132.72.249.192, val: vadi
+10:02:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:04|End of Hash content:
+10:02:05|Start of Hash content:
+10:02:05|key: 132.72.249.192, val: vadi
+10:02:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:05|End of Hash content:
+10:02:11|Start of Hash content:
+10:02:11|key: 132.72.249.192, val: vadi
+10:02:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:11|End of Hash content:
+10:02:11|Start of Hash content:
+10:02:11|key: 132.72.249.192, val: vadi
+10:02:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:11|End of Hash content:
+10:02:12|Start of Hash content:
+10:02:12|key: 132.72.249.192, val: vadi
+10:02:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:12|End of Hash content:
+10:02:16|Start of Hash content:
+10:02:16|key: 132.72.249.192, val: vadi
+10:02:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:16|End of Hash content:
+10:02:16|Start of Hash content:
+10:02:16|key: 132.72.249.192, val: vadi
+10:02:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:16|End of Hash content:
+10:02:16|Start of Hash content:
+10:02:16|key: 132.72.249.192, val: vadi
+10:02:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:16|End of Hash content:
+10:02:16|authorIP: 132.72.249.192
+10:02:16|Notifing vadi that the user etay added new post to thread Sadna in Study
+10:02:16|The Post cdk added to the forum Study by the user etay
+10:02:16|Start of Hash content:
+10:02:16|key: 132.72.249.192, val: vadi
+10:02:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:16|End of Hash content:
+10:02:23|Start of Hash content:
+10:02:23|key: 132.72.249.192, val: vadi
+10:02:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:23|End of Hash content:
+10:02:24|Start of Hash content:
+10:02:24|key: 132.72.249.192, val: vadi
+10:02:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:24|End of Hash content:
+10:02:26|Start of Hash content:
+10:02:26|key: 132.72.249.192, val: vadi
+10:02:26|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:26|End of Hash content:
+10:02:30|Start of Hash content:
+10:02:30|key: 132.72.249.192, val: vadi
+10:02:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:30|End of Hash content:
+10:02:33|Start of Hash content:
+10:02:33|key: 132.72.249.192, val: vadi
+10:02:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:33|End of Hash content:
+10:02:37|Start of Hash content:
+10:02:37|key: 132.72.249.192, val: vadi
+10:02:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:37|End of Hash content:
+10:02:40|Start of Hash content:
+10:02:40|key: 132.72.249.192, val: vadi
+10:02:40|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:40|End of Hash content:
+10:02:44|Start of Hash content:
+10:02:44|key: 132.72.249.192, val: vadi
+10:02:44|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:44|End of Hash content:
+10:02:47|Start of Hash content:
+10:02:47|key: 132.72.249.192, val: vadi
+10:02:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:47|End of Hash content:
+10:02:51|Start of Hash content:
+10:02:51|key: 132.72.249.192, val: vadi
+10:02:51|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:51|End of Hash content:
+10:02:54|Start of Hash content:
+10:02:54|key: 132.72.249.192, val: vadi
+10:02:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:54|End of Hash content:
+10:02:58|Start of Hash content:
+10:02:58|key: 132.72.249.192, val: vadi
+10:02:58|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:02:58|End of Hash content:
+10:03:01|Start of Hash content:
+10:03:01|key: 132.72.249.192, val: vadi
+10:03:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:01|End of Hash content:
+10:03:05|Start of Hash content:
+10:03:05|key: 132.72.249.192, val: vadi
+10:03:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:05|End of Hash content:
+10:03:15|Start of Hash content:
+10:03:15|key: 132.72.249.192, val: vadi
+10:03:15|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:15|End of Hash content:
+10:03:15|Start of Hash content:
+10:03:15|key: 132.72.249.192, val: vadi
+10:03:15|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:15|End of Hash content:
+10:03:22|Start of Hash content:
+10:03:22|key: 132.72.249.192, val: vadi
+10:03:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:22|End of Hash content:
+10:03:22|Start of Hash content:
+10:03:22|key: 132.72.249.192, val: vadi
+10:03:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:22|End of Hash content:
+10:03:29|Start of Hash content:
+10:03:29|key: 132.72.249.192, val: vadi
+10:03:29|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:29|End of Hash content:
+10:03:29|Start of Hash content:
+10:03:29|key: 132.72.249.192, val: vadi
+10:03:29|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:29|End of Hash content:
+10:03:36|Start of Hash content:
+10:03:36|key: 132.72.249.192, val: vadi
+10:03:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:36|End of Hash content:
+10:03:36|Start of Hash content:
+10:03:36|key: 132.72.249.192, val: vadi
+10:03:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:36|End of Hash content:
+10:03:43|The user admin registered succesfully 
+10:03:43|Start of Hash content:
+10:03:43|key: 132.72.249.192, val: vadi
+10:03:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:43|End of Hash content:
+10:03:50|Start of Hash content:
+10:03:50|key: 132.72.249.192, val: vadi
+10:03:50|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:50|End of Hash content:
+10:03:50|Start of Hash content:
+10:03:50|key: 132.72.249.192, val: vadi
+10:03:50|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:50|End of Hash content:
+10:03:57|Start of Hash content:
+10:03:57|key: 132.72.249.192, val: vadi
+10:03:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:57|End of Hash content:
+10:03:57|Start of Hash content:
+10:03:57|key: 132.72.249.192, val: vadi
+10:03:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:03:57|End of Hash content:
+10:04:04|Start of Hash content:
+10:04:04|key: 132.72.249.192, val: vadi
+10:04:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:04|End of Hash content:
+10:04:04|Start of Hash content:
+10:04:04|key: 132.72.249.192, val: vadi
+10:04:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:04|End of Hash content:
+10:04:11|Start of Hash content:
+10:04:11|key: 132.72.249.192, val: vadi
+10:04:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:11|End of Hash content:
+10:04:11|Start of Hash content:
+10:04:11|key: 132.72.249.192, val: vadi
+10:04:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:11|End of Hash content:
+10:04:18|Start of Hash content:
+10:04:18|key: 132.72.249.192, val: vadi
+10:04:18|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:18|End of Hash content:
+10:04:18|Start of Hash content:
+10:04:18|key: 132.72.249.192, val: vadi
+10:04:18|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:18|End of Hash content:
+10:04:25|Start of Hash content:
+10:04:25|key: 132.72.249.192, val: vadi
+10:04:25|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:25|End of Hash content:
+10:04:30|Start of Hash content:
+10:04:30|key: 132.72.249.192, val: vadi
+10:04:30|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:30|End of Hash content:
+10:04:32|Start of Hash content:
+10:04:32|key: 132.72.249.192, val: vadi
+10:04:32|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:32|End of Hash content:
+10:04:32|Start of Hash content:
+10:04:32|key: 132.72.249.192, val: vadi
+10:04:32|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:32|End of Hash content:
+10:04:37|The user admin logged in succesfully 
+10:04:39|Start of Hash content:
+10:04:39|key: 132.72.249.192, val: admin
+10:04:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:39|End of Hash content:
+10:04:40|Start of Hash content:
+10:04:40|key: 132.72.249.192, val: admin
+10:04:40|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:40|End of Hash content:
+10:04:46|Start of Hash content:
+10:04:46|key: 132.72.249.192, val: admin
+10:04:46|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:46|End of Hash content:
+10:04:47|Start of Hash content:
+10:04:47|key: 132.72.249.192, val: admin
+10:04:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:47|End of Hash content:
+10:04:53|Start of Hash content:
+10:04:53|key: 132.72.249.192, val: admin
+10:04:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:53|End of Hash content:
+10:04:53|Start of Hash content:
+10:04:53|key: 132.72.249.192, val: admin
+10:04:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:53|End of Hash content:
+10:04:53|Start of Hash content:
+10:04:53|key: 132.72.249.192, val: admin
+10:04:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:53|End of Hash content:
+10:04:53|Start of Hash content:
+10:04:53|key: 132.72.249.192, val: admin
+10:04:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:53|End of Hash content:
+10:04:54|Start of Hash content:
+10:04:54|key: 132.72.249.192, val: admin
+10:04:54|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:54|End of Hash content:
+10:04:57|Start of Hash content:
+10:04:57|key: 132.72.249.192, val: admin
+10:04:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:57|End of Hash content:
+10:04:57|Start of Hash content:
+10:04:57|key: 132.72.249.192, val: admin
+10:04:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:57|End of Hash content:
+10:04:58|Start of Hash content:
+10:04:58|key: 132.72.249.192, val: admin
+10:04:58|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:04:58|End of Hash content:
+10:05:01|Start of Hash content:
+10:05:01|key: 132.72.249.192, val: admin
+10:05:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:01|End of Hash content:
+10:05:01|Start of Hash content:
+10:05:01|key: 132.72.249.192, val: admin
+10:05:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:01|End of Hash content:
+10:05:01|Start of Hash content:
+10:05:01|key: 132.72.249.192, val: admin
+10:05:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:01|End of Hash content:
+10:05:01|Start of Hash content:
+10:05:01|key: 132.72.249.192, val: admin
+10:05:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:01|End of Hash content:
+10:05:08|Start of Hash content:
+10:05:08|key: 132.72.249.192, val: admin
+10:05:08|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:08|End of Hash content:
+10:05:08|Start of Hash content:
+10:05:08|key: 132.72.249.192, val: admin
+10:05:08|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:08|End of Hash content:
+10:05:10|Start of Hash content:
+10:05:10|key: 132.72.249.192, val: admin
+10:05:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:10|End of Hash content:
+10:05:12|Start of Hash content:
+10:05:12|key: 132.72.249.192, val: admin
+10:05:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:12|End of Hash content:
+10:05:15|Start of Hash content:
+10:05:15|key: 132.72.249.192, val: admin
+10:05:15|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:15|End of Hash content:
+10:05:17|Start of Hash content:
+10:05:17|key: 132.72.249.192, val: admin
+10:05:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:17|End of Hash content:
+10:05:17|Start of Hash content:
+10:05:17|key: 132.72.249.192, val: admin
+10:05:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:17|End of Hash content:
+10:05:17|Start of Hash content:
+10:05:17|key: 132.72.249.192, val: admin
+10:05:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:17|End of Hash content:
+10:05:19|Start of Hash content:
+10:05:19|key: 132.72.249.192, val: admin
+10:05:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:19|End of Hash content:
+10:05:19|Start of Hash content:
+10:05:19|key: 132.72.249.192, val: admin
+10:05:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:19|End of Hash content:
+10:05:20|Start of Hash content:
+10:05:20|key: 132.72.249.192, val: admin
+10:05:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:20|End of Hash content:
+10:05:21|Start of Hash content:
+10:05:21|key: 132.72.249.192, val: admin
+10:05:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:21|End of Hash content:
+10:05:21|Start of Hash content:
+10:05:21|key: 132.72.249.192, val: admin
+10:05:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:21|End of Hash content:
+10:05:21|Start of Hash content:
+10:05:21|key: 132.72.249.192, val: admin
+10:05:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:21|End of Hash content:
+10:05:22|Start of Hash content:
+10:05:22|key: 132.72.249.192, val: admin
+10:05:22|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:22|End of Hash content:
+10:05:28|Start of Hash content:
+10:05:28|key: 132.72.249.192, val: admin
+10:05:28|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:28|End of Hash content:
+10:05:29|Start of Hash content:
+10:05:29|key: 132.72.249.192, val: admin
+10:05:29|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:29|End of Hash content:
+10:05:33|Start of Hash content:
+10:05:33|key: 132.72.249.192, val: admin
+10:05:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:33|End of Hash content:
+10:05:33|Start of Hash content:
+10:05:33|key: 132.72.249.192, val: admin
+10:05:33|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:33|End of Hash content:
+10:05:36|Start of Hash content:
+10:05:36|key: 132.72.249.192, val: admin
+10:05:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:36|End of Hash content:
+10:05:36|Start of Hash content:
+10:05:36|key: 132.72.249.192, val: admin
+10:05:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:36|End of Hash content:
+10:05:36|The Thread  removed from the forumTravel by the admin: admin
+10:05:36|Start of Hash content:
+10:05:36|key: 132.72.249.192, val: admin
+10:05:36|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:36|End of Hash content:
+10:05:38|Start of Hash content:
+10:05:38|key: 132.72.249.192, val: admin
+10:05:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:38|End of Hash content:
+10:05:39|Start of Hash content:
+10:05:39|key: 132.72.249.192, val: admin
+10:05:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:39|End of Hash content:
+10:05:43|Start of Hash content:
+10:05:43|key: 132.72.249.192, val: admin
+10:05:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:43|End of Hash content:
+10:05:45|Start of Hash content:
+10:05:45|key: 132.72.249.192, val: admin
+10:05:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:45|End of Hash content:
+10:05:45|Start of Hash content:
+10:05:45|key: 132.72.249.192, val: admin
+10:05:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:45|End of Hash content:
+10:05:47|Start of Hash content:
+10:05:47|key: 132.72.249.192, val: admin
+10:05:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:47|End of Hash content:
+10:05:47|The Thread  removed from the forumStudy by the admin: admin
+10:05:47|Start of Hash content:
+10:05:47|key: 132.72.249.192, val: admin
+10:05:47|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:47|End of Hash content:
+10:05:49|Start of Hash content:
+10:05:49|key: 132.72.249.192, val: admin
+10:05:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:49|End of Hash content:
+10:05:49|Start of Hash content:
+10:05:49|key: 132.72.249.192, val: admin
+10:05:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:49|End of Hash content:
+10:05:50|Start of Hash content:
+10:05:50|key: 132.72.249.192, val: admin
+10:05:50|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:50|End of Hash content:
+10:05:56|Start of Hash content:
+10:05:56|key: 132.72.249.192, val: admin
+10:05:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:56|End of Hash content:
+10:05:57|Start of Hash content:
+10:05:57|key: 132.72.249.192, val: admin
+10:05:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:05:57|End of Hash content:
+10:06:00|Start of Hash content:
+10:06:00|key: 132.72.249.192, val: admin
+10:06:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:00|End of Hash content:
+10:06:00|Start of Hash content:
+10:06:00|key: 132.72.249.192, val: admin
+10:06:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:00|End of Hash content:
+10:06:04|Start of Hash content:
+10:06:04|key: 132.72.249.192, val: admin
+10:06:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:04|End of Hash content:
+10:06:05|Start of Hash content:
+10:06:05|key: 132.72.249.192, val: admin
+10:06:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:05|End of Hash content:
+10:06:05|Start of Hash content:
+10:06:05|key: 132.72.249.192, val: admin
+10:06:05|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:05|End of Hash content:
+10:06:11|Start of Hash content:
+10:06:11|key: 132.72.249.192, val: admin
+10:06:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:11|End of Hash content:
+10:06:18|Start of Hash content:
+10:06:18|key: 132.72.249.192, val: admin
+10:06:18|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:18|End of Hash content:
+10:06:20|Start of Hash content:
+10:06:20|key: 132.72.249.192, val: admin
+10:06:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:20|End of Hash content:
+10:06:25|Start of Hash content:
+10:06:25|key: 132.72.249.192, val: admin
+10:06:25|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:25|End of Hash content:
+10:06:27|Start of Hash content:
+10:06:27|key: 132.72.249.192, val: admin
+10:06:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:27|End of Hash content:
+10:06:32|Start of Hash content:
+10:06:32|key: 132.72.249.192, val: admin
+10:06:32|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:32|End of Hash content:
+10:06:34|Start of Hash content:
+10:06:34|key: 132.72.249.192, val: admin
+10:06:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:34|End of Hash content:
+10:06:39|Start of Hash content:
+10:06:39|key: 132.72.249.192, val: admin
+10:06:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:39|End of Hash content:
+10:06:42|Start of Hash content:
+10:06:42|key: 132.72.249.192, val: admin
+10:06:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:42|End of Hash content:
+10:06:46|Start of Hash content:
+10:06:46|key: 132.72.249.192, val: admin
+10:06:46|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:46|End of Hash content:
+10:06:48|Start of Hash content:
+10:06:48|key: 132.72.249.192, val: admin
+10:06:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:48|End of Hash content:
+10:06:55|Start of Hash content:
+10:06:55|key: 132.72.249.192, val: admin
+10:06:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:55|End of Hash content:
+10:06:57|Start of Hash content:
+10:06:57|key: 132.72.249.192, val: admin
+10:06:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:06:57|End of Hash content:
+10:07:02|Start of Hash content:
+10:07:02|key: 132.72.249.192, val: admin
+10:07:02|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:02|End of Hash content:
+10:07:04|Start of Hash content:
+10:07:04|key: 132.72.249.192, val: admin
+10:07:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:04|End of Hash content:
+10:07:11|Start of Hash content:
+10:07:11|key: 132.72.249.192, val: admin
+10:07:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:11|End of Hash content:
+10:07:11|Start of Hash content:
+10:07:11|key: 132.72.249.192, val: admin
+10:07:11|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:11|End of Hash content:
+10:07:16|Start of Hash content:
+10:07:16|key: 132.72.249.192, val: admin
+10:07:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:16|End of Hash content:
+10:07:18|Start of Hash content:
+10:07:18|key: 132.72.249.192, val: admin
+10:07:18|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:18|End of Hash content:
+10:07:23|Start of Hash content:
+10:07:23|key: 132.72.249.192, val: admin
+10:07:23|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:23|End of Hash content:
+10:07:25|Start of Hash content:
+10:07:25|key: 132.72.249.192, val: admin
+10:07:25|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:25|End of Hash content:
+10:07:31|The user vadi registered succesfully 
+10:07:32|Start of Hash content:
+10:07:32|key: 132.72.249.192, val: admin
+10:07:32|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:32|End of Hash content:
+10:07:39|Start of Hash content:
+10:07:39|key: 132.72.249.192, val: admin
+10:07:39|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:39|End of Hash content:
+10:07:41|Start of Hash content:
+10:07:41|key: 132.72.249.192, val: admin
+10:07:41|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:41|End of Hash content:
+10:07:45|Start of Hash content:
+10:07:45|key: 132.72.249.192, val: admin
+10:07:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:45|End of Hash content:
+10:07:46|Start of Hash content:
+10:07:46|key: 132.72.249.192, val: admin
+10:07:46|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:46|End of Hash content:
+10:07:48|Start of Hash content:
+10:07:48|key: 132.72.249.192, val: admin
+10:07:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:48|End of Hash content:
+10:07:48|Start of Hash content:
+10:07:48|key: 132.72.249.192, val: admin
+10:07:48|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:48|End of Hash content:
+10:07:48|The user admin added etay to his friend list succesfully 
+10:07:49|Start of Hash content:
+10:07:49|key: 132.72.249.192, val: admin
+10:07:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:49|End of Hash content:
+10:07:53|Start of Hash content:
+10:07:53|key: 132.72.249.192, val: admin
+10:07:53|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:53|End of Hash content:
+10:07:55|Start of Hash content:
+10:07:55|key: 132.72.249.192, val: admin
+10:07:55|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:07:55|End of Hash content:
+10:08:00|Start of Hash content:
+10:08:00|key: 132.72.249.192, val: admin
+10:08:00|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:00|End of Hash content:
+10:08:07|Start of Hash content:
+10:08:07|key: 132.72.249.192, val: admin
+10:08:07|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:07|End of Hash content:
+10:08:08|ERROR LOGIN: vadi tried to login with wrong password
+10:08:08|The user vadi logged in succesfully 
+10:08:13|The user vadi logged in succesfully 
+10:08:14|Start of Hash content:
+10:08:14|key: 132.72.249.192, val: vadi
+10:08:14|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:14|End of Hash content:
+10:08:16|Start of Hash content:
+10:08:16|key: 132.72.249.192, val: vadi
+10:08:16|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:16|End of Hash content:
+10:08:19|Start of Hash content:
+10:08:19|key: 132.72.249.192, val: vadi
+10:08:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:19|End of Hash content:
+10:08:19|Start of Hash content:
+10:08:19|key: 132.72.249.192, val: vadi
+10:08:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:19|End of Hash content:
+10:08:19|The user vadi added etay to his friend list succesfully 
+10:08:21|Start of Hash content:
+10:08:21|key: 132.72.249.192, val: vadi
+10:08:21|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:21|End of Hash content:
+10:08:24|Start of Hash content:
+10:08:24|key: 132.72.249.192, val: vadi
+10:08:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:24|End of Hash content:
+10:08:24|Start of Hash content:
+10:08:24|key: 132.72.249.192, val: vadi
+10:08:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:24|End of Hash content:
+10:08:27|Start of Hash content:
+10:08:27|key: 132.72.249.192, val: vadi
+10:08:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:27|End of Hash content:
+10:08:27|Start of Hash content:
+10:08:27|key: 132.72.249.192, val: vadi
+10:08:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:27|End of Hash content:
+10:08:28|Start of Hash content:
+10:08:28|key: 132.72.249.192, val: vadi
+10:08:28|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:28|End of Hash content:
+10:08:28|Start of Hash content:
+10:08:28|key: 132.72.249.192, val: vadi
+10:08:28|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:28|End of Hash content:
+10:08:35|Start of Hash content:
+10:08:35|key: 132.72.249.192, val: vadi
+10:08:35|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:35|End of Hash content:
+10:08:35|Start of Hash content:
+10:08:35|key: 132.72.249.192, val: vadi
+10:08:35|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:35|End of Hash content:
+10:08:42|Start of Hash content:
+10:08:42|key: 132.72.249.192, val: vadi
+10:08:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:42|End of Hash content:
+10:08:42|Start of Hash content:
+10:08:42|key: 132.72.249.192, val: vadi
+10:08:42|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:42|End of Hash content:
+10:08:49|Start of Hash content:
+10:08:49|key: 132.72.249.192, val: vadi
+10:08:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:49|End of Hash content:
+10:08:49|Start of Hash content:
+10:08:49|key: 132.72.249.192, val: vadi
+10:08:49|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:49|End of Hash content:
+10:08:56|Start of Hash content:
+10:08:56|key: 132.72.249.192, val: vadi
+10:08:56|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:56|End of Hash content:
+10:08:57|Start of Hash content:
+10:08:57|key: 132.72.249.192, val: vadi
+10:08:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:08:57|End of Hash content:
+10:09:01|Start of Hash content:
+10:09:01|key: 132.72.249.192, val: vadi
+10:09:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:01|End of Hash content:
+10:09:01|Start of Hash content:
+10:09:01|key: 132.72.249.192, val: vadi
+10:09:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:01|End of Hash content:
+10:09:01|Notifing etay that the user vadi added new thread in Travel
+10:09:01|The Thread South america added to the forum Travel
+10:09:01|Start of Hash content:
+10:09:01|key: 132.72.249.192, val: vadi
+10:09:01|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:01|End of Hash content:
+10:09:03|Start of Hash content:
+10:09:03|key: 132.72.249.192, val: vadi
+10:09:03|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:03|End of Hash content:
+10:09:09|Start of Hash content:
+10:09:09|key: 132.72.249.192, val: vadi
+10:09:09|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:09|End of Hash content:
+10:09:10|Start of Hash content:
+10:09:10|key: 132.72.249.192, val: vadi
+10:09:10|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:10|End of Hash content:
+10:09:12|Start of Hash content:
+10:09:12|key: 132.72.249.192, val: vadi
+10:09:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:12|End of Hash content:
+10:09:12|Start of Hash content:
+10:09:12|key: 132.72.249.192, val: vadi
+10:09:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:12|End of Hash content:
+10:09:14|Start of Hash content:
+10:09:14|key: 132.72.249.192, val: vadi
+10:09:14|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:14|End of Hash content:
+10:09:17|Start of Hash content:
+10:09:17|key: 132.72.249.192, val: vadi
+10:09:17|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:17|End of Hash content:
+10:09:20|Start of Hash content:
+10:09:20|key: 132.72.249.192, val: vadi
+10:09:20|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:20|End of Hash content:
+10:09:24|Start of Hash content:
+10:09:24|key: 132.72.249.192, val: vadi
+10:09:24|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:24|End of Hash content:
+10:09:27|Start of Hash content:
+10:09:27|key: 132.72.249.192, val: vadi
+10:09:27|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:27|End of Hash content:
+10:09:31|Start of Hash content:
+10:09:31|key: 132.72.249.192, val: vadi
+10:09:31|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:31|End of Hash content:
+10:09:34|Start of Hash content:
+10:09:34|key: 132.72.249.192, val: vadi
+10:09:34|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:34|End of Hash content:
+10:09:37|Start of Hash content:
+10:09:37|key: 132.72.249.192, val: vadi
+10:09:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:37|End of Hash content:
+10:09:37|Start of Hash content:
+10:09:37|key: 132.72.249.192, val: vadi
+10:09:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:37|End of Hash content:
+10:09:37|Notifing etay that the user vadi added new thread in Music
+10:09:37|The Thread Nirvana added to the forum Music
+10:09:37|Start of Hash content:
+10:09:37|key: 132.72.249.192, val: vadi
+10:09:37|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:37|End of Hash content:
+10:09:38|Start of Hash content:
+10:09:38|key: 132.72.249.192, val: vadi
+10:09:38|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:38|End of Hash content:
+10:09:43|Start of Hash content:
+10:09:43|key: 132.72.249.192, val: vadi
+10:09:43|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:43|End of Hash content:
+10:09:45|Start of Hash content:
+10:09:45|key: 132.72.249.192, val: vadi
+10:09:45|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:45|End of Hash content:
+10:09:50|Start of Hash content:
+10:09:50|key: 132.72.249.192, val: vadi
+10:09:50|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:50|End of Hash content:
+10:09:52|Start of Hash content:
+10:09:52|key: 132.72.249.192, val: vadi
+10:09:52|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:52|End of Hash content:
+10:09:57|Start of Hash content:
+10:09:57|key: 132.72.249.192, val: vadi
+10:09:57|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:57|End of Hash content:
+10:09:59|Start of Hash content:
+10:09:59|key: 132.72.249.192, val: vadi
+10:09:59|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:09:59|End of Hash content:
+10:10:04|Start of Hash content:
+10:10:04|key: 132.72.249.192, val: vadi
+10:10:04|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:04|End of Hash content:
+10:10:06|Start of Hash content:
+10:10:06|key: 132.72.249.192, val: vadi
+10:10:06|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:06|End of Hash content:
+10:10:12|Start of Hash content:
+10:10:12|key: 132.72.249.192, val: vadi
+10:10:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:12|End of Hash content:
+10:10:12|Start of Hash content:
+10:10:12|key: 132.72.249.192, val: vadi
+10:10:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:12|End of Hash content:
+10:10:12|Start of Hash content:
+10:10:12|key: 132.72.249.192, val: vadi
+10:10:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:12|End of Hash content:
+10:10:12|Start of Hash content:
+10:10:12|key: 132.72.249.192, val: vadi
+10:10:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:12|End of Hash content:
+10:10:12|authorIP: fe80::13d:8903:8d69:e819%11
+10:10:12|Notifing etay that the user vadi added new post to thread The End in Music
+10:10:12|The Post no.... added to the forum Music by the user vadi
+10:10:12|Start of Hash content:
+10:10:12|key: 132.72.249.192, val: vadi
+10:10:12|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:12|End of Hash content:
+10:10:13|Start of Hash content:
+10:10:13|key: 132.72.249.192, val: vadi
+10:10:13|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:13|End of Hash content:
+10:10:19|Start of Hash content:
+10:10:19|key: 132.72.249.192, val: vadi
+10:10:19|key: fe80::13d:8903:8d69:e819%11, val: etay
+10:10:19|End of Hash content:
+10:10:21|ERROR LOGOUT: etay does not exsist
+10:10:21|The user etay logged out succesfully 
+10:10:28|Start of Hash content:
+10:10:28|key: 132.72.249.192, val: vadi
+10:10:28|End of Hash content:
+10:10:28|Start of Hash content:
+10:10:28|key: 132.72.249.192, val: vadi
+10:10:28|End of Hash content:
+10:10:29|The user etay logged in succesfully 
+10:10:33|Start of Hash content:
+10:10:33|key: 132.72.249.192, val: vadi
+10:10:33|End of Hash content:
+10:10:35|Start of Hash content:
+10:10:35|key: 132.72.249.192, val: vadi
+10:10:35|End of Hash content:
+10:10:40|Start of Hash content:
+10:10:40|key: 132.72.249.192, val: vadi
+10:10:40|End of Hash content:
+10:10:45|ERROR LOGIN: vadi tried to login while already logged in
+10:10:45|The user vadi logged in succesfully 
+10:10:47|Start of Hash content:
+10:10:47|key: 132.72.249.192, val: vadi
+10:10:47|End of Hash content:
+10:10:50|ERROR LOGOUT:  does not exsist
+10:10:50|The user  logged out succesfully 
+10:10:55|Start of Hash content:
+10:10:55|key: 132.72.249.192, val: vadi
+10:10:55|End of Hash content:
+10:10:58|ERROR LOGIN: vadi tried to login while already logged in
+10:10:58|The user vadi logged in succesfully 
+10:11:01|Start of Hash content:
+10:11:01|key: 132.72.249.192, val: vadi
+10:11:01|End of Hash content:
+10:11:07|ERROR LOGIN: admin tried to login while already logged in
+10:11:07|The user admin logged in succesfully 
+10:11:08|Start of Hash content:
+10:11:08|key: 132.72.249.192, val: vadi
+10:11:08|End of Hash content:
+10:11:14|ERROR LOGOUT:  does not exsist
+10:11:14|The user  logged out succesfully 
+10:11:15|Start of Hash content:
+10:11:15|key: 132.72.249.192, val: vadi
+10:11:15|End of Hash content:
+10:11:22|ERROR LOGIN: admin tried to login while already logged in
+10:11:22|The user admin logged in succesfully 
+10:11:22|Start of Hash content:
+10:11:22|key: 132.72.249.192, val: vadi
+10:11:22|End of Hash content:
+10:11:29|Start of Hash content:
+10:11:29|key: 132.72.249.192, val: vadi
+10:11:29|End of Hash content:
+10:11:36|ERROR LOGIN: admin tried to login while already logged in
+10:11:36|The user admin logged in succesfully 
+10:11:36|Start of Hash content:
+10:11:36|key: 132.72.249.192, val: vadi
+10:11:36|End of Hash content:
+10:11:43|Start of Hash content:
+10:11:43|key: 132.72.249.192, val: vadi
+10:11:43|End of Hash content:
+10:11:44|ERROR LOGOUT: vadi does not exsist
+10:11:44|The user vadi logged out succesfully 
+10:11:49|ERROR LOGIN: admin tried to login while already logged in
+10:11:49|The user admin logged in succesfully 
+10:11:57|Start of Hash content:
+10:11:57|End of Hash content:
+10:11:58|Start of Hash content:
+10:11:58|End of Hash content:
+10:11:59|ERROR LOGIN: admin tried to login while already logged in
+10:11:59|The user admin logged in succesfully 
+10:12:05|Start of Hash content:
+10:12:05|End of Hash content:
+10:12:06|Start of Hash content:
+10:12:06|End of Hash content:
+10:12:08|The user vadi logged in succesfully 
+10:12:12|ERROR LOGOUT: vadi does not exsist
+10:12:12|The user vadi logged out succesfully 
+10:12:15|Start of Hash content:
+10:12:15|End of Hash content:
+10:12:19|Start of Hash content:
+10:12:19|End of Hash content:
+10:12:22|Start of Hash content:
+10:12:22|End of Hash content:
+10:12:26|The user nigi registered succesfully 
+10:12:26|Start of Hash content:
+10:12:26|End of Hash content:
+10:12:33|Start of Hash content:
+10:12:33|End of Hash content:
+10:12:34|The user nigi logged in succesfully 
+10:12:39|Start of Hash content:
+10:12:39|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:39|End of Hash content:
+10:12:39|Start of Hash content:
+10:12:39|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:39|End of Hash content:
+10:12:40|Start of Hash content:
+10:12:40|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:40|End of Hash content:
+10:12:46|Start of Hash content:
+10:12:46|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:46|End of Hash content:
+10:12:47|Start of Hash content:
+10:12:47|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:47|End of Hash content:
+10:12:51|The Thread ff added to the forum Books
+10:12:53|Start of Hash content:
+10:12:53|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:53|End of Hash content:
+10:12:54|Start of Hash content:
+10:12:54|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:12:54|End of Hash content:
+10:13:00|Start of Hash content:
+10:13:00|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:00|End of Hash content:
+10:13:01|Start of Hash content:
+10:13:01|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:01|End of Hash content:
+10:13:06|Start of Hash content:
+10:13:06|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:06|End of Hash content:
+10:13:08|Start of Hash content:
+10:13:08|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:08|End of Hash content:
+10:13:13|Start of Hash content:
+10:13:13|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:13|End of Hash content:
+10:13:15|Start of Hash content:
+10:13:15|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:15|End of Hash content:
+10:13:19|Start of Hash content:
+10:13:19|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:19|End of Hash content:
+10:13:22|Start of Hash content:
+10:13:22|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:22|End of Hash content:
+10:13:25|Start of Hash content:
+10:13:25|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:25|End of Hash content:
+10:13:25|The Post gvfsd added to the forum Books by the user nigi
+10:13:25|Start of Hash content:
+10:13:25|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:25|End of Hash content:
+10:13:29|Start of Hash content:
+10:13:29|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:29|End of Hash content:
+10:13:32|Start of Hash content:
+10:13:32|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:32|End of Hash content:
+10:13:36|Start of Hash content:
+10:13:36|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:36|End of Hash content:
+10:13:39|Start of Hash content:
+10:13:39|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:39|End of Hash content:
+10:13:43|Start of Hash content:
+10:13:43|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:43|End of Hash content:
+10:13:46|Start of Hash content:
+10:13:46|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:46|End of Hash content:
+10:13:53|Start of Hash content:
+10:13:53|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:13:53|End of Hash content:
+10:14:00|Start of Hash content:
+10:14:00|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:00|End of Hash content:
+10:14:07|Start of Hash content:
+10:14:07|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:07|End of Hash content:
+10:14:14|Start of Hash content:
+10:14:14|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:14|End of Hash content:
+10:14:21|Start of Hash content:
+10:14:21|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:21|End of Hash content:
+10:14:28|Start of Hash content:
+10:14:28|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:28|End of Hash content:
+10:14:35|Start of Hash content:
+10:14:35|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:35|End of Hash content:
+10:14:42|Start of Hash content:
+10:14:42|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:42|End of Hash content:
+10:14:49|Start of Hash content:
+10:14:49|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:49|End of Hash content:
+10:14:56|Start of Hash content:
+10:14:56|key: fe80::13d:8903:8d69:e819%11, val: nigi
+10:14:56|End of Hash content:
