@@ -54,12 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Account\boss.bmp" />
-    <Content Include="Account\ChangePassword.aspx" />
-    <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="addReply.aspx" />
     <Content Include="boss.ico" />
-    <Content Include="chat-delete.png" />
     <Content Include="css\demos.css" />
     <Content Include="css\jquery.ui.all.css" />
     <Content Include="css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -119,6 +115,7 @@
     <Content Include="css\themes\smoothness\jquery.ui.theme.css" />
     <Content Include="davar.aspx" />
     <Content Include="Forum.aspx" />
+    <Content Include="ForumPage.aspx" />
     <Content Include="Friends.aspx" />
     <Content Include="js\jquery-1.5.1.js" />
     <Content Include="js\jquery-1.5.1.min.js" />
@@ -252,8 +249,6 @@
     <Content Include="logout.aspx" />
     <Content Include="notify.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="removePost.aspx" />
-    <Content Include="replay2.png" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -261,7 +256,6 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="ThreadBody.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -270,7 +264,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Furom_Body.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -279,20 +272,6 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ChangePassword.aspx.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ChangePassword.aspx.designer.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="addReply.aspx.cs">
       <DependentUpon>addReply.aspx</DependentUpon>
@@ -321,6 +300,13 @@
     </Compile>
     <Compile Include="Forum.aspx.designer.cs">
       <DependentUpon>Forum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForumPage.aspx.cs">
+      <DependentUpon>ForumPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForumPage.aspx.designer.cs">
+      <DependentUpon>ForumPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Friends.aspx.cs">
       <DependentUpon>Friends.aspx</DependentUpon>
@@ -363,26 +349,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="removePost.aspx.cs">
-      <DependentUpon>removePost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="removePost.aspx.designer.cs">
-      <DependentUpon>removePost.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ThreadBody.aspx.cs">
-      <DependentUpon>ThreadBody.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ThreadBody.aspx.designer.cs">
-      <DependentUpon>ThreadBody.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
@@ -391,19 +363,9 @@
     <Compile Include="Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Furom_Body.aspx.cs">
-      <DependentUpon>Furom_Body.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Furom_Body.aspx.designer.cs">
-      <DependentUpon>Furom_Body.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>

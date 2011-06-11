@@ -10,87 +10,69 @@
 namespace WebForum {
     
     
-    public partial class Forum {
+    public partial class ForumPage {
         
         /// <summary>
-        /// Panel1 control.
+        /// ForumPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel ForumPanel;
         
         /// <summary>
-        /// ForumListPanel control.
+        /// addThreadPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ForumListPanel;
+        protected global::System.Web.UI.WebControls.Panel addThreadPanel;
         
         /// <summary>
-        /// Label3 control.
+        /// threadTopicBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.TextBox threadTopicBox;
         
         /// <summary>
-        /// ForumTable control.
+        /// threadContentBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ForumTable;
+        protected global::System.Web.UI.WebControls.TextBox threadContentBox;
         
         /// <summary>
-        /// adminPanel control.
+        /// addThreadError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel adminPanel;
+        protected global::System.Web.UI.WebControls.Label addThreadError;
         
         /// <summary>
-        /// removeForumButton control.
+        /// okThreadButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button removeForumButton;
+        protected global::System.Web.UI.WebControls.Button okThreadButton;
         
         /// <summary>
-        /// AddForumButton control.
+        /// threadcancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddForumButton;
-        
-        /// <summary>
-        /// welcomePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel welcomePanel;
-        
-        /// <summary>
-        /// _lable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _lable;
+        protected global::System.Web.UI.WebControls.Button threadcancelButton;
     }
 }
