@@ -16,22 +16,23 @@ namespace ForumSever
         private static Object _IPLock= new Object();
         private Hashtable _usersIp;
         private Hashtable _usersData;
+        private string _type = "";
 
-        public LogicManager()
+        public LogicManager(String p_type)
         {
+            _type = p_type;
             _db = new Database();
             _usersIp = new Hashtable();
             _usersData = new Hashtable();
         }
 
-        public LogicManager(Database p_db)
+        public LogicManager(Database p_db,String p_type)
         {
             this._db = p_db;
+            this._type = p_type;
             _usersIp = new Hashtable();
             _usersData = new Hashtable();
         }
-
-      
 
         public void addUserIP(string userName,string IP){
             lock(_IPLock){
@@ -98,13 +99,16 @@ namespace ForumSever
                 reverseHash[val] = key;
             }
 
-            foreach (string fr in friendsNames) {                
-                result.Add((string)reverseHash[fr]);
+            foreach (string fr in friendsNames) {
+                string ip = (string)reverseHash[fr];
+                if(ip!=null){
+                    result.Add(ip);
+                }                
             }
             return result;
         }        
         
-        public List<UserData> getWatchersUserData(string IP,int p_fid,int p_tid) {
+        public List<UserData> getWatchersUserData(string username,int p_fid,int p_tid) {
             List<UserData> result = new List<UserData>();
             //UserData posterUser;
             lock (_IPLock) {
@@ -112,8 +116,10 @@ namespace ForumSever
                     //posterUser = getUserDataFromIP(IP);                    
                     foreach (string ip in _usersData.Keys) {
                         UserData tmp = (UserData)_usersData[ip];
-                        if ((tmp.curForum._pIndex == p_fid) && (tmp.curThread._pIndex == p_tid)) {
-                            result.Add(tmp);
+                        if(!tmp.Username.Equals(username)){
+                            if ((tmp.curForum._pIndex == p_fid) && (tmp.curThread._pIndex == p_tid)) {
+                                result.Add(tmp);
+                            }                        
                         }                        
                     }
                 }
@@ -138,11 +144,11 @@ namespace ForumSever
             List<UserData> result = new List<UserData>();            
             List<UserData> friends;
             List<UserData> watchers;
-            string IP = findIPbyUsername(username);
+            //string IP = findIPbyUsername(username);
             lock (_IPLock) {
                 try {
-                    friends = getFriendsUserData(IP);
-                    watchers = getWatchersUserData(IP, p_fid, p_tid);
+                    friends = getFriendsUserData(username);
+                    watchers = getWatchersUserData(username, p_fid, p_tid);
                     result = (List<UserData>)friends.Union(watchers);
                 }
                 catch (Exception) {
@@ -397,32 +403,21 @@ namespace ForumSever
         }
 
         //addForum
-        public int addForum(int p_userID, string p_topic)
+        public int addForum(string p_uname, string p_topic)
         {
-            int result = 0;
-            lock (_logicLock)
-            {
-                MemberInfo t_user = _db.FindMemberByID(p_userID);
-                if (t_user == null)
-                {
-                    Logger.append("ERROR ADDFORUM: incorrect username: " + t_user.getUName(), Logger.ERROR);
-                    result = -3;
-                }
-                if (_db.findTopicInForums(p_topic))
-                {
-                    Logger.append("ERROR ADDFORUM: forum "+p_topic+" already exist", Logger.ERROR);
-                    result = -5;
-                }
-                if (result == 0)
-                {
-                    Forum t_forum = new Forum(p_topic);
-                    result = _db.addForum(t_forum);
-
-                    t_forum.setId(result);
-                }
+            if (!_db.isMember(p_uname)) {
+                Logger.append("ERROR ADDFORUM: incorrect username: " + p_uname, Logger.ERROR);
+                return -3;
             }
-            Logger.append("The forum " + p_topic + " added to the system", Logger.INFO);
-            return result;
+            if (!_db.isAdmin(p_uname)) {
+                Logger.append("ERROR ADDFORUM: the user: " + p_uname + " is not admin! ", Logger.ERROR);
+                return -7;
+            }
+            if (_db.addForum(p_topic)) {
+                Logger.append("The Forum " + p_topic + " has been created successfully by the admin " + p_uname, Logger.INFO);
+                return 0;
+            }
+            return -1;  // unexpected error
 
         }
 
@@ -447,6 +442,14 @@ namespace ForumSever
                 {
                     ForumThread t_thr = new ForumThread(p_fid, p_topic, p_content, p_uname);
                     result = _db.addTread(t_thr);
+                    string forumName = _db.getForumName(p_fid);
+                    if(_type.Equals("web")){
+                        List<UserData> webFriends = getFriendsUserData(p_uname);
+                        foreach (UserData viewer in webFriends) {                                                        
+                            viewer.notifications.Enqueue("User " + p_uname + " added new thread in " + forumName);
+                            Logger.append("Notifing " + viewer.Username + " that the user " + p_uname + " added new thread in " + forumName, Logger.INFO);
+                        }
+                    }
                 }
 
             }
@@ -512,8 +515,28 @@ namespace ForumSever
                 result = _db.getForum(p_fid);
             }
             return result;
+        }        
+
+        public int removeForum(int p_fid,string p_uname) {
+            if (!_db.isMember(p_uname)) {
+                Logger.append("ERROR REMOVEFORUM: incorrect username: " + p_uname, Logger.ERROR);
+                return -3;
+            }            
+            if (!_db.isAdmin(p_uname)) {
+                Logger.append("ERROR REMOVEFORUM: the user: " + p_uname + " is not admin! ", Logger.ERROR);
+                return -7;
+            }
+            if (_db.removeForum(p_fid)) {
+                Logger.append("The Forum " + this.getForumName(p_fid) + " was removed by the admin " + p_uname, Logger.INFO);
+                return 0;
+            }
+            else {
+                Logger.append("ERROR REMOVEFORUM: SQL ERROR", Logger.ERROR);
+                return -22;
+            }
         }
-        
+
+
         public int removeThread(int p_fid, int p_tid,string p_uname)
         {
             string userType = "user";
@@ -563,6 +586,18 @@ namespace ForumSever
                     result = -6;
                 }
                 _db.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname);
+
+                string threadName = _db.getThreadName(p_fid, p_tid);
+                string forumName = _db.getForumName(p_fid);
+
+                List<UserData> webUsersDataToUpdate = getFriendsAndWatchersUserData(p_uname, p_fid, p_tid);
+                if (webUsersDataToUpdate!=null) {
+                    foreach (UserData viewer in webUsersDataToUpdate) {
+                        viewer.notifications.Enqueue("User " + p_uname + " added new post to thread " + threadName + " in " + forumName);
+                        Logger.append("Notifing " + viewer.Username+ " that the user " + p_uname + " added new post to thread " + threadName + " in " + forumName, Logger.INFO);
+                    }
+                }
+                  
                 result= 0;
             }
             Logger.append("The Post " + p_topic + " added to the forum " + getForumName(p_fid) +" by the user "+p_uname, Logger.INFO);
