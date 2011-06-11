@@ -25,7 +25,7 @@
         $LoginButton.attr("disabled", "true");
         //$LoginButton.attr("enabaled", "true");
         if ($('#<%=UserName.ClientID%>').val() != "")
-            $.ajax({ url: "davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
                 if (data == "true") {
                     $LoginButton.attr("disabled", "true");
                     $('#usernameError').html("userName don't exist").fadeIn();
@@ -37,7 +37,7 @@
             }
             });
         $('#<%=UserName.ClientID%>').blur(function () {
-            $.ajax({ url: "davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
                 if (data == "true") {
                     $LoginButton.attr("disabled", "true");
                     $('#usernameError').html("userName don't exist").fadeIn();

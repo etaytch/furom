@@ -220,19 +220,6 @@ namespace forumTests
         }
 
 
-        /// <summary>
-        ///A test for getForums
-        ///</summary>
-        [TestMethod()]
-        public void getForumsTest() {
-            List<Quartet> expected = new List<Quartet>();
-            expected.Add(new Quartet(testForumId, 0, "forumtest", ""));
-            List<Quartet> actual = lg.getForums();
-            Assert.AreEqual(expected[0]._subject, actual[0]._subject);
-            Assert.AreEqual(expected[0]._pIndex, actual[0]._pIndex);
-            Assert.AreEqual(expected[0]._author, actual[0]._author);
-           
-        }
 
         /// <summary>
         ///A test for getFriends

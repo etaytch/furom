@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForum", "WebForum\WebFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSever", "ForumSever\ForumSever.csproj", "{BF919658-A9DA-403A-B8AF-D874FF8FDDD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "forumTests", "forumTests\forumTests.csproj", "{785BC696-5D97-41F2-8C9F-9696684DDDBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{BF919658-A9DA-403A-B8AF-D874FF8FDDD7}.Release|Mixed Platforms.Build.0 = Release|x86
 		{BF919658-A9DA-403A-B8AF-D874FF8FDDD7}.Release|x86.ActiveCfg = Release|x86
 		{BF919658-A9DA-403A-B8AF-D874FF8FDDD7}.Release|x86.Build.0 = Release|x86
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{785BC696-5D97-41F2-8C9F-9696684DDDBD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
