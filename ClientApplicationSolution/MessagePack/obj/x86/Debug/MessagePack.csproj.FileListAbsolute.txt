@@ -1,0 +1,5 @@
+C:\Users\Vadi\Desktop\furom\ClientApplicationSolution\MessagePack\bin\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\furom\ClientApplicationSolution\MessagePack\bin\Debug\MessagePack.pdb
+C:\Users\Vadi\Desktop\furom\ClientApplicationSolution\MessagePack\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vadi\Desktop\furom\ClientApplicationSolution\MessagePack\obj\x86\Debug\MessagePack.dll
+C:\Users\Vadi\Desktop\furom\ClientApplicationSolution\MessagePack\obj\x86\Debug\MessagePack.pdb
