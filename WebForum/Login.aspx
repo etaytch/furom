@@ -91,7 +91,7 @@ function validate()
             if you don&#39;t have an account.
         </p>
         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
-        <br /><div style="position:relative; top: 5px; left: 1px;">
+        <br /><div style="position:relative; top: 5px; left: 1px;"></div>
         <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
         <div style="position:absolute; left:160px; color:Red; font-size:small; font-weight:normal; top: -2px; height: 19px;" 
                 id="usernameError"></div>
