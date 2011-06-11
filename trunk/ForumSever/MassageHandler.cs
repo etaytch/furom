@@ -57,10 +57,10 @@ namespace ForumSever
                     Handle((LoginMessage)t_msg); 
                     break;
                 case "LOGOUT": 
-                    Handle((LoginMessage)t_msg);
+                    Handle((LogoutMessage)t_msg);
                     break;
                 case "ADDPOST": 
-                    Handle((LoginMessage)t_msg);
+                    Handle((AddPostMessage)t_msg);
                     break;
                 case "ADDTHREAD": 
                     Handle((AddThreadMessage)t_msg);      

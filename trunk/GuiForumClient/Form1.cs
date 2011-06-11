@@ -982,8 +982,7 @@ namespace GuiForumClient
         {
             List<Quartet> posts = e.Posts;
             TreeNode selected = findNode(treeView1.Nodes, "p", e.CurrentPost.Topic);
-            TreeNode currentThread = findNode(treeView1.Nodes, "t", e.CurrentThreadID.Name);
-            bool post_name_exists = false;
+            TreeNode currentThread = findNode(treeView1.Nodes, "t", e.CurrentThreadID.Name);            
             string post_name = "defult";
             if ((selected != null) && (selected.Parent != null))
             {
@@ -991,8 +990,7 @@ namespace GuiForumClient
                 foreach (Quartet post in posts)
                 {
                     if (post._subject == post_name)
-                    {
-                        post_name_exists = true;
+                    {                        
                         break;
                     }
                 }
@@ -1126,7 +1124,7 @@ namespace GuiForumClient
                     TreeNode oldForum = this.findNode(treeView1.Nodes, "f", db.CurrentForumId.Name);
                     oldForum.Collapse();
                 }
-                catch (Exception ee)
+                catch (Exception)
                 {
                 }
                 buttonsToForumMode();
@@ -1140,7 +1138,7 @@ namespace GuiForumClient
                     TreeNode oldForum = this.findNode(treeView1.Nodes, "t", db.CurrentForumId.Name);
                     oldForum.Collapse();
                 }
-                catch (Exception e1)
+                catch (Exception)
                 {
                 }
                 buttonsToThreadMode();
@@ -1154,7 +1152,7 @@ namespace GuiForumClient
                     TreeNode oldForum = this.findNode(treeView1.Nodes, "p", db.CurrentForumId.Name);
                     oldForum.Collapse();
                 }
-                catch (Exception ee)
+                catch (Exception)
                 {
                 }
                 buttonsToPostMode();
