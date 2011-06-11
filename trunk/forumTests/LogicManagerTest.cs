@@ -67,7 +67,7 @@ namespace forumTests
             testForumId = Convert.ToInt32(reader["fid"]);
             lg.db.closeconn();
             testThreadId = lg.db.addTread(new ForumThread(testForumId, "ttopic", "tcontent", "utest0"));
-            lg.db.addPost(testThreadId,testForumId,0,"tPostTopic","tPostcontent","utets0");
+            lg.db.addPost(testThreadId, testForumId, 0, "tPostTopic", "tPostcontent", "utest0");
             reader = lg.db.runSelectSQL("SELECT pid FROM Posts WHERE subject = 'tPostTopic'");
             reader.Read();
             testPostId = Convert.ToInt32(reader["pid"]);
@@ -180,24 +180,12 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void addTreadTest() {
-            /*
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string p_uname = string.Empty; // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            string p_topic = string.Empty; // TODO: Initialize to an appropriate value
-            string p_content = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.addTread(p_uname, p_fid, p_topic, p_content);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-             */
             int expected = lg.addTread("utest3",testForumId, "blaTopic", "blaContent");
             Assert.AreEqual(expected, -3);
-            expected = lg.addTread("utest0", -9, "blaTopic", "blaContent");
+            expected = lg.addTread("utest0", testForumId, "ttopic", "blaContent");
             Assert.AreEqual(expected, -5);
             expected = lg.addTread("utest0", testForumId, "blaTopic", "blaContent");
-            Assert.AreEqual(expected, 0);
+            Assert.IsTrue(expected > 0);
             SqlDataReader reader = lg.db.runSelectSQL("SELECT tid FROM threads WHERE subject = 'blaTopic'");
             Assert.IsTrue(reader.HasRows);
             reader.Read();
@@ -206,91 +194,45 @@ namespace forumTests
             Assert.IsTrue(actual > 0);
         }
 
-  /*      /// <summary>
-        ///A test for addUserIP
-        ///</summary>
-        [TestMethod()]
-        public void addUserIPTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string userName = string.Empty; // TODO: Initialize to an appropriate value
-            string IP = string.Empty; // TODO: Initialize to an appropriate value
-            target.addUserIP(userName, IP);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for fillPostTree
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("ForumSever.exe")]
-        public void fillPostTreeTest() {
-            LogicManager_Accessor target = new LogicManager_Accessor(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            PostsTree pt = null; // TODO: Initialize to an appropriate value
-            List<Quartet> result = null; // TODO: Initialize to an appropriate value
-            string uname = string.Empty; // TODO: Initialize to an appropriate value
-            List<PostsTree> expected = null; // TODO: Initialize to an appropriate value
-            List<PostsTree> actual;
-            actual = target.fillPostTree(p_fid, p_tid, pt, result, uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
         /// <summary>
         ///A test for getForum
         ///</summary>
         [TestMethod()]
         public void getForumTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            List<Quartet> expected = null; // TODO: Initialize to an appropriate value
-            List<Quartet> actual;
-            actual = target.getForum(p_fid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            List<Quartet> expected = new List<Quartet>();
+            expected.Add(new Quartet(testThreadId,0,"ttopic","utest0"));
+            List<Quartet> actual = lg.getForum(testForumId);
+            Assert.AreEqual(expected[0]._subject, actual[0]._subject);
+            Assert.AreEqual(expected[0]._pIndex, actual[0]._pIndex);
+            Assert.AreEqual(expected[0]._author, actual[0]._author);
         }
+
+       
 
         /// <summary>
         ///A test for getForumName
         ///</summary>
         [TestMethod()]
         public void getForumNameTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int t_fid = 0; // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.getForumName(t_fid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            string actual = lg.getForumName(testForumId);
+            Assert.AreEqual("forumtest", actual);
+
         }
 
-        /// <summary>
-        ///A test for getForumViewers
-        ///</summary>
-        [TestMethod()]
-        public void getForumViewersTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int t_fid = 0; // TODO: Initialize to an appropriate value
-            List<string> expected = null; // TODO: Initialize to an appropriate value
-            List<string> actual;
-            actual = target.getForumViewers(t_fid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
 
         /// <summary>
         ///A test for getForums
         ///</summary>
         [TestMethod()]
         public void getForumsTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            List<Quartet> expected = null; // TODO: Initialize to an appropriate value
-            List<Quartet> actual;
-            actual = target.getForums();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }*/
+            List<Quartet> expected = new List<Quartet>();
+            expected.Add(new Quartet(testForumId, 0, "forumtest", ""));
+            List<Quartet> actual = lg.getForums();
+            Assert.AreEqual(expected[0]._subject, actual[0]._subject);
+            Assert.AreEqual(expected[0]._pIndex, actual[0]._pIndex);
+            Assert.AreEqual(expected[0]._author, actual[0]._author);
+           
+        }
 
         /// <summary>
         ///A test for getFriends
@@ -318,21 +260,16 @@ namespace forumTests
             Assert.IsTrue(actual.Contains("utest0"));
         }
 
-       /* /// <summary>
+        /// <summary>
         ///A test for getPost
         ///</summary>
         [TestMethod()]
         public void getPostTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            int p_index = 0; // TODO: Initialize to an appropriate value
-            string p_uname = string.Empty; // TODO: Initialize to an appropriate value
-            ForumPost expected = null; // TODO: Initialize to an appropriate value
-            ForumPost actual;
-            actual = target.getPost(p_fid, p_tid, p_index, p_uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            ForumPost expected = new ForumPost(testForumId, testThreadId, 0,"tPostTopic","tPostcontent","utest0"); 
+            ForumPost actual = lg.getPost(testForumId, testThreadId, testPostId, "utest0");
+            Assert.AreEqual(expected.getAuthor(), actual.getAuthor());
+            Assert.AreEqual(expected.getContent(), actual.getContent());
+            Assert.AreEqual(expected.getTopic(), actual.getTopic());
         }
 
         /// <summary>
@@ -340,14 +277,11 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void getThreadTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            ForumThread expected = null; // TODO: Initialize to an appropriate value
-            ForumThread actual;
-            actual = target.getThread(p_fid, p_tid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            ForumThread expected = new ForumThread(testForumId, "ttopic", "tcontent", "utest0");
+            ForumThread actual = lg.getThread(testForumId, testThreadId);
+            Assert.AreEqual(expected.getAuthor(), actual.getAuthor());
+            Assert.AreEqual(expected.getContent(), actual.getContent());
+            Assert.AreEqual(expected.getTopic(), actual.getTopic());
         }
 
         /// <summary>
@@ -355,14 +289,8 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void getThreadNameTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int t_fid = 0; // TODO: Initialize to an appropriate value
-            int t_tid = 0; // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.getThreadName(t_fid, t_tid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            string actual = lg.getThreadName(testForumId, testThreadId);
+            Assert.AreEqual("ttopic", actual);
         }
 
         /// <summary>
@@ -370,75 +298,12 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void getThreadPostsTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            List<Quartet> expected = null; // TODO: Initialize to an appropriate value
-            List<Quartet> actual;
-            actual = target.getThreadPosts(p_fid, p_tid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            List<Quartet> expected = new List<Quartet>();
+            expected.Add(new Quartet(testPostId,0,"tPostTopic","utest0"));
+            List<Quartet> actual = lg.getThreadPosts(testForumId, testThreadId);
+            Assert.AreEqual(expected[0]._author, actual[0]._author);
+            Assert.AreEqual(expected[0]._subject, actual[0]._subject);
         }
-
-        /// <summary>
-        ///A test for getThreadPostsAndContent
-        ///</summary>
-        [TestMethod()]
-        public void getThreadPostsAndContentTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            string uname = string.Empty; // TODO: Initialize to an appropriate value
-            PostsTree expected = null; // TODO: Initialize to an appropriate value
-            PostsTree actual;
-            actual = target.getThreadPostsAndContent(p_fid, p_tid, uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getThreadViewersToUpdate
-        ///</summary>
-        [TestMethod()]
-        public void getThreadViewersToUpdateTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string t_uname = string.Empty; // TODO: Initialize to an appropriate value
-            int t_fid = 0; // TODO: Initialize to an appropriate value
-            int t_tid = 0; // TODO: Initialize to an appropriate value
-            List<string> expected = null; // TODO: Initialize to an appropriate value
-            List<string> actual;
-            actual = target.getThreadViewersToUpdate(t_uname, t_fid, t_tid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getUserDataFromIP
-        ///</summary>
-        [TestMethod()]
-        public void getUserDataFromIPTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string IP = string.Empty; // TODO: Initialize to an appropriate value
-            UserData expected = null; // TODO: Initialize to an appropriate value
-            UserData actual;
-            actual = target.getUserDataFromIP(IP);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getUserFromIP
-        ///</summary>
-        [TestMethod()]
-        public void getUserFromIPTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string IP = string.Empty; // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.getUserFromIP(IP);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }*/
 
         /// <summary>
         ///A test for getUsers
@@ -453,19 +318,14 @@ namespace forumTests
             Assert.IsTrue(actual.Contains("utest0"));
         }
 
-      /*  /// <summary>
+        /// <summary>
         ///A test for isForum
         ///</summary>
         [TestMethod()]
         public void isForumTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.isForum(p_fid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }*/
+            Assert.IsFalse(lg.isForum(-9));
+            Assert.IsTrue(lg.isForum(testForumId));
+        }
 
         /// <summary>
         ///A test for isLogged
@@ -524,62 +384,5 @@ namespace forumTests
             Assert.AreEqual(0, actual);
             Assert.IsFalse(lg.db.recordExsist("select * from utest0 where uname = 'utest1'"));
         }
-
-    /*    /// <summary>
-        ///A test for removePost
-        ///</summary>
-        [TestMethod()]
-        public void removePostTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            int p_index = 0; // TODO: Initialize to an appropriate value
-            string p_uname = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.removePost(p_fid, p_tid, p_index, p_uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for removeThread
-        ///</summary>
-        [TestMethod()]
-        public void removeThreadTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            string p_uname = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.removeThread(p_fid, p_tid, p_uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for removeUserIP
-        ///</summary>
-        [TestMethod()]
-        public void removeUserIPTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            string IP = string.Empty; // TODO: Initialize to an appropriate value
-            target.removeUserIP(IP);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for updateCurrentThread
-        ///</summary>
-        [TestMethod()]
-        public void updateCurrentThreadTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int t_fid = 0; // TODO: Initialize to an appropriate value
-            int t_tid = 0; // TODO: Initialize to an appropriate value
-            string t_uname = string.Empty; // TODO: Initialize to an appropriate value
-            target.updateCurrentThread(t_fid, t_tid, t_uname);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }*/
     }
 }
