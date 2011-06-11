@@ -11,7 +11,7 @@ namespace GuiForumClient
         //string ip = "10.100.101.105";
         //string ip = "10.100.101.124";
         //string ip = "132.72.193.200";
-        string ip = "132.72.198.197";
+        string ip = "etay-pc";
         int port = 10116;
         Database db;
         string userName;

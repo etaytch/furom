@@ -146,7 +146,7 @@ namespace ForumSever
             return "";
         }
 
-        public void printHash() {
+        private void printHash() {
             Logger.append("Start of Hash content:", Logger.ERROR);
             foreach (string key in _usersIp.Keys) {
                 string val = (string)_usersIp[key];
@@ -177,7 +177,7 @@ namespace ForumSever
             UserData result;
             lock (_IPLock) {
                 try {
-                    printHash();
+                    //printHash();
                     result = _usersData[IP] as UserData;
                 }
                 catch (Exception) {
@@ -619,8 +619,7 @@ namespace ForumSever
                     Hashtable reversedHash = getReverseHashTable();
                     string authorIP = (string)reversedHash[author];
                     if(authorIP!=null){
-                        UserData ud = getUserDataFromIP(authorIP);
-                        Logger.append("authorIP: "+authorIP, Logger.INFO);
+                        UserData ud = getUserDataFromIP(authorIP);                        
                         string name = ud.Username;
                         if(!webUsersDataToUpdate.Contains(ud)){
                             webUsersDataToUpdate.Add(ud);
