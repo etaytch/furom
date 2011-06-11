@@ -83,8 +83,9 @@ namespace ForumSever
             }
             catch (Exception) {
                 _conn.Close();
+                return false;
             }
-
+        }
 
         public bool removeThread(int p_fid, int p_tid) {
             try {
