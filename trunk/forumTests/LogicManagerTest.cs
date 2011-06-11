@@ -17,7 +17,9 @@ namespace forumTests
     [TestClass()]
     public class LogicManagerTest {
 
-
+        private int testForumId;
+        private int testThreadId;
+        private int testPostId;
         private TestContext testContextInstance;
         private LogicManager lg;
 
@@ -35,33 +37,7 @@ namespace forumTests
         }
 
         #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
+       
         #endregion
 
         //Use ClassInitialize to run code before running the first test in the class
@@ -79,15 +55,30 @@ namespace forumTests
 
         [TestInitialize]
         public void Initialize() {
-            lg = new LogicManager();
+            lg = new LogicManager("app");
             for (int i = 0; i < 3; i++) {
                 MemberInfo memb = new MemberInfo("utest"+i, "ftest", "itest", "ptest", "bla", "bla", "bla", "etest", "bla", "0");
                 lg.register(memb);
             }
+            lg.db.addForum("forumtest");
+            lg.db.closeconn();
+            SqlDataReader reader = lg.db.runSelectSQL("SELECT fid FROM forums WHERE fname = 'forumtest'");
+            reader.Read();
+            testForumId = Convert.ToInt32(reader["fid"]);
+            lg.db.closeconn();
+            testThreadId = lg.db.addTread(new ForumThread(testForumId, "ttopic", "tcontent", "utest0"));
+            lg.db.addPost(testThreadId,testForumId,0,"tPostTopic","tPostcontent","utets0");
+            reader = lg.db.runSelectSQL("SELECT pid FROM Posts WHERE subject = 'tPostTopic'");
+            reader.Read();
+            testPostId = Convert.ToInt32(reader["pid"]);
+            lg.db.closeconn();
         }
 
         [TestCleanup]
         public void Terminate() {
+            lg.db.removePost(testForumId, testThreadId, testPostId);
+            lg.db.removeThread(testForumId, testThreadId);
+            lg.db.removeForum(testForumId);
             for (int i = 0; i < 3; i++) {
                 lg.db.runSelectSQL("Delete From Users where username = 'utest"+i+"'");
                 lg.db.closeconn();
@@ -102,7 +93,7 @@ namespace forumTests
         [TestMethod()]
         public void LogicManagerConstructorTest() {
             Database p_db = null; // TODO: Initialize to an appropriate value
-            LogicManager target = new LogicManager(p_db);
+            LogicManager target = new LogicManager(p_db,"app");
             Assert.IsNotNull(target.usersIp);
             Assert.IsNotNull(target.usersData);
         }
@@ -112,7 +103,7 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void LogicManagerConstructorTest1() {
-            LogicManager target = new LogicManager();
+            LogicManager target = new LogicManager("app");
             Assert.IsNotNull(target.db);
             Assert.IsNotNull(target.usersIp);
             Assert.IsNotNull(target.usersData);
@@ -155,18 +146,6 @@ namespace forumTests
             lg.db.closeconn();
         }
 
-      /*  /// <summary>
-        ///A test for addForum
-        ///</summary>
-        [TestMethod()]
-        public void addForumTest() {
-  
-            int actual;
-            actual = lg.addForum(p_userID, p_topic);
-            Assert.AreEqual(0, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }*/
-
         /// <summary>
         ///A test for addMeAsFriend
         ///</summary>
@@ -177,23 +156,23 @@ namespace forumTests
             Assert.IsTrue(lg.db.recordExsist("select * from utest0 where uname = 'utest1'"));
         }
 
-   /*     /// <summary>
+        /// <summary>
         ///A test for addPost
         ///</summary>
         [TestMethod()]
         public void addPostTest() {
-            LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
-            int p_tid = 0; // TODO: Initialize to an appropriate value
-            int p_fid = 0; // TODO: Initialize to an appropriate value
-            int parentId = 0; // TODO: Initialize to an appropriate value
-            string p_topic = string.Empty; // TODO: Initialize to an appropriate value
-            string p_content = string.Empty; // TODO: Initialize to an appropriate value
-            string p_uname = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.addPost(p_tid, p_fid, parentId, p_topic, p_content, p_uname);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int expected = lg.addPost(testThreadId, testForumId, 0, "blaTopic", "blaContent", "utest3");
+            Assert.AreEqual(expected, -3);
+            expected = lg.addPost(-9, testForumId, 0, "blaTopic", "blaContent", "utest0");
+            Assert.AreEqual(expected, -6);
+            expected = lg.addPost(testThreadId, testForumId, 0, "blaTopic", "blaContent", "utest0");
+            Assert.AreEqual(expected, 0);
+            SqlDataReader reader = lg.db.runSelectSQL("SELECT pid FROM Posts WHERE subject = 'blaTopic'");
+            Assert.IsTrue(reader.HasRows);
+            reader.Read();
+            int actual = Convert.ToInt32(reader["pid"]);
+            lg.db.closeconn();
+            Assert.IsTrue(actual>0);
         }
 
         /// <summary>
@@ -201,6 +180,7 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void addTreadTest() {
+            /*
             LogicManager target = new LogicManager(); // TODO: Initialize to an appropriate value
             string p_uname = string.Empty; // TODO: Initialize to an appropriate value
             int p_fid = 0; // TODO: Initialize to an appropriate value
@@ -211,9 +191,22 @@ namespace forumTests
             actual = target.addTread(p_uname, p_fid, p_topic, p_content);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
+             */
+            int expected = lg.addTread("utest3",testForumId, "blaTopic", "blaContent");
+            Assert.AreEqual(expected, -3);
+            expected = lg.addTread("utest0", -9, "blaTopic", "blaContent");
+            Assert.AreEqual(expected, -5);
+            expected = lg.addTread("utest0", testForumId, "blaTopic", "blaContent");
+            Assert.AreEqual(expected, 0);
+            SqlDataReader reader = lg.db.runSelectSQL("SELECT tid FROM threads WHERE subject = 'blaTopic'");
+            Assert.IsTrue(reader.HasRows);
+            reader.Read();
+            int actual = Convert.ToInt32(reader["tid"]);
+            lg.db.closeconn();
+            Assert.IsTrue(actual > 0);
         }
 
-        /// <summary>
+  /*      /// <summary>
         ///A test for addUserIP
         ///</summary>
         [TestMethod()]
