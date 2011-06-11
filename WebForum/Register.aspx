@@ -21,7 +21,7 @@
         var $submitButton = $('#<%=registerButton.ClientID%>');
         $submitButton.attr("disabled", "true");
         $('#<%=UserName.ClientID%>').blur(function () {
-            $.ajax({ url: "/davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
+            $.ajax({ url: "davar.aspx?userName=" + $('#<%=UserName.ClientID%>').val(), cache: false, success: function (data) {
                 if (data == "true") {
                     $submitButton.removeAttr("disabled");
                     $('#usernameError').html("").fadeIn();

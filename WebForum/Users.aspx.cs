@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ForumSever;
 
 namespace WebForum
 {
@@ -16,7 +17,7 @@ namespace WebForum
         protected void Page_Load(object sender, EventArgs e)
         {
             General.enable();
-            Label2.Text = clientIP;
+            Label2.Text = "";
             string uname = General.lm.getUserFromIP(clientIP);
             string tmpUser;
             if ((uname == null) || (uname.Equals(""))) {
@@ -25,10 +26,12 @@ namespace WebForum
             }
             else {
                 Label1.Text = "Availible Users:";
-                Label2.Text += ", " + uname;
+                Label2.Text = "Hi " + uname+"!";
                 users = General.lm.getUsers(uname);
                 //List<string> users = proxyUsers();
-                
+                getSelectedUsers();
+                userList.Items.Clear();
+
                 for (int i = 0; i < users.Count; i++) {
                     tmpUser = users.ElementAt(i);
                     userList.Items.Add(new ListItem(tmpUser));
@@ -43,6 +46,9 @@ namespace WebForum
                 AdminPanel.Visible = true;
             }
             General.setPage(clientIP, this);
+            if (General.lm.isAdmin(uname)) {
+                AdminPanel.Visible = true;
+            }
              
         }
 
@@ -75,7 +81,19 @@ namespace WebForum
             string uname = General.lm.getUserFromIP(clientIP);
             string errMsg="";
             int counter = 0;
+            List<String> usersToAdd = new List<String>();
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            usersToAdd = ud.UsersToUpdate;
+            int result;
+            for (int i = 0; i < usersToAdd.Count; i++) {
+                result = General.lm.addMeAsFriend(uname, usersToAdd[i]);
+                if (result>=0) {
+                    counter++;
+                }
+            }
 
+
+            /*
             for (int i=0; i<userList.Items.Count; i++)                
                 if (userList.Items[i].Selected) {
                     if (!uname.Equals(userList.Items[i].Text)) {
@@ -91,7 +109,10 @@ namespace WebForum
                         errMsg = "Dear " + uname + ", You cannot add yourself as friend! :|"+Environment.NewLine;
                     }                    
                 }
-            this.friendAdded.Text = counter + " new friend(s) were added!";
+            
+            */
+
+            this.friendAdded.Text = counter + " new friend(s) were added!";            
             if(!errMsg.Equals("")){
                 this.friendAdded.Text = errMsg + this.friendAdded.Text;
             }
@@ -139,34 +160,65 @@ namespace WebForum
             this.friendAdded.Visible = true;
         }
 
+        private void getSelectedUsers() {
+            List<String> usersToDelete = new List<String>();
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            string uname = General.lm.getUserFromIP(clientIP);
+            for (int i = 0; i < userList.Items.Count; i++) {
+                if (userList.Items[i].Selected) {
+                    if (!uname.Equals(userList.Items[i].Text)) {
+                        usersToDelete.Add(userList.Items[i].Text);
+                    }
+                }
+            }
+            ud.UsersToUpdate = usersToDelete;       // mark 
+            
+        }
+
         protected void removeButton_Click(object sender, EventArgs e)
         {
             string clientIP = HttpContext.Current.Request.UserHostAddress;
             string uname = General.lm.getUserFromIP(clientIP);
             string errMsg = "";
+            List<String> usersToDelete = new List<String>();
             int counter = 0;
-
-            for (int i = 0; i < userList.Items.Count; i++)
-                if (userList.Items[i].Selected)
-                {
-                    if (!uname.Equals(userList.Items[i].Text))
-                    {
-                        //int result = General.lm.removeUser(uname, userList.Items[i].Text);
-                        int result = 1;
-                        if (result < 0)
-                        {
-                            sendError(result, uname);
-                        }
-                        else
-                        {
-                            counter++;
-                        }
+            /*
+            for (int i = 0; i < userList.Items.Count; i++) {
+                if (userList.Items[i].Selected) {
+                    if (!uname.Equals(userList.Items[i].Text)) {
+                        
+                        usersToDelete.Add(userList.Items[i].Text);
                     }
-                    else
-                    {
+                    else {
                         errMsg = "Dear " + uname + ", You cannot remove yourself! :|" + Environment.NewLine;
                     }
                 }
+            }
+             */ 
+            //int result = General.lm.removeUsers(uname, usersToDelete);
+            string usersAsParameter = "";
+            UserData ud = General.lm.getUserDataFromIP(clientIP);
+            usersToDelete = ud.UsersToUpdate;
+            for (int i = 0; i < usersToDelete.Count - 1; i++) {
+                usersAsParameter += usersToDelete[i] + ",";
+            }
+            if (usersToDelete.Count>=1) {
+                usersAsParameter += usersToDelete[usersToDelete.Count-1];
+                int result = General.lm.removeUsers(uname, usersToDelete);
+                
+                Response.Redirect("Users.aspx");
+            }
+            
+            
+
+            /*
+            if (result < 0) {
+                sendError(result, uname);
+            }
+            else {
+                counter=result; // Oh Lord, forgive me for this stupid assignment.. (Etay)
+            }
+
             this.friendAdded.Text = counter + " users were removed!";
             if (!errMsg.Equals(""))
             {
@@ -176,7 +228,7 @@ namespace WebForum
             this.AddFriendButton.Visible = false;
             this.Label1.Visible = false;
             this.friendAdded.Visible = true;
-
+            */
         }
     }
 }
