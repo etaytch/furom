@@ -98,7 +98,7 @@ namespace forumTests
         ///</summary>
         [TestMethod()]
         public void MassageHandlerConstructorTest() {
-            LogicManager lm = new LogicManager();
+            LogicManager lm = new LogicManager("app");
             MassageHandler target = new MassageHandler(lm);
             Assert.IsNotNull(target.ee);
         }
