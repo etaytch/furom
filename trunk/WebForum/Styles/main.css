@@ -1,0 +1,120 @@
+#navigate-bar
+{
+  color: #e9e9e9;
+  background-color: #465c71;
+  }
+
+.actions
+{
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  }
+
+#navigate-bar a, .actions a { color: #FFFFFF;text-decoration: none;}
+#navigate-bar a:hover,.actions a:hover { text-decoration: underline;}
+
+#main1
+{
+  text-align: left;
+  vertical-align:top;
+  padding: 3px 3px 1em 1em;
+  font-size: 15px;
+  font-family: Arial,sans-serif;
+  background-color: #fafafa;
+  color: #232323;
+  /* -moz-border-radius-bottomright: 35px; */
+}
+a         {color: #00a;}
+a:link    {color: #00a;}
+a:visited {color: #00a;}
+a:active  {color: #333333;}
+a:hover   {color: #00a;}
+
+#center-container
+{
+  margin-left: 0px;
+  }
+
+/* message board */
+.indent { margin-left: 15px; border-left: 1px dashed #eababa; }
+
+.messageboard
+{
+  background-color: transparent;
+  margin-bottom: 20px;
+  border: 1px solid #c2cdda;
+  width: 90%;
+  }
+
+.messageboard .subject
+{
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #c2cdda;
+  background-color: #a2adba;
+  padding: 3px;
+  }
+
+.messageboard .date
+{
+  font-size: 14px;
+  padding: 5px 5px 2px 5px;
+  text-align: right;
+  font-style: italic;
+  color: #666;
+  }
+
+.messageboard .body
+{
+
+  padding: 5px;
+  }
+
+/* forum message */
+.forum-message, .blog-comment
+{
+  border: 1px solid #c2cdda;
+  margin: 2px;
+  -moz-border-radius-bottomright: 10px;
+  }
+
+.forum-message .subject, .blog-comment .subject, .event .title
+{
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #a2adba;
+  padding: 1px 5px;
+  }
+
+.forum-message .subject a,.blog-comment .subject a,
+.forum-message .date a,.blog-comment .date a, .event .property a
+{ color: #336bb0; }
+
+
+.forum-message .date, .blog-comment .date 
+{
+  font-weight: normal;
+  font-size: 12px;
+  background-color: #dbe8f7;
+  color: #666;
+  padding: 1px 5px;
+  }
+.event .property{
+font-size: 16px;
+background-color: #dbe8f7;
+}
+
+.forum-message .body, .blog-comment .body
+{
+  font-weight:normal;
+  padding: 10px;
+  }
+
+.forum-message .actions, .blog-comment .actions
+{
+  padding: 0px 5px;
+  text-align: left;
+  font-size: 12px;
+  }
+
