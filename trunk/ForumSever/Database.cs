@@ -832,5 +832,54 @@ namespace ForumSever
                 return false;
             }     
         }
+
+        public void removeFriendsFromTables(string uname, List<string> existUsersToDelete) {
+            List<string> users = getUsers(uname);
+            foreach(string user in users){
+                removeFriends(user,existUsersToDelete);
+            }
+        }
+
+        private void removeFriends(string uname, List<string> existUsersToDelete) {
+            string where="";
+            for(int i=0;i<existUsersToDelete.Count-1;i++){
+                where += "(uname='"+existUsersToDelete[i]+"') or ";
+            }
+            where += "(uname='" + existUsersToDelete[existUsersToDelete.Count-1] + "')";
+            try {
+                runSelectSQL("Delete From " + uname + " where "+where);
+                _conn.Close();
+            }
+            catch (Exception) {
+                _conn.Close();
+            }
+        }
+
+        public void removeUsers(List<string> existUsersToDelete) {
+            string tables="",where="";
+            for (int i = 0; i < existUsersToDelete.Count - 1; i++) {
+                tables += existUsersToDelete[i]+",";
+                where += "(uname='" + existUsersToDelete[i] + "') or ";
+            }
+            tables += existUsersToDelete[existUsersToDelete.Count-1];
+            where += "(username='" + existUsersToDelete[existUsersToDelete.Count-1] + "')";
+
+            try {
+                runSelectSQL("Drop Table " + tables);
+                _conn.Close();                    
+            }
+            catch (Exception) {
+                _conn.Close();                   
+            }            
+            
+            try {
+                runSelectSQL("Delete From Users where " + where);
+                _conn.Close();
+            }
+            catch (Exception) {
+                _conn.Close();
+            }
+            
+        }
     }
 }
